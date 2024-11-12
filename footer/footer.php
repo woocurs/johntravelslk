@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 80px;
+            gap: 60px;
             margin-top: 10px;
         }
 
@@ -217,8 +217,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h3>About Us</h3>
         <p>John Travels - Trips by Woocurs. Make lifelong memories.</p>
         <div class="logo-container">
-            <img src="../images/logo1.png" alt="Woocurs" width="100px" height="100px">
-            <img src="../images/logo.png" alt="John Group">
+            <img src="images/logo1.png" alt="Woocurs" width="100px" height="100px">
+            <img src="images/logo.png" alt="John Group">
         </div>
     </div>
 
@@ -251,7 +251,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <div class="footer-bottom-section">
-        <img src="/images/Logo.png" alt="John Travels Logo" >
+        <img src="images/Logo.png" alt="John Travels Logo" width="100px" height="100px" >
         <span style="font-size: 1.2em; color: #f1f1f1; vertical-align: middle; margin-left: 10px;">John Travels LK</span>
     </div>
 

@@ -98,11 +98,11 @@ body, html {
 
 /* Background Images for Each Slide */
 .slide:nth-child(1) {
-    background-image: url('images/slider-banner-1.jpg'); 
+    background-image: url('../images/slider-banner-1.jpg'); 
 }
 
 .slide:nth-child(2) {
-    background-image: url('images/slider-banner-2.jpg'); 
+    background-image: url('../images/slider-banner-2.jpg'); 
 }
 
 /* Left and Right Content for Each Slide */
