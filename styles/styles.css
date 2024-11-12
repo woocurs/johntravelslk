@@ -1,0 +1,345 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+/*headerpart css start*/
+.top-bar {
+    background-color: #4a4a4a; /* Light gray color */
+    color: #fff;
+    padding: 5px 20px;
+    font-size: 14px;
+    
+}
+
+.top-bar .contact-info1 span {
+    margin-right: 15px;
+}
+
+.top-bar .social-icons a {
+    color: #fff;
+    margin-left: 10px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.top-bar .social-icons a:hover {
+    color: #ff6b6b;
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.navbar .navbar-brand {
+    font-weight: bold;
+    font-size: 24px;
+    color: #fff;
+    padding-left: 20px; /* Push brand logo to the side */
+}
+
+.navbar .navbar-brand img {
+    height: 30px;
+    margin-right: 5px;
+}
+
+.navbar .nav-item .nav-link {
+    color: #fff;
+    padding: 10px 15px;
+}
+
+.navbar .nav-item .nav-link:hover {
+    color: #ff6b6b;
+}
+
+.navbar .btn-login {
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+    margin-right: 20px; /* Push Login button to the side */
+}
+
+.navbar .btn-login:hover {
+    background-color: #e05555;
+}
+/*headerpart css end*/
+
+/* Carousel Container */
+.carousel {
+    position: relative;
+    height: 120vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Slide Style */
+.slide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Background Images for Each Slide */
+.slide:nth-child(1) {
+    background-image: url('images/slider-banner-1.jpg'); 
+}
+
+.slide:nth-child(2) {
+    background-image: url('images/slider-banner-2.jpg'); 
+}
+
+/* Left and Right Content for Each Slide */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white;
+    display: flex;
+    justify-content: space-between; /* Space out left and right content */
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Left Content */
+.left-content {
+    max-width: 40%;
+    padding-left: 100px; /* Optional: add padding for alignment */
+    margin-top: -200px; 
+}
+
+.left-content h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.left-content p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.left-content .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff4b4b;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.left-content .button:hover {
+    background-color: #ff6b6b;
+}
+
+/* Right Content */
+.right-content {
+    max-width: 40%;
+    padding-right: 100px; /* Optional: add padding for alignment */
+    text-align: left;
+    margin-top: 190px; 
+}
+
+.right-content p {
+    font-size: 1em;
+    opacity: 0.8;
+}
+
+
+.overlay h1 {
+    font-size: 4em;
+    margin: 0;
+    margin-top: -100px;
+}
+
+.overlay p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.overlay .button {
+    padding: 10px 20px;
+    background-color: #ff4b4b;
+    color: white;
+    text-decoration: none;
+}
+
+.overlay .button:hover {
+    background-color: #00B4D8;
+    transform: scale(1.05); 
+}
+
+.vertical-line {
+    width: 1px;
+    background-color: #ffffff;
+    height: 10%;
+    position: absolute;
+    left: 59%;
+    top: 57.5%;
+    transform: translateX(-50%);
+}
+
+/* Navigation Buttons */
+.scrollclick .prev,
+.scrollclick .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    font-size: 2em;
+    color: white;
+    background-color: transparent; 
+    padding: 10px;
+    border: none; 
+    transform: translateY(-50%);
+    transition: color 0.3s; 
+}
+
+.scrollclick .prev {
+    left: 20px;
+}
+
+.scrollclick .next {
+    right: 20px; 
+}
+
+.scrollclick .prev:hover,
+.scrollclick .next:hover,
+.scrollclick .prev:focus,
+.scrollclick .next:focus {
+    color: #313333; 
+    border: none; 
+    outline: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .left-content, .right-content {
+        max-width: 70%;
+        padding: 15px;
+    }
+    
+    .navbar .navbar-brand {
+        font-size: 20px;
+    }
+    .vertical-line {
+        display: none; 
+    }
+}
+
+@media (max-width: 992px) {
+    .overlay {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .left-content, .right-content {
+        max-width: 100%;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .left-content h1, .overlay h1 {
+        font-size: 2.5em;
+    }
+
+    .left-content p, .overlay p {
+        font-size: 1em;
+        margin: 15px 0;
+    }
+
+    .top-bar {
+        padding: 3px 15px; 
+    }
+    .vertical-line {
+        display: none; 
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .nav-item .nav-link {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .navbar .btn-login {
+        padding: 6px 12px;
+    }
+
+    .left-content, .right-content {
+        padding: 5px 15px; 
+    }
+
+    .overlay {
+        padding: 10px; 
+    }
+
+    .overlay h1 {
+        font-size: 1.8em;
+    }
+
+    .vertical-line {
+        display: none;
+    }
+
+    .left-content h1 {
+        margin-bottom: 10px;
+    }
+
+    .left-content p {
+        padding: 5px 0; 
+    }
+}
+
+@media (max-width: 576px) {
+    .top-bar {
+        font-size: 12px;
+        padding: 2px 10px; 
+    }
+
+    .left-content h1, .overlay h1 {
+        font-size: 2.0em;
+    }
+
+    .left-content p, .overlay p {
+        font-size: 1.0em;
+        padding: 3px 0; 
+    }
+
+    .scrollclick .prev, .scrollclick .next {
+        font-size: 1.5em;
+    }
+
+    .overlay {
+        padding: 5px; 
+    }
+
+    .right-content {
+        text-align: center; 
+        margin-top: 10px; 
+    }
+    .vertical-line {
+        display: none; 
+    }
+}
