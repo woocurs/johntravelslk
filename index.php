@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'header/header.php'; ?>
 
 <div class="carousel">
     <!-- Slide 1 -->
@@ -37,8 +37,8 @@
 </div>
 </div>
 
-<script src="scripts.js"></script> <!-- Link to JavaScript file -->
-<?php include 'footer/footerpage.php'; ?>
+<script src="scripts/scripts.js"></script> <!-- Link to JavaScript file -->
+<?php include 'footer/footer.php'; ?>
 
 </body>
 </html>
