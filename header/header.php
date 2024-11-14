@@ -58,7 +58,7 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
                 <li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Admin Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="./admin/admin_login.php">Admin Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link btn btn-login" href="#">Tour</a></li>
             </ul>
         </div>
