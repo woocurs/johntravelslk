@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+}
+
+.tourpackagestitle {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.image {
+    background-size: contain; /* Ensure the entire image is shown */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px; /* Default height for small images */
+}
+
+/* Adjustments for large images */
+.large {
+    grid-column: span 2;
+    grid-row: span 2;
+    height: 400px; /* Increase height for large images */
+}
+
+/* Small images will use the default .image height */
+.small {
+    grid-column: span 1;
+    grid-row: span 1;
+    height: 300px; /* Set height for small images */
+}
+
+.details {
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Background overlay to improve text readability */
+    color: white;
+}
+
+.location {
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+
+.button {
+    background-color: #009688;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block; /* Ensure button is visible */
+    margin-top: 10px; /* Add space above the button */
+}
+
+.button:hover {
+    background-color: #00796b;
+}
