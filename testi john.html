@@ -1,0 +1,922 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Section</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="styles/style.css">
+    <style>
+	
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+	margin-bottom:0px;
+	
+	margin-left:0;
+	margin-right:0;
+}
+
+
+
+
+.form-group label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.form-control {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    box-shadow: none;
+    width: 100%;
+}
+
+.submit-btn {
+    background-color: #FE6161;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #00B4D8;
+}
+
+
+.err {
+    color: red;
+    font-size: 0.9em;
+}
+
+.alert {
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 1rem;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+    .modal-content {
+            padding: 20px;
+        }
+        .modal-header {
+            border-bottom: none;
+        }
+        .modal-footer {
+            border-top: none;
+            justify-content: center;
+        }
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+        }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+        }
+.contact-form input, .contact-form textarea {
+    width: 80%;
+    padding: 5px;
+    margin: 4px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+.contact-form button {
+    padding: 6px 10px;
+    background-color: #FE6161;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 80%;
+}
+
+.contact-form button:hover {
+    background-color: #00B4D8;
+}
+
+
+footer {
+	margin-top:20px;
+    background-color: #333;
+    color: white;
+    padding: 0px 0;
+	width:100%;
+	 display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+			margin-bottom:0;
+          
+}
+
+img {
+			
+		width: 60px;
+		height: auto;
+		border-radius: 8px;
+		margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+		
+		.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.logo-container img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.logo-container img {
+    width: 60px;
+    height: auto;
+    border-radius: 8px;
+}
+
+footer .footer-bottom {
+    background-color: #222;
+    text-align: center;
+    font-size: 0.9rem;
+	 display: flex;
+     flex-wrap: wrap;
+     justify-content: space-around;
+	 padding-bottom:0;
+   padding: 30px 0;
+	width:100%;
+	margin-bottom:0;
+}
+
+.footer-section {
+	margin-top:20px;
+    margin-bottom: 10px;
+	margin-left:10px;
+	text-align: center;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+	color:#00b4d8;
+}
+
+.footer-section p {
+    margin: 5px 0;
+}
+
+.footer-bottom-section {
+    font-size: 0.8rem;
+    color: #aaa;
+	 text-align: center;
+	 margin-left:20px;
+	
+}
+.footer-section a {
+    color:  white;
+    text-decoration: none;
+}
+
+.footer-bottom-section a {
+    color:  #00B4D8;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: none;
+	color:#FE6161;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+	.logo-container {
+        gap: 20px;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-section h3 {
+        font-size: 1rem;
+    }
+
+    .footer-bottom-section {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .submit-btn {
+        padding: 12px 0;
+    }
+
+    .form-group label,
+    .form-control {
+        font-size: 0.9rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Section</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="styles/style.css">
+    <style>
+	
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+	margin-bottom:0px;
+	
+	margin-left:0;
+	margin-right:0;
+}
+
+
+
+
+.form-group label {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.form-control {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    box-shadow: none;
+    width: 100%;
+}
+
+.submit-btn {
+    background-color: #FE6161;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background-color: #00B4D8;
+}
+
+
+.err {
+    color: red;
+    font-size: 0.9em;
+}
+
+.alert {
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 1rem;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+    .modal-content {
+            padding: 20px;
+        }
+        .modal-header {
+            border-bottom: none;
+        }
+        .modal-footer {
+            border-top: none;
+            justify-content: center;
+        }
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+        }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+        }
+.contact-form input, .contact-form textarea {
+    width: 80%;
+    padding: 5px;
+    margin: 4px 0;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+
+.contact-form button {
+    padding: 6px 10px;
+    background-color: #FE6161;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 80%;
+}
+
+.contact-form button:hover {
+    background-color: #00B4D8;
+}
+
+
+footer {
+	margin-top:20px;
+    background-color: #333;
+    color: white;
+    padding: 0px 0;
+	width:100%;
+	 display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+			margin-bottom:0;
+          
+}
+
+img {
+			
+		width: 60px;
+		height: auto;
+		border-radius: 8px;
+		margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+		
+		.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.logo-container img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.logo-container img {
+    width: 60px;
+    height: auto;
+    border-radius: 8px;
+}
+
+footer .footer-bottom {
+    background-color: #222;
+    text-align: center;
+    font-size: 0.9rem;
+	 display: flex;
+     flex-wrap: wrap;
+     justify-content: space-around;
+	 padding-bottom:0;
+   padding: 30px 0;
+	width:100%;
+	margin-bottom:0;
+}
+
+.footer-section {
+	margin-top:20px;
+    margin-bottom: 10px;
+	margin-left:10px;
+	text-align: center;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+	color:#00b4d8;
+}
+
+.footer-section p {
+    margin: 5px 0;
+}
+
+.footer-bottom-section {
+    font-size: 0.8rem;
+    color: #aaa;
+	 text-align: center;
+	 margin-left:20px;
+	
+}
+.footer-section a {
+    color:  white;
+    text-decoration: none;
+}
+
+.footer-bottom-section a {
+    color:  #00B4D8;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: none;
+	color:#FE6161;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+	.logo-container {
+        gap: 20px;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .footer-section h3 {
+        font-size: 1rem;
+    }
+
+    .footer-bottom-section {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .submit-btn {
+        padding: 12px 0;
+    }
+
+    .form-group label,
+    .form-control {
+        font-size: 0.9rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <br>
+    
+
+
+<?php if (!empty($err)) { ?>
+    <script type="text/javascript">
+        window.onload = function() {
+            alert("<?php echo implode("\n", $err); ?>");
+        };
+    </script>
+<?php } elseif (!empty($success_message)) { ?>
+    <script type="text/javascript">
+        window.onload = function() {
+            alert("<?php echo $success_message; ?>");
+        };
+    </script>
+<?php } ?>
+
+<footer class="footer">
+
+    <div class="footer-section">
+        <h3>About Us</h3>
+        <p>John Travels - Trips by Woocurs. Make lifelong memories.</p>
+        <div class="logo-container">
+            <img src="images/logo1.png" alt="Woocurs" width="100px" height="100px">
+            <img src="images/logo.png" alt="John Group">
+        </div>
+    </div>
+
+    <div class="footer-section contact-info">
+        <h3>Contact Information</h3>
+        <p>Explore a new world with us!</p>
+        <p><a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"><i class="fa fa-map-marker"></i>377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka</a></p>
+        <p><a href="tel:+94 76 245 0858"><i class="fa fa-phone"></i>+94 76 245 0858</a></p>
+        <p><a href="mailto:info.johntravels@gmail.com"><i class="fa fa-envelope"></i> info.johntravels@gmail.com</a></p>
+    </div>
+
+    <div class="footer-section contact-form">
+        <h3>Contact Us</h3>
+        <p>Get the latest updates and news from us.</p>
+      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?> "  method="POST">
+	  <input type="hidden" name="form_type" value="contact" >
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="msg" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+	
+
+<div class="footer-bottom">
+    <div class="footer-bottom-section">
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms & Conditions</a> | 
+        <a href="#">FAQ</a>
+    </div>
+
+    <div class="footer-bottom-section">
+        <img src="images/logo.png" alt="John Travels Logo" >
+        <span style="font-size: 1.2em; color: #f1f1f1; vertical-align: middle; margin-left: 10px;">John Travels LK</span>
+    </div>
+
+    <div class="footer-bottom-section">
+        <span><p>&copy; 2024 John Travels LK. All rights reserved.<p></span>
+    </div>
+</div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<html lang="en">
+<head>
+    
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Travels LK</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+
+
+</body>
+</html>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url('inner-banner.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #db1515;
+        }
+
+        .container {
+            background:#c50970);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 700px;
+            width: 70%;
+            
+        }
+        .container {
+            background: rgba(4, 176, 182, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 100%;
+            text-align: left;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #1541d3;
+        }
+
+
+        h1 {
+            color: #e22706;
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #af0c0c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #e9e4e4;
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+           
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #47c5ff;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.4em;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #17089c;
+            transform: scale(1.05);
+            
+        }
+
+        .order-summary {
+            margin-top: 30px;
+            font-weight: 600;
+            font-size: 1.2em;
+            color: #fff;
+            padding: 10px;
+            border-top: 2px solid #ddd;
+            background: rgba(206, 23, 23, 0.5);
+        }
+
+        .error-message {
+            color: #ff5c5c;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .order-list {
+            list-style-type: none;
+            text-align: left;
+            margin: 2cqh 0;
+        }
+
+        .order-list li {
+            padding: 8px 0;
+            font-size: 1.1em;
+            color: #f4f4f4;
+        }
+
+        .order-list li strong {
+            color: #bd3434;
+        }
+
+        h2 {
+            margin-top: 10px;
+            color: #13c498c0;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container" align="left">
+        <h1 align="center"><font color="navy">TESTIMONIALS</h1>
+        <p>RATE THE USER VIEW!</font></p>
+
+        <label for="customerName">Name</label>
+        <input type="text" id="customerName" placeholder="Enter your name" required>
+
+        <label for="address">Address</label>
+        <textarea id="address" rows="2" placeholder="Enter  address" required></textarea>
+
+        <label for="size">Package name</label>
+        
+           <textarea id="address" rows="2" placeholder="Enter pkg " required></textarea>
+        </select>
+
+
+
+       
+
+        
+    
+     <div class="review-form">
+            <h3><font color="white">CHOOSE THE RATE</font></h3>
+            <div class="rating">
+
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5">★★★★★</label>
+                <input type="radio" id="star4" name="rating" value="4"><br>
+                <label for="star4">★★★★</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">★★★</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">★★</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1">★</label>
+            </div>
+            
+            
+            <textarea name="message" placeholder="Enter Your Message"></textarea>
+            <br><br>
+            <br>
+            <button onclick="submitOrder()">SEND THE REVIEW</button>
+        </div>
+
+    <div class container>
+    
+    <br>
+    <br>
+    <section class="testimonials">
+        <font color="white" size="8">
+       <p align="center"><lable>What Our Customers Say</lable></p></font>
+       <font color="white" size="8"><p align="center"><lable>Reviews</lable></font></p>
+        
+               <p align="center"<label for="star5">★★★★★</label></p></section>
+               <style>
+    /* Style the review box */
+    .review-box {
+      background-color: #ecf0f1;
+      border-radius: 10px solid #0019ff;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* Style the review header */
+    .review-header {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* Style the review text */
+    .review-text {
+      margin-bottom: 10px;
+    }
+ 
+
+    /* Style the star rating */
+    .star-rating {
+      color: #f0c14b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="review-box">
+    <div class="review-header">Rejo</div>
+    <div class="star-rating">★★★★★</div>
+    <div class="review-text">The trip was truly exceptional, far beyond what we had anticipated. From the very first day until the end, the team went above and beyond to ensure everything ran smoothly. Thanks team for a wonderful trip!</div>
+  </div>
+
+  <div class="review-box">
+    <div class="review-header">vashikka</div>
+    <div class="star-rating">★★★★</div>
+    <div class="review-text">We would like to commend you on being a great travel company. <br>
+        All of our trip ran like clockwork.
+   Drivers were on time for transfers , our accommodation was as 
+                    we booked and of high standard . Staff at hotel were wonderful. 
+                    The price of trip and also options and inclusions were great too. 
+                    Also your correspondence about changes in flight times e c t and 
+                    dates for payment were reassuring . We would be happy to recommend
+                     travel online to work colleagues and other family members . 
+                     Thanks again we had the most wonderful holiday.
+  </div>
+</div></div class>
+
+ <div class="review-box">
+    <div class="review-header">karthik</div>
+    <div class="star-rating">★★★★★</div>
+    <div class="review-text">very happy with the service.<br>
+                     I've never done online travel
+                     agency before I've always gone into an office will do again. 
+                     Thank you for your time. </div>
+
+                <br></div class>
+                
+            <div class="review-box">
+    <div class="review-header"> salomika</div>
+    <div class="star-rating">★★★★★</div>
+    <div class="review-text">
+              Excellent to deal with and offer great discounts and inclusions. <br>
+                    Nothing is too much trouble to accommodate your needs.</p>
+                
+                <br>
+            </div></div class>
+             <div class="review-box">
+    <div class="review-header"> abi sham</div>
+    <div class="star-rating">★★★★★</div>
+    <div class="review-text">
+             Great experience with view holiday trip <br>
+                     trustworthy company i really enjoyed my vacation</p>
+                
+                </div></div class>
+            
+
+              <div class="review-box">
+    <div class="review-header"> prahash</div>
+    <div class="star-rating">★★★★★</div>
+    <div class="review-text">Srilanka package very nice mam.....driver is <br>
+                    good to take on time for safe trip...thanks for ur support</p>
+              
+                </div></div class>
+            
+            
+              <div class="review-box">
+    <div class="review-header">nihal</div>
+    <div class="star-rating">★★★★★</div>
+    <div class="review-text">It was a wonderful pleasure to visit Sri Lanka, <br>
+                    and View Holiday also made our travel arrangements simple and comfortable. 
+                    We appreciate your efforts at View Holiday.</p>
+                
+                </div class>
+            </div>
+             <div class="review-box">
+    <div class="review-header">keertha</div>
+    <div class="star-rating">★★★★★</div>
+    <div class="review-text">I had nice experience with view holiday trip.
+                    <br> Especially from start to end they very co operative. <br>
+                    Decent Accomadation and wonderful experience with good sight seeing facilities.</p>
+                
+               </div class>
+            </div>
+            <hr color="blue">
+
+
+           
+        </div>
+    </container>
+    </section>
+
+
+</body>
+</html>
+</body>
+</html>
