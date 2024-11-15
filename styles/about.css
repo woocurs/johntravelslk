@@ -1,0 +1,69 @@
+.inner-banner-container{
+    height: 100vh;
+    background-size: cover;
+    width: 100%;
+}
+
+.section-heading{
+    padding: 50px;
+}
+
+.text-center{
+    padding-top: 100px;
+}
+
+
+
+.about-service-icon{
+    background-color: rgb(7, 144, 203);
+    width: 100px;
+    align-content: center;
+    
+    
+}
+
+.bg-video{
+    width: 100%;
+    height: 75vh;
+}
+
+.row{
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+}
+
+.fullwidth-callback{
+    background-repeat: no-repeat;
+    margin-top: auto;
+    background-size: cover;
+    height: 80vh;
+
+}
+
+.callback-counter-wrap {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 30px; 
+  }
+
+.counter-item {
+    flex: 1; 
+    min-width: 200px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #FE6161; 
+    
+}
+.counter-no{
+    color: aliceblue;
+    font-size: 25px;
+}
+
+.counter-content{
+    color: aliceblue;
+    font-size: 25px;
+}
+  
+
+
