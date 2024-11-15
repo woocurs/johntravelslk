@@ -1,8 +1,8 @@
 <?php
 // PHP variables for contact information
 $contact_number = "+94 76 245 0858";
-$email = "info.johntravels@gmail.com";
-$address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
+$mail = "info.johntravels@gmail.com";
+$location = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Travels LK</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/booking_styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -25,11 +25,11 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
             <div class="contact-info1">
                 <span><i class="fas fa-phone-alt"></i> <?php echo $contact_number; ?></span>
                 <span><i class="fas fa-envelope"></i> 
-                    <a href="mailto:info.johntravels@gmail.com<?php echo $email; ?>" style="color: inherit; text-decoration: none;">
-                        <?php echo $email; ?>
+                    <a href="mailto:info.johntravels@gmail.com<?php echo $mail; ?>" style="color: inherit; text-decoration: none;">
+                        <?php echo $mail; ?>
                     </a>
                 </span>
-                <span><i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></span>
+                <span><i class="fas fa-map-marker-alt"></i> <?php echo $location; ?></span>
             </div>
             <div class="social-icons">
                 <a href="https://www.facebook.com/johntravelslk"><i class="fab fa-facebook-f"></i></a>
