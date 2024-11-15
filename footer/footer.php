@@ -137,6 +137,7 @@ footer a:hover {
     background-color: #444;
     color: #fff;
 	height:30px;
+	text-align:center;
 }
 
 .contact-form button {
@@ -145,6 +146,7 @@ footer a:hover {
     cursor: pointer;
     transition: background-color 0.3s ease;
 	width:50%;
+	text-align:center;
 }
 
 .contact-form button:hover {
@@ -259,7 +261,7 @@ footer a:hover {
     <div class="footer-section contact-info">
         <h3>Contact Information</h3>
         <p>Explore a new world with us!</p>
-        <p><a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"><i class="fa fa-map-marker"></i>377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka</a></p>
+        <p><a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"><i class="fa fa-map-marker"></i> 377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka</a></p>
         <p><a href="tel:+94 76 245 0858"><i class="fa fa-phone"></i>+94 76 245 0858</a></p>
         <p><a href="mailto:info.johntravels@gmail.com"><i class="fa fa-envelope"></i> info.johntravels@gmail.com</a></p>
     </div>
