@@ -104,7 +104,7 @@ function closePopup() {
     document.getElementById('popup').style.display = 'none';
 }
 </script>
-<?php include('header/header.php');?>
+<?php include('header/booking_header.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
