@@ -78,7 +78,7 @@ $conn->close();
     <title>Footer Section</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="styles/style.css">
     <style>
 	
 body {
@@ -333,7 +333,7 @@ footer a:hover {
             alert("<?php echo implode("\n", $err); ?>");
         };
     </script>
-<?php } elseif (isset($success_message)) { ?>
+<?php } elseif (!empty($success_message)) { ?>
     <script type="text/javascript">
         window.onload = function() {
             alert("<?php echo $success_message; ?>");
