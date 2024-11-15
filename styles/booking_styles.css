@@ -1,11 +1,11 @@
 /* General Styles */
 body, html {
 	
-   
+  
     font-family: Arial, sans-serif;
     overflow-y: auto; 
     overflow-x: hidden;
-	margin-top:-200px;
+	margin:0px;
 	padding:0;
 	
 }

@@ -267,6 +267,59 @@ function closePopup() {
             color: red;
             font-size: 0.9em;
         }
+		
+		/* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        .container {
+            padding: 10px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .form-group label {
+            font-size: 1rem;
+        }
+
+        .submit-btn,
+        .reset-btn {
+            padding: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .popup-message {
+            max-width: 90%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h2 {
+            font-size: 1.2rem;
+        }
+
+        .form-control,
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="file"],
+        textarea,
+        select {
+            font-size: 0.9rem;
+        }
+
+        .submit-btn,
+        .reset-btn {
+            padding: 10px;
+            font-size: 0.8rem;
+        }
+
+        .popup-message button {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+        }
+    }
     </style>
    
 </head>
