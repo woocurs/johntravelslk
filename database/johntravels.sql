@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2024 at 08:19 AM
+-- Generation Time: Nov 15, 2024 at 02:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -31,15 +31,16 @@ CREATE TABLE `admin_details` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin_details`
 --
 
-INSERT INTO `admin_details` (`id`, `name`, `email`, `password`) VALUES
-(1, 'admin', 'admin@gmail.com', '12345678');
+INSERT INTO `admin_details` (`id`, `name`, `email`, `password`, `phone`) VALUES
+(1, 'admin', 'info.johntravels@gmail.com', '12345678', '+94 76 245 0858');
 
 -- --------------------------------------------------------
 
@@ -50,7 +51,7 @@ INSERT INTO `admin_details` (`id`, `name`, `email`, `password`) VALUES
 CREATE TABLE `contact_us` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `phone` int(10) NOT NULL,
+  `phone` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -67,7 +68,7 @@ CREATE TABLE `tour_bookings` (
   `name` varchar(100) NOT NULL,
   `address` varchar(255) NOT NULL,
   `nic` varchar(12) NOT NULL,
-  `phone` int(10) NOT NULL,
+  `phone` varchar(15) NOT NULL,
   `email` varchar(100) NOT NULL,
   `tour_package` varchar(100) NOT NULL,
   `booking_date` datetime NOT NULL,
@@ -115,13 +116,13 @@ ALTER TABLE `admin_details`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tour_bookings`
 --
 ALTER TABLE `tour_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

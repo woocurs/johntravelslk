@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bind_param("ssss", $name, $phone, $email, $msg);
 
                 if ($stmt->execute()) {
-                    $to = "thivagini.woocurs@gmail.com";
+                    $to = "info.johntravels@gmail.com";
                     $subject = "New Contact Message from " . $name;
                     $body = "You have received a new message from the contact form on your website.\n\n";
                     $body .= "Name: $name\n";

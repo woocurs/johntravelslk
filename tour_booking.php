@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 storeBooking($name, $address, $nic, $email, $phone, $tour_package, $booking_date, $people, $message, $photo_path, $terms);
 					
                 $headers = "From: noreply@johntravels.com";
-                $confirmation_subject = "Booking Confirmation";
+                $confirmation_subject = "Booking Received";
                 $confirmation_body = "Dear $name,\n\nThank you for booking with us.\n\nTour Package: $tour_package\nBooking Date: $booking_date\n\nRegards,\nJohn Travels LK";
 
                 if (mail($email, $confirmation_subject, $confirmation_body, $headers)) {
