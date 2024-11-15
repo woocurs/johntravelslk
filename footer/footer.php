@@ -83,11 +83,11 @@ $conn->close();
 	
 body {
     font-family: 'Roboto', sans-serif;
-   <!-- margin: 0;-->
+    margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 	margin-bottom:0px;
-	margin-top:200px;
+	
 	margin-left:0;
 	margin-right:0;
 }

@@ -174,24 +174,19 @@ footer a:hover {
 }
 
 
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
-	.logo-container {
-        gap: 20px;
-    }
-
+@media (max-width: 576px) {
     .footer-section {
         text-align: center;
+        margin: 10px 0;
     }
 
     .footer-section h3 {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .footer-bottom-section {
         font-size: 0.7rem;
+        margin: 5px;
     }
 }
 
@@ -203,5 +198,22 @@ footer a:hover {
     .form-group label,
     .form-control {
         font-size: 0.9rem;
+    }
+
+    .footer-section {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .footer-section h3 {
+        font-size: 0.8rem;
+    }
+
+    .footer-section p {
+        font-size: 0.7rem;
+    }
+
+    .footer-bottom-section {
+        font-size: 0.6rem;
     }
 }
