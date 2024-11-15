@@ -158,7 +158,7 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
                     <p>Location: <?php echo $location; ?></p>
                     <p>Description goes here with details about this tour package, distance, highlights, etc.</p>
                 <div>
-                    <a href="#" class="button">Book Now</a>
+                    <a href="tour_booking.php" class="button">Book Now</a>
                 </div>
                 </div>
             </div>
