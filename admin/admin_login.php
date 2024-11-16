@@ -51,10 +51,12 @@ $conn->close();
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            margin: 0; /* Remove any unwanted margins */
+            padding: 0; /* Remove unwanted padding */
             background-image: url('../images/bannaer_21.jpg'); /* Background image path */
-            background-size: cover;
-            background-position: center;
+            background-size: cover; /* Make the image cover the entire background */
+            background-position: 10% center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent tiling */
             font-family: Arial, sans-serif;
         }
 

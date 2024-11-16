@@ -125,7 +125,7 @@ $result = $conn->query($sql);
 /* Background setup */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../images/bannaer_22.jpg'); /* Background image path */
+    background-image: url('../images/bannaer_15.jpg'); /* Background image path */
     background-size: cover; /* Make the image cover the entire screen */
     background-position: center; /* Center the background image */
     background-attachment: fixed; /* Make background fixed */
@@ -138,11 +138,11 @@ body {
     width: 100%;
     height: 100vh; /* Make sure it covers the full viewport height */
     background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for content */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    color: white;
     padding: 30px;
     box-sizing: border-box;
     border-radius: 8px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    color: white;
     overflow: hidden; /* Prevent content overflow */
 }
 

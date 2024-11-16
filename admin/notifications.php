@@ -129,16 +129,15 @@ body {
 
 /* Container styling */
 .container {
-    max-width: 900px;
     width: 100%;
-    height: 100vh; /* Make sure it covers the full viewport height */
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background for content */
-    padding: 30px;
-    box-sizing: border-box;
-    border-radius: 8px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    color: white;
-    overflow: hidden; /* Prevent content overflow */
+            max-width: 900px;
+            background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+            padding: 30px;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            max-height: 90vh; /* Prevent overflow of content */
 }
 
 .dashboard {
