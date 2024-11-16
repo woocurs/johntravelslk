@@ -1,11 +1,13 @@
 /* General Styles */
 body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
+	
+  
     font-family: Arial, sans-serif;
     overflow-y: auto; 
     overflow-x: hidden;
+	margin:0px;
+	padding:0;
+	
 }
 
 /*headerpart css start*/
@@ -14,6 +16,10 @@ body, html {
     color: #fff;
     padding: 5px 20px;
     font-size: 14px;
+	margin-top:0px;
+	margin-bottom:0px;
+	width:100%;
+	
     
 }
 
@@ -36,6 +42,9 @@ body, html {
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
     color: #fff;
     transition: background-color 0.3s;
+	margin-top:0px;
+	margin-bottom:0px;
+	width:100%;
 }
 
 .navbar .navbar-brand {

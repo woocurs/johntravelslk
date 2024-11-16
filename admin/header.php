@@ -11,7 +11,7 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Travels LK</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -45,7 +45,7 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-        <img src="images/John_Travels_LK_Banner_R.png" alt="Logo" style="display: block; margin: 0px; auto; width: 30%; height: auto; "> 
+            <img src="../images/John_Travels_LK_Banner_R.png" alt="Logo" style="display: block; margin: 0px; auto; width: 30%; height: auto; "> 
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -53,12 +53,12 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="tourpackages.php">Tour Packages</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="../tourpackages.php">Tour Packages</a></li>
+                <li class="nav-item"><a class="nav-link" href="../about.php">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
+                <li class="nav-item"><a class="nav-link" href="../career.php">Careers</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="./admin/admin_login.php">Admin Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="admin_login.php">Admin Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link btn btn-login" href="#">Tour</a></li>
             </ul>
         </div>

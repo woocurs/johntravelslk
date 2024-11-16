@@ -78,7 +78,7 @@ $conn->close();
     <title>Footer Section</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="../styles/style.css">
     <style>
 	
 /* General Footer Styling */
@@ -253,8 +253,8 @@ footer a:hover {
         <h3>About Us</h3>
         <p>John Travels - Trips by Woocurs. Make lifelong memories.</p>
         <div class="logo-container">
-            <img src="images/logo1.png" alt="Woocurs" width="100px" height="100px">
-            <img src="images/logo.png" alt="John Group">
+            <img src="../images/logo1.png" alt="Woocurs" width="100px" height="100px">
+            <img src="../images/logo.png" alt="John Group">
         </div>
     </div>
 
@@ -288,7 +288,7 @@ footer a:hover {
     </div>
 
     <div class="footer-bottom-section">
-        <img src="images/logo.png" alt="John Travels Logo" >
+        <img src="../images/logo.png" alt="John Travels Logo" >
         <span style="font-size: 1.2em; color: #f1f1f1; vertical-align: middle; margin-left: 10px;">John Travels LK</span>
     </div>
 
