@@ -5,6 +5,8 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
     $location = htmlspecialchars($_GET['location']);
     $title = htmlspecialchars($_GET['title']);
     $image = htmlspecialchars($_GET['image']);
+    // Set a default size if not passed as a parameter
+    $size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : 'small';
 } else {
     // Redirect to a default page or show an error if parameters are missing
     header("Location: index.php");
@@ -14,13 +16,14 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
     <style>
+        /* Styles as you provided, fine-tuned */
         body {
             font-family: Arial, sans-serif;
-            background-color: gray;
+            background-color: #FFFDE7;
             margin: 0;
         }
 
@@ -35,6 +38,7 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
             color: white;
             font-size: 2.5em;
             font-weight: bold;
+            background-color: #FFFDE7;
         }
 
         .tourpackagestitle::before {
@@ -45,7 +49,7 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
             right: 0;
             bottom: 0;
             background: 
-                linear-gradient(to right, rgba(0, 0, 0, 3.9), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 3.9)100%), 
+                linear-gradient(to right, rgba(0, 0, 0, 3.9), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 3.9) 100%), 
                 url('images/inner-banner.jpg') no-repeat center center / cover;
             z-index: 1;
         }
@@ -56,28 +60,27 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
             bottom: -60px;
             left: 0;
             right: 0;
-            height: 50%; /* Adjust this to control how much of the pattern overlays the main background */
-            background: url('images/banner-pattern.png') no-repeat center top; /* Pattern overlay */
+            height: 50%; 
+            background: url('images/banner-pattern.png') no-repeat center top; 
             background-size: contain;
-            opacity: 1; /* Adjust opacity as needed */
+            opacity: 1;
             z-index: 2;
         }
 
         .tourpackagestitle h1 {
             position: relative;
-            z-index: 3; /* Ensure the text appears above both background images */
+            z-index: 3; 
             font-family: 'Arial', sans-serif;
         }
 
         .hero-section {
             position: relative;
             text-align: center;
-            padding-top:-200px;
             padding: 12px;
-            padding-left:20px;
-            margin-top: -280px; 
+            padding-left: 20px;
+            margin-top: -230px; 
             color: white;
-            z-index: 4; /* Bring hero-section above tourpackagestitle */
+            z-index: 4; 
         }
 
         .tourpackagestitle h1 {
@@ -90,33 +93,37 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
 
         .content {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
+            justify-content: left;
+            align-items: left;
+            gap: -200px;
             padding: 10px;
         }
 
-        .foreground-image img {
-            width: 270px;
+        .foreground-image img{
+            width: 60%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
+        .details{
+            margin-top: 150px !important;
+        }
 
-        .info h2 {
+        .info{
+            margin-left: -50px !important;
+        }
+
+        .info h2{
             font-family: 'Playfair Display', Georgia, serif; 
             font-size: 3.5em;
-            margin-top: -80px; 
             color: white;         
             text-transform: uppercase;   
             letter-spacing: 1px;          
             line-height: 1.2;
             text-align: left;            
         }
-        .info .details{
-            margin-top: 160px;
-        }
 
+        
         .info p {
             max-width: 400px;
             line-height: 1.6;
@@ -136,8 +143,112 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
         }
 
         .button:hover {
-            background-color: #004d00;
+            background-color: #00B4D8;
+            color: white;
+            border: none;
+            text-decoration: none;
+         }
+         /* General responsive settings */
+         @media (max-width: 768px) {
+        .tourpackagestitle h1 {
+            font-size: 1.8em; 
+            padding: 0 10px; 
+            margin-left: 20px;
         }
+
+        .content {
+            flex-direction: column;
+            align-items: center; 
+            padding: 20px;
+            width: 100%; 
+        }
+
+        .foreground-image img {
+            width: 100%; 
+            max-width: none;
+            height: auto;
+        }
+
+        .info {
+            margin-top: -10px !important;
+            max-width: 100%; 
+            text-align: center; 
+            margin: 0; 
+            padding: 10px; 
+        }
+
+        .info h2 {
+            margin-bottom: -150px !important;
+            font-size: 2.2em; 
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            font-size: 1.1em; 
+            line-height: 1.6; 
+            text-align: justify;
+            margin: 10px 0;
+        }
+
+        .tourpackagestitle::after {
+            background-size: contain; 
+            background-position: center 40px; 
+        }
+
+        .button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.2em; 
+            margin-left: 90px;
+        }
+        .tourpackagestitle::after {
+            bottom: -80px; 
+        }
+
+        .tourpackagestitle::after {
+            background-position: center 40px; 
+        }
+
+
+        .hero-section {
+            padding: 30px 0;
+            background-size: cover; 
+        }
+    }
+
+@media (max-width: 480px) {
+    
+    .details{
+        margin-top:-150px;
+    }
+    .tourpackagestitle h1 {
+        font-size: 1.5em; 
+        padding: 0 10px; 
+        margin-left:20px;
+    }
+
+    .info h2 {
+        font-size: 1.8em;
+        margin-left:50px;
+        color:black;
+    }
+
+    .button {
+        font-size: 1.1em; 
+        padding: 12px 55px;
+        margin-left:50px;
+    }
+
+    .foreground-image img {
+        width: 50%;
+        max-width: 50%;
+        height: auto;
+    }
+
+    .info p {
+        font-size: 1em; 
+    }
+}
 
     </style>
 </head>
@@ -148,20 +259,35 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
 
     <div class="hero-section">
         <div class="content">
-            <div class="foreground-image">
-                <img src="images/<?php echo $image; ?>" alt="<?php echo $title; ?>">
-            </div>
-
-            <div class="info">
-                <h2><?php echo $title; ?></h2>
-                <div class="details">
-                    <p>Location: <?php echo $location; ?></p>
-                    <p>Description goes here with details about this tour package, distance, highlights, etc.</p>
-                <div>
-                    <a href="tour_booking.php" class="button">Book Now</a>
+            <?php if ($size == 'small'): ?> <!-- Conditional logic for small size -->
+                <div class="foreground-image">
+                    <img src="images/<?php echo $image; ?>" alt="<?php echo $title; ?>">
                 </div>
+                <div class="info">
+                    <h2><?php echo $title; ?></h2>
+                    <div class="details">
+                        <p>Location: <?php echo $location; ?></p>
+                        <p>Description goes here with details about this tour package, distance, highlights, etc.</p>
+                        <div>
+                            <a href="tour_booking.php" class="button">Book Now</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            <?php else: ?> <!-- Logic for large size -->
+                <div class="foreground-image1">
+                    <img src="images/<?php echo $image; ?>" alt="<?php echo $title; ?>"style="width: 370px; height: 200px;">
+                </div>
+                <div class="info">
+                    <h2><?php echo $title; ?></h2>
+                    <div class="details" style="margin-top: -30px;" >
+                        <p>Location: <?php echo $location; ?></p>
+                        <p>Description goes here with details about this tour package, distance, highlights, etc.</p>
+                        <div>
+                            <a href="tour_booking.php" class="button">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?> <!-- End of conditional logic -->
         </div>
     </div>
    
