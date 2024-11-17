@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2024 at 08:19 AM
+-- Generation Time: Nov 17, 2024 at 07:48 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -31,15 +31,16 @@ CREATE TABLE `admin_details` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin_details`
 --
 
-INSERT INTO `admin_details` (`id`, `name`, `email`, `password`) VALUES
-(1, 'admin', 'admin@gmail.com', '12345678');
+INSERT INTO `admin_details` (`id`, `name`, `email`, `password`, `phone`) VALUES
+(1, 'admin', 'info.johntravels@gmail.com', '12345678', '+94 76 245 0858');
 
 -- --------------------------------------------------------
 
@@ -50,11 +51,34 @@ INSERT INTO `admin_details` (`id`, `name`, `email`, `password`) VALUES
 CREATE TABLE `contact_us` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `phone` int(10) NOT NULL,
+  `phone` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_applications`
+--
+
+CREATE TABLE `job_applications` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text DEFAULT NULL,
+  `position` varchar(255) NOT NULL,
+  `cv_file` varchar(255) NOT NULL,
+  `date_submitted` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `job_applications`
+--
+
+INSERT INTO `job_applications` (`id`, `name`, `email`, `message`, `position`, `cv_file`, `date_submitted`) VALUES
+(1, 'Diva', 'adminngo@gmail.com', NULL, 'Travel Agent', 'uploads/cvs/67384ae865db9.pdf', '2024-11-16 07:34:00');
 
 -- --------------------------------------------------------
 
@@ -67,10 +91,10 @@ CREATE TABLE `tour_bookings` (
   `name` varchar(100) NOT NULL,
   `address` varchar(255) NOT NULL,
   `nic` varchar(12) NOT NULL,
-  `phone` int(10) NOT NULL,
+  `phone` varchar(15) NOT NULL,
   `email` varchar(100) NOT NULL,
   `tour_package` varchar(100) NOT NULL,
-  `booking_date` datetime NOT NULL,
+  `booking_date` datetime DEFAULT NULL,
   `people` int(100) NOT NULL,
   `message` varchar(255) NOT NULL,
   `photo_path` varchar(255) NOT NULL,
@@ -96,6 +120,12 @@ ALTER TABLE `contact_us`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `job_applications`
+--
+ALTER TABLE `job_applications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tour_bookings`
 --
 ALTER TABLE `tour_bookings`
@@ -115,13 +145,19 @@ ALTER TABLE `admin_details`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `job_applications`
+--
+ALTER TABLE `job_applications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tour_bookings`
 --
 ALTER TABLE `tour_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
