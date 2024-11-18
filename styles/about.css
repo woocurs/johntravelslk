@@ -9,8 +9,7 @@
     font-size: 60px;
 }
 .inner-banner-container img{
-    padding-top: 340px;
-	width: 100%;
+    padding-top: 200px;
     
 }
 
@@ -26,13 +25,13 @@
     color: rgb(16, 16, 74);
     
 }
+.col-lg-4{
+    align-content: center;
+}
 
 .about-service-icon{
     background-color: rgb(7, 144, 203);
     width: 100px;
-    align-content: center;
-    
-    
 }
 
 .bg-video{
@@ -51,6 +50,8 @@
     margin-top: auto;
     background-size: cover;
     height: 80vh;
+    position: relative;
+
 
 }
 
@@ -78,7 +79,6 @@
     font-size: 25px;
 }
   
-/* Responsive Styles */
 @media (max-width: 1200px) {
     .heading {
         font-size: 50px;
@@ -234,7 +234,6 @@
     .counter-item {
         min-width: 120px;
         margin-bottom: 5px;
-       
     }
 
     .counter-no {
@@ -243,8 +242,129 @@
 
     .counter-content {
         font-size: 16px;
-       
     }
 }
 
 
+/*@media (max-width: 480px) {
+  
+    .inner-banner-container {
+        height: 30vh; 
+    }
+
+    .heading {
+        font-size: 20px; 
+        padding-top: 20px; 
+    }
+
+    .inner-banner-container img {
+        padding-top: 240px;
+    }
+
+   
+    .section-heading {
+        padding: 10px; 
+    }
+
+    
+    .col-lg-6 h2 {
+        font-size: 16px; 
+    }
+
+   
+    .about-service-icon {
+        width: 40px; 
+        background: fixed;
+    }
+
+    
+    .bg-video {
+        height: 35vh; 
+    }
+
+   
+    .row {
+        flex-direction: column; 
+        padding-bottom: 15px;
+    }
+
+   
+    .fullwidth-callback {
+        height: 100vh; 
+        background-size: contain;
+        padding: 10px;
+    }
+
+ 
+    .callback-counter-wrap {
+        gap: 10px; 
+        flex-direction: column;
+    }
+
+    .counter-item {
+        min-width: 100%;
+        margin-bottom: 10px; 
+    }
+
+    .counter-no {
+        font-size: 18px; 
+    }
+
+    .counter-content {
+        font-size: 18px; 
+    }
+}*/
+
+@media (max-width: 480px) {
+    .inner-banner-container {
+        height: 50vh; /* Reduce height for smaller screens */
+        background-size: contain; /* Fit background */
+    }
+
+    .heading {
+        padding-top: 50px; /* Adjust padding */
+        font-size: 30px; /* Smaller font size */
+    }
+
+    .inner-banner-container img {
+        padding-top: 100px; /* Reduce padding */
+    }
+
+    .section-heading {
+        padding: 20px; /* Reduce padding */
+    }
+
+    .col-lg-6 h2 {
+        font-size: 20px; /* Smaller font size */
+    }
+
+
+    .bg-video {
+        height: 40vh; /* Reduce height */
+    }
+
+    .row {
+        flex-direction: column; /* Stack columns vertically */
+        padding-bottom: 10px; /* Reduce padding */
+    }
+
+    .callback-counter-wrap {
+        gap: 15px; /* Reduce gap */
+        flex-direction: column; /* Stack items */
+        
+    }
+
+    .counter-item {
+        min-width: 40px; /* Take full width */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .counter-no,
+    .counter-content {
+        font-size: 18px; /* Smaller font size */
+    }
+
+    .fullwidth-callback {
+        height: 80vh; /* Adjust height */
+    }
+}
