@@ -77,5 +77,173 @@
     font-size: 25px;
 }
   
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .heading {
+        font-size: 50px;
+    }
+
+    .inner-banner-container {
+        height: 70vh;
+    }
+
+    .section-heading {
+        padding: 40px;
+    }
+
+    .row {
+        padding-bottom: 15px;
+    }
+
+    .callback-counter-wrap {
+        gap: 20px;
+    }
+
+    .counter-item {
+        min-width: 180px;
+    }
+
+    .counter-no {
+        font-size: 22px;
+    }
+
+    .counter-content {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 992px) {
+    .heading {
+        font-size: 40px;
+    }
+
+    .inner-banner-container {
+        height: 60vh;
+    }
+
+    .section-heading {
+        padding: 30px;
+    }
+
+    .col-lg-6 h2 {
+        font-size: 24px;
+    }
+
+    .about-service-icon {
+        width: 80px;
+    }
+
+    .bg-video {
+        height: 65vh;
+    }
+
+    .callback-counter-wrap {
+        gap: 15px;
+    }
+
+    .counter-item {
+        min-width: 160px;
+    }
+
+    .counter-no {
+        font-size: 20px;
+    }
+
+    .counter-content {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 30px;
+        padding-top: 50px;
+    }
+
+    .inner-banner-container {
+        height: 50vh;
+    }
+
+    .section-heading {
+        padding: 20px;
+    }
+
+    .col-lg-6 h2 {
+        font-size: 20px;
+    }
+
+    .about-service-icon {
+        width: 60px;
+    }
+
+    .bg-video {
+        height: 50vh;
+    }
+
+    .callback-counter-wrap {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .counter-item {
+        min-width: 140px;
+        margin-bottom: 10px;
+    }
+
+    .counter-no {
+        font-size: 18px;
+    }
+
+    .counter-content {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .heading {
+        font-size: 25px;
+        padding-top: 30px;
+    }
+
+    .inner-banner-container {
+        height: 40vh;
+    }
+
+    .section-heading {
+        padding: 15px;
+    }
+
+    .col-lg-6 h2 {
+        font-size: 18px;
+    }
+
+    .about-service-icon {
+        width: 50px;
+    }
+
+    .bg-video {
+        height: 40vh;
+    }
+
+    .callback-counter-wrap {
+        gap: 5px;
+        flex-direction: column;
+    }
+
+    .counter-item {
+        min-width: 120px;
+        margin-bottom: 5px;
+       
+    }
+
+    .counter-no {
+        font-size: 16px;
+    }
+
+    .counter-content {
+        font-size: 16px;
+       
+    }
+}
 
 
