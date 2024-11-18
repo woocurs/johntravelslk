@@ -1,18 +1,30 @@
 .inner-banner-container{
-    height: 100vh;
+    height: 85vh;
     background-size: cover;
     width: 100%;
+    
+}
+.heading{
+    padding-top: 100px;
+    font-size: 60px;
+}
+.inner-banner-container img{
+    padding-top: 200px;
+    
+}
+
+.dash-style{
+    color: red;
 }
 
 .section-heading{
     padding: 50px;
 }
 
-.text-center{
-    padding-top: 100px;
+.col-lg-6 h2{
+    color: rgb(16, 16, 74);
+    
 }
-
-
 
 .about-service-icon{
     background-color: rgb(7, 144, 203);

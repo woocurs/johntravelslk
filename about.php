@@ -12,8 +12,9 @@
     <section class="inner-banner-wrap">
         <div class="inner-banner-container" style="background-image: url(images/inner-banner.jpg);">
             <div class="container">
-                <h1 class=" heading text-center">About us</h1>
+                <h1 class=" heading text-center">About Us</h1>
             </div>
+            <img src="images/banner-pattern.png">
         </div>
     </section>
     <section class="about-page-section">

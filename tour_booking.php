@@ -86,7 +86,7 @@ function storeBooking($name, $address, $nic, $email, $phone, $tour_package, $boo
 		
     }
     $stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, email, phone, tour_package, booking_date, people, message, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssdisss", $name, $address, $nic, $email, $phone, $tour_package, $booking_date, $people, $message, $photo_path, $terms);
+    $stmt->bind_param("sssssssisss", $name, $address, $nic, $email, $phone, $tour_package, $booking_date, $people, $message, $photo_path, $terms);
     $stmt->execute();
     $stmt->close();
     $conn->close();
@@ -375,16 +375,19 @@ function closePopup() {
                 <label for="tour_package">Select Tour Package</label>
                 <select name="tour_package" id="tour_package" class="form-control" required>
                     <option value="">-- Select Package --</option>
-                    <option value="Colombo" <?php echo (isset($tour_package) && $tour_package == 'Colombo') ? 'selected' : ''; ?>>Colombo</option>
-                    <option value="Badulla" <?php echo (isset($tour_package) && $tour_package == 'Badulla') ? 'selected' : ''; ?>>Badulla</option>
-                    <option value="Kandy" <?php echo (isset($tour_package) && $tour_package == 'Kandy') ? 'selected' : ''; ?>>Kandy</option>
-                    <option value="Galle" <?php echo (isset($tour_package) && $tour_package == 'Galle') ? 'selected' : ''; ?>>Galle</option>
-                    <option value="Jaffna" <?php echo (isset($tour_package) && $tour_package == 'Jaffna') ? 'selected' : ''; ?>>Jaffna</option>
+                    <option value="Lotus Tower-Colombo" <?php echo (isset($tour_package) && $tour_package == 'Lotus Tower-Colombo') ? 'selected' : ''; ?>>Lotus Tower-Colombo</option>
+					<option value="World Trade Center-Colombo" <?php echo (isset($tour_package) && $tour_package == 'World Trade Center-Colombo') ? 'selected' : ''; ?>>World Trade Center-Colombo</option>
+                    <option value="Modern Pedestrian Bridge-Matara" <?php echo (isset($tour_package) && $tour_package == 'Modern Pedestrian Bridge-Matara') ? 'selected' : ''; ?>>Modern Pedestrian Bridge-Matara</option>
+                     <option value="Dondra Light House-Matara" <?php echo (isset($tour_package) && $tour_package == 'Dondra Light House-Matara') ? 'selected' : ''; ?>>Dondra Light House-Matara</option>
+					<option value="Queens Hotel-Kandy" <?php echo (isset($tour_package) && $tour_package == 'Queens Hotel-Kandy') ? 'selected' : ''; ?>>Queen's Hotel-Kandy</option>
+                    <option value="Temple of the Tooth-Kandy" <?php echo (isset($tour_package) && $tour_package == 'Temple of the Tooth-Kandy') ? 'selected' : ''; ?>>Temple of the Tooth-Kandy</option>
+                    <option value="Tea Estate-Nuwareliya" <?php echo (isset($tour_package) && $tour_package == 'Tea Estate-Nuwareliya') ? 'selected' : ''; ?>>Tea Estate-Nuwareliya</option>
+					 <option value="Nine Arch Bridge-Badulla" <?php echo (isset($tour_package) && $tour_package == 'Nine Arch Bridge-Badulla') ? 'selected' : ''; ?>>Nine Arch Bridge-Badulla</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="booking_date">Booking Date</label>
-                <input type="date" name="booking_date" id="booking_date" class="form-control" value="<?php echo isset($booking_date) ? $booking_date : ''; ?>" required>
+                <input type="datetime-local" name="booking_date" id="booking_date" class="form-control" value="<?php echo isset($booking_date) ? $booking_date : ''; ?>" required>
             </div>
             <div class="form-group">
                 <label for="people">Number of People</label>
