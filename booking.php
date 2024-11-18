@@ -1,6 +1,11 @@
 <?php
 include "database/db.php";
 
+	
+$selectedLocation = isset($_GET['location']) ? $_GET['location'] : '';
+$selectedPackage = isset($_GET['title']) ? $_GET['title'] : '';
+$selectedImage = isset($_GET['image']) ? $_GET['image'] : '';
+ $size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : 'large'; 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['form_type'])) {
         $form_type = $_POST['form_type'];
@@ -12,13 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $nic = htmlspecialchars($_POST['nic']);
             $email = htmlspecialchars($_POST['email']);
             $phone = htmlspecialchars($_POST['phone']);
-            $tour_package = htmlspecialchars($_POST['tour_package']);
+           $tour_package = htmlspecialchars($_POST['tour_package']);
             $booking_date = htmlspecialchars($_POST['booking_date']);
             $people = htmlspecialchars($_POST['people']);
             $message = htmlspecialchars($_POST['message']);
             $terms = isset($_POST['terms']) ? 1 : 0;
 
-           
+            
             $photo = $_FILES['photo'];
             $upload_dir = 'uploads/photos/';
             $photo_path = '';
@@ -82,9 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 function storeBooking($conn,$name, $address, $nic, $email, $phone, $tour_package, $booking_date, $people, $message, $photo_path, $terms) {
 	
-  
-    $stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, email, phone, tour_package, booking_date, people, message, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssssisss", $name, $address, $nic, $email, $phone, $tour_package, $booking_date, $people, $message, $photo_path, $terms);
+     
+	$stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, email, phone, tour_package, booking_date, people, message, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+   
+	$stmt->bind_param("sssssssisss", $name, $address, $nic, $email, $phone, $tour_package, $booking_date, $people, $message, $photo_path, $terms);
     $stmt->execute();
     $stmt->close();
     $conn->close();
@@ -154,9 +160,10 @@ function closePopup() {
 
    
 	body {
-            
-            background-image: url('images/bannaer_5.jpg');
-            background-size: cover;
+            background-image: url('images/<?php echo $selectedImage ? $selectedImage : 'images/bannaer_5.jpg'; ?>');
+			background-size: cover;
+			
+			background-repeat:no-repeat;
             background-position: center;
             display: flex;
 			flex-direction:column;
@@ -335,7 +342,7 @@ function closePopup() {
     </div>
 </div>
     <div class="container">
-        <img src="images/logo.png" alt="johntravels" class="logo">
+        <img src="images/logo.png" alt="Johntravels" class="logo">
         <h2 class="text-center">Book Your Tour</h2>
 		     <?php if (!empty($errors)): ?>
                 <div class="error">
@@ -349,6 +356,11 @@ function closePopup() {
    
         <form action=" " method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="form_type" value="booking" >
+		<div class="form-group">
+		 <label for="name"> Your Tour Package</label>
+		  <input type="text" name="tour_package" id="tour_package" class="form-control" value="<?php echo $selectedPackage .'-'.$selectedLocation ; ?>" readonly>
+        </div>
+
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" name="name" id="name" class="form-control" value="<?php echo isset($name) ? $name : ''; ?>" required>
@@ -369,20 +381,7 @@ function closePopup() {
                 <label for="phone">Phone Number</label>
                 <input type="tel" name="phone" id="phone" class="form-control" value="<?php echo isset($phone) ? $phone : ''; ?>" required>
             </div>
-    <div class="form-group">
-                <label for="tour_package">Select Tour Package</label>
-                <select name="tour_package" id="tour_package" class="form-control" required>
-                    <option value="">-- Select Package --</option>
-                    <option value="Lotus Tower-Colombo" <?php echo (isset($tour_package) && $tour_package == 'Lotus Tower-Colombo') ? 'selected' : ''; ?>>Lotus Tower-Colombo</option>
-					<option value="World Trade Center-Colombo" <?php echo (isset($tour_package) && $tour_package == 'World Trade Center-Colombo') ? 'selected' : ''; ?>>World Trade Center-Colombo</option>
-                    <option value="Modern Pedestrian Bridge-Matara" <?php echo (isset($tour_package) && $tour_package == 'Modern Pedestrian Bridge-Matara') ? 'selected' : ''; ?>>Modern Pedestrian Bridge-Matara</option>
-                     <option value="Dondra Light House-Matara" <?php echo (isset($tour_package) && $tour_package == 'Dondra Light House-Matara') ? 'selected' : ''; ?>>Dondra Light House-Matara</option>
-					<option value="Queens Hotel-Kandy" <?php echo (isset($tour_package) && $tour_package == 'Queens Hotel-Kandy') ? 'selected' : ''; ?>>Queen's Hotel-Kandy</option>
-                    <option value="Temple of the Tooth-Kandy" <?php echo (isset($tour_package) && $tour_package == 'Temple of the Tooth-Kandy') ? 'selected' : ''; ?>>Temple of the Tooth-Kandy</option>
-                    <option value="Tea Estate-Nuwareliya" <?php echo (isset($tour_package) && $tour_package == 'Tea Estate-Nuwareliya') ? 'selected' : ''; ?>>Tea Estate-Nuwareliya</option>
-					 <option value="Nine Arch Bridge-Badulla" <?php echo (isset($tour_package) && $tour_package == 'Nine Arch Bridge-Badulla') ? 'selected' : ''; ?>>Nine Arch Bridge-Badulla</option>
-                </select>
-            </div>
+           
             <div class="form-group">
                 <label for="booking_date">Booking Date</label>
                 <input type="datetime-local" name="booking_date" id="booking_date" class="form-control" value="<?php echo isset($booking_date) ? $booking_date : ''; ?>" required>

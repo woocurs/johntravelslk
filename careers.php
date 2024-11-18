@@ -63,14 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("ssss", $name, $email,  $position, $filePath);
 
         if ($stmt->execute()) {
-            echo "Application submitted successfully!";
+            echo "<script>alert('Application submitted successfully!'); </script>";
         } else {
-            echo "Error submitting the application. Please try again later.";
+            echo "<script>alert('Error submitting the application. Please try again later'); window.location.href = 'careers.php';</script>";
         }
 
         $stmt->close();
     } else {
-        echo "Error preparing the query.";
+        echo "<script>alert('Error preparing the query.');</script>";
     }
 
     // Close the database connection
@@ -78,9 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 		}
 	}
-} else {
-    echo "Invalid request method.";
-}
+} 
 	
 ?>
 
@@ -256,7 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="container">
                 <h1 class="heading text-center">Career</h1>
             </div>
-            <img src="images/banner-pattern.png">
+           <img src="images/banner-pattern.png">
         </div>
         
     </section>
@@ -432,5 +430,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php include 'footer/footer.php'; ?>
 </body>
 </html>
-
-

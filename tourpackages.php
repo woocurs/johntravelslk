@@ -201,7 +201,7 @@
             echo '<span class="location">' . $img["location"] . '</span>';
             echo '<h3 class="title">' . $img["title"] . '</h3>';
             echo '<button class="button">Get More</button>';
-            echo '<a href="tour_booking.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
+            echo '<a href="booking.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
             echo '<button class="buttonbook">Book Now</button>';
             echo '</div></a></div>';
         }
