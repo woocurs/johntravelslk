@@ -1,0 +1,43 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header */
+.header {
+    background-image: url('inner-banner.jpg');
+    background-size: cover;
+    color: white;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px;
+    background: linear-gradient(135deg, #333, #555);
+    color: white;
+}
+
+.footer-section {
+    margin: 10px;
+    flex: 1;
+}
+
+/* Buttons and Forms */
+.submit-btn {
+    background: #FF6F61;
+    color: white;
+    padding: 12px;
+}

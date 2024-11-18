@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - John Travels LK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    background-image: url('inner-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+    z-index: -1;
+}
+
+.header-top {
+    background: #333;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+.header-nav nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.header-nav nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #FF6F61;
+    transition: width 0.3s;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+}
+
+.header-nav nav a:hover::after {
+    width: 100%;
+}
+
+.header-nav .logo {
+    height: 60px;
+    transition: transform 0.5s;
+}
+
+.header-nav .logo:hover {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.header-icons a {
+    display: inline-block;
+    background: #CF3E44;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.header-icons a:hover {
+    transform: scale(1.2);
+    background: #FF6F61;
+}
+
+.login-btn {
+    background: #FF6F61;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+    background: #CF3E44;
+    box-shadow: 0 0 10px #FF6F61;
+}
+
+.banner {
+    text-align: center;
+    padding: 100px 20px;
+    background: rgba(17, 17, 17, 0.6);
+    border-radius: 10px;
+}
+
+.banner h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}/* Global styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contact Content */
+.contact-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    background: #fff;
+    gap: 30px;
+    flex-wrap: wrap;
+    box-sizing: border-box; 
+}
+
+
+.contact-info .section-title {
+    color: #CF3E44;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contact-info .contact-heading {
+    color: #2E3A59;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+
+.contact-info form input,
+.contact-info form textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    border: 1px solid #f0e6e6;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.contact-info form input:focus,
+.contact-info form textarea:focus {
+    outline: none;
+    border-color: #CF3E44; 
+    box-shadow: 0 0 8px rgba(207, 62, 68, 0.6); 
+    transform: translateY(-3px); 
+}
+
+
+.contact-info .submit-btn {
+    background: #CF3E44;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.contact-info .submit-btn:hover {
+    background: #b02a33;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-3px); 
+}
+
+
+.additional-info {
+    background-color: #f9f9f9;
+    padding: 30px;
+    width: 45%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.additional-info:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); 
+}
+
+.additional-info h3 {
+    color: #2E3A59;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.additional-info p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Contact Details Styling */
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-details .contact-item {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #CF3E44;
+}
+
+.contact-details .contact-item:hover {
+    transform: scale(1.05); /* Slight scale effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-details .contact-item i {
+    font-size: 28px;
+    color: #CF3E44;
+    margin-right: 20px;
+}
+
+.contact-details .contact-item p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+.contact-details .contact-item p a {
+    color: #CF3E44;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-details .contact-item p a:hover {
+    text-decoration: underline;
+}
+
+
+.map {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.map a img {
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+    object-fit: cover;
+    height: 350px;
+}
+
+.map a:hover img {
+    opacity: 0.8;
+    transform: scale(1.05); 
+}
+
+
+        
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        .footer-section {
+            flex: 1 1 300px;
+            padding: 20px;
+            max-width: 400px;
+        }
+        .footer-section h3 {
+            font-size: 1.5em;
+            color: #00B4D8;
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222;
+            padding: 10px;
+            color: white;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-top">
+            Welcome to John Travels LK - Your Travel Partner
+        </div>
+        <div class="header-nav">
+            <img src="John_Travels_LK_Banner_R.png" alt="John Travels LK" class="logo">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Tour</a>
+                <a href="#">Travels</a>
+                <a href="#">Shop</a>
+                <a href="#">Blog</a>
+            </nav>
+            <div class="header-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <button class="login-btn">Log In</button>
+        </div>
+        <div class="banner">
+            <h1 class="animated-text">Contact Us</h1>
+        </div>
+    </header>
+    <main class="contact-content">
+        <section class="contact-info">
+            <h2 class="section-title">Get in Touch</h2>
+            <h3 class="contact-heading">Contact Us to Get More Info</h3>
+            <p>Are you a traveler in need of help? Have an inquiry regarding your journey?</p>
+            <form action="thank-you.html" method="POST" onsubmit="return showSuccessMessage()">
+                <input type="text" name="name" placeholder="Your Name*" required>
+                <input type="email" name="email" placeholder="Your Email*" required>
+                <textarea name="message" placeholder="Your Message*" required></textarea>
+                <button type="submit" class="submit-btn">Submit Message</button>
+            </form>
+            <p id="success-message" style="display:none; color: green;">Thank you! We will contact you soon.</p>
+        </section>
+        <section class="additional-info">
+            <h3>Need help? Feel free to contact us!</h3>
+            <p>We are here to help! For client support questions, visit our Help Center.</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Location Address: #377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>Email Address: info.johntravels@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>Phone Number: +94 76 245 0858</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        function showSuccessMessage() {
+            document.getElementById("success-message").style.display = "block";
+            return false; 
+        }
+    </script>
+    <section class="map">
+        <a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank">
+            <img src="Screenshot (247).png" width="100%" height="300" alt="Woocurs Location">
+        </a>
+    </section>
+    
+    
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Footer</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 30px;
+            background: linear-gradient(135deg, #333, #555);
+            color: white;
+        }
+
+        .footer-section {
+            flex: 1 1 300px;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .footer-section h3 {
+            font-size: 1.5em;
+            color: #00B4D8;
+            margin-bottom: 10px;
+        }
+
+        .footer-section p {
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .logo-container img {
+            width: 80px;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-info a {
+            text-decoration: none;
+            color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #FE6161;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #FE6161;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background: #222;
+            color: white;
+        }
+
+        .contact-form button {
+            padding: 10px 15px;
+            background-color: #FE6161;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #00B4D8;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: #222;
+            color: #ccc;
+        }
+
+        .footer-bottom-section {
+            flex: 1;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .footer-bottom a {
+            color: #00B4D8;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #FE6161;
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section {
+                margin: 10px 0;
+                max-width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<footer class="footer">
+    <div class="footer-section">
+        <h3>About Us</h3>
+        <p>John Travels - Trips by Woocurs. Make lifelong memories.</p>
+        <div class="logo-container">
+            <img src="logo1.png" alt="Woocurs Logo">
+            <img src="favicon.png" alt="John Group Logo">
+        </div>
+    </div>
+
+    <div class="footer-section contact-info">
+        <h3>Contact Information</h3>
+        <p>Explore a new world with us!</p>
+        <p><a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"><i class="fa fa-map-marker"></i>377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka</a></p>
+        <p><a href="tel:+94762450858"><i class="fa fa-phone"></i>+94 76 245 0858</a></p>
+        <p><a href="mailto:info.johntravels@gmail.com"><i class="fa fa-envelope"></i>info.johntravels@gmail.com</a></p>
+    </div>
+
+    <div class="footer-section contact-form">
+        <h3>Contact Us</h3>
+        <form action="footerpage.php" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</footer>
+
+<div class="footer-bottom">
+    <div class="footer-bottom-section">
+        <a href="#">Privacy Policy</a> | 
+        <a href="#">Terms & Conditions</a> | 
+        <a href="#">FAQ</a>
+    </div>
+    <div class="footer-bottom-section">
+        <img src="logo2.png" alt="John Travels Logo">
+        <span style="font-size: 1.2em;">John Travels LK</span>
+    </div>
+    <div class="footer-bottom-section">
+        <p>&copy; 2024 John Travels LK. All rights reserved.</p>
+    </div>
+</div>
+
+</body>
+</html>
