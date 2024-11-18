@@ -23,15 +23,14 @@ $location = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
     <div class="container-fluid">
         <div class="d-flex justify-content-between">
             <div class="contact-info1">
-                <span><i class="fas fa-phone-alt"></i> <a href="tel:<?php echo $contact_number; ?>" style="color: inherit; text-decoration: none;">
-    <?php echo $contact_number; ?>
-</a></span>
+                      <span><i class="fas fa-phone-alt"></i> <a href="tel:<?php echo $contact_number; ?>" style="color: inherit; text-decoration: none;">
+        <?php echo $contact_number; ?> </a></span>
+
                 <span><i class="fas fa-envelope"></i> 
-                    <a href="mailto:<?php echo $mail; ?>" style="color: inherit; text-decoration: none;">
-                        <?php echo $mail; ?>
-                    </a>
-                </span>
-                <span><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"><?php echo $location; ?></a></span>
+                    <a href="mailto:<?php echo $mail; ?>" style="color: inherit; text-decoration: none;"><?php echo $mail; ?></a></span>
+
+                <span><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"  style="color: inherit; text-decoration: none;">
+        <?php echo $location; ?> </a></span>
             </div>
             <div class="social-icons">
                 <a href="https://www.facebook.com/johntravelslk"><i class="fab fa-facebook-f"></i></a>
