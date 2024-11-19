@@ -75,7 +75,7 @@ function sendSMS($id, $conn) {
 
 // Function to send Email using mailto
 function sendEmail($id, $conn) {
-    $sql = "SELECT email, name FROM tour_bookings WHERE id='$id'";
+    $sql = "SELECT email, name FROM contact_us WHERE id='$id'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
