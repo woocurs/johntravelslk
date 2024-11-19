@@ -85,6 +85,7 @@ $conn->close();
 footer {
     background-color: #333;
     color: #fff;
+    margin-top : 0;
     padding: 40px 20px;
     text-align: center;
     font-family: Arial, sans-serif;

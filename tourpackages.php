@@ -138,7 +138,8 @@
         .button {
             background-color: #009688;
             color: white;
-            border: none;
+            border: none !important; 
+            outline: none !important;
             padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
@@ -148,6 +149,7 @@
 
         .button:hover {
             background-color: #00796b;
+            transform: scale(1.05);
         }
 
         .buttonbook {
@@ -170,6 +172,65 @@
             border: none; 
             transform: scale(1.05);
         }
+
+       /* Responsive Styles */
+       @media (max-width: 768px) {
+            .tourpackagestitle {
+                font-size: 2em; /* Reduce font size on small screens */
+                min-height: 40vh;
+            }
+            .tourpackagestitle::after {
+                height: 40%; /* Reduce height on smaller screens */
+                bottom: -50px; /* Adjust spacing */
+            }
+
+            .image-grid {
+                padding: 40px; /* Reduce padding */
+                gap: 5px;
+            }
+
+            .image {
+                height: 300px; /* Adjust height for smaller screens */
+                width: 100%;
+            }
+
+            .image.small {
+                height: 150px; /* Smaller height for small images */
+                margin-right: 20px;
+            }
+
+            .button, .buttonbook {
+                font-size: 10px; /* Smaller button font size */
+                padding: 3px 8px; /* Adjust padding */
+            }
+        }
+
+        @media (max-width: 580px) {
+            .tourpackagestitle {
+                font-size: 1.5em;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .tourpackagestitle::after {
+                height: 20%; /* Reduce height on smaller screens */
+                bottom: -30px; /* Adjust spacing */
+            }
+
+            .image-grid {
+                padding: 60px;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .image {
+                width: 100%;
+                height: 400px;
+            }
+
+            .image.small {
+                height: 190px;
+            }
+        } 
         
     </style>
 </head>
@@ -201,7 +262,7 @@
             echo '<span class="location">' . $img["location"] . '</span>';
             echo '<h3 class="title">' . $img["title"] . '</h3>';
             echo '<button class="button">Get More</button>';
-            echo '<a href="tour_booking.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
+            echo '<a href="booking.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
             echo '<button class="buttonbook">Book Now</button>';
             echo '</div></a></div>';
         }

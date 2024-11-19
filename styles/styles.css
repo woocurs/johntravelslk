@@ -112,20 +112,19 @@ body, html {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent */
     color: white;
     display: flex;
     justify-content: space-between; /* Space out left and right content */
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
+    pointer-events: auto; /* Allow interaction with children */
 }
-
-/* Left Content */
 .left-content {
     max-width: 40%;
     padding-left: 100px; /* Optional: add padding for alignment */
-    margin-top: -200px; 
+    margin-top: -200px; /* Remove negative margin */
 }
 
 .left-content h1 {
@@ -140,15 +139,21 @@ body, html {
 
 .left-content .button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 30px;
     background-color: #ff4b4b;
     color: white;
     text-decoration: none;
-    transition: background-color 0.3s;
+    font-size: 1.2em;
+    border-radius: 3px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 10; /* Ensure button is on top */
 }
 
 .left-content .button:hover {
-    background-color: #ff6b6b;
+    background-color: #ff6b6b; /* Slight color change on hover */
+    transform: scale(0.55); /* Subtle zoom effect */
 }
 
 /* Right Content */
@@ -286,7 +291,7 @@ body, html {
     .navbar .btn-login {
         padding: 6px 12px;
     }
-
+   
     .left-content, .right-content {
         padding: 5px 15px; 
     }
@@ -315,31 +320,57 @@ body, html {
 @media (max-width: 576px) {
     .top-bar {
         font-size: 12px;
-        padding: 2px 10px; 
-    }
-
-    .left-content h1, .overlay h1 {
-        font-size: 2.0em;
-    }
-
-    .left-content p, .overlay p {
-        font-size: 1.0em;
-        padding: 3px 0; 
-    }
-
-    .scrollclick .prev, .scrollclick .next {
-        font-size: 1.5em;
+        padding: 2px 10px;
     }
 
     .overlay {
-        padding: 5px; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 60px;
+    }
+
+    .left-content h1 {
+        font-size: 2.0em;
+        margin-bottom: 10px;
+    }
+
+    .left-content p {
+        font-size: 1.0em;
+        padding: 15px;
+        margin-bottom: 15px;
+        color: #ffffff;
+        border-radius: 8px;
+    }
+
+    .left-content .button {
+        font-size: 1.0em; /* Reduced font size */
+        padding: 8px 15px; /* Reduced padding */
+        margin-bottom: 15px; /* Adjusted spacing */
+        margin-top: 15px;
+        border-radius: 5px;
     }
 
     .right-content {
-        text-align: center; 
-        margin-top: 10px; 
+        text-align: center;
+        margin-top: 0px;
     }
+
+    .right-content p {
+        font-size: 1.0em;
+        padding: 15px;
+        color: #ffffff;
+        border-radius: 8px;
+    }
+
+    .scrollclick .prev,
+    .scrollclick .next {
+        font-size: 1.0em;
+    }
+
     .vertical-line {
-        display: none; 
+        display: none;
     }
 }

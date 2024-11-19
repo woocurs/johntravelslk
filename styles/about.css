@@ -25,13 +25,13 @@
     color: rgb(16, 16, 74);
     
 }
+.col-lg-4{
+    align-content: center;
+}
 
 .about-service-icon{
     background-color: rgb(7, 144, 203);
     width: 100px;
-    align-content: center;
-    
-    
 }
 
 .bg-video{
@@ -50,6 +50,8 @@
     margin-top: auto;
     background-size: cover;
     height: 80vh;
+    position: relative;
+
 
 }
 
@@ -77,5 +79,292 @@
     font-size: 25px;
 }
   
+@media (max-width: 1200px) {
+    .heading {
+        font-size: 50px;
+    }
+
+    .inner-banner-container {
+        height: 70vh;
+    }
+
+    .section-heading {
+        padding: 40px;
+    }
+
+    .row {
+        padding-bottom: 15px;
+    }
+
+    .callback-counter-wrap {
+        gap: 20px;
+    }
+
+    .counter-item {
+        min-width: 180px;
+    }
+
+    .counter-no {
+        font-size: 22px;
+    }
+
+    .counter-content {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 992px) {
+    .heading {
+        font-size: 40px;
+    }
+
+    .inner-banner-container {
+        height: 60vh;
+    }
+
+    .section-heading {
+        padding: 30px;
+    }
+
+    .col-lg-6 h2 {
+        font-size: 24px;
+    }
+
+    .about-service-icon {
+        width: 80px;
+    }
+
+    .bg-video {
+        height: 65vh;
+    }
+
+    .callback-counter-wrap {
+        gap: 15px;
+    }
+
+    .counter-item {
+        min-width: 160px;
+    }
+
+    .counter-no {
+        font-size: 20px;
+    }
+
+    .counter-content {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 30px;
+        padding-top: 50px;
+    }
+
+    .inner-banner-container {
+        height: 50vh;
+    }
+
+    .section-heading {
+        padding: 20px;
+    }
+
+    .col-lg-6 h2 {
+        font-size: 20px;
+    }
+
+    .about-service-icon {
+        width: 60px;
+    }
+
+    .bg-video {
+        height: 50vh;
+    }
+
+    .callback-counter-wrap {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .counter-item {
+        min-width: 140px;
+        margin-bottom: 10px;
+    }
+
+    .counter-no {
+        font-size: 18px;
+    }
+
+    .counter-content {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .heading {
+        font-size: 25px;
+        padding-top: 30px;
+    }
+
+    .inner-banner-container {
+        height: 40vh;
+    }
+
+    .section-heading {
+        padding: 15px;
+    }
+
+    .col-lg-6 h2 {
+        font-size: 18px;
+    }
+
+    .about-service-icon {
+        width: 50px;
+    }
+
+    .bg-video {
+        height: 40vh;
+    }
+
+    .callback-counter-wrap {
+        gap: 5px;
+        flex-direction: column;
+    }
+
+    .counter-item {
+        min-width: 120px;
+        margin-bottom: 5px;
+    }
+
+    .counter-no {
+        font-size: 16px;
+    }
+
+    .counter-content {
+        font-size: 16px;
+    }
+}
 
 
+/*@media (max-width: 480px) {
+  
+    .inner-banner-container {
+        height: 30vh; 
+    }
+
+    .heading {
+        font-size: 20px; 
+        padding-top: 20px; 
+    }
+
+    .inner-banner-container img {
+        padding-top: 240px;
+    }
+
+   
+    .section-heading {
+        padding: 10px; 
+    }
+
+    
+    .col-lg-6 h2 {
+        font-size: 16px; 
+    }
+
+   
+    .about-service-icon {
+        width: 40px; 
+        background: fixed;
+    }
+
+    
+    .bg-video {
+        height: 35vh; 
+    }
+
+   
+    .row {
+        flex-direction: column; 
+        padding-bottom: 15px;
+    }
+
+   
+    .fullwidth-callback {
+        height: 100vh; 
+        background-size: contain;
+        padding: 10px;
+    }
+
+ 
+    .callback-counter-wrap {
+        gap: 10px; 
+        flex-direction: column;
+    }
+
+    .counter-item {
+        min-width: 100%;
+        margin-bottom: 10px; 
+    }
+
+    .counter-no {
+        font-size: 18px; 
+    }
+
+    .counter-content {
+        font-size: 18px; 
+    }
+}*/
+
+@media (max-width: 480px) {
+    .inner-banner-container {
+        height: 50vh; /* Reduce height for smaller screens */
+        background-size: contain; /* Fit background */
+    }
+
+    .heading {
+        padding-top: 50px; /* Adjust padding */
+        font-size: 30px; /* Smaller font size */
+    }
+
+    .inner-banner-container img {
+        padding-top: 100px; /* Reduce padding */
+    }
+
+    .section-heading {
+        padding: 20px; /* Reduce padding */
+    }
+
+    .col-lg-6 h2 {
+        font-size: 20px; /* Smaller font size */
+    }
+
+
+    .bg-video {
+        height: 40vh; /* Reduce height */
+    }
+
+    .row {
+        flex-direction: column; /* Stack columns vertically */
+        padding-bottom: 10px; /* Reduce padding */
+    }
+
+    .callback-counter-wrap {
+        gap: 15px; /* Reduce gap */
+        flex-direction: column; /* Stack items */
+        
+    }
+
+    .counter-item {
+        min-width: 40px; /* Take full width */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .counter-no,
+    .counter-content {
+        font-size: 18px; /* Smaller font size */
+    }
+
+    .fullwidth-callback {
+        height: 80vh; /* Adjust height */
+    }
+}

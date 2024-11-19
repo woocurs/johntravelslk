@@ -23,13 +23,14 @@ $location = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
     <div class="container-fluid">
         <div class="d-flex justify-content-between">
             <div class="contact-info1">
-                <span><i class="fas fa-phone-alt"></i> <?php echo $contact_number; ?></span>
+                      <span><i class="fas fa-phone-alt"></i> <a href="tel:<?php echo $contact_number; ?>" style="color: inherit; text-decoration: none;">
+        <?php echo $contact_number; ?> </a></span>
+
                 <span><i class="fas fa-envelope"></i> 
-                    <a href="mailto:info.johntravels@gmail.com<?php echo $mail; ?>" style="color: inherit; text-decoration: none;">
-                        <?php echo $mail; ?>
-                    </a>
-                </span>
-                <span><i class="fas fa-map-marker-alt"></i> <?php echo $location; ?></span>
+                    <a href="mailto:<?php echo $mail; ?>" style="color: inherit; text-decoration: none;"><?php echo $mail; ?></a></span>
+
+                <span><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"  style="color: inherit; text-decoration: none;">
+        <?php echo $location; ?> </a></span>
             </div>
             <div class="social-icons">
                 <a href="https://www.facebook.com/johntravelslk"><i class="fab fa-facebook-f"></i></a>
@@ -56,10 +57,11 @@ $location = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
                 <li class="nav-item"><a class="nav-link" href="tourpackages.php">Tour Packages</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="gallery.php">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="career.php">Careers</a></li>
+                <li class="nav-item"><a class="nav-link" href="careers.php">Careers</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+				<li class="nav-item"><a class="nav-link" href="testimonials.php">Testimonials</a></li>
                 <li class="nav-item"><a class="nav-link" href="./admin/admin_login.php">Admin Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link btn btn-login" href="tour.php">Tour</a></li>
+                <li class="nav-item"><a class="nav-link btn btn-login" href="tour_booking.php">Tour</a></li>
             </ul>
         </div>
     </div>

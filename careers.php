@@ -63,14 +63,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param("ssss", $name, $email,  $position, $filePath);
 
         if ($stmt->execute()) {
-            echo "Application submitted successfully!";
-        } else {
-            echo "Error submitting the application. Please try again later.";
-        }
+
+    
+    $adminEmail = "info.johntravels@gmail.com";   
+    $subject = "New Job Application - $position";
+    $message = "
+        <html>
+        <head>
+            <title>New Job Application</title>
+        </head>
+        <body>
+            <h2>New Job Application Received</h2>
+            <p><strong>Name:</strong> $name</p>
+            <p><strong>Email:</strong> $email</p>
+            <p><strong>Position Applied:</strong> $position</p>
+            <p><strong>CV:</strong> <a href='" . $_SERVER['HTTP_HOST'] . "/$filePath'>Download CV</a></p>
+        </body>
+        </html>
+    ";
+
+    // Set headers for HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    $headers .= "From: noreply@example.com" . "\r\n"; // Replace with a valid sender email
+
+    // Send the email
+    if (mail($adminEmail, $subject, $message, $headers)) {
+        echo "<script>alert('Application submitted successfully and email sent to the admin!');</script>";
+    } else {
+        echo "<script>alert('Application submitted successfully, but the email could not be sent.');</script>";
+    }
+} else {
+    echo "<script>alert('Error submitting the application. Please try again later'); window.location.href = 'careers.php';</script>";
+}
+            
 
         $stmt->close();
     } else {
-        echo "Error preparing the query.";
+        echo "<script>alert('Error preparing the query.');</script>";
     }
 
     // Close the database connection
@@ -78,9 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 		}
 	}
-} else {
-    echo "Invalid request method.";
-}
+} 
 	
 ?>
 
@@ -432,5 +460,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php include 'footer/footer.php'; ?>
 </body>
 </html>
-
-

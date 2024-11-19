@@ -1,13 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "johntravels";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include "database/db.php";
 
 $err = [];
 $success_message = '';
@@ -85,6 +77,7 @@ $conn->close();
 footer {
     background-color: #333;
     color: #fff;
+    margin-top : 0;
     padding: 40px 20px;
     text-align: center;
     font-family: Arial, sans-serif;

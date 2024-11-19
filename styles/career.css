@@ -1,16 +1,22 @@
 .inner-banner-container{
-    height: 85vh;
+    height: 80vh;
     background-size: cover;
     width: 100%;
     
 }
-.inner-banner-container img{
-    padding-top: 200px;
-    
-}
+
 .heading{
     padding-top: 100px;
     font-size: 60px;
+}
+.inner-banner-container img{
+    padding-top: 150px;
+    
+}
+.container.heading{
+    padding-top: 100px;
+    font-size: 60px;
+    color: rgb(16, 16, 74);
 }
 .dash-style{
     color: red;
@@ -69,4 +75,108 @@
 
     
 }
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .container{
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+    }
+
+    .submit-btn,
+    .reset-btn {
+        padding: 12px 0;
+        font-size: 0.9rem;
+    }
+
+    .popup-message {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .form-control,
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="file"],
+    textarea,
+    select {
+        font-size: 0.9rem;
+    }
+
+    .submit-btn,
+    .reset-btn {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .popup-message button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .inner-banner-container {
+        height: 50vh; /* Reduce height for better mobile fit */
+        background-size: contain; /* Adjust to contain background */
+    }
+
+    .inner-banner-container img {
+        padding-top: 100px; /* Reduce padding */
+    }
+
+    .container.heading {
+        padding-top: 50px; /* Adjust padding */
+        font-size: 30px; /* Smaller font for mobile */
+    }
+
+    .dash-style {
+        padding-top: 10px; /* Reduce padding */
+    }
+
+    .row h2,
+    .row h3 {
+        font-size: 20px; /* Smaller font */
+    }
+
+    .vacancy-content {
+        padding: 5px; /* Reduce padding */
+        margin: 10px; /* Reduce margin */
+        box-shadow: inset 0px 2px 4px; /* Soften shadow */
+    }
+
+    .apply-now-btn {
+        font-size: 12px; /* Smaller font */
+        padding: 3px 15px; /* Adjust padding */
+    }
+
+    .vacancy-form img {
+        margin-left: 0; /* Remove margin for better fit */
+        width: 100%; /* Ensure image is responsive */
+        border-width: 2px; /* Thinner border */
+    }
+
+    .about-service-icon img {
+        width: 60px; /* Smaller size */
+    }
+
+    .about-service {
+        text-align: center; /* Ensure text alignment is intact */
+    }
+}
+
  
