@@ -53,14 +53,15 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="../tourpackages.php">Tour Packages</a></li>
                 <li class="nav-item"><a class="nav-link" href="../about.php">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="../gallery.php">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="../careers.php">Careers</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="../contact.php">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="../testimonials.php">Testimonials</a></li>
                 <li class="nav-item"><a class="nav-link" href="admin_login.php">Admin Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link btn btn-login" href="#">Tour</a></li>
+                <li class="nav-item"><a class="nav-link btn btn-login" href="../tour_booking.php">Tour</a></li>
             </ul>
         </div>
     </div>
