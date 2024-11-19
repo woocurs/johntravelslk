@@ -22,14 +22,15 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
 <div class="top-bar">
     <div class="container-fluid">
         <div class="d-flex justify-content-between">
-            <div class="contact-info1">
-                <span><i class="fas fa-phone-alt"></i> <?php echo $contact_number; ?></span>
+               <div class="contact-info1">
+                      <span><i class="fas fa-phone-alt"></i> <a href="tel:<?php echo $contact_number; ?>" style="color: inherit; text-decoration: none;">
+        <?php echo $contact_number; ?> </a></span>
+
                 <span><i class="fas fa-envelope"></i> 
-                    <a href="mailto:info.johntravels@gmail.com<?php echo $email; ?>" style="color: inherit; text-decoration: none;">
-                        <?php echo $email; ?>
-                    </a>
-                </span>
-                <span><i class="fas fa-map-marker-alt"></i> <?php echo $address; ?></span>
+                    <a href="mailto:<?php echo $email; ?>" style="color: inherit; text-decoration: none;"><?php echo $email; ?></a></span>
+
+                <span><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"  style="color: inherit; text-decoration: none;">
+        <?php echo $address; ?> </a></span>
             </div>
             <div class="social-icons">
                 <a href="https://www.facebook.com/johntravelslk"><i class="fab fa-facebook-f"></i></a>
