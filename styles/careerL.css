@@ -8,24 +8,27 @@
 .heading{
     padding-top: 100px;
     font-size: 60px;
+    color: rgb(16, 16, 74);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
 }
 .inner-banner-container img{
-    padding-top: 150px;
+    padding-top: 160px;
     
 }
-.container.heading{
-    padding-top: 100px;
-    font-size: 60px;
-    color: rgb(16, 16, 74);
-}
+
 .dash-style{
     color: red;
     padding-top: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
 
 }
 
 .row h2,h3{
     color: rgb(16, 16, 74);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
 }
 .row p{
     color: black;
@@ -38,7 +41,7 @@
     box-shadow: inset 0px 4px 8px;
 }
 .vacancy-content h5{
-    color: rgb(8, 169, 115);
+    color: red;
 }
 
 
@@ -46,12 +49,12 @@
     font-size: 15px;
     color: aliceblue;
     padding: 5px 25px;
-    background-color: #FE6161;
+    background-color: #009688;
 }
 
 .apply-now-btn:hover{
-    background-color: aqua;
-    
+    background-color: white;
+    color: black;
 }
 
 .vacancy-form img{
@@ -131,51 +134,51 @@
 
 @media (max-width: 480px) {
     .inner-banner-container {
-        height: 50vh; /* Reduce height for better mobile fit */
-        background-size: contain; /* Adjust to contain background */
+        height: 50vh; 
+        background-size: contain; 
     }
 
     .inner-banner-container img {
-        padding-top: 100px; /* Reduce padding */
+        padding-top: 150px; 
     }
 
     .container.heading {
-        padding-top: 50px; /* Adjust padding */
-        font-size: 30px; /* Smaller font for mobile */
+        padding-top: 50px; 
+        font-size: 30px; 
     }
 
     .dash-style {
-        padding-top: 10px; /* Reduce padding */
+        padding-top: 10px; 
     }
 
     .row h2,
     .row h3 {
-        font-size: 20px; /* Smaller font */
+        font-size: 20px; 
     }
 
     .vacancy-content {
-        padding: 5px; /* Reduce padding */
-        margin: 10px; /* Reduce margin */
-        box-shadow: inset 0px 2px 4px; /* Soften shadow */
+        padding: 5px; 
+        margin: 10px; 
+        box-shadow: inset 0px 2px 4px;
     }
 
     .apply-now-btn {
-        font-size: 12px; /* Smaller font */
-        padding: 3px 15px; /* Adjust padding */
+        font-size: 12px; 
+        padding: 3px 15px; 
     }
 
     .vacancy-form img {
-        margin-left: 0; /* Remove margin for better fit */
-        width: 100%; /* Ensure image is responsive */
-        border-width: 2px; /* Thinner border */
+        margin-left: 0; 
+        width: 100%; 
+        border-width: 2px; 
     }
 
     .about-service-icon img {
-        width: 60px; /* Smaller size */
+        width: 60px; 
     }
 
     .about-service {
-        text-align: center; /* Ensure text alignment is intact */
+        text-align: center; 
     }
 }
 

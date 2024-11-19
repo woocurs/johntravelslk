@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career</title>
-    <link rel="stylesheet" href="styles/career.css">
+    <link rel="stylesheet" href="styles/careerL.css">
     <link rel="stylesheet" href="styles/css/bootstrap.min.css">
 
     <style>
@@ -280,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <?php include 'header/header.php'; ?>
     <section class="inner-banner-wrap">
-        <div class="inner-banner-container" style="background-image: url(images/inner-banner.jpg);">
+        <div class="inner-banner-container" style="background-image: url(images/inner-banner-new.jpg);">
             <div class="container">
                 <h1 class="heading text-center">Career</h1>
             </div>
