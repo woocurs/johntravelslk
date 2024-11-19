@@ -22,21 +22,24 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
 <div class="top-bar">
     <div class="container-fluid">
         <div class="d-flex justify-content-between">
-                   <div class="contact-info1">
-                      <span><i class="fas fa-phone-alt"></i> <a href="tel:<?php echo $contact_number; ?>" style="color: inherit; text-decoration: none;">
+        <div class="contact-info1">
+                      <span><i class="fas fa-phone-alt"></i> <a href="tel:<?php echo $contact_number; ?>" style="color: inherit; text-decoration: none;" onmouseover="this.style.color='#ff6b6b';" 
+                      onmouseout="this.style.color='inherit';">
         <?php echo $contact_number; ?> </a></span>
 
                 <span><i class="fas fa-envelope"></i> 
-                    <a href="mailto:<?php echo $email; ?>" style="color: inherit; text-decoration: none;"><?php echo $email; ?></a></span>
+                    <a href="mailto:<?php echo $email; ?>" style="color: inherit; text-decoration: none;"onmouseover="this.style.color='#ff6b6b';" 
+                    onmouseout="this.style.color='inherit';"><?php echo $email; ?></a></span>
 
-                <span><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"  style="color: inherit; text-decoration: none;">
+                <span><i class="fas fa-map-marker-alt"></i> <a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"  style="color: inherit; text-decoration: none;" onmouseover="this.style.color='#ff6b6b';" 
+                onmouseout="this.style.color='inherit';">
         <?php echo $address; ?> </a></span>
             </div>
             <div class="social-icons">
-                <a href="https://www.facebook.com/johntravelslk"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.youtube.com/@johntravelslk"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/john_travels_lk/"><i class="fab fa-instagram"></i></a>
-                <a href="https://api.whatsapp.com/message/JHT7ZVJLWFUUP1?autoload=1&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/johntravelslk" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.youtube.com/@johntravelslk" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.instagram.com/john_travels_lk/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://api.whatsapp.com/message/JHT7ZVJLWFUUP1?autoload=1&app_absent=0" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </div>
