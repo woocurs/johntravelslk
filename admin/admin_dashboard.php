@@ -150,6 +150,7 @@ body {
     background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
     padding: 20px;
     border-radius: 8px;
+	overflow:auto;
 }
 
 .dashboard h2 {
