@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/aboutL.css">
     <link rel="stylesheet" href="styles/css/bootstrap.min.css">
 </head>
 <body>
     <?php include 'header/header.php'; ?>
     <section class="inner-banner-wrap">
-        <div class="inner-banner-container" style="background-image: url(images/inner-banner.jpg);">
+        <div class="inner-banner-container" style="background-image: url(images/inner-banner-new.jpg);">
             <div class="container">
-                <h1 class=" heading text-center">About Us</h1>
+                <h1 class="heading text-center">About Us</h1>
             </div>
             <img src="images/banner-pattern.png">
         </div>
@@ -24,8 +24,10 @@
                     <div class="row-align-items-end">
                         <div class="col-lg-6">
                             <h5 class="dash-style">OUR TOUR GALLERY</h5>
-                            <h2>HELLO WOOCURS!</h2>
-                            <h2>OUR TRAVEL HAS BEENPRESENT BEST IN THE MARKET</h2>
+                            <div class="head-1">
+                                <h2>HELLO WOOCURS!</h2>
+                                <h2>OUR TRAVEL HAS BEENPRESENT BEST IN THE MARKET</h2>
+                            </div>
                         </div>
                         <div class="col-lg-6"> </div> 
                     </div>
@@ -69,11 +71,12 @@
                 </div>
             </div>
         </div>
-        <div class="about-video-wrap"> 
-                    <video autoplay muted loop class="bg-video">
-                        <source src="images/about.mp4" type="video/mp4" />
-                    </video>
-                </div>
+        <div class="center-video"> 
+            <iframe width="100%" height="400px" src="https://www.youtube.com/embed/LZHedtWPzbs?si=z6o-Ku1WZMJqlwKM" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
         <div class="client-section">
             <div class="container">
                 <div class="row">
@@ -130,7 +133,9 @@
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <h5 class="dash-style">CALLBACK FOR MORE</h5>
-                        <h2>GO TRAVEL.DISCOVER. REMEMBER US!!</h2>
+                        <div class="counter-head">
+                            <h2>GO TRAVEL.DISCOVER. REMEMBER US!!</h2>
+                        </div>
                     </div>
                 </div>
                 </div>
@@ -139,7 +144,7 @@
                     <div class="counter-item">
                         <div class="counter-item-inner">
                             <div class="counter-icon">
-                            <img src="images/icon1.png" alt="">
+                                <img src="images/icon1.png" alt="">
                             </div>
                             <div class="counter-content">
                                 <span class="counter-no">
@@ -154,7 +159,7 @@
                     <div class="counter-item">
                         <div class="counter-item-inner">
                             <div class="counter-icon">
-                            <img src="images/icon2.png" alt="">
+                                <img src="images/icon2.png" alt="">
                             </div>
                             <div class="counter-content">
                                 <span class="counter-no">
@@ -169,7 +174,7 @@
                     <div class="counter-item">
                         <div class="counter-item-inner">
                             <div class="counter-icon">
-                            <img src="images/icon3.png" alt="">
+                                <img src="images/icon3.png" alt="">
                             </div>
                             <div class="counter-content">
                                 <span class="counter-no">
@@ -184,7 +189,7 @@
                     <div class="counter-item">
                         <div class="counter-item-inner">
                             <div class="counter-icon">
-                            <img src="images/icon4.png" alt="">
+                                <img src="images/icon4.png" alt="">
                             </div>
                             <div class="counter-content">
                                 <span class="counter-no">
