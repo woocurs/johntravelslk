@@ -37,25 +37,25 @@
     font-weight: bold;
 }
 
-.about-service-icon {
+.about-service-icon{
     background-color: rgb(7, 144, 203);
     width: 100px;
+
+}
+.about-service-content{
     text-align: center;
 }
 
-
-.bg-video {
-    width: 100%;
-    height: 75vh;
-}
 
 .row {
     justify-content: space-between;
     padding-bottom: 20px;
 }
 
-.about-client-icon{
-    width: 150px;
+.about-client-icon img{
+    width: 100%;
+    
+    
 }
 
 .fullwidth-callback {

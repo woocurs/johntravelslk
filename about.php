@@ -71,11 +71,13 @@
                 </div>
             </div>
         </div>
-        <div class="center-video"> 
-            <iframe width="100%" height="400px" src="https://www.youtube.com/embed/LZHedtWPzbs?si=z6o-Ku1WZMJqlwKM" 
+        <div class="video-container"> 
+            <center>
+            <iframe width="840px" height="400px" src="https://www.youtube.com/embed/LZHedtWPzbs?si=z6o-Ku1WZMJqlwKM" 
                 title="YouTube video player" frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </center>
         </div>
         <div class="client-section">
             <div class="container">
