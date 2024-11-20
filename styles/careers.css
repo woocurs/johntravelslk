@@ -13,7 +13,11 @@
     font-weight: bold;
 }
 .inner-banner-container img{
-    padding-top: 160px;
+    width: 100%;
+    padding-top: 180px;
+    border-radius: 0px;
+    height: 60vh;
+    padding-bottom: 40px;
     
 }
 

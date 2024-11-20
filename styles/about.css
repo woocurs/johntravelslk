@@ -14,7 +14,12 @@
 }
 
 .inner-banner-container img {
-    padding-top: 160px;
+    width: 100%;
+    padding-top: 180px;
+    border-radius: 0px;
+    height: 60vh;
+    padding-bottom: 20px;
+
 
 }
 
@@ -37,13 +42,16 @@
     font-weight: bold;
 }
 
-.about-service-icon{
+.about-service-icon img{
     background-color: rgb(7, 144, 203);
     width: 100px;
+    text-align: center;
+
 
 }
-.about-service-content{
+.about-service{
     text-align: center;
+    align-content: center;
 }
 
 
@@ -292,8 +300,9 @@
     }
 
    
-    .about-service-icon {
-        width: 100px; 
+    .about-service {
+        text-align: center;
+        
     }
 
     
