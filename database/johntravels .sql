@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2024 at 07:48 AM
+-- Generation Time: Nov 20, 2024 at 07:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -73,13 +73,6 @@ CREATE TABLE `job_applications` (
   `date_submitted` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `job_applications`
---
-
-INSERT INTO `job_applications` (`id`, `name`, `email`, `message`, `position`, `cv_file`, `date_submitted`) VALUES
-(1, 'Diva', 'adminngo@gmail.com', NULL, 'Travel Agent', 'uploads/cvs/67384ae865db9.pdf', '2024-11-16 07:34:00');
-
 -- --------------------------------------------------------
 
 --
@@ -92,15 +85,33 @@ CREATE TABLE `tour_bookings` (
   `address` varchar(255) NOT NULL,
   `nic` varchar(12) NOT NULL,
   `phone` varchar(15) NOT NULL,
+  `whatsapp` varchar(15) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `gender` enum('Male','Female','','') NOT NULL,
+  `dob` date NOT NULL,
   `tour_package` varchar(100) NOT NULL,
-  `booking_date` datetime DEFAULT NULL,
-  `people` int(100) NOT NULL,
-  `message` varchar(255) NOT NULL,
+  `reference_number` varchar(255) NOT NULL,
+  `payment` enum('Advance','Half Payment','Full Payment','') NOT NULL,
+  `remark` text DEFAULT NULL,
   `photo_path` varchar(255) NOT NULL,
   `terms_accepted` tinyint(1) NOT NULL,
   `submission_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` enum('pending','confirmed','rejected','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tour_packages`
+--
+
+CREATE TABLE `tour_packages` (
+  `id` int(11) NOT NULL,
+  `package_name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  `booking_date` datetime NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -132,6 +143,12 @@ ALTER TABLE `tour_bookings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tour_packages`
+--
+ALTER TABLE `tour_packages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -145,19 +162,25 @@ ALTER TABLE `admin_details`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `job_applications`
 --
 ALTER TABLE `job_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tour_bookings`
 --
 ALTER TABLE `tour_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+
+--
+-- AUTO_INCREMENT for table `tour_packages`
+--
+ALTER TABLE `tour_packages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
