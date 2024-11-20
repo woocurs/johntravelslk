@@ -1,298 +1,305 @@
-<?php include 'header/header.php'; ?>
-<?php 
-// Check if the necessary parameters are provided
-if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) {
-    $location = htmlspecialchars($_GET['location']);
-    $title = htmlspecialchars($_GET['title']);
-    $image = htmlspecialchars($_GET['image']);
-    // Set a default size if not passed as a parameter
-    $size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : 'small';
-} else {
-    // Redirect to a default page or show an error if parameters are missing
-    header("Location: index.php");
-    exit;
+<?php
+// Package data (same as before)
+$packages = [  
+    [ 
+        'title' => 'Kandy', 
+        'days' => 1, 
+        'places' => [ 
+            'Kandy Royal Botanical Garden', 'Sri Thalatha Sri Maligawa', 'Ambuluwewa Tower – Gampola', 'Matale Muththumariyamman Temple' 
+        ], 
+        'package_includes' => [ 
+            'Up and Down', 'Tickets', 'Videos', 'Excepts – Ride', 'Tour Guide' 
+        ], 
+        'phone' => '+94762450858', 
+        'price' => 'Rs 3900 /person', 
+        'image' => 'kandy.jpg' 
+    ], 
+    [ 
+        'title' => 'Colombo', 
+        'days' => 2, 
+        'places' => [ 
+            'Galle Dutch Fort', 'Galle Light House', 'Maritime Museum', 'National Museum Clock Tower Galle', 'Lotus Tower' 
+        ], 
+        'package_includes' => [ 
+            'Up and Down', 'Tickets', 'Videos', 'Excepts – Ride', 'Tour Guide' 
+        ], 
+        'phone' => '+94762450858', 
+        'price' => 'Rs 11900 /person', 
+        'image' => 'colombo.jpg'
+    ], 
+    [ 
+        'title' => 'Batticaloa', 
+        'days' => 2, 
+        'places' => [ 
+            'Maritime Museum', 'National Museum Clock Tower Galle', 'Secret Beach', 'Thalpe Beach', 'Koggalle Lake' 
+        ], 
+        'package_includes' => [ 
+            'Up and Down', 'Tickets', 'Videos', 'Excepts – Ride', 'Tour Guide' 
+        ], 
+        'phone' => '+94762450858', 
+        'price' => 'Rs 7900 /person', 
+        'image' => 'batticaloa.png' 
+    ], 
+    [ 
+        'title' => 'Nuwara Eliya', 
+        'days' => 1, 
+        'places' => [ 
+            'Post Office', 'Gregory Park', 'World End', 'Deer' 
+        ], 
+        'package_includes' => [ 
+            'Up and Down', 'Tickets', 'Videos', 'Excepts – Ride', 'Tour Guide' 
+        ], 
+        'phone' => '+94762450858', 
+        'price' => 'Rs 5900 /person', 
+        'image' => 'nuwara_eliya.jpg' 
+    ], 
+    [ 
+        'title' => 'Badulla', 
+        'days' => 1, 
+        'places' => [ 
+            'Bandarawela', 'Haputale', 'Ella', 'Ravana Ella', 'Dunhinda' 
+        ], 
+        'package_includes' => [ 
+            'Up and Down', 'Tickets', 'Videos', 'Excepts – Ride', 'Tour Guide' 
+        ], 
+        'phone' => '+94762450858', 
+        'price' => 'Rs 4900 /person', 
+        'image' => 'badulla.jpg'
+    ], 
+    [ 
+        'title' => 'Matale', 
+        'days' => 1, 
+        'places' => [ 
+            'Sembuwatta Lake', 'Bambarakiri Ellla', 'Reverston' 
+        ], 
+        'package_includes' => [ 
+            'Up and Down', 'Tickets', 'Videos', 'Excepts – Ride', 'Tour Guide' 
+        ], 
+        'phone' => '+94762450858', 
+        'price' => 'Rs 3900 /person', 
+        'image' => 'matale.jpg'
+    ], 
+    [ 
+        'title' => 'Trincomalee', 
+        'days' => 1, 
+        'places' => [ 
+            'Koneswaram Temple', 'Dutch Fort', 'Nilaveli Beach', 'Kinniya Bridge', 'Hot Water Springs' 
+        ], 
+        'package_includes' => [ 
+            'Up and Down', 'Tickets', 'Videos', 'Excepts – Ride', 'Tour Guide' 
+        ], 
+        'phone' => '+94762450858', 
+        'price' => 'Rs 2900 /person', 
+        'image' => 'trincomalee.jpg'
+    ], 
+    [ 
+        'title' => 'Anuradhapura', 
+        'days' => 1, 
+        'places' => [ 
+            'Sigiriya', 'Pidurangala', 'Dambulla Cave Temple', 'Anuradhapura – Sacred City', 'Museum' 
+        ], 
+        'package_includes' => [ 
+            'Up and Down', 'Tickets', 'Videos', 'Excepts – Ride', 'Tour Guide' 
+        ], 
+        'phone' => '+94762450858', 
+        'price' => 'Rs 3700 /person', 
+        'image' => 'anuradhapura.jpg' 
+    ]
+];
+
+// Retrieve the location from the URL
+$location = isset($_GET['location']) ? $_GET['location'] : '';
+$image = isset($_GET['image']) ? htmlspecialchars($_GET['image']) : '';
+
+// Find the package that matches the location
+$package = null;
+foreach ($packages as $p) {
+    if (strcasecmp($p['title'], $location) === 0) { // Case-insensitive match
+        $package = $p;
+        break;
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $title; ?></title>
+    <title>View Package</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Styles as you provided, fine-tuned */
         body {
             font-family: Arial, sans-serif;
-            background-color: #FFFDE7;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            background: url('images/inner-banner.jpg') no-repeat center center / cover;
+        }
+
+        .package-header {
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            font-size: 30px; 
+        }
+
+        .package-header h1 {
+            font-size: 2.5em;
             margin: 0;
         }
-
-        .tourpackagestitle {
-            margin-top: 0;
-            text-align: center;
-            min-height: 50vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5em;
-            font-weight: bold;
-            background-color: #FFFDE7;
+        .row{
+            margin-top: -50px;
         }
-
-        .tourpackagestitle::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(to right, rgba(0, 0, 0, 3.9), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 3.9) 100%), 
-                url('images/inner-banner.jpg') no-repeat center center / cover;
-            z-index: 1;
-        }
-
-        .tourpackagestitle::after {
-            content: "";
-            position: absolute;
-            bottom: -60px;
-            left: 0;
-            right: 0;
-            height: 50%; 
-            background: url('images/banner-pattern.png') no-repeat center top; 
-            background-size: contain;
-            opacity: 1;
-            z-index: 2;
-        }
-
-        .tourpackagestitle h1 {
-            position: relative;
-            z-index: 3; 
-            font-family: 'Arial', sans-serif;
-        }
-
-        .hero-section {
-            position: relative;
-            text-align: center;
-            padding: 12px;
-            padding-left: 20px;
-            margin-top: -230px; 
-            color: white;
-            z-index: 4; 
-        }
-
-        .tourpackagestitle h1 {
-            position: relative;
-            z-index: 3; 
-            font-family: 'Playfair Display', Georgia, serif; 
-            font-size: 2.3em; 
-            margin-top: -50px; 
-        }
-
-        .content {
-            display: flex;
-            justify-content: left;
-            align-items: left;
-            gap: -200px;
-            padding: 10px;
-        }
-
-        .foreground-image img{
-            width: 60%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
-        .details{
-            margin-top: 150px !important;
-        }
-
-        .info{
-            margin-left: -50px !important;
-        }
-
-        .info h2{
-            font-family: 'Playfair Display', Georgia, serif; 
-            font-size: 3.5em;
-            color: white;         
-            text-transform: uppercase;   
-            letter-spacing: 1px;          
-            line-height: 1.2;
-            text-align: left;            
-        }
-
-        
-        .info p {
-            max-width: 400px;
-            line-height: 1.6;
-            color: black;
-            text-align: justify;
-        }
-
-        .button {
-            padding: 10px 20px;
-            background-color: #ff6b6b;
-            margin-left: -350px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: #00B4D8;
-            color: white;
-            border: none;
-            text-decoration: none;
-         }
-         /* General responsive settings */
-         @media (max-width: 768px) {
-        .tourpackagestitle h1 {
-            font-size: 1.8em; 
-            padding: 0 10px; 
-            margin-left: 20px;
-        }
-
-        .content {
-            flex-direction: column;
-            align-items: center; 
+        .package-image {
             padding: 20px;
-            width: 100%; 
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            margin-left: 100px;
+            overflow: hidden;
+            width: auto; /* Allow the box to take up full width in its container */
+            max-width: 100%; /* Prevent it from exceeding screen width */
+            min-height:300px;
+            max-height:600px;
+            box-sizing: border-box;
         }
 
-        .foreground-image img {
-            width: 100%; 
-            max-width: none;
-            height: auto;
+        .package-details {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            overflow: hidden;  /* Ensures the floated image doesn't affect layout */
         }
 
-        .info {
-            margin-top: -10px !important;
-            max-width: 100%; 
-            text-align: center; 
-            margin: 0; 
-            padding: 10px; 
-        }
-
-        .info h2 {
-            margin-bottom: -150px !important;
-            font-size: 2.2em; 
+        .package-details h3 {
+            font-size: 1.5em;
             margin-bottom: 10px;
         }
 
-        .info p {
-            font-size: 1.1em; 
-            line-height: 1.6; 
-            text-align: justify;
-            margin: 10px 0;
+        .package-details ul {
+            list-style-type: none;
+            padding: 0;
         }
 
-        .tourpackagestitle::after {
-            background-size: contain; 
-            background-position: center 40px; 
+        .package-details li {
+            margin-bottom: 8px;
         }
 
-        .button {
-            width: 100%;
-            padding: 12px;
-            font-size: 1.2em; 
-            margin-left: 90px;
-        }
-        .tourpackagestitle::after {
-            bottom: -80px; 
-        }
-
-        .tourpackagestitle::after {
-            background-position: center 40px; 
+        .btn-back {
+            background-color: #009688;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s ease;
         }
 
+        .btn-back:hover {
+            background-color: #00796b;
+            text-decoration: none;
+            color: white;
+            transform: scale(1.1);
+        }
 
-        .hero-section {
-            padding: 30px 0;
-            background-size: cover; 
+        .btn-back1 {
+            background-color: #009688;
+            margin-left: 20px;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s,transform 0.3s ease;
+        }
+
+        .btn-back1:hover {
+            background-color: #00796b;
+            text-decoration: none;
+            color: white;
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+        .package-header h1 {
+            font-size: 2em;
+        }
+
+        .package-details {
+            padding: 15px;
+        }
+
+        .btn-back{
+            font-size: 11px;
+            padding: 8px 20px;
+        }
+        .btn-back1 {
+            font-size: 11px;
+            padding: 8px 20px;
+            margin-left:20px;
+        }
+        .package-image {
+            width: 100%; /* Ensures the image takes full width of its container */
+            height: auto; /* Maintains aspect ratio */
+            margin: 0 auto; /* Centers the image within its container */
+            display: block; /* Fixes any inline rendering issues */
         }
     }
-
-@media (max-width: 480px) {
-    
-    .details{
-        margin-top:-150px;
-    }
-    .tourpackagestitle h1 {
-        font-size: 1.5em; 
-        padding: 0 10px; 
-        margin-left:20px;
-    }
-
-    .info h2 {
-        font-size: 1.8em;
-        margin-left:50px;
-        color:black;
-    }
-
-    .button {
-        font-size: 1.1em; 
-        padding: 12px 55px;
-        margin-left:50px;
-    }
-
-    .foreground-image img {
-        width: 50%;
-        max-width: 50%;
-        height: auto;
-    }
-
-    .info p {
-        font-size: 1em; 
-    }
-}
 
     </style>
 </head>
 <body>
-    <div class="tourpackagestitle">
-        
-    </div>
-
-    <div class="hero-section">
-        <div class="content">
-            <?php if ($size == 'small'): ?> <!-- Conditional logic for small size -->
-                <div class="foreground-image">
-                    <img src="images/<?php echo $image; ?>" alt="<?php echo $title; ?>">
-                </div>
-                <div class="info">
-                    <h2><?php echo $title; ?></h2>
-                    <div class="details">
-                        <p>Location: <?php echo $location; ?></p>
-                        <p>Description goes here with details about this tour package, distance, highlights, etc.</p>
-                        <div>
-                       <a href="booking.php?location=<?php echo $location; ?>&title=<?php echo $title; ?>&image=<?php echo $image; ?>" class="button">Book Now</a>
-                    </div>
-
-                    </div>
-                </div>
-            <?php else: ?> <!-- Logic for large size -->
-                <div class="foreground-image1">
-                    <img src="images/<?php echo $image; ?>" alt="<?php echo $title; ?>"style="width: 370px; height: 200px;">
-                </div>
-                <div class="info">
-                    <h2><?php echo $title; ?></h2>
-                    <div class="details" style="margin-top: -30px;" >
-                        <p>Location: <?php echo $location; ?></p>
-                        <p>Description goes here with details about this tour package, distance, highlights, etc.</p>
-                        <div>
-                       <a href="booking.php?location=<?php echo $location; ?>&title=<?php echo $title; ?>&image=<?php echo $image; ?>" class="button">Book Now</a>
-                    </div>
-
-                    </div>
-                </div>
-            <?php endif; ?> <!-- End of conditional logic -->
+<?php include 'header/header.php'; ?>
+    <?php if ($package): ?>
+        <div class="package-header">
+            <h1><?php echo $package['title']; ?> Tour Package</h1>
         </div>
-    </div>
-   
+
+        <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="images/<?php echo htmlspecialchars($image); ?>" alt="<?php echo htmlspecialchars($location); ?>" class="package-image">
+            </div>
+            <div class="col-md-6">
+                <div class="package-details">
+                    <p><strong>Duration:</strong> <?php echo $package['days']; ?> days</p>
+                    <p><strong>Price:</strong> <?php echo $package['price']; ?></p>
+                    <p><strong>Phone:</strong> <?php echo $package['phone']; ?></p>
+
+                    <h3>Places to Visit:</h3>
+                    <ul>
+                        <?php foreach ($package['places'] as $place): ?>
+                            <li><?php echo $place; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+
+                    <h3>Package Includes:</h3>
+                    <ul>
+                        <?php foreach ($package['package_includes'] as $include): ?>
+                            <li><?php echo $include; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+
+                    <a href="tourpackages.php" class="btn-back">Back to Packages</a>
+                    <a href="booking.php" class="btn-back1">Book Now</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    <?php else: ?>
+        <div class="container mt-5">
+            <div class="alert alert-danger">
+                <strong>Package not found!</strong>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <?php include 'footer/footer.php'; ?>
 </body>
 </html>
