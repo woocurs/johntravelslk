@@ -240,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     border-radius: 5px;
 
 }
-.popup .form .form-element button{
+.popup .form .form-element{
     width: 100%;
     height: 40px;
     border: none;
@@ -252,24 +252,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     cursor: pointer;
 
 }
-.button {
-            
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
 
-        .button:hover {
-            background-color: #45a049;
-        }
-        .popup-content input,
-        .button {
-            width: 100%;
-            padding: 5px;
-            margin: 5px 0;
-            border: 1px solid;
-            border-radius: 5px;
-        }
+.popup-content input{
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid;
+    border-radius: 5px;
+    
+}
 
 
 
