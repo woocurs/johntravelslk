@@ -240,7 +240,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     border-radius: 5px;
 
 }
-.popup .form .form-element button{
+.popup .form .form-element{
     width: 100%;
     height: 40px;
     border: none;
@@ -252,24 +252,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     cursor: pointer;
 
 }
-.button {
-            
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
 
-        .button:hover {
-            background-color: #45a049;
-        }
-        .popup-content input,
-        .button {
-            width: 100%;
-            padding: 5px;
-            margin: 5px 0;
-            border: 1px solid;
-            border-radius: 5px;
-        }
+.popup-content input{
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid;
+    border-radius: 5px;
+    
+}
 
 
 
@@ -280,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <?php include 'header/header.php'; ?>
     <section class="inner-banner-wrap">
-        <div class="inner-banner-container" style="background-image: url(images/inner-banner.jpg);">
+        <div class="inner-banner-container" style="background-image: url(images/inner-banner-new.jpg);">
             <div class="container">
                 <h1 class="heading text-center">Career</h1>
             </div>
