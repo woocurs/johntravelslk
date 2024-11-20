@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic Image Grid</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -173,6 +174,146 @@
             transform: scale(1.05);
         }
 
+
+        .popup-content {
+            position: relative;
+            display: inline-block;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .download-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #009688;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .download-btn i {
+            font-size: 16px;
+        }
+
+        .download-btn:hover {
+            background-color: #00796b;
+            transform: scale(1.05);
+        }
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 490px;
+            height: auto;
+            max-height: 600px;
+            background-color: white;
+            border-radius: 3px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            padding: 20px;
+            text-align: center;
+            overflow: auto;
+        }
+
+        .popup img {
+            width: auto !important; /* Maintain the natural width of the image */
+            max-width: 100% !important; /* Restrict to the popup container if needed */
+            height: 550px !important; 
+        }
+
+        .popup-content {
+            position: relative;
+            display: inline-block;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .close {
+            cursor: pointer;
+        }
+        
+
+        .download-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .download-btn i {
+            font-size: 16px;
+        }
+
+        .download-btn:hover {
+            background-color: #00796b;
+            border: none !important; 
+            outline: none !important;
+            transform: scale(1.05);
+        }
+
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9;
+        }
+        .overlay, .popup {
+            transition: none !important;
+        }
+                .details .icon {
+            position: absolute; /* Position it absolutely within the .details container */
+            right: 10px; /* Adjust this value for the desired spacing from the right edge */
+            top: 10px; /* Adjust this value for spacing from the top */
+            font-size: 18px; /* Adjust the icon size */
+            color: white; /* Adjust the color if needed */
+            cursor: pointer; /* Change the cursor to pointer for a clickable feel */
+            z-index: 4; /* Ensure it appears above other content */
+            transition: transform 0.2s ease, color 0.3s ease;
+        }
+
+        .details .icon:hover {
+            transform: scale(1.2); /* Slightly enlarge the icon on hover */
+            color: #009688; /* Change the color on hover for a better visual effect */
+        }
+        
+
        /* Responsive Styles */
        @media (max-width: 768px) {
             .tourpackagestitle {
@@ -245,15 +386,23 @@
         <?php
         $images = [
             ["location" => "KANDY", "title" => "Queen's Hotel", "image" => "destination_1.jpg", "size" => "large"],
-            ["location" => "COLOMBO", "title" => "Lotus Tower", "image" => "destination_2.jpg", "size" => "large"],
-            ["location" => "KANDY", "title" => "Temple of the Tooth", "image" => "destination_3.jpg", "size" => "large"],
+            ["location" => "Colombo", "title" => "Lotus Tower", "image" => "destination_2.jpg", "size" => "large"],
+            ["location" => "Batticaloa", "title" => "Pasikudah Beach", "image" => "destination_3.jpg", "size" => "large"],
             ["location" => "NUWARA ELIYA", "title" => "Tea Estate", "image" => "destination_4.jpg", "size" => "large"],
-            ["location" => "BADULLA", "title" => "Nine Arch Bridge", "image" => "destination_5.jpg", "size" => "small"],
-            ["location" => "COLOMBO", "title" => "World Trade Center", "image" => "destination_6.jpg", "size" => "small"],
-            ["location" => "MATARA", "title" => "Modern Pedestrian Bridge", "image" => "destination_7.jpg", "size" => "small"],
-            ["location" => "MATARA", "title" => "Dondra Lighthouse", "image" => "destination_8.jpg", "size" => "small"]
+            ["location" => "Badulla", "title" => "Nine Arch Bridge", "image" => "destination_5.jpg", "size" => "small"],
+            ["location" => "Matale", "title" => "Riverston", "image" => "destination_6.jpg", "size" => "small"],
+            ["location" => "Trincomalee", "title" => "Kinniya Bridge", "image" => "destination_7.jpg", "size" => "small"],
+            ["location" => "Anuradhapura", "title" => "Sigiriya", "image" => "destination_8.jpg", "size" => "small"]
         ];
 
+        $popupImages = [
+            "Kandy.png", "Galle_Matara_Colombo.png", "package8.png", 
+            "NuwaraEliya.png",  "Badulla.png", "Matale.png",
+            "Trincomalee.png", "Anuradhapura_Dambulla_Sigiriya.png"
+        ];
+        
+        $counter = 0;
+            
         foreach ($images as $img) {
             echo '<div class="card">';
             echo '<a href="viewpackages.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
@@ -262,12 +411,64 @@
             echo '<span class="location">' . $img["location"] . '</span>';
             echo '<h3 class="title">' . $img["title"] . '</h3>';
             echo '<button class="button">Get More</button>';
-            echo '<a href="tour_booking.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
-            echo '<button class="buttonbook">Book Now</button>';
+            echo '<a href="booking.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
+            echo '<button class="buttonbook">Book Now</button></a>';
+            echo '<i class="fas fa-expand icon" onclick="event.stopPropagation(); openPopup(\'images/' . $popupImages[$counter] . '\')"></i>';
             echo '</div></a></div>';
-        }
+            $counter++;
+        }        
         ?>
     </div>
+    <!-- Popup and overlay for images -->
+    <div class="overlay" onclick="closePopup()"></div>
+
+    <div class="popup">
+    <span class="close" onclick="closePopup()">×</span>
+    <div class="popup-content">
+        <img id="popup-img" src="" alt="Image">
+        <button class="download-btn" onclick="downloadImage()">
+            <i class="fas fa-download"></i> Download
+        </button>
+    </div>
+</div>
+
+
+<script>
+    // Initially hide the overlay and popup (done by default in CSS)
+    document.querySelector('.overlay').style.display = 'none';
+    document.querySelector('.popup').style.display = 'none';
+
+    // Open popup and show overlay when triggered
+    function openPopup(imageSrc) {
+        document.querySelector('.overlay').style.display = 'block';
+        document.querySelector('.popup').style.display = 'block';
+        document.getElementById('popup-img').src = imageSrc;
+    }
+
+    // Close popup and hide overlay
+    function closePopup() {
+        document.querySelector('.overlay').style.display = 'none';
+        document.querySelector('.popup').style.display = 'none';
+    }
+
+    // Download the image from the popup
+    function downloadImage() {
+        const imageSrc = document.getElementById('popup-img').src; // Get the image URL
+        const link = document.createElement('a'); // Create a temporary <a> element
+        link.href = imageSrc;
+        link.download = imageSrc.split('/').pop(); // Set the download filename
+        link.click(); // Trigger the download
+    }
+
+    // Delay hiding overlay and popup after page load
+    window.addEventListener('load', function() {
+        // Delay hiding overlay and popup for a brief time to prevent early showing
+        setTimeout(function() {
+            document.querySelector('.overlay').style.display = 'none';
+            document.querySelector('.popup').style.display = 'none';
+        }, 200); // 200ms delay
+    });
+</script>
 
     <?php include 'footer/footer.php'; ?>
 </body>
