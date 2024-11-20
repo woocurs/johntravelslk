@@ -11,7 +11,7 @@ $images = [
 	["src" => "images/destination_8.jpg", "alt" => "Temple of the Tooth", "caption" => "Temple of the Tooth"]
 ];
 ?>
-
+<?php include("header/header.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,7 +172,7 @@ $images = [
     </style>
 </head>
 <body>
-<?php include("header/header.php"); ?>
+
 <header>
     Our Travel Gallery
 </header>

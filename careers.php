@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 
 
-
+<?php include 'header/header.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -269,7 +269,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 </head>
 <body>
-<?php include 'header/header.php'; ?>
+
     <section class="inner-banner-wrap">
         <div class="inner-banner-container" style="background-image: url(images/inner-banner-new.jpg);">
             <div class="container">

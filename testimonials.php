@@ -1,4 +1,4 @@
-
+<?php include("header/header.php"); ?>
 
 
 <!DOCTYPE html>
@@ -117,7 +117,7 @@
     </style>
 </head>
 <body>
-<?php include("header/header.php"); ?>
+
 
 <section class="testimonials">
     <div class="container">

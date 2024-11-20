@@ -43,6 +43,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="380x380" href="../images/Logo.png">
     <title>Admin Login - John Travels LK</title>
     <style>
         /* Background */
