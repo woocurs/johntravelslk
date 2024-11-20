@@ -396,7 +396,7 @@
         ];
 
         $popupImages = [
-            "Kandy.png", "Galle_Matara_Colombo.png", "package8.png", 
+            "Kandy.png", "Galle_Matara_Colombo.png", "batticaloa.png", 
             "NuwaraEliya.png",  "Badulla.png", "Matale.png",
             "Trincomalee.png", "Anuradhapura_Dambulla_Sigiriya.png"
         ];
