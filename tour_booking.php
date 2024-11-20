@@ -1,24 +1,33 @@
 <?php
 include "database/db.php";
 
+	
+$selectedLocation = isset($_GET['location']) ? $_GET['location'] : '';
+$selectedPackage = isset($_GET['title']) ? $_GET['title'] : '';
+$selectedImage = isset($_GET['image']) ? $_GET['image'] : '';
+ $size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : 'large'; 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['form_type'])) {
         $form_type = $_POST['form_type'];
         if ($form_type === 'booking') {
             $errors = [];  
 			
-            $name = htmlspecialchars($_POST['name']);
-            $address = htmlspecialchars($_POST['address']);
-            $nic = htmlspecialchars($_POST['nic']);
-            $email = htmlspecialchars($_POST['email']);
-            $phone = htmlspecialchars($_POST['phone']);
-            $tour_package = htmlspecialchars($_POST['tour_package']);
-            $booking_date = htmlspecialchars($_POST['booking_date']);
-            $people = htmlspecialchars($_POST['people']);
-            $message = htmlspecialchars($_POST['message']);
-            $terms = isset($_POST['terms']) ? 1 : 0;
-
-           
+          $name = htmlspecialchars($_POST['name']);
+        $address = htmlspecialchars($_POST['address']);
+        $nic = htmlspecialchars($_POST['nic']);
+        $email = htmlspecialchars($_POST['email']);
+        $mobile = htmlspecialchars($_POST['mobile']);
+        $whatsapp = htmlspecialchars($_POST['whatsapp']);
+        $gender = htmlspecialchars($_POST['gender']);
+        $dob = $_POST['dob'];
+        $payment = htmlspecialchars($_POST['payment']);
+        $reference_number = htmlspecialchars($_POST['reference_number']);
+        $remark = htmlspecialchars($_POST['remark']);
+        $tour_package = htmlspecialchars($_POST['tour_package']);
+        $terms = isset($_POST['terms']) ? 1 : 0;
+		
+		
+            
             $photo = $_FILES['photo'];
             $upload_dir = 'uploads/photos/';
             $photo_path = '';
@@ -38,36 +47,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $errors[] = "File upload error.";
             }
 			
-            // Validation checks
+            
             if (empty($name)) $errors[] = "Name is required.";
-            if (empty($nic)) $errors[] = "NIC is required.";
-            if (empty($address)) $errors[] = "Address is required.";
-            if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid email is required.";
-           if (empty($phone) || !preg_match("/^(\+?\d{1,3})?\d{10}$/", $phone))  $errors[] = "Phone number must be exactly 10 digits or include the country code (e.g., +94771234567 or 94771234567).";
-            if (empty($tour_package)) $errors[] = "Tour package is required.";
-            if (empty($booking_date)) $errors[] = "Booking date is required.";
-            if (!is_numeric($people) || $people <= 0) $errors[] = "Valid number of people required.";
-            if (!$terms) $errors[] = "You must agree to the terms and conditions.";
-
+        if (!preg_match("/^[0-9]{9}[vV]$|^[0-9]{12}$/", $nic)) $errors[] = "NIC must be valid (9 digits + 'V' or 12 digits).";
+        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid email is required.";
+        if (empty($mobile) || !preg_match("/^\+\d{1,3}\d{10}$/", $mobile)) $errors[] = "Mobile number must include country code and 10 digits.";
+        if (!empty($whatsapp) && !preg_match("/^\+\d{1,3}\d{10}$/", $whatsapp)) $errors[] = "WhatsApp number must include country code and 10 digits.";
+        if (empty($gender)) $errors[] = "Gender is required.";
+		 if (empty($payment)) $errors[] = "Payment is required.";
+        if (empty($dob)) $errors[] = "DOB is required.";
+        if (empty($tour_package)) $errors[] = "Tour package is required.";
+        if (!$terms) $errors[] = "You must agree to the terms and conditions.";
+     
+        $refered_by = '';
+        if (!empty($reference_number)) {
+            $stmt = $conn->prepare("SELECT name FROM tour_bookings WHERE reference_number = ? AND tour_package = ?");
+            $stmt->bind_param("ss", $reference_number, $tour_package);
+            $stmt->execute();
+            $stmt->bind_result($refered_by);
+            $stmt->fetch();
+            $stmt->close();
+            if (empty($refered_by)) $errors[] = "Invalid reference number.";
+        }
+		
+		
+		
             if (empty($errors)) {
 				
-                storeBooking($conn,$name, $address, $nic, $email, $phone, $tour_package, $booking_date, $people, $message, $photo_path, $terms);
+                storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
 					
                 $headers = "From: noreply@johntravels.com";
                 $confirmation_subject = "Booking Received";
-                $confirmation_body = "Dear $name,\n\nThank you for booking with us.\n\nTour Package: $tour_package\nBooking Date: $booking_date\n\nRegards,\nJohn Travels LK";
+                $confirmation_body = "Dear $name,\n\nThank you for booking with us.\n\nTour Package: $tour_package\nBooking Payment: $payment\n\nRegards,\nJohn Travels LK";
 
                 if (mail($email, $confirmation_subject, $confirmation_body, $headers)) {
-                    $customer_msg = "Booking successful! A confirmation email has been sent to you.";
+                    $customer_msg = "Booking successfully received! Once confirmed, a confirmation will be sent to your email. Thank you!.";
                 } else {
                     $customer_msg = "Booking successful, but failed to send confirmation email.";
                 }
-
+				$headers = "From: $email";
                 $admin_email = "info.johntravels@gmail.com"; 
                 $admin_subject = "New Tour Booking Notification";
-                $admin_body = "A new booking has been made with the following details:\n\nName: $name\nAddress: $address\nNIC: $nic\nEmail: $email\nPhone: $phone\nTour Package: $tour_package\nBooking Date: $booking_date\nNumber of People: $people\nMessage: $message\n\nRegards,\nJohn Travels Booking System";
+                $admin_body = "A new booking has been made with the following details:\n\nName: $name\nAddress: $address\nNIC: $nic\nEmail: $email\nPhone: $mobile\nWhatsapp: $whatsapp\nGender: $gender\nDOB: $dob\nTour Package: $tour_package\nPayment: $payment\nReference_Number: $reference_number\nremark: $remark\nPhoto_path: $photo_path\n\nRegards,\nJohn Travels Booking System";
 
-                if (!mail($admin_email, $admin_subject, $admin_body)) {
+                if (!mail($admin_email, $admin_subject, $admin_body,$headers)) {
                     $customer_msg .= " However, we could not notify the admin.";
                 }
 
@@ -80,11 +103,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-function storeBooking($conn,$name, $address, $nic, $email, $phone, $tour_package, $booking_date, $people, $message, $photo_path, $terms) {
+function storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms) {
 	
-  
-    $stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, email, phone, tour_package, booking_date, people, message, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssssisss", $name, $address, $nic, $email, $phone, $tour_package, $booking_date, $people, $message, $photo_path, $terms);
+     
+	$stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, phone, whatsapp, email, gender, dob,tour_package, reference_number, payment, remark, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?, ?)");
+   
+	$stmt->bind_param("sssssssdssssss", $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
     $stmt->execute();
     $stmt->close();
     $conn->close();
@@ -102,6 +126,8 @@ function closePopup() {
     document.getElementById('popup').style.display = 'none';
 }
 </script>
+
+
 <?php include('header/booking_header.php');?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,219 +135,255 @@ function closePopup() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour Booking</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   
-   <!-- <link rel="stylesheet" href="styles/style.css">-->
     <style>
-  
 	
-         /* Popup Alert */
+	 
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('images/bannaer_5.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 150px;
+            height: auto;
+        }
+
+        h2 {
+            text-align: center;
+             color:  #00b4d8;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+		.required::after {
+            content: " *";
+            color: red;
+        }
+
+        label::before {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+		
+		.required::after {
+            content: " *";
+            color: red;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="file"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        
+		
+	.radio-group {
+    display: flex;
+    align-items: center;
+    gap:20px; 
+}
+
+
+
+.radio-group form-label {
+    position: relative;
+    padding-left: 25px; 
+    cursor: pointer;
+}
+
+.radio-group form-label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #007BFF; 
+    border-radius: 50%;
+    background: white;
+    box-sizing: border-box;
+}
+
+.radio-group input[type="radio"]:checked +form-label::before {
+    background: #007BFF;
+    border: 2px solid #007BFF;
+}
+
+.radio-group input[type="radio"]:checked +form-label::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+}
+
+        .submit-btn,
+        .reset-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .reset-btn {
+            background-color:#708090; 
+            color: #fff;
+        }
+
+        .reset-btn:hover {
+            background-color:#696969; 
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+
+            color: #999;
+        }
+
         .popup {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
 
         .popup-message {
-            background-color: #d5d5d5;
+            background: #fff;
             padding: 20px;
-            border-radius: 5px;
-            max-width: 500px;
+            border-radius: 10px;
+            max-width: 400px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .popup-message button {
-            margin-top: 10px;
-            background-color: #fe6161;
-            color: white;
+            background-color: #007bff;
+            color: #fff;
             border: none;
-            padding: 10px;
+            padding: 10px 20px;
+            margin-top: 20px;
             border-radius: 5px;
             cursor: pointer;
         }
 
         .popup-message button:hover {
-            background-color: #00b4d8;
+            background-color: #0056b3;
         }
 
-   
-	body {
-            
-            background-image: url('images/bannaer_5.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-			flex-direction:column;
-            justify-content: center;
-            align-items: center;
-			min-height:100vh;
-			background-attachment:fixed;
-          
-		   
-        }
-	
-		 .container {
-			 
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-			margin-top:0px;	
-			
-         
-        }
-		      input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="file"], textarea, select {
-            width: 100%;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding-right: 2px;
-            margin-top: 0px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-            box-sizing: border-box; 
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .form-group label {
+                font-size: 14px;
+            }
+
+            input,
+            textarea {
+                font-size: 13px;
+            }
+
+            .submit-btn,
+            .reset-btn {
+                font-size: 14px;
+            }
         }
 
-        .terms {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-        }
-		   h2 {
-            text-align: center;
-            color:  #00b4d8;
-            margin-bottom: 20px;
-			font-weight:bold;
-        }
-		   .logo {
-			
-		width: 150px;
-		height: auto;
-		border-radius: 8px;
-		margin-bottom: 20px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-		
-		.space{
-			margin-top:0px;
-			margin-left:0;
-			margin-right:0;
-			margin-bottom:40px;
-		}
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 18px;
+            }
 
+            input,
+            textarea {
+                font-size: 12px;
+            }
 
-        .terms input[type="checkbox"] {
-            margin-right: 10px;
-        }
-       
-        .form-group label {
-            font-weight: bold;
-        }
-        .form-control {
-            border-radius: 5px;
-            box-shadow: none;
-        }
-        .submit-btn {
-            background-color: #FE6161;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-			width:100%
-        }
-        .submit-btn:hover {
-            background-color: #00B4D8;
-        }
-		
-		 .reset-btn {
-            background-color: #00B4D8;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            padding: 15px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-			width:100%
-			
-        }
-        .reset-btn:hover {
-            background-color: #FE6161;
-        }
-        .error {
-            color: red;
-            font-size: 0.9em;
-        }
-		
-		/* Media Queries for Responsive Design */
-    @media (max-width: 768px) {
-        .container {
-            padding: 10px;
-        }
+            .submit-btn,
+            .reset-btn {
+                font-size: 12px;
+                padding: 10px;
+            }
 
-        h2 {
-            font-size: 1.5rem;
+            .popup-message {
+                width: 90%;
+            }
         }
-
-        .form-group label {
-            font-size: 1rem;
-        }
-
-        .submit-btn,
-        .reset-btn {
-            padding: 12px 0;
-            font-size: 0.9rem;
-        }
-
-        .popup-message {
-            max-width: 90%;
-        }
-    }
-
-    @media (max-width: 480px) {
-        h2 {
-            font-size: 1.2rem;
-        }
-
-        .form-control,
-        input[type="text"],
-        input[type="number"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="file"],
-        textarea,
-        select {
-            font-size: 0.9rem;
-        }
-
-        .submit-btn,
-        .reset-btn {
-            padding: 10px;
-            font-size: 0.8rem;
-        }
-
-        .popup-message button {
-            padding: 8px 12px;
-            font-size: 0.8rem;
-        }
-    }
     </style>
-   
-</head>
+   </head>
 <body>
 
 <div class="space">
@@ -335,7 +397,7 @@ function closePopup() {
     </div>
 </div>
     <div class="container">
-        <img src="images/logo.png" alt="johntravels" class="logo">
+        <img src="images/logo.png" alt="Johntravels" class="logo">
         <h2 class="text-center">Book Your Tour</h2>
 		     <?php if (!empty($errors)): ?>
                 <div class="error">
@@ -347,78 +409,84 @@ function closePopup() {
                 </div>
             <?php endif; ?>
    
-        <form action=" " method="POST" enctype="multipart/form-data">
-		<input type="hidden" name="form_type" value="booking" >
+                    <form action=" " method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="form_type" value="booking">
             <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" name="name" id="name" class="form-control" value="<?php echo isset($name) ? $name : ''; ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="address">Address</label>
-                <input type="text" name="address" id="address" class="form-control" value="<?php echo isset($address) ? $address : ''; ?>" required>
+                <label for="tour_package">Your Tour Package</label>
+                <input type="text" name="tour_package" id="tour_package" class="form-control" 
+                       value="<?php echo $selectedPackage . '-' . $selectedLocation; ?>" readonly>
             </div>
             <div class="form-group">
-                <label for="nic">NIC</label>
-                <input type="text" name="nic" id="nic" class="form-control" value="<?php echo isset($nic) ? $nic : ''; ?>" required>
+                <label for="name" class="required">Name with Initials</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+           
+		    <div class="form-group">
+                <label class="required">Address</label>
+                <input type="text" name="address" required>
             </div>
             <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" name="email" id="email" class="form-control" value="<?php echo isset($email) ? $email : ''; ?>" required>
+                <label class="required">NIC Number</label>
+                <input type="text" name="nic" required>
             </div>
             <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" class="form-control" value="<?php echo isset($phone) ? $phone : ''; ?>" required>
-            </div>
-    <div class="form-group">
-                <label for="tour_package">Select Tour Package</label>
-                <select name="tour_package" id="tour_package" class="form-control" required>
-                    <option value="">-- Select Package --</option>
-                    <option value="Lotus Tower-Colombo" <?php echo (isset($tour_package) && $tour_package == 'Lotus Tower-Colombo') ? 'selected' : ''; ?>>Lotus Tower-Colombo</option>
-					<option value="World Trade Center-Colombo" <?php echo (isset($tour_package) && $tour_package == 'World Trade Center-Colombo') ? 'selected' : ''; ?>>World Trade Center-Colombo</option>
-                    <option value="Modern Pedestrian Bridge-Matara" <?php echo (isset($tour_package) && $tour_package == 'Modern Pedestrian Bridge-Matara') ? 'selected' : ''; ?>>Modern Pedestrian Bridge-Matara</option>
-                     <option value="Dondra Light House-Matara" <?php echo (isset($tour_package) && $tour_package == 'Dondra Light House-Matara') ? 'selected' : ''; ?>>Dondra Light House-Matara</option>
-					<option value="Queens Hotel-Kandy" <?php echo (isset($tour_package) && $tour_package == 'Queens Hotel-Kandy') ? 'selected' : ''; ?>>Queen's Hotel-Kandy</option>
-                    <option value="Temple of the Tooth-Kandy" <?php echo (isset($tour_package) && $tour_package == 'Temple of the Tooth-Kandy') ? 'selected' : ''; ?>>Temple of the Tooth-Kandy</option>
-                    <option value="Tea Estate-Nuwareliya" <?php echo (isset($tour_package) && $tour_package == 'Tea Estate-Nuwareliya') ? 'selected' : ''; ?>>Tea Estate-Nuwareliya</option>
-					 <option value="Nine Arch Bridge-Badulla" <?php echo (isset($tour_package) && $tour_package == 'Nine Arch Bridge-Badulla') ? 'selected' : ''; ?>>Nine Arch Bridge-Badulla</option>
-                </select>
+                <label class="required">Email</label>
+                <input type="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="booking_date">Booking Date</label>
-                <input type="datetime-local" name="booking_date" id="booking_date" class="form-control" value="<?php echo isset($booking_date) ? $booking_date : ''; ?>" required>
+                <label class="required">Mobile Number</label>
+                <input type="tel" name="mobile" required>
             </div>
             <div class="form-group">
-                <label for="people">Number of People</label>
-                <input type="number" name="people" id="people" class="form-control" value="<?php echo isset($people) ? $people : ''; ?>" min="1" required>
+                <label>WhatsApp Number</label>
+                <input type="tel" name="whatsapp">
             </div>
             <div class="form-group">
-                <label for="message">Special Message (Optional)</label>
-                <textarea name="message" id="message" class="form-control"><?php echo isset($message) ? $message : ''; ?></textarea>
+			 <div class="radio-group">
+                <label class="required">Gender</label>
+                <input type="radio" name="gender" value="Male" required> <div class="form-label">Male</div>
+                <input type="radio" name="gender" value="Female" required> <div class="form-label">Female</div>
+            </div></div>
+            <div class="form-group">
+                <label class="required">Date of Birth</label>
+                <input type="date" name="dob" required>
+            </div>
+          <div class="form-group">
+    <label class="required" for="payment">Payment Option</label>
+    <select name="payment" id="payment" required>
+        <option value="" disabled selected>Please select</option>
+		
+        <option value="Advance">Advance</option>
+        <option value="Half Payment">Half Payment</option>
+        <option value="Full Payment">Full Payment</option>
+    </select>
+</div>
+            <div class="form-group">
+                <label>Reference Number</label>
+                <input type="text" name="reference_number" placeholder="Referred by:">
             </div>
             <div class="form-group">
-                <label for="photo">Upload Photo</label>
-                <input type="file" name="photo" id="photo" class="form-control" required>
+                <label>Remark</label>
+                <textarea name="remark" placeholder="Special needs or requests"></textarea>
             </div>
             <div class="form-group">
-                <label for="terms">
-                    <input type="checkbox" name="terms" id="terms" <?php echo isset($terms) && $terms ? 'checked' : ''; ?>> I agree to the <a href="#">terms and conditions</a>
-                </label>
+                <label class="required">Upload ID Photo</label>
+                <input type="file" name="photo" accept="image/*" capture="camera" required>
             </div>
-       <div class="form-group">
-            <button type="submit" class="submit-btn btn btn-primary">Book Now</button>
-			  </div>
+		   
+            <div class="form-group">
+			
+               <input type="checkbox" name="terms" id="terms" <?php echo isset($terms) && $terms ? 'checked' : ''; ?> required> I agree to the <a href="#">terms and conditions</a>
+            </div>
 			 <div class="form-group">
-			 <button type="reset" class="reset-btn btn btn-secondary">Clear</button>
-			   </div>
+            <button type="submit" class="submit-btn">Book Now</button>
+			</div>
+			 <div class="form-group">
+            <button type="reset" class="reset-btn btn-secondary">Clear</button>
+			</div>
         </form>
     </div>
-
-
-     
-
-
-
-   
+	
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -108,7 +108,7 @@ function storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $
      
 	$stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, phone, whatsapp, email, gender, dob,tour_package, reference_number, payment, remark, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?, ?)");
    
-	$stmt->bind_param("ssssssssssssss", $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
+	$stmt->bind_param("sssssssdssssss", $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
     $stmt->execute();
     $stmt->close();
     $conn->close();
@@ -452,7 +452,7 @@ function closePopup() {
             </div></div>
             <div class="form-group">
                 <label class="required">Date of Birth</label>
-                <input type="date-local" name="dob" required>
+                <input type="date" name="dob" required>
             </div>
           <div class="form-group">
     <label class="required" for="payment">Payment Option</label>
