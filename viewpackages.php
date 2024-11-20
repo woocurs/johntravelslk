@@ -269,8 +269,9 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
                         <p>Location: <?php echo $location; ?></p>
                         <p>Description goes here with details about this tour package, distance, highlights, etc.</p>
                         <div>
-                            <a href="tour_booking.php" class="button">Book Now</a>
-                        </div>
+                       <a href="booking.php?location=<?php echo $location; ?>&title=<?php echo $title; ?>&image=<?php echo $image; ?>" class="button">Book Now</a>
+                    </div>
+
                     </div>
                 </div>
             <?php else: ?> <!-- Logic for large size -->
@@ -283,8 +284,9 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
                         <p>Location: <?php echo $location; ?></p>
                         <p>Description goes here with details about this tour package, distance, highlights, etc.</p>
                         <div>
-                            <a href="tour_booking.php" class="button">Book Now</a>
-                        </div>
+                       <a href="booking.php?location=<?php echo $location; ?>&title=<?php echo $title; ?>&image=<?php echo $image; ?>" class="button">Book Now</a>
+                    </div>
+
                     </div>
                 </div>
             <?php endif; ?> <!-- End of conditional logic -->

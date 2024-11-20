@@ -6,26 +6,28 @@
 $adminEmail = "info.johntravels@gmail.com"; 
 $subject = "New Contact Us Message";
 
-$name = $mail = $message = "";
+$name = $mail = $phone =$message = "";
 $successMessage = $errorMessage = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name']);
     $mail = htmlspecialchars($_POST['mail']);
+	 $phone = htmlspecialchars($_POST['phone']);
     $message = htmlspecialchars($_POST['message']);
 
  
     if (!empty($name) && !empty($mail) && !empty($message)) {
         if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
           
-            $stmt = $conn->prepare("INSERT INTO contact_us (name, email, message) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $name, $mail, $message);
+            $stmt = $conn->prepare("INSERT INTO contact_us (name, email,phone, message) VALUES (?, ?,?, ?)");
+            $stmt->bind_param("ssss", $name, $mail, $phone,$message);
 
             if ($stmt->execute()) {
 				$emailBody = "You have received a new message from the Contact Us form:\n\n";
 				$emailBody .= "Name: $name\n";
 				$emailBody .= "Email: $mail\n";
+				$emailBody .= "Phone: $phone\n";
 				$emailBody .= "Message:\n$message\n\n";
 				$emailBody .= "This email was sent from the Contact Us form on John Travels LK.";
 				if (mail($adminEmail, $subject, $emailBody, "From: $mail")) {
@@ -57,7 +59,8 @@ include "header/header.php"; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - John Travels LK</title>
-    
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="styles/css/bootstrap.min.css">
     <style>
         body {
@@ -66,7 +69,7 @@ include "header/header.php"; ?>
             padding: 0;
             background-color: #f8f9fa;
         }
-		    .headertitle {
+		    .contacttitle {
             margin-top: 0;
             text-align: center;
             min-height: 50vh;
@@ -75,22 +78,26 @@ include "header/header.php"; ?>
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2.5em;
+            font-size: 1.8em;
             font-weight: bold;
-            background-color: #FFFDE7;
+            background-color: #f3f3f3;
         }
-        header {
-            background: url('images/destination_6.jpg') no-repeat center center/cover;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-            font-weight: bold;
-			text-align:center;
+        
+	
+        .contacttitle::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+			 height: 80%;
+            background: 
+            linear-gradient(to right, rgba(0, 0, 0, 3.9), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 3.9) 100%), 
+            url('images/img26.jpg') no-repeat center center / cover;
+            z-index:2;
         }
-		   .header::after {
+		   .contacttitle::after {
             content: "";
             position: absolute;
             bottom: -60px;
@@ -102,12 +109,18 @@ include "header/header.php"; ?>
             opacity: 1;
             z-index: 2;
         }
-		   .header h1 {
+		   .contacttitle h1 {
             position: relative;
             z-index: 3; 
             font-family: 'poppins', sans-serif;
 			text-align:center;
         }
+		
+		.contact-info1 p{
+			padding-top:20px;
+			
+		}
+		
 		.contact-info1 a{
 			text-decoration: none;
 			color: #333;
@@ -250,8 +263,13 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
+.social-media h2 {
+	margin-top:30px;
+  
+	
+}
 .social-media a {
+	margin-top:30px;
     display: inline-block;
     margin-right: 10px;
 	color:  #0056b3;
@@ -274,14 +292,32 @@ button:hover {
 @media (max-width: 768px) {
     .contact-container {
         flex-direction: column; 
+		
+    }
+	 
+        .contacttitle h1 {
+            font-size: 1.8em; 
+            padding: 0 10px; 
+            margin-left: 20px;
+        }
+}
+@media (max-width: 480px) {
+    
+    .details{
+        margin-top:-150px;
+    }
+    .contacttitle h1 {
+        font-size: 1.5em; 
+        padding: 0 10px; 
+        margin-left:20px;
     }
 }
     </style>
 </head>
 <body>
-<header>
-    Contact Us
-</header>
+ <div class="contacttitle">
+     <h1> Contact Us  </h1>
+    </div>
 <div class="container">
     <?php if ($successMessage): ?>
         <div class="message success"><?php echo $successMessage; ?></div>
@@ -297,9 +333,12 @@ button:hover {
 
             <label for="email">Your Email</label>
             <input type="email" id="mail" name="mail" value="<?php echo $mail; ?>" required>
+			
+			<label for="email">Your Phone Number</label>
+            <input type="tel" id="phone" name="phone" value="<?php echo $phone; ?>" required>
 
             <label for="message">Your Message</label>
-            <textarea id="message" name="message" rows="5" required><?php echo $message; ?></textarea>
+            <textarea id="message" name="message" rows="4" required><?php echo $message; ?></textarea>
 
             <button type="submit">Submit Message</button>
         </form>
