@@ -1,44 +1,44 @@
 <?php
-// Include your database connection file
+
 include 'database/db.php';
 
-// Check if form is submitted
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Validate form type
+    
   	if (isset($_POST['form_type'])) {
         $form_type = $_POST['form_type'];
 
         if ($form_type === 'apply') {
-    // Collect form data
+    
     $name = $_POST['name'];
     $email = $_POST['email'];
    // $message = $_POST['message'];
     $position = $_POST['position'];
 
-    // Handle file upload (CV)
+   
     if (isset($_FILES['cv']) && $_FILES['cv']['error'] == UPLOAD_ERR_OK) {
-        // Define allowed file types and max file size
+        
         $allowedFileTypes = ['pdf', 'doc', 'docx'];
-        $maxFileSize = 5 * 1024 * 1024; // 5MB
+        $maxFileSize = 5 * 1024 * 1024; 
 
         $fileName = $_FILES['cv']['name'];
         $fileTmpName = $_FILES['cv']['tmp_name'];
         $fileSize = $_FILES['cv']['size'];
         $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
-        // Check file type
+        
         if (!in_array($fileType, $allowedFileTypes)) {
             echo "Invalid file type. Only PDF, DOC, and DOCX are allowed.";
             exit();
         }
 
-        // Check file size
+       
         if ($fileSize > $maxFileSize) {
             echo "File size exceeds the limit of 5MB.";
             exit();
         }
 
-        // Define upload directory and file path
+        
         $uploadDir = 'uploads/cvs/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $newFileName = uniqid() . '.' . $fileType;
         $filePath = $uploadDir . $newFileName;
 
-        // Move file to the uploads directory
+       
         if (!move_uploaded_file($fileTmpName, $filePath)) {
             echo "Error uploading file.";
             exit();
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Insert the application data into the database
+   
     $query = "INSERT INTO job_applications (name, email,  position, cv_file) VALUES (?, ?, ?, ?)";
     if ($stmt = $conn->prepare($query)) {
         $stmt->bind_param("ssss", $name, $email,  $position, $filePath);
@@ -82,12 +82,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </html>
     ";
 
-    // Set headers for HTML email
+   
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: noreply@example.com" . "\r\n"; // Replace with a valid sender email
+    $headers .= "From: noreply@example.com" . "\r\n"; 
 
-    // Send the email
+    
     if (mail($adminEmail, $subject, $message, $headers)) {
         echo "<script>alert('Application submitted successfully and email sent to the admin!');</script>";
     } else {
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script>alert('Error preparing the query.');</script>";
     }
 
-    // Close the database connection
+    
     $conn->close();
 	
 		}
@@ -423,7 +423,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
      
     <script>
-        // Show popup on "Apply Now" button click
+        
         const applyButtons = document.querySelectorAll('.apply-now-btn');
         const popupOverlay = document.getElementById('applyPopup');
         const closePopup = document.getElementById('closePopup');
@@ -436,12 +436,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             });
         });
 
-        // Close popup
+        
         closePopup.addEventListener('click', () => {
             popupOverlay.style.display = 'none';
         });
     
-        // Close popup when clicking outside the form
+        
         window.addEventListener('click', (e) => {
             if (e.target === popupOverlay) {
                 popupOverlay.style.display = 'none';

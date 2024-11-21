@@ -1,7 +1,7 @@
 <?php include 'header/header.php'; ?>
 
 <div class="carousel">
-    <!-- Slide 1 -->
+    
     <div class="slide active">
         <div class="overlay">
             <div class="left-content">
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <!-- Slide 2 -->
+    
     <div class="slide">
         <div class="overlay">
             <div class="left-content">
@@ -30,14 +30,14 @@
         </div>
     </div>
 
-    <!-- Navigation Buttons -->
+    
      <div class="scrollclick">
     <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
     <button class="next" onclick="changeSlide(1)">&#10095;</button>
 </div>
 </div>
 
-<script src="scripts/scripts.js"></script> <!-- Link to JavaScript file -->
+<script src="scripts/scripts.js"></script> 
 <?php include 'footer/footer.php'; ?>
 
 </body>

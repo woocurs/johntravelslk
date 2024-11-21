@@ -118,23 +118,23 @@
         }
 
         a {
-            text-decoration: none; /* Ensure no underline globally */
+            text-decoration: none; 
         }
 
-        /* Override hover effects on links */
+       
         a:hover, a:focus {
-            text-decoration: none !important; /* Ensure no underline on hover/focus */
+            text-decoration: none !important; 
         }
 
-        /* Links inside .card */
+       
         a.location, a.title {
-            text-decoration: none; /* Remove underline */
-            border-bottom: 2px solid transparent; /* Invisible border */
+            text-decoration: none; 
+            border-bottom: 2px solid transparent; 
         }
 
         a.location:hover, a.title:hover,
         a.location:focus, a.title:focus {
-            border-bottom: 2px solid #009688; /* Custom hover effect without underline */
+            border-bottom: 2px solid #009688;
         }
 
         .button {
@@ -233,8 +233,8 @@
         }
 
         .popup img {
-            width: auto !important; /* Maintain the natural width of the image */
-            max-width: 100% !important; /* Restrict to the popup container if needed */
+            width: auto !important; 
+            max-width: 100% !important; 
             height: 550px !important; 
         }
 
@@ -299,51 +299,51 @@
             transition: none !important;
         }
                 .details .icon {
-            position: absolute; /* Position it absolutely within the .details container */
-            right: 10px; /* Adjust this value for the desired spacing from the right edge */
-            top: 10px; /* Adjust this value for spacing from the top */
-            font-size: 18px; /* Adjust the icon size */
-            color: white; /* Adjust the color if needed */
-            cursor: pointer; /* Change the cursor to pointer for a clickable feel */
-            z-index: 4; /* Ensure it appears above other content */
+            position: absolute; 
+            right: 10px; 
+            top: 10px; 
+            font-size: 18px; 
+            color: white; 
+            cursor: pointer; 
+            z-index: 4; 
             transition: transform 0.2s ease, color 0.3s ease;
         }
 
         .details .icon:hover {
-            transform: scale(1.2); /* Slightly enlarge the icon on hover */
-            color: #009688; /* Change the color on hover for a better visual effect */
+            transform: scale(1.2); 
+            color: #009688; 
         }
         
 
-       /* Responsive Styles */
+      
        @media (max-width: 768px) {
             .tourpackagestitle {
-                font-size: 2em; /* Reduce font size on small screens */
+                font-size: 2em;
                 min-height: 40vh;
             }
             .tourpackagestitle::after {
-                height: 40%; /* Reduce height on smaller screens */
-                bottom: -50px; /* Adjust spacing */
+                height: 40%; 
+                bottom: -50px; 
             }
 
             .image-grid {
-                padding: 40px; /* Reduce padding */
+                padding: 40px; 
                 gap: 5px;
             }
 
             .image {
-                height: 300px; /* Adjust height for smaller screens */
+                height: 300px; 
                 width: 100%;
             }
 
             .image.small {
-                height: 150px; /* Smaller height for small images */
+                height: 150px; 
                 margin-right: 20px;
             }
 
             .button, .buttonbook {
-                font-size: 10px; /* Smaller button font size */
-                padding: 3px 8px; /* Adjust padding */
+                font-size: 10px; 
+                padding: 3px 8px; 
             }
         }
 
@@ -355,8 +355,8 @@
             }
 
             .tourpackagestitle::after {
-                height: 20%; /* Reduce height on smaller screens */
-                bottom: -30px; /* Adjust spacing */
+                height: 20%; 
+                bottom: -30px; 
             }
 
             .image-grid {
@@ -419,7 +419,7 @@
         }        
         ?>
     </div>
-    <!-- Popup and overlay for images -->
+    
     <div class="overlay" onclick="closePopup()"></div>
 
     <div class="popup">
@@ -434,39 +434,39 @@
 
 
 <script>
-    // Initially hide the overlay and popup (done by default in CSS)
+    
     document.querySelector('.overlay').style.display = 'none';
     document.querySelector('.popup').style.display = 'none';
 
-    // Open popup and show overlay when triggered
+    
     function openPopup(imageSrc) {
         document.querySelector('.overlay').style.display = 'block';
         document.querySelector('.popup').style.display = 'block';
         document.getElementById('popup-img').src = imageSrc;
     }
 
-    // Close popup and hide overlay
+    
     function closePopup() {
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.popup').style.display = 'none';
     }
 
-    // Download the image from the popup
+    
     function downloadImage() {
-        const imageSrc = document.getElementById('popup-img').src; // Get the image URL
-        const link = document.createElement('a'); // Create a temporary <a> element
+        const imageSrc = document.getElementById('popup-img').src; 
+        const link = document.createElement('a'); 
         link.href = imageSrc;
-        link.download = imageSrc.split('/').pop(); // Set the download filename
-        link.click(); // Trigger the download
+        link.download = imageSrc.split('/').pop(); 
+        link.click(); 
     }
 
-    // Delay hiding overlay and popup after page load
+    
     window.addEventListener('load', function() {
-        // Delay hiding overlay and popup for a brief time to prevent early showing
+        
         setTimeout(function() {
             document.querySelector('.overlay').style.display = 'none';
             document.querySelector('.popup').style.display = 'none';
-        }, 200); // 200ms delay
+        }, 200); 
     });
 </script>
 

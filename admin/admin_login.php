@@ -1,30 +1,30 @@
 <?php
 session_start();
-require '../database/db.php'; // Include the database connection
+require '../database/db.php'; 
 
-// Initialize error message
+
 $errorMessage = '';
 
-// Handle form submission
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Prepare and bind the SQL statement
+   
     $stmt = $conn->prepare("SELECT id, password FROM admin_details WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
-    // Check if the admin exists
+    
     if ($stmt->num_rows > 0) {
         $stmt->bind_result($id, $store_password);
         $stmt->fetch();
 
-        // Verify password
+        
         if ($password== $store_password) {
             $_SESSION['admin_id'] = $id;
-            header("Location: admin_dashboard.php"); // Redirect to dashboard if login is successful
+            header("Location: admin_dashboard.php"); 
             exit();
         } else {
             $errorMessage = 'Incorrect password!';
@@ -46,22 +46,22 @@ $conn->close();
     <link rel="icon" type="image/png" sizes="380x380" href="../images/Logo.png">
     <title>Admin Login - John Travels LK</title>
     <style>
-        /* Background */
+        
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0; /* Remove any unwanted margins */
-            padding: 0; /* Remove unwanted padding */
-            background-image: url('../images/bannaer_21.jpg'); /* Background image path */
-            background-size: cover; /* Make the image cover the entire background */
-            background-position: 10% center; /* Center the image */
-            background-repeat: no-repeat; /* Prevent tiling */
+            margin: 0; 
+            padding: 0; 
+            background-image: url('../images/bannaer_21.jpg'); 
+            background-size: cover; 
+            background-position: 10% center; 
+            background-repeat: no-repeat; 
             font-family: Arial, sans-serif;
         }
 
-        /* Login container */
+        
         .login-container {
             background-color: #fff;
             padding: 30px;
@@ -72,7 +72,7 @@ $conn->close();
             text-align: center;
         }
 
-        /* Logo and title */
+       
         .login-container img {
             width: 150px;
             height: 50px;
@@ -83,7 +83,7 @@ $conn->close();
             margin: 10px 0;
         }
 
-        /* Input fields */
+        
         .input-field {
             width: 90%;
             padding: 10px;
@@ -93,7 +93,7 @@ $conn->close();
             font-size: 16px;
         }
 
-        /* Login button */
+        
         .login-btn {
             width: 95%;
             padding: 10px;
@@ -109,7 +109,7 @@ $conn->close();
             background-color: #0056b3;
         }
 
-        /* Forgot password link */
+        
         .forgot-password {
             color: #007bff;
             text-decoration: none;
@@ -120,7 +120,7 @@ $conn->close();
             text-decoration: underline;
         }
 
-        /* Error message */
+        
         .error-message {
             color: red;
             margin-top: 10px;

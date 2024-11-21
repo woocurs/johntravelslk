@@ -1,5 +1,5 @@
 <?php
-// Package data (same as before)
+
 $packages = [  
     [ 
         'title' => 'Kandy', 
@@ -107,14 +107,14 @@ $packages = [
     ]
 ];
 
-// Retrieve the location from the URL
+
 $location = isset($_GET['location']) ? $_GET['location'] : '';
 $image = isset($_GET['image']) ? htmlspecialchars($_GET['image']) : '';
 
-// Find the package that matches the location
+
 $package = null;
 foreach ($packages as $p) {
-    if (strcasecmp($p['title'], $location) === 0) { // Case-insensitive match
+    if (strcasecmp($p['title'], $location) === 0) { 
         $package = $p;
         break;
     }
@@ -159,8 +159,8 @@ foreach ($packages as $p) {
             margin-top: 20px;
             margin-left: 100px;
             overflow: hidden;
-            width: auto; /* Allow the box to take up full width in its container */
-            max-width: 100%; /* Prevent it from exceeding screen width */
+            width: auto; 
+            max-width: 100%; 
             min-height:300px;
             max-height:600px;
             box-sizing: border-box;
@@ -172,7 +172,7 @@ foreach ($packages as $p) {
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
-            overflow: hidden;  /* Ensures the floated image doesn't affect layout */
+            overflow: hidden;  
         }
 
         .package-details h3 {
@@ -242,10 +242,10 @@ foreach ($packages as $p) {
             margin-left:20px;
         }
         .package-image {
-            width: 100%; /* Ensures the image takes full width of its container */
-            height: auto; /* Maintains aspect ratio */
-            margin: 0 auto; /* Centers the image within its container */
-            display: block; /* Fixes any inline rendering issues */
+            width: 100%;
+            height: auto; 
+            margin: 0 auto; 
+            display: block; 
         }
     }
 

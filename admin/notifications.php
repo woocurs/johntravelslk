@@ -3,9 +3,9 @@
 <?php 
 
 session_start();
-require '../database/db.php'; // Include the database connection
+require '../database/db.php'; 
 
-// Functions for actions
+
 if (isset($_GET['action']) && isset($_GET['id'])) {
     $action = $_GET['action'];
     $id = $_GET['id'];
@@ -20,7 +20,7 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 }
 
 
-// Function to send SMS using Notify.lk API
+
 function sendSMS($id, $conn) {
     $sql = "SELECT phone, name FROM contact_us WHERE id='$id'";
     $result = $conn->query($sql);
@@ -29,19 +29,19 @@ function sendSMS($id, $conn) {
         $phone = $row['phone'];
         $customerName = $row['name'];
 
-        // Add country code if not present
-        $country_code = "94"; // Country code for Sri Lanka
+        
+        $country_code = "94"; 
         if (strpos($phone, $country_code) !== 0) {
-            $phone = $country_code . ltrim($phone, '0'); // Remove leading zero if present
+            $phone = $country_code . ltrim($phone, '0'); 
         }
 
         $api_url = "https://app.notify.lk/api/v1/send";
-        $api_key = "EbwoEq3OkOozTLm7qnAz"; // Replace with your Notify.lk API key
-        $sender_id = "28423"; // Replace with your sender ID
+        $api_key = "EbwoEq3OkOozTLm7qnAz"; 
+        $sender_id = "28423"; 
 
         $message = "Dear $customerName, Thank you for reaching out. We have received your message and will get back to you shortly. Best regards, Johnstravels lk";;
 
-        // Prepare data for POST request
+        
         $data = array(
             'user_id' => $sender_id,
             'api_key' => $api_key,
@@ -50,22 +50,22 @@ function sendSMS($id, $conn) {
             'sender_id' => 'NotifyDEMO'
         );
 
-        // Initialize cURL
+        
         $ch = curl_init($api_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
-        // Execute request and capture response
+        
         $response = curl_exec($ch);
-        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE); // Get HTTP status code
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
         curl_close($ch);
 
-        // Decode and log response for debugging
+        
         $result = json_decode($response, true);
         if (isset($result['status']) && $result['status'] == "success") {
             return "SMS sent successfully!";
         } else {
-            // Log both response and HTTP code
+            
             $error_message = isset($result['message']) ? $result['message'] : "Unknown error";
             return "Failed to send SMS. HTTP Code: $httpcode, Error: $error_message";
         }
@@ -73,7 +73,7 @@ function sendSMS($id, $conn) {
     return "No phone number found for this booking.";
 }
 
-// Function to send Email using mailto
+
 function sendEmail($id, $conn) {
     $sql = "SELECT email, name FROM contact_us WHERE id='$id'";
     $result = $conn->query($sql);
@@ -82,12 +82,12 @@ function sendEmail($id, $conn) {
         $email = $row['email'];
         $customerName = $row['name'];
         
-        // Prepare mailto link
+       
         $subject = urlencode("Booking Confirmation - John Travels");
         $body = urlencode("Dear $customerName,\n\nThank you for reaching out. We have received your message and will get back to you shortly.\n\nBest regards,\nJohnstravels lk");
         $headers = "From: noreply@johntravels.com";
 
-        // Open mailto link in a new tab
+        
         echo "<script>window.open('mailto:$email?subject=$subject&body=$body', '_blank');</script>";
         return "Email prompt opened in a new tab.";
     }
@@ -96,7 +96,7 @@ function sendEmail($id, $conn) {
 
 
 
-// Fetch notifications from contact_us table
+
 $sql = "SELECT id, name, phone, email, message FROM contact_us";
 $result = $conn->query($sql);
 ?>
@@ -108,40 +108,40 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications</title>
         <style>
-        /* Internal CSS styling */
+       
         
         html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow-y:auto; /* This prevents scrolling */
+    overflow-y:auto; 
 }
 
-/* Background setup */
+
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../images/bannaer_22.jpg'); /* Background image path */
-    background-size: cover; /* Make the image cover the entire screen */
-    background-position: center; /* Center the background image */
-    background-attachment: fixed; /* Make background fixed */
-    background-repeat: no-repeat; /* Prevent repeating the background image */
+    background-image: url('../images/bannaer_22.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    background-repeat: no-repeat; 
 }
 
-/* Container styling */
+
 .container {
     width: 100%;
             max-width: 900px;
-            background: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+            background: rgba(0, 0, 0, 0.8); 
             padding: 30px;
             border-radius: 8px;
             color: white;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             overflow-y: auto;
-            max-height: 90vh; /* Prevent overflow of content */
+            max-height: 90vh; 
 }
 
 .dashboard {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.7); 
     padding: 20px;
     border-radius: 8px;
 }
@@ -156,7 +156,7 @@ body {
     color: #cccccc;
 }
 
-/* Table styling */
+
 table {
     width: 100%;
     border-collapse: collapse;
