@@ -1,4 +1,4 @@
-/* General Styles */
+
 body, html {
 	
   
@@ -10,7 +10,7 @@ body, html {
 	
 }
 
-/*headerpart css start*/
+
 .top-bar {
     background-color: #4a4a4a; /* Light gray color */
     color: #fff;
@@ -80,9 +80,9 @@ body, html {
 .navbar .btn-login:hover {
     background-color: #e05555;
 }
-/*headerpart css end*/
 
-/* Carousel Container */
+
+
 .carousel {
     position: relative;
     height: 120vh;
@@ -90,7 +90,7 @@ body, html {
     overflow: hidden;
 }
 
-/* Slide Style */
+
 .slide {
     position: absolute;
     height: 100%;
@@ -105,7 +105,7 @@ body, html {
     opacity: 1;
 }
 
-/* Background Images for Each Slide */
+
 .slide:nth-child(1) {
     background-image: url('../images/slider-banner-1.jpg'); 
 }
@@ -114,7 +114,7 @@ body, html {
     background-image: url('../images/slider-banner-2.jpg'); 
 }
 
-/* Left and Right Content for Each Slide */
+
 .overlay {
     position: absolute;
     top: 0;
@@ -130,10 +130,10 @@ body, html {
     box-sizing: border-box;
 }
 
-/* Left Content */
+
 .left-content {
     max-width: 40%;
-    padding-left: 100px; /* Optional: add padding for alignment */
+    padding-left: 100px; 
     margin-top: -200px; 
 }
 
@@ -160,7 +160,7 @@ body, html {
     background-color: #ff6b6b;
 }
 
-/* Right Content */
+
 .right-content {
     max-width: 40%;
     padding-right: 100px; /* Optional: add padding for alignment */
@@ -207,7 +207,7 @@ body, html {
     transform: translateX(-50%);
 }
 
-/* Navigation Buttons */
+
 .scrollclick .prev,
 .scrollclick .next {
     cursor: pointer;
@@ -239,7 +239,7 @@ body, html {
     outline: none;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 1200px) {
     .left-content, .right-content {
         max-width: 70%;

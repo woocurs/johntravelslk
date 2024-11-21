@@ -73,7 +73,7 @@ $conn->close();
 	<link rel="stylesheet" href="styles/style.css">
     <style>
 	
-/* General Footer Styling */
+
 footer {
     background-color: #333;
     color: #fff;
@@ -98,7 +98,7 @@ footer a:hover {
     color: #fff;
 }
 
-/* Footer Section Layout */
+
 .footer-container {
     display: flex;
     flex-wrap: wrap;
@@ -112,7 +112,7 @@ footer a:hover {
     padding: 10px;
 }
 
-/* Contact Form Styling */
+
 .footer-section .contact-form {
     display: flex;
     flex-direction: column;
@@ -146,7 +146,7 @@ footer a:hover {
     background-color:#FE6161;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
@@ -156,7 +156,7 @@ footer a:hover {
     }
 }
 
-/* Bottom Footer Styling */
+
 .bottom-footer {
     border-top: 1px solid #444;
     padding-top: 10px;
