@@ -1,5 +1,5 @@
 <?php
-// Array containing image data
+
 $images = [
     ["src" => "images/destination_2.jpg", "alt" => "Lotus Tower", "caption" => "Lotus Tower"],
     ["src" => "images/destination_1.jpg", "alt" => "Queen's Hotel", "caption" => "Queen's Hotel"],
@@ -189,7 +189,6 @@ $images = [
     </div>
 </section>
 
-<!-- Fullscreen viewer -->
 <?php foreach ($images as $key => $image): ?>
     <div id="img<?php echo $key; ?>" class="fullscreen-viewer">
         <a href="#" class="close-viewer">×</a>

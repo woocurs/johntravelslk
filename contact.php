@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = htmlspecialchars($_POST['message']);
 
  
-    if (!empty($name) && !empty($mail) && !empty($message)) {
+    if (!empty($name) &&  !empty($phone) && !empty($mail) && !empty($message)) {
+		if (preg_match("/^\+\d{1,3}\d{10}$/", $phone)) {
         if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
           
             $stmt = $conn->prepare("INSERT INTO contact_us (name, email,phone, message) VALUES (?, ?,?, ?)");
@@ -43,6 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->close();
         } else {
             $errorMessage = "Invalid email address.";
+        }
+		
+		} else {
+            $errorMessage = "phone number must include country code and 10 digits.";
         }
     } else {
         $errorMessage = "All fields are required.";

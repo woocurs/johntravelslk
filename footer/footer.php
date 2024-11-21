@@ -17,8 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($name)) {
                 $err[] = "Name is required.";
             }
-            if (empty($phone) || !preg_match("/^(\+?\d{1,3})?\d{10}$/", $phone)) {
-                $err[] = "Phone number must be exactly 10 digits or include the country code (e.g., +94771234567 or 94771234567).";
+            if (empty($phone) || !preg_match("/^\+\d{1,3}\d{10}$/", $phone)) {
+                $err[] = "Phone number must include the country code and 10 digits  (e.g., +94771234567 or 94771234567).";
             }
             if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $err[] = "Valid email address is required.";
