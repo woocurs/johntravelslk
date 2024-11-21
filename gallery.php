@@ -75,7 +75,7 @@ $images = [
 		 
 
 
-        /* Gallery styling */
+       
         .gallery {
             padding: 20px;
             max-width: 1200px;
@@ -126,7 +126,7 @@ $images = [
     transform: scale(1.1);
 	
 }
-       /* Fullscreen viewer styling */
+       
 .fullscreen-viewer {
     position: fixed;
     top: 0;

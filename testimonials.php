@@ -33,7 +33,7 @@
     animation: fadeIn 1.2s ease-in-out;
 }
 
-/* Add fade-in animation for a smooth appearance */
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -45,7 +45,7 @@
     }
 }
 
-/* Optional hover effect for dynamic styling */
+
 .container:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 8px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1.02);
@@ -141,7 +141,7 @@
                 <p class="customer-name">- Priya D.</p>
                 <p class="rating">⭐⭐⭐⭐⭐</p>
             </div>
-            <!-- Add more testimonials as needed -->
+           
         </div>
     </div>
 </section>

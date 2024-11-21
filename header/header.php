@@ -1,5 +1,5 @@
 <?php
-// PHP variables for contact information
+
 $contact_number = "+94 76 245 0858";
 $email = "info.johntravels@gmail.com";
 $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
@@ -18,7 +18,7 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
 </head>
 <body>
 
-<!-- Top Bar with Contact Information and Social Media Icons -->
+
 <div class="top-bar">
     <div class="container-fluid">
         <div class="d-flex justify-content-between">
@@ -70,7 +70,7 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
     </div>
 </nav>
 
-<!-- JavaScript Libraries -->
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -78,9 +78,9 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
-            navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // Set the color and opacity
+            navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; 
         } else {
-            navbar.style.backgroundColor = 'transparent'; // Return to transparent
+            navbar.style.backgroundColor = 'transparent'; 
         }
     });
 </script>

@@ -1,14 +1,14 @@
 <?php include 'header/header.php'; ?>
 <?php 
-// Check if the necessary parameters are provided
+
 if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) {
     $location = htmlspecialchars($_GET['location']);
     $title = htmlspecialchars($_GET['title']);
     $image = htmlspecialchars($_GET['image']);
-    // Set a default size if not passed as a parameter
+  
     $size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : 'small';
 } else {
-    // Redirect to a default page or show an error if parameters are missing
+  
     header("Location: index.php");
     exit;
 }
@@ -20,7 +20,7 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?></title>
     <style>
-        /* Styles as you provided, fine-tuned */
+       
         body {
             font-family: Arial, sans-serif;
             background-color: #FFFDE7;
@@ -148,7 +148,7 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
             border: none;
             text-decoration: none;
          }
-         /* General responsive settings */
+         
          @media (max-width: 768px) {
         .tourpackagestitle h1 {
             font-size: 1.8em; 
@@ -259,7 +259,7 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
 
     <div class="hero-section">
         <div class="content">
-            <?php if ($size == 'small'): ?> <!-- Conditional logic for small size -->
+            <?php if ($size == 'small'): ?> 
                 <div class="foreground-image">
                     <img src="images/<?php echo $image; ?>" alt="<?php echo $title; ?>">
                 </div>
@@ -274,7 +274,7 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
 
                     </div>
                 </div>
-            <?php else: ?> <!-- Logic for large size -->
+            <?php else: ?> 
                 <div class="foreground-image1">
                     <img src="images/<?php echo $image; ?>" alt="<?php echo $title; ?>"style="width: 370px; height: 200px;">
                 </div>
@@ -289,7 +289,7 @@ if (isset($_GET['location']) && isset($_GET['title']) && isset($_GET['image'])) 
 
                     </div>
                 </div>
-            <?php endif; ?> <!-- End of conditional logic -->
+            <?php endif; ?> 
         </div>
     </div>
    

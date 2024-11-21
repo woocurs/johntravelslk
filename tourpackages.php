@@ -116,23 +116,23 @@
         }
 
         a {
-            text-decoration: none; /* Ensure no underline globally */
+            text-decoration: none; 
         }
 
-        /* Override hover effects on links */
+      
         a:hover, a:focus {
-            text-decoration: none !important; /* Ensure no underline on hover/focus */
+            text-decoration: none !important; 
         }
 
-        /* Links inside .card */
+       
         a.location, a.title {
-            text-decoration: none; /* Remove underline */
-            border-bottom: 2px solid transparent; /* Invisible border */
+            text-decoration: none; 
+            border-bottom: 2px solid transparent; 
         }
 
         a.location:hover, a.title:hover,
         a.location:focus, a.title:focus {
-            border-bottom: 2px solid #009688; /* Custom hover effect without underline */
+            border-bottom: 2px solid #009688; 
         }
 
         .button {
@@ -173,35 +173,35 @@
             transform: scale(1.05);
         }
 
-       /* Responsive Styles */
+      
        @media (max-width: 768px) {
             .tourpackagestitle {
-                font-size: 2em; /* Reduce font size on small screens */
+                font-size: 2em; 
                 min-height: 40vh;
             }
             .tourpackagestitle::after {
-                height: 40%; /* Reduce height on smaller screens */
-                bottom: -50px; /* Adjust spacing */
+                height: 40%; 
+                bottom: -50px; 
             }
 
             .image-grid {
-                padding: 40px; /* Reduce padding */
+                padding: 40px; 
                 gap: 5px;
             }
 
             .image {
-                height: 300px; /* Adjust height for smaller screens */
+                height: 300px; 
                 width: 100%;
             }
 
             .image.small {
-                height: 150px; /* Smaller height for small images */
+                height: 150px; 
                 margin-right: 20px;
             }
 
             .button, .buttonbook {
-                font-size: 10px; /* Smaller button font size */
-                padding: 3px 8px; /* Adjust padding */
+                font-size: 10px; 
+                padding: 3px 8px; 
             }
         }
 
@@ -213,8 +213,8 @@
             }
 
             .tourpackagestitle::after {
-                height: 20%; /* Reduce height on smaller screens */
-                bottom: -30px; /* Adjust spacing */
+                height: 20%; 
+                bottom: -30px; 
             }
 
             .image-grid {

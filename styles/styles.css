@@ -1,4 +1,4 @@
-/* General Styles */
+
 body, html {
     margin: 0;
     padding: 0;
@@ -8,9 +8,9 @@ body, html {
     overflow-x: hidden;
 }
 
-/*headerpart css start*/
+
 .top-bar {
-    background-color: #4a4a4a; /* Light gray color */
+    background-color: #4a4a4a; 
     color: #fff;
     padding: 5px 20px;
     font-size: 14px;
@@ -20,6 +20,7 @@ body, html {
 .top-bar .contact-info1 span {
     margin-right: 15px;
 }
+
 
 .top-bar .social-icons a {
     color: #fff;
@@ -42,7 +43,7 @@ body, html {
     font-weight: bold;
     font-size: 24px;
     color: #fff;
-    padding-left: 20px; /* Push brand logo to the side */
+    padding-left: 20px; 
 }
 
 .navbar .navbar-brand img {
@@ -65,15 +66,15 @@ body, html {
     border: none;
     padding: 8px 16px;
     transition: background-color 0.3s;
-    margin-right: 20px; /* Push Login button to the side */
+    margin-right: 20px; 
 }
 
 .navbar .btn-login:hover {
     background-color: #e05555;
 }
-/*headerpart css end*/
 
-/* Carousel Container */
+
+
 .carousel {
     position: relative;
     height: 120vh;
@@ -81,7 +82,7 @@ body, html {
     overflow: hidden;
 }
 
-/* Slide Style */
+
 .slide {
     position: absolute;
     height: 100%;
@@ -96,7 +97,7 @@ body, html {
     opacity: 1;
 }
 
-/* Background Images for Each Slide */
+
 .slide:nth-child(1) {
     background-image: url('../images/slider-banner-1.jpg'); 
 }
@@ -105,26 +106,26 @@ body, html {
     background-image: url('../images/slider-banner-2.jpg'); 
 }
 
-/* Left and Right Content for Each Slide */
+
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent */
+    background-color: rgba(0, 0, 0, 0.5); 
     color: white;
     display: flex;
-    justify-content: space-between; /* Space out left and right content */
+    justify-content: space-between; 
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
-    pointer-events: auto; /* Allow interaction with children */
+    pointer-events: auto; 
 }
 .left-content {
     max-width: 40%;
-    padding-left: 100px; /* Optional: add padding for alignment */
-    margin-top: -200px; /* Remove negative margin */
+    padding-left: 100px; 
+    margin-top: -200px; 
 }
 
 .left-content h1 {
@@ -148,18 +149,18 @@ body, html {
     transition: background-color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
     position: relative;
-    z-index: 10; /* Ensure button is on top */
+    z-index: 10; 
 }
 
 .left-content .button:hover {
-    background-color: #ff6b6b; /* Slight color change on hover */
-    transform: scale(0.55); /* Subtle zoom effect */
+    background-color: #ff6b6b; 
+    transform: scale(0.55); 
 }
 
-/* Right Content */
+
 .right-content {
     max-width: 40%;
-    padding-right: 100px; /* Optional: add padding for alignment */
+    padding-right: 100px; 
     text-align: left;
     margin-top: 190px; 
 }
@@ -203,7 +204,7 @@ body, html {
     transform: translateX(-50%);
 }
 
-/* Navigation Buttons */
+
 .scrollclick .prev,
 .scrollclick .next {
     cursor: pointer;
@@ -235,7 +236,7 @@ body, html {
     outline: none;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 1200px) {
     .left-content, .right-content {
         max-width: 70%;
@@ -346,9 +347,9 @@ body, html {
     }
 
     .left-content .button {
-        font-size: 1.0em; /* Reduced font size */
-        padding: 8px 15px; /* Reduced padding */
-        margin-bottom: 15px; /* Adjusted spacing */
+        font-size: 1.0em; 
+        padding: 8px 15px; 
+        margin-bottom: 15px; 
         margin-top: 15px;
         border-radius: 5px;
     }

@@ -20,10 +20,7 @@ function changeSlide(n) {
     showSlide(slideIndex);
 }
 
-// Initialize the carousel with the first slide
+
 showSlide(slideIndex);
 
-// Auto-change slides every 5 seconds
-//setInterval(() => {
-    //changeSlide(1);
-//}, 5000);
+
