@@ -1,3 +1,4 @@
+<?php include 'header/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
     <link rel="stylesheet" href="styles/css/bootstrap.min.css">
 </head>
 <body>
-    <?php include 'header/header.php'; ?>
+
     <section class="inner-banner-wrap">
         <div class="inner-banner-container" style="background-image: url(images/inner-banner-new.jpg);">
             <div class="container">

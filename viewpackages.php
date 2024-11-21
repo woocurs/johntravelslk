@@ -31,7 +31,7 @@ $packages = [
         'title' => 'Batticaloa', 
         'days' => 2, 
         'places' => [ 
-            'Maritime Museum', 'National Museum Clock Tower Galle', 'Secret Beach', 'Thalpe Beach', 'Koggalle Lake' 
+            'Pasikudah Beach', 'Oluvil Lighthouse', 'Kinniya Bridge', 'Gal Oya National Park', 'Batticaloa Lagoon' 
         ], 
         'package_includes' => [ 
             'Up and Down', 'Tickets', 'Videos', 'Excepts – Ride', 'Tour Guide' 
@@ -42,7 +42,7 @@ $packages = [
     ], 
     [ 
         'title' => 'Nuwara Eliya', 
-        'days' => 1, 
+        'days' => 2, 
         'places' => [ 
             'Post Office', 'Gregory Park', 'World End', 'Deer' 
         ], 
@@ -120,7 +120,7 @@ foreach ($packages as $p) {
     }
 }
 ?>
-
+<?php include 'header/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -252,7 +252,7 @@ foreach ($packages as $p) {
     </style>
 </head>
 <body>
-<?php include 'header/header.php'; ?>
+    
     <?php if ($package): ?>
         <div class="package-header">
             <h1><?php echo $package['title']; ?> Tour Package</h1>
@@ -265,9 +265,10 @@ foreach ($packages as $p) {
             </div>
             <div class="col-md-6">
                 <div class="package-details">
-                    <p><strong>Duration:</strong> <?php echo $package['days']; ?> days</p>
+                    <p><strong>Duration:</strong> <?php echo $package['days']; ?> day</p>
                     <p><strong>Price:</strong> <?php echo $package['price']; ?></p>
-                    <p><strong>Phone:</strong> <?php echo $package['phone']; ?></p>
+                    <p><a href="tel:<?php echo htmlspecialchars($package['phone']); ?>" style="text-decoration: none; color: inherit;"><strong>Phone:</strong> <span style="color: lightblue;"><?php echo htmlspecialchars($package['phone']); ?></span>
+                    </a></p>
 
                     <h3>Places to Visit:</h3>
                     <ul>

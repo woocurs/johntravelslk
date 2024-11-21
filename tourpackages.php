@@ -1,3 +1,4 @@
+<?php include 'header/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -376,8 +377,7 @@
     </style>
 </head>
 <body>
-    <?php include 'header/header.php'; ?>
-
+    
     <div class="tourpackagestitle">
         <h1>Tour Packages</h1>
     </div>
