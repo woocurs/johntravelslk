@@ -1,189 +1,178 @@
-.inner-banner-container{
-    height: 80vh;
-    background-size: cover;
-    width: 100%;
-    
+.inner-banner-container {
+  height: 80vh;
+  background-size: cover;
+  width: 100%;
 }
 
-.heading{
-    padding-top: 100px;
-    font-size: 60px;
-    color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
+.heading {
+  padding-top: 100px;
+  font-size: 60px;
+  color: rgb(16, 16, 74);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
 }
-.inner-banner-container img{
-    width: 100%;
-    padding-top: 180px;
-    border-radius: 0px;
-    height: 60vh;
-    padding-bottom: 40px;
-    
-}
-
-.dash-style{
-    color: red;
-    padding-top: 20px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
-
+.inner-banner-container img {
+  width: 100%;
+  padding-top: 180px;
+  border-radius: 0px;
+  height: 60vh;
+  padding-bottom: 40px;
 }
 
-.row h2,h3{
-    color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
-}
-.row p{
-    color: black;
-}
-.vacancy-content{
-    box-sizing: border-box;
-    border: 1px solid aliceblue;
-    padding: 10px;
-    margin: 25px;
-    box-shadow: inset 0px 4px 8px;
-}
-.vacancy-content h5{
-    color: red;
+.dash-style {
+  color: red;
+  padding-top: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
 }
 
-
-.apply-now-btn{
-    font-size: 15px;
-    color: aliceblue;
-    padding: 5px 25px;
-    background-color: #009688;
+.row h2,
+h3 {
+  color: rgb(16, 16, 74);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
+}
+.row p {
+  color: black;
+}
+.vacancy-content {
+  box-sizing: border-box;
+  border: 1px solid aliceblue;
+  padding: 10px;
+  margin: 25px;
+  box-shadow: inset 0px 4px 8px;
+}
+.vacancy-content h5 {
+  color: red;
 }
 
-.apply-now-btn:hover{
-    background-color: white;
-    color: black;
+.apply-now-btn {
+  font-size: 15px;
+  color: aliceblue;
+  padding: 5px 25px;
+  background-color: #009688;
 }
 
-.vacancy-form img{
-    width: 100%;
-
-    margin-left: 50px;
-    border: 5px solid;
+.apply-now-btn:hover {
+  background-color: white;
+  color: black;
 }
 
-.about-service-icon img{
-    width: 100px;
-    background-color: rgb(7, 144, 203);
-    
+.vacancy-form img {
+  width: 100%;
 
+  margin-left: 50px;
+  border: 5px solid;
 }
 
-.about-service{
-
-    align-content: center;
-    text-align: center;
-
-    
+.about-service-icon img {
+  width: 100px;
+  background-color: rgb(7, 144, 203);
 }
 
-/* Media Queries for Responsive Design */
+.about-service {
+  align-content: center;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
-    .container{
-        padding: 10px;
-    }
+  .container {
+    padding: 10px;
+  }
 
-    h2 {
-        font-size: 1.5rem;
-    }
+  h2 {
+    font-size: 1.5rem;
+  }
 
-    .form-group label {
-        font-size: 1rem;
-    }
+  .form-group label {
+    font-size: 1rem;
+  }
 
-    .submit-btn,
-    .reset-btn {
-        padding: 12px 0;
-        font-size: 0.9rem;
-    }
+  .submit-btn,
+  .reset-btn {
+    padding: 12px 0;
+    font-size: 0.9rem;
+  }
 
-    .popup-message {
-        max-width: 90%;
-    }
+  .popup-message {
+    max-width: 90%;
+  }
 }
 
 @media (max-width: 480px) {
-    h2 {
-        font-size: 1.2rem;
-    }
+  h2 {
+    font-size: 1.2rem;
+  }
 
-    .form-control,
-    input[type="text"],
-    input[type="number"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="file"],
-    textarea,
-    select {
-        font-size: 0.9rem;
-    }
+  .form-control,
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="file"],
+  textarea,
+  select {
+    font-size: 0.9rem;
+  }
 
-    .submit-btn,
-    .reset-btn {
-        padding: 10px;
-        font-size: 0.8rem;
-    }
+  .submit-btn,
+  .reset-btn {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
 
-    .popup-message button {
-        padding: 8px 12px;
-        font-size: 0.8rem;
-    }
+  .popup-message button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .inner-banner-container {
-        height: 50vh; 
-        background-size: contain; 
-    }
+  .inner-banner-container {
+    height: 50vh;
+    background-size: contain;
+  }
 
-    .inner-banner-container img {
-        padding-top: 150px; 
-    }
+  .inner-banner-container img {
+    padding-top: 150px;
+  }
 
-    .container.heading {
-        padding-top: 50px; 
-        font-size: 30px; 
-    }
+  .container.heading {
+    padding-top: 50px;
+    font-size: 30px;
+  }
 
-    .dash-style {
-        padding-top: 10px; 
-    }
+  .dash-style {
+    padding-top: 10px;
+  }
 
-    .row h2,
-    .row h3 {
-        font-size: 20px; 
-    }
+  .row h2,
+  .row h3 {
+    font-size: 20px;
+  }
 
-    .vacancy-content {
-        padding: 5px; 
-        margin: 10px; 
-        box-shadow: inset 0px 2px 4px;
-    }
+  .vacancy-content {
+    padding: 5px;
+    margin: 10px;
+    box-shadow: inset 0px 2px 4px;
+  }
 
-    .apply-now-btn {
-        font-size: 12px; 
-        padding: 3px 15px; 
-    }
+  .apply-now-btn {
+    font-size: 12px;
+    padding: 3px 15px;
+  }
 
-    .vacancy-form img {
-        margin-left: 0; 
-        width: 100%; 
-        border-width: 2px; 
-    }
+  .vacancy-form img {
+    margin-left: 0;
+    width: 100%;
+    border-width: 2px;
+  }
 
-    .about-service-icon img {
-        width: 60px; 
-    }
+  .about-service-icon img {
+    width: 60px;
+  }
 
-    .about-service {
-        text-align: center; 
-    }
+  .about-service {
+    text-align: center;
+  }
 }
-
- 

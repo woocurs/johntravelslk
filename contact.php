@@ -1,52 +1,51 @@
-
 <?php
 
- include ('database/db.php');
+include('database/db.php');
 
-$adminEmail = "info.johntravels@gmail.com"; 
+$adminEmail = "info.johntravels@gmail.com";
 $subject = "New Contact Us Message";
 
-$name = $mail = $phone =$message = "";
+$name = $mail = $phone = $message = "";
 $successMessage = $errorMessage = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name']);
     $mail = htmlspecialchars($_POST['mail']);
-	 $phone = htmlspecialchars($_POST['phone']);
+    $phone = htmlspecialchars($_POST['phone']);
     $message = htmlspecialchars($_POST['message']);
 
- 
-    if (!empty($name) &&  !empty($phone) && !empty($mail) && !empty($message)) {
-		if (preg_match("/^\+\d{1,3}\d{10}$/", $phone)) {
-        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-          
-            $stmt = $conn->prepare("INSERT INTO contact_us (name, email,phone, message) VALUES (?, ?,?, ?)");
-            $stmt->bind_param("ssss", $name, $mail, $phone,$message);
 
-            if ($stmt->execute()) {
-				$emailBody = "You have received a new message from the Contact Us form:\n\n";
-				$emailBody .= "Name: $name\n";
-				$emailBody .= "Email: $mail\n";
-				$emailBody .= "Phone: $phone\n";
-				$emailBody .= "Message:\n$message\n\n";
-				$emailBody .= "This email was sent from the Contact Us form on John Travels LK.";
-				if (mail($adminEmail, $subject, $emailBody, "From: $mail")) {
+    if (!empty($name) && !empty($phone) && !empty($mail) && !empty($message)) {
+        if (preg_match("/^\+\d{1,3}\d{10}$/", $phone)) {
+            if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
 
-                $successMessage = "Thank you! Your message has been successfully sent.";
-                $name = $mail = $message = ""; 
-				
+                $stmt = $conn->prepare("INSERT INTO contact_us (name, email,phone, message) VALUES (?, ?,?, ?)");
+                $stmt->bind_param("ssss", $name, $mail, $phone, $message);
+
+                if ($stmt->execute()) {
+                    $emailBody = "You have received a new message from the Contact Us form:\n\n";
+                    $emailBody .= "Name: $name\n";
+                    $emailBody .= "Email: $mail\n";
+                    $emailBody .= "Phone: $phone\n";
+                    $emailBody .= "Message:\n$message\n\n";
+                    $emailBody .= "This email was sent from the Contact Us form on John Travels LK.";
+                    if (mail($adminEmail, $subject, $emailBody, "From: $mail")) {
+
+                        $successMessage = "Thank you! Your message has been successfully sent.";
+                        $name = $mail = $message = "";
+
+                    } else {
+                        $errorMessage = "Sorry, your message could not be sent. Please try again later.";
+                    }
+                }
+
+                $stmt->close();
             } else {
-                $errorMessage = "Sorry, your message could not be sent. Please try again later.";
-			}
+                $errorMessage = "Invalid email address.";
             }
 
-            $stmt->close();
         } else {
-            $errorMessage = "Invalid email address.";
-        }
-		
-		} else {
             $errorMessage = "phone number must include country code and 10 digits.";
         }
     } else {
@@ -60,13 +59,13 @@ $conn->close();
 include "header/header.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - John Travels LK</title>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="styles/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -74,7 +73,8 @@ include "header/header.php"; ?>
             padding: 0;
             background-color: #f8f9fa;
         }
-		    .contacttitle {
+
+        .contacttitle {
             margin-top: 0;
             text-align: center;
             min-height: 50vh;
@@ -87,8 +87,8 @@ include "header/header.php"; ?>
             font-weight: bold;
             background-color: #f3f3f3;
         }
-        
-	
+
+
         .contacttitle::before {
             content: "";
             position: absolute;
@@ -96,50 +96,53 @@ include "header/header.php"; ?>
             left: 0;
             right: 0;
             bottom: 0;
-			 height: 80%;
-            background: 
-            linear-gradient(to right, rgba(0, 0, 0, 3.9), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 3.9) 100%), 
-            url('images/img26.jpg') no-repeat center center / cover;
-            z-index:2;
+            height: 80%;
+            background:
+                linear-gradient(to right, rgba(0, 0, 0, 3.9), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 3.9) 100%),
+                url('images/img26.jpg') no-repeat center center / cover;
+            z-index: 2;
         }
-		   .contacttitle::after {
+
+        .contacttitle::after {
             content: "";
             position: absolute;
             bottom: -60px;
             left: 0;
             right: 0;
-            height: 50%; 
-            background: url('images/banner-pattern.png') no-repeat center top; 
+            height: 50%;
+            background: url('images/banner-pattern.png') no-repeat center top;
             background-size: contain;
             opacity: 1;
             z-index: 2;
         }
-		   .contacttitle h1 {
+
+        .contacttitle h1 {
             position: relative;
-            z-index: 3; 
+            z-index: 3;
             font-family: 'poppins', sans-serif;
-			text-align:center;
+            text-align: center;
         }
-		
-		.contact-info1 p{
-			padding-top:20px;
-			
-		}
-		
-		.contact-info1 a{
-			text-decoration: none;
-			color: #333;
-			
-		}
-		
-		.contact-info1 a:hover{
-			text-decoration: none;
-			color: #0056b3;
-		}
-		.contact-info1 i:hover{
-			text-decoration: none;
-			color: #0056b3;
-		}
+
+        .contact-info1 p {
+            padding-top: 20px;
+
+        }
+
+        .contact-info1 a {
+            text-decoration: none;
+            color: #333;
+
+        }
+
+        .contact-info1 a:hover {
+            text-decoration: none;
+            color: #0056b3;
+        }
+
+        .contact-info1 i:hover {
+            text-decoration: none;
+            color: #0056b3;
+        }
 
 
         .container {
@@ -148,10 +151,11 @@ include "header/header.php"; ?>
             padding: 20px;
             background: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-			width:100%;
+            width: 100%;
         }
 
-        .form-section, .details-section {
+        .form-section,
+        .details-section {
             display: inline-block;
             vertical-align: top;
             width: 48%;
@@ -172,7 +176,8 @@ include "header/header.php"; ?>
             margin-bottom: 5px;
         }
 
-        input, textarea {
+        input,
+        textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -218,181 +223,184 @@ include "header/header.php"; ?>
             height: 300px;
             border: 0;
         }
-		.contact-container {
-    display: flex; 
-    justify-content: space-between; 
-    gap: 20px; 
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
 
-.form-section,
-.details-section {
-    flex: 1;
-    min-width: 300px; 
-}
-
-h2 {
-    color:darkblue;
-	font-weight:bold;
-    margin-bottom: 15px;
-	font-size:1rem;
-}
-
-p {
-    line-height: 1.6;
-}
-
-form {
-    margin-top: 20px;
-}
-
-input,
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color:  #FE6161;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-.social-media h2 {
-	margin-top:30px;
-  
-	
-}
-.social-media a {
-	margin-top:30px;
-    display: inline-block;
-    margin-right: 10px;
-	color:  #0056b3;
-	
-}
-
-.social-media i {
-	width:100%;
-	height:100%;
-    width: 50px;
-    height:50px;
-    vertical-align: middle;
-	color:  #FE6161;
-}
-.social-media i:hover {
-  
-	color:  #0056b3;
-}
-
-@media (max-width: 768px) {
-    .contact-container {
-        flex-direction: column; 
-		
-    }
-	 
-        .contacttitle h1 {
-            font-size: 1.8em; 
-            padding: 0 10px; 
-            margin-left: 20px;
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
-}
-@media (max-width: 480px) {
-    
-    .details{
-        margin-top:-150px;
-    }
-    .contacttitle h1 {
-        font-size: 1.5em; 
-        padding: 0 10px; 
-        margin-left:20px;
-    }
-}
+
+        .form-section,
+        .details-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        h2 {
+            color: darkblue;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #FE6161;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .social-media h2 {
+            margin-top: 30px;
+
+
+        }
+
+        .social-media a {
+            margin-top: 30px;
+            display: inline-block;
+            margin-right: 10px;
+            color: #0056b3;
+
+        }
+
+        .social-media i {
+            width: 100%;
+            height: 100%;
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            color: #FE6161;
+        }
+
+        .social-media i:hover {
+
+            color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+
+            }
+
+            .contacttitle h1 {
+                font-size: 1.8em;
+                padding: 0 10px;
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .details {
+                margin-top: -150px;
+            }
+
+            .contacttitle h1 {
+                font-size: 1.5em;
+                padding: 0 10px;
+                margin-left: 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
- <div class="contacttitle">
-     <h1> Contact Us  </h1>
+    <div class="contacttitle">
+        <h1> Contact Us </h1>
     </div>
-<div class="container">
-    <?php if ($successMessage): ?>
-        <div class="message success"><?php echo $successMessage; ?></div>
-    <?php elseif ($errorMessage): ?>
-        <div class="message error"><?php echo $errorMessage; ?></div>
-    <?php endif; ?>
-<div class="contact-container">
-    <div class="form-section">
-        <h2>Contact Us to Get More Info</h2>
-        <form method="POST" action="contact.php">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
+    <div class="container">
+        <?php if ($successMessage): ?>
+            <div class="message success"><?php echo $successMessage; ?></div>
+        <?php elseif ($errorMessage): ?>
+            <div class="message error"><?php echo $errorMessage; ?></div>
+        <?php endif; ?>
+        <div class="contact-container">
+            <div class="form-section">
+                <h2>Contact Us to Get More Info</h2>
+                <form method="POST" action="contact.php">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
 
-            <label for="email">Your Email</label>
-            <input type="email" id="mail" name="mail" value="<?php echo $mail; ?>" required>
-			
-			<label for="email">Your Phone Number</label>
-            <input type="tel" id="phone" name="phone" value="<?php echo $phone; ?>" required>
+                    <label for="email">Your Email</label>
+                    <input type="email" id="mail" name="mail" value="<?php echo $mail; ?>" required>
 
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" rows="4" required><?php echo $message; ?></textarea>
+                    <label for="email">Your Phone Number</label>
+                    <input type="tel" id="phone" name="phone" value="<?php echo $phone; ?>" required>
 
-            <button type="submit">Submit Message</button>
-        </form>
-    </div>
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="4" required><?php echo $message; ?></textarea>
 
-    <div class="details-section">
-        <h2>Need Help? Contact Us!</h2>
- <div class="contact-info1">
+                    <button type="submit">Submit Message</button>
+                </form>
+            </div>
 
-        <p>
-            <strong>Location Address:</strong><br>
-            <span> <a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank" ><i class="fas fa-map-marker-alt"></i>
-          # 377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka </a></span>
-        </p>
-        <p>
-            <strong>Email Address:</strong><br>
-              <span>
-                    <a href="mailto:info.johntravels@gmail.com"><i class="fas fa-envelope"></i> info.johntravels@gmail.com</a></span>
-        </p>
-        <p>
-            <strong>Phone Number:</strong><br>
-                      <span><a href="tel:+94 76 245 0858" ><i class="fas fa-phone-alt"></i> 
-       +94 76 245 0858 </a></span>
-        </p>
-		</div>
-        <div class="social-media">
-            <h2>Follow us on social media:</h2>
-            <a href="https://www.facebook.com/johntravelslk"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.youtube.com/@johntravelslk"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.instagram.com/john_travels_lk/"><i class="fab fa-instagram"></i></a>
-                <a href="https://api.whatsapp.com/message/JHT7ZVJLWFUUP1?autoload=1&app_absent=0"><i class="fab fa-whatsapp"></i></a>
-           
+            <div class="details-section">
+                <h2>Need Help? Contact Us!</h2>
+                <div class="contact-info1">
+
+                    <p>
+                        <strong>Location Address:</strong><br>
+                        <span> <a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"><i
+                                    class="fas fa-map-marker-alt"></i>
+                                # 377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka </a></span>
+                    </p>
+                    <p>
+                        <strong>Email Address:</strong><br>
+                        <span>
+                            <a href="mailto:info.johntravels@gmail.com"><i class="fas fa-envelope"></i>
+                                info.johntravels@gmail.com</a></span>
+                    </p>
+                    <p>
+                        <strong>Phone Number:</strong><br>
+                        <span><a href="tel:+94 76 245 0858"><i class="fas fa-phone-alt"></i>
+                                +94 76 245 0858 </a></span>
+                    </p>
+                </div>
+                <div class="social-media">
+                    <h2>Follow us on social media:</h2>
+                    <a href="https://www.facebook.com/johntravelslk"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@johntravelslk"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/john_travels_lk/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/message/JHT7ZVJLWFUUP1?autoload=1&app_absent=0"><i
+                            class="fab fa-whatsapp"></i></a>
+
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
-<div class="container map-container">
-    <iframe
-        src="https://maps.google.com/maps?q=woocurs,vavuniya+srilanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
-        allowfullscreen="" loading="lazy"></iframe>
-</div>
+    <div class="container map-container">
+        <iframe src="https://maps.google.com/maps?q=woocurs,vavuniya+srilanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen="" loading="lazy"></iframe>
+    </div>
 
-	<?php include "footer/footer.php" ?>
+    <?php include "footer/footer.php" ?>
 </body>
+
 </html>
-
-
-     
-
-              
-
-               

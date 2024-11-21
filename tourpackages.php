@@ -1,6 +1,7 @@
 <?php include 'header/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,18 +45,18 @@
             left: 0;
             right: 0;
             height: 50%;
-            background: url('images/banner-pattern.png') no-repeat center top; 
+            background: url('images/banner-pattern.png') no-repeat center top;
             background-size: contain;
-            opacity: 1; 
+            opacity: 1;
             z-index: 2;
         }
 
         .tourpackagestitle h1 {
             position: relative;
-            z-index: 3; 
-            font-family: 'Playfair Display', Georgia, serif; 
-            font-size: 2.3em; 
-            margin-top: -50px; 
+            z-index: 3;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.3em;
+            margin-top: -50px;
         }
 
         .image-grid {
@@ -118,29 +119,33 @@
         }
 
         a {
-            text-decoration: none; /* Ensure no underline globally */
+            text-decoration: none;
         }
 
-        /* Override hover effects on links */
-        a:hover, a:focus {
-            text-decoration: none !important; /* Ensure no underline on hover/focus */
+
+        a:hover,
+        a:focus {
+            text-decoration: none !important;
         }
 
-        /* Links inside .card */
-        a.location, a.title {
-            text-decoration: none; /* Remove underline */
-            border-bottom: 2px solid transparent; /* Invisible border */
+
+        a.location,
+        a.title {
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
         }
 
-        a.location:hover, a.title:hover,
-        a.location:focus, a.title:focus {
-            border-bottom: 2px solid #009688; /* Custom hover effect without underline */
+        a.location:hover,
+        a.title:hover,
+        a.location:focus,
+        a.title:focus {
+            border-bottom: 2px solid #009688;
         }
 
         .button {
             background-color: #009688;
             color: white;
-            border: none !important; 
+            border: none !important;
             outline: none !important;
             padding: 5px 10px;
             border-radius: 5px;
@@ -157,7 +162,7 @@
         .buttonbook {
             background-color: #009688;
             color: white;
-            border: none !important; 
+            border: none !important;
             outline: none !important;
             padding: 5px 10px;
             border-radius: 5px;
@@ -170,8 +175,8 @@
 
         .buttonbook:hover {
             background-color: #00796b;
-            color: #fff; 
-            border: none; 
+            color: #fff;
+            border: none;
             transform: scale(1.05);
         }
 
@@ -212,7 +217,7 @@
             background-color: #00796b;
             transform: scale(1.05);
         }
-        /* Popup styles */
+
         .popup {
             display: none;
             position: fixed;
@@ -233,9 +238,9 @@
         }
 
         .popup img {
-            width: auto !important; /* Maintain the natural width of the image */
-            max-width: 100% !important; /* Restrict to the popup container if needed */
-            height: 550px !important; 
+            width: auto !important;
+            max-width: 100% !important;
+            height: 550px !important;
         }
 
         .popup-content {
@@ -247,10 +252,11 @@
             max-width: 100%;
             border-radius: 5px;
         }
+
         .close {
             cursor: pointer;
         }
-        
+
 
         .download-btn {
             position: absolute;
@@ -277,7 +283,7 @@
 
         .download-btn:hover {
             background-color: #00796b;
-            border: none !important; 
+            border: none !important;
             outline: none !important;
             transform: scale(1.05);
         }
@@ -295,55 +301,60 @@
             align-items: center;
             z-index: 9;
         }
-        .overlay, .popup {
+
+        .overlay,
+        .popup {
             transition: none !important;
         }
-                .details .icon {
-            position: absolute; /* Position it absolutely within the .details container */
-            right: 10px; /* Adjust this value for the desired spacing from the right edge */
-            top: 10px; /* Adjust this value for spacing from the top */
-            font-size: 18px; /* Adjust the icon size */
-            color: white; /* Adjust the color if needed */
-            cursor: pointer; /* Change the cursor to pointer for a clickable feel */
-            z-index: 4; /* Ensure it appears above other content */
+
+        .details .icon {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            z-index: 4;
             transition: transform 0.2s ease, color 0.3s ease;
         }
 
         .details .icon:hover {
-            transform: scale(1.2); /* Slightly enlarge the icon on hover */
-            color: #009688; /* Change the color on hover for a better visual effect */
+            transform: scale(1.2);
+            color: #009688;
         }
-        
 
-       /* Responsive Styles */
-       @media (max-width: 768px) {
+
+
+        @media (max-width: 768px) {
             .tourpackagestitle {
-                font-size: 2em; /* Reduce font size on small screens */
+                font-size: 2em;
                 min-height: 40vh;
             }
+
             .tourpackagestitle::after {
-                height: 40%; /* Reduce height on smaller screens */
-                bottom: -50px; /* Adjust spacing */
+                height: 40%;
+                bottom: -50px;
             }
 
             .image-grid {
-                padding: 40px; /* Reduce padding */
+                padding: 40px;
                 gap: 5px;
             }
 
             .image {
-                height: 300px; /* Adjust height for smaller screens */
+                height: 300px;
                 width: 100%;
             }
 
             .image.small {
-                height: 150px; /* Smaller height for small images */
+                height: 150px;
                 margin-right: 20px;
             }
 
-            .button, .buttonbook {
-                font-size: 10px; /* Smaller button font size */
-                padding: 3px 8px; /* Adjust padding */
+            .button,
+            .buttonbook {
+                font-size: 10px;
+                padding: 3px 8px;
             }
         }
 
@@ -355,8 +366,8 @@
             }
 
             .tourpackagestitle::after {
-                height: 20%; /* Reduce height on smaller screens */
-                bottom: -30px; /* Adjust spacing */
+                height: 20%;
+                bottom: -30px;
             }
 
             .image-grid {
@@ -372,16 +383,16 @@
             .image.small {
                 height: 190px;
             }
-        } 
-        
+        }
     </style>
 </head>
+
 <body>
-    
+
     <div class="tourpackagestitle">
         <h1>Tour Packages</h1>
     </div>
-    
+
     <div class="image-grid">
         <?php
         $images = [
@@ -396,13 +407,18 @@
         ];
 
         $popupImages = [
-            "Kandy.png", "Galle_Matara_Colombo.png", "batticaloa.png", 
-            "NuwaraEliya.png",  "Badulla.png", "Matale.png",
-            "Trincomalee.png", "Anuradhapura_Dambulla_Sigiriya.png"
+            "Kandy.png",
+            "Galle_Matara_Colombo.png",
+            "batticaloa.png",
+            "NuwaraEliya.png",
+            "Badulla.png",
+            "Matale.png",
+            "Trincomalee.png",
+            "Anuradhapura_Dambulla_Sigiriya.png"
         ];
-        
+
         $counter = 0;
-            
+
         foreach ($images as $img) {
             echo '<div class="card">';
             echo '<a href="viewpackages.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
@@ -416,60 +432,61 @@
             echo '<i class="fas fa-expand icon" onclick="event.stopPropagation(); openPopup(\'images/' . $popupImages[$counter] . '\')"></i>';
             echo '</div></a></div>';
             $counter++;
-        }        
+        }
         ?>
     </div>
-    <!-- Popup and overlay for images -->
+
     <div class="overlay" onclick="closePopup()"></div>
 
     <div class="popup">
-    <span class="close" onclick="closePopup()">×</span>
-    <div class="popup-content">
-        <img id="popup-img" src="" alt="Image">
-        <button class="download-btn" onclick="downloadImage()">
-            <i class="fas fa-download"></i> Download
-        </button>
+        <span class="close" onclick="closePopup()">×</span>
+        <div class="popup-content">
+            <img id="popup-img" src="" alt="Image">
+            <button class="download-btn" onclick="downloadImage()">
+                <i class="fas fa-download"></i> Download
+            </button>
+        </div>
     </div>
-</div>
 
 
-<script>
-    // Initially hide the overlay and popup (done by default in CSS)
-    document.querySelector('.overlay').style.display = 'none';
-    document.querySelector('.popup').style.display = 'none';
+    <script>
 
-    // Open popup and show overlay when triggered
-    function openPopup(imageSrc) {
-        document.querySelector('.overlay').style.display = 'block';
-        document.querySelector('.popup').style.display = 'block';
-        document.getElementById('popup-img').src = imageSrc;
-    }
-
-    // Close popup and hide overlay
-    function closePopup() {
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.popup').style.display = 'none';
-    }
 
-    // Download the image from the popup
-    function downloadImage() {
-        const imageSrc = document.getElementById('popup-img').src; // Get the image URL
-        const link = document.createElement('a'); // Create a temporary <a> element
-        link.href = imageSrc;
-        link.download = imageSrc.split('/').pop(); // Set the download filename
-        link.click(); // Trigger the download
-    }
 
-    // Delay hiding overlay and popup after page load
-    window.addEventListener('load', function() {
-        // Delay hiding overlay and popup for a brief time to prevent early showing
-        setTimeout(function() {
+        function openPopup(imageSrc) {
+            document.querySelector('.overlay').style.display = 'block';
+            document.querySelector('.popup').style.display = 'block';
+            document.getElementById('popup-img').src = imageSrc;
+        }
+
+
+        function closePopup() {
             document.querySelector('.overlay').style.display = 'none';
             document.querySelector('.popup').style.display = 'none';
-        }, 200); // 200ms delay
-    });
-</script>
+        }
+
+
+        function downloadImage() {
+            const imageSrc = document.getElementById('popup-img').src;
+            const link = document.createElement('a');
+            link.href = imageSrc;
+            link.download = imageSrc.split('/').pop();
+            link.click();
+        }
+
+
+        window.addEventListener('load', function () {
+
+            setTimeout(function () {
+                document.querySelector('.overlay').style.display = 'none';
+                document.querySelector('.popup').style.display = 'none';
+            }, 200);
+        });
+    </script>
 
     <?php include 'footer/footer.php'; ?>
 </body>
+
 </html>

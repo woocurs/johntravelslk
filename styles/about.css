@@ -1,342 +1,321 @@
-/* General Styles */
 .inner-banner-container {
-    height: 80vh;
-    background-size: cover;
-    width: 100%;
+  height: 80vh;
+  background-size: cover;
+  width: 100%;
 }
 
 .heading {
-    padding-top: 100px;
-    font-size: 60px;
-    color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
+  padding-top: 100px;
+  font-size: 60px;
+  color: rgb(16, 16, 74);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
 }
 
 .inner-banner-container img {
-    width: 100%;
-    padding-top: 180px;
-    border-radius: 0px;
-    height: 60vh;
-    padding-bottom: 20px;
-
-
+  width: 100%;
+  padding-top: 180px;
+  border-radius: 0px;
+  height: 60vh;
+  padding-bottom: 20px;
 }
 
 .dash-style {
-    color: red;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
+  color: red;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
 }
 
 .section-heading {
-    padding: 50px;
-    color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
+  padding: 50px;
+  color: rgb(16, 16, 74);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
 }
 
-.head-1{
-    color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
+.head-1 {
+  color: rgb(16, 16, 74);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
 }
 
-.about-service-icon img{
-    background-color: rgb(7, 144, 203);
-    width: 100px;
-    text-align: center;
-
-
+.about-service-icon img {
+  background-color: rgb(7, 144, 203);
+  width: 100px;
+  text-align: center;
 }
-.about-service{
-    text-align: center;
-    align-content: center;
+.about-service {
+  text-align: center;
+  align-content: center;
 }
-
 
 .row {
-    justify-content: space-between;
-    padding-bottom: 20px;
+  justify-content: space-between;
+  padding-bottom: 20px;
 }
 
-.about-client-icon img{
-    width: 100%;
-    
-    
+.about-client-icon img {
+  width: 100%;
 }
 
 .fullwidth-callback {
-    background-repeat: no-repeat;
-    margin-top: auto;
-    background-size: cover;
-    height: 80vh;
+  background-repeat: no-repeat;
+  margin-top: auto;
+  background-size: cover;
+  height: 80vh;
 }
 
 .callback-counter-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
-.counter-head{
-    color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold; 
+.counter-head {
+  color: rgb(16, 16, 74);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
 }
 
 .counter-item {
-    flex: 1;
-    min-width: 200px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: #FE6161;
-    box-shadow: rgb(16, 16, 74);
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #fe6161;
+  box-shadow: rgb(16, 16, 74);
 }
 
-
-
 .counter-no {
-    color: aliceblue;
-    font-size: 25px;
+  color: aliceblue;
+  font-size: 25px;
 }
 
 .counter-content {
-    color: aliceblue;
-    font-size: 25px;
+  color: aliceblue;
+  font-size: 25px;
 }
 
-/* Responsive Styles */
 @media (max-width: 1200px) {
-    .heading {
-        font-size: 50px;
-    }
+  .heading {
+    font-size: 50px;
+  }
 
-    .inner-banner-container {
-        height: 70vh;
-    }
+  .inner-banner-container {
+    height: 70vh;
+  }
 
-    .section-heading {
-        padding: 40px;
-    }
+  .section-heading {
+    padding: 40px;
+  }
 
-    .row {
-        padding-bottom: 15px;
-    }
+  .row {
+    padding-bottom: 15px;
+  }
 
-    .callback-counter-wrap {
-        gap: 20px;
-    }
+  .callback-counter-wrap {
+    gap: 20px;
+  }
 
-    .counter-item {
-        min-width: 180px;
-    }
+  .counter-item {
+    min-width: 180px;
+  }
 
-    .counter-no {
-        font-size: 22px;
-    }
+  .counter-no {
+    font-size: 22px;
+  }
 
-    .counter-content {
-        font-size: 22px;
-    }
+  .counter-content {
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 992px) {
-    .heading {
-        font-size: 40px;
-    }
+  .heading {
+    font-size: 40px;
+  }
 
-    .inner-banner-container {
-        height: 60vh;
-    }
+  .inner-banner-container {
+    height: 60vh;
+  }
 
-    .section-heading {
-        padding: 30px;
-    }
+  .section-heading {
+    padding: 30px;
+  }
 
-    .col-lg-6 h2 {
-        font-size: 24px;
-    }
+  .col-lg-6 h2 {
+    font-size: 24px;
+  }
 
-    .about-service-icon {
-        width: 100px;
-    }
+  .about-service-icon {
+    width: 100px;
+  }
 
-    .bg-video {
-        height: 65vh;
-    }
+  .bg-video {
+    height: 65vh;
+  }
 
-    .callback-counter-wrap {
-        gap: 15px;
-    }
+  .callback-counter-wrap {
+    gap: 15px;
+  }
 
-    .counter-item {
-        min-width: 160px;
-    }
+  .counter-item {
+    min-width: 160px;
+  }
 
-    .counter-no {
-        font-size: 20px;
-    }
+  .counter-no {
+    font-size: 20px;
+  }
 
-    .counter-content {
-        font-size: 20px;
-    }
+  .counter-content {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 768px) {
-    .heading {
-        font-size: 30px;
-        padding-top: 50px;
-    }
+  .heading {
+    font-size: 30px;
+    padding-top: 50px;
+  }
 
-    .inner-banner-container {
-        height: 50vh;
-    }
+  .inner-banner-container {
+    height: 50vh;
+  }
 
-    .section-heading {
-        padding: 20px;
-    }
+  .section-heading {
+    padding: 20px;
+  }
 
-    .col-lg-6 h2 {
-        font-size: 20px;
-    }
+  .col-lg-6 h2 {
+    font-size: 20px;
+  }
 
-    .about-service-icon {
-        width: 100px;
-    }
+  .about-service-icon {
+    width: 100px;
+  }
 
-    .bg-video {
-        height: 50vh;
-    }
+  .bg-video {
+    height: 50vh;
+  }
 
-    .callback-counter-wrap {
-        gap: 10px;
-        flex-direction: column;
-    }
+  .callback-counter-wrap {
+    gap: 10px;
+    flex-direction: column;
+  }
 
-    .counter-item {
-        min-width: 140px;
-        margin-bottom: 10px;
-    }
+  .counter-item {
+    min-width: 140px;
+    margin-bottom: 10px;
+  }
 
-    .counter-no {
-        font-size: 18px;
-    }
+  .counter-no {
+    font-size: 18px;
+  }
 
-    .counter-content {
-        font-size: 18px;
-    }
+  .counter-content {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 576px) {
-    .heading {
-        font-size: 25px;
-        padding-top: 30px;
-    }
+  .heading {
+    font-size: 25px;
+    padding-top: 30px;
+  }
 
-    .inner-banner-container {
-        height: 40vh;
-    }
+  .inner-banner-container {
+    height: 40vh;
+  }
 
-    .section-heading {
-        padding: 15px;
-    }
+  .section-heading {
+    padding: 15px;
+  }
 
-    .col-lg-6 h2 {
-        font-size: 18px;
-    }
+  .col-lg-6 h2 {
+    font-size: 18px;
+  }
 
-    .about-service-icon {
-        width: 100px;
-    }
+  .about-service-icon {
+    width: 100px;
+  }
 
-    .bg-video {
-        height: 40vh;
-    }
+  .bg-video {
+    height: 40vh;
+  }
 
-    .callback-counter-wrap {
-        gap: 5px;
-        flex-direction: column;
-    }
+  .callback-counter-wrap {
+    gap: 5px;
+    flex-direction: column;
+  }
 
-    .counter-item {
-        min-width: 120px;
-        margin-bottom: 5px;
-    }
+  .counter-item {
+    min-width: 120px;
+    margin-bottom: 5px;
+  }
 
-    .counter-no {
-        font-size: 16px;
-    }
+  .counter-no {
+    font-size: 16px;
+  }
 
-    .counter-content {
-        font-size: 16px;
-    }
+  .counter-content {
+    font-size: 16px;
+  }
 }
 
-
 @media (max-width: 480px) {
-  
-    .inner-banner-container {
-        height: 35vh; 
-    }
+  .inner-banner-container {
+    height: 35vh;
+  }
 
-    .heading {
-        font-size: 20px; 
-        padding-top: 20px; 
-    }
+  .heading {
+    font-size: 20px;
+    padding-top: 20px;
+  }
 
-    .inner-banner-container img {
-        padding-top: 240px;
-    }
+  .inner-banner-container img {
+    padding-top: 240px;
+  }
 
-   
-    .section-heading {
-        padding: 10px; 
-    }
+  .section-heading {
+    padding: 10px;
+  }
 
-    
-    .col-lg-6 h2 {
-        font-size: 16px; 
-    }
+  .col-lg-6 h2 {
+    font-size: 16px;
+  }
 
-   
-    .about-service {
-        text-align: center;
-        
-    }
+  .about-service {
+    text-align: center;
+  }
 
-    
-    .bg-video {
-        height: 35vh; 
-    }
+  .bg-video {
+    height: 35vh;
+  }
 
-   
-    .row {
-        flex-direction: column; 
-        padding-bottom: 15px;
-    }
+  .row {
+    flex-direction: column;
+    padding-bottom: 15px;
+  }
 
-   
-    .fullwidth-callback {
-        height: 60vh; 
-    }
+  .fullwidth-callback {
+    height: 60vh;
+  }
 
- 
-    .callback-counter-wrap {
-        gap: 10px; 
-        flex-direction: column;
-    }
+  .callback-counter-wrap {
+    gap: 10px;
+    flex-direction: column;
+  }
 
-    .counter-item {
-        min-width: 100%;
-        margin-bottom: 10px; 
-    }
+  .counter-item {
+    min-width: 100%;
+    margin-bottom: 10px;
+  }
 
-    .counter-no {
-        font-size: 18px; 
-    }
+  .counter-no {
+    font-size: 18px;
+  }
 
-    .counter-content {
-        font-size: 18px; 
-    }
+  .counter-content {
+    font-size: 18px;
+  }
 }

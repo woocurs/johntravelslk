@@ -1,13 +1,15 @@
 <?php include 'header/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="stylesheet" href="styles/about.css">
-    <link rel="stylesheet" href="styles/css/bootstrap.min.css">
+
 </head>
+
 <body>
 
     <section class="inner-banner-wrap">
@@ -30,7 +32,7 @@
                                 <h2>OUR TRAVEL HAS BEENPRESENT BEST IN THE MARKET</h2>
                             </div>
                         </div>
-                        <div class="col-lg-6"> </div> 
+                        <div class="col-lg-6"> </div>
                     </div>
                 </div>
                 <div class="about-service-container">
@@ -64,7 +66,8 @@
                                 </div>
                                 <div class="about-service-content">
                                     <h4>PERSONAL SERVICE</h4>
-                                    <p>Contact us at whenever of the day and you're certain to be directed by our agreeable travel.</p>
+                                    <p>Contact us at whenever of the day and you're certain to be directed by our
+                                        agreeable travel.</p>
                                 </div>
                             </div>
                         </div>
@@ -72,12 +75,12 @@
                 </div>
             </div>
         </div>
-        <div class="video-container"> 
+        <div class="video-container">
             <center>
-            <iframe width="840px" height="400px" src="https://www.youtube.com/embed/LZHedtWPzbs?si=z6o-Ku1WZMJqlwKM" 
-                title="YouTube video player" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="840px" height="400px" src="https://www.youtube.com/embed/LZHedtWPzbs?si=z6o-Ku1WZMJqlwKM"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </center>
         </div>
         <div class="client-section">
@@ -133,16 +136,16 @@
         <div class="fullwidth-callback" style="background-image: url(images/img26.jpg);">
             <div class="container">
                 <div class="section-heading section-heading-white text-center">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <h5 class="dash-style">CALLBACK FOR MORE</h5>
-                        <div class="counter-head">
-                            <h2>GO TRAVEL.DISCOVER. REMEMBER US!!</h2>
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <h5 class="dash-style">CALLBACK FOR MORE</h5>
+                            <div class="counter-head">
+                                <h2>GO TRAVEL.DISCOVER. REMEMBER US!!</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
-                </div>
-            
+
                 <div class="callback-counter-wrap">
                     <div class="counter-item">
                         <div class="counter-item-inner">
@@ -151,10 +154,10 @@
                             </div>
                             <div class="counter-content">
                                 <span class="counter-no">
-                                <span class="counter">500</span>+
+                                    <span class="counter">500</span>+
                                 </span>
                                 <span class="counter-text">
-                                Satisfied Clients
+                                    Satisfied Clients
                                 </span>
                             </div>
                         </div>
@@ -166,10 +169,10 @@
                             </div>
                             <div class="counter-content">
                                 <span class="counter-no">
-                                <span class="counter">2</span>+
+                                    <span class="counter">2</span>+
                                 </span>
                                 <span class="counter-text">
-                                Awards Achieve
+                                    Awards Achieve
                                 </span>
                             </div>
                         </div>
@@ -181,10 +184,10 @@
                             </div>
                             <div class="counter-content">
                                 <span class="counter-no">
-                                <span class="counter">1000</span>+
+                                    <span class="counter">1000</span>+
                                 </span>
                                 <span class="counter-text">
-                                Active Members
+                                    Active Members
                                 </span>
                             </div>
                         </div>
@@ -196,10 +199,10 @@
                             </div>
                             <div class="counter-content">
                                 <span class="counter-no">
-                                <span class="counter">30</span>+
+                                    <span class="counter">30</span>+
                                 </span>
                                 <span class="counter-text">
-                                Tour Destnation
+                                    Tour Destnation
                                 </span>
                             </div>
                         </div>
@@ -208,8 +211,7 @@
             </div>
         </div>
     </section>
-<?php include 'footer/footer.php'; ?>
+    <?php include 'footer/footer.php'; ?>
 </body>
+
 </html>
-
-

@@ -1,33 +1,33 @@
 <?php
 include "database/db.php";
 
-	
+
 $selectedLocation = isset($_GET['location']) ? $_GET['location'] : '';
 $selectedPackage = isset($_GET['title']) ? $_GET['title'] : '';
 $selectedImage = isset($_GET['image']) ? $_GET['image'] : '';
- $size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : 'large'; 
+$size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : 'large';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['form_type'])) {
         $form_type = $_POST['form_type'];
         if ($form_type === 'booking') {
-            $errors = [];  
-			
-          $name = htmlspecialchars($_POST['name']);
-        $address = htmlspecialchars($_POST['address']);
-        $nic = htmlspecialchars($_POST['nic']);
-        $email = htmlspecialchars($_POST['email']);
-        $mobile = htmlspecialchars($_POST['mobile']);
-        $whatsapp = htmlspecialchars($_POST['whatsapp']);
-        $gender = htmlspecialchars($_POST['gender']);
-        $dob = $_POST['dob'];
-        $payment = htmlspecialchars($_POST['payment']);
-        $reference_number = htmlspecialchars($_POST['reference_number']);
-        $remark = htmlspecialchars($_POST['remark']);
-        $tour_package = htmlspecialchars($_POST['tour_package']);
-        $terms = isset($_POST['terms']) ? 1 : 0;
-		
-		
-            
+            $errors = [];
+
+            $name = htmlspecialchars($_POST['name']);
+            $address = htmlspecialchars($_POST['address']);
+            $nic = htmlspecialchars($_POST['nic']);
+            $email = htmlspecialchars($_POST['email']);
+            $mobile = htmlspecialchars($_POST['mobile']);
+            $whatsapp = htmlspecialchars($_POST['whatsapp']);
+            $gender = htmlspecialchars($_POST['gender']);
+            $dob = $_POST['dob'];
+            $payment = htmlspecialchars($_POST['payment']);
+            $reference_number = htmlspecialchars($_POST['reference_number']);
+            $remark = htmlspecialchars($_POST['remark']);
+            $tour_package = htmlspecialchars($_POST['tour_package']);
+            $terms = isset($_POST['terms']) ? 1 : 0;
+
+
+
             $photo = $_FILES['photo'];
             $upload_dir = 'uploads/photos/';
             $photo_path = '';
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (in_array(strtolower($file_extension), $allowed_extensions) && $photo['size'] < 5000000) {
                     $photo_path = $upload_dir . basename($photo['name']);
                     if (!file_exists($upload_dir)) {
-                        mkdir($upload_dir, 0777, true); 
+                        mkdir($upload_dir, 0777, true);
                     }
                     move_uploaded_file($photo['tmp_name'], $photo_path);
                 } else {
@@ -46,36 +46,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 $errors[] = "File upload error.";
             }
-			
-            
-            if (empty($name)) $errors[] = "Name is required.";
-        if (!preg_match("/^[0-9]{9}[vV]$|^[0-9]{12}$/", $nic)) $errors[] = "NIC must be valid (9 digits + 'V' or 12 digits).";
-        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid email is required.";
-        if (empty($mobile) || !preg_match("/^\+\d{1,3}\d{10}$/", $mobile)) $errors[] = "Mobile number must include country code and 10 digits.";
-        if (!empty($whatsapp) && !preg_match("/^\+\d{1,3}\d{10}$/", $whatsapp)) $errors[] = "WhatsApp number must include country code and 10 digits.";
-        if (empty($gender)) $errors[] = "Gender is required.";
-		 if (empty($payment)) $errors[] = "Payment is required.";
-        if (empty($dob)) $errors[] = "DOB is required.";
-        if (empty($tour_package)) $errors[] = "Tour package is required.";
-        if (!$terms) $errors[] = "You must agree to the terms and conditions.";
-     
-        $refered_by = '';
-        if (!empty($reference_number)) {
-            $stmt = $conn->prepare("SELECT name FROM tour_bookings WHERE reference_number = ? AND tour_package = ?");
-            $stmt->bind_param("ss", $reference_number, $tour_package);
-            $stmt->execute();
-            $stmt->bind_result($refered_by);
-            $stmt->fetch();
-            $stmt->close();
-            if (empty($refered_by)) $errors[] = "Invalid reference number.";
-        }
-		
-		
-		
+
+
+            if (empty($name))
+                $errors[] = "Name is required.";
+            if (!preg_match("/^[0-9]{9}[vV]$|^[0-9]{12}$/", $nic))
+                $errors[] = "NIC must be valid (9 digits + 'V' or 12 digits).";
+            if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL))
+                $errors[] = "Valid email is required.";
+            if (empty($mobile) || !preg_match("/^\+\d{1,3}\d{10}$/", $mobile))
+                $errors[] = "Mobile number must include country code and 10 digits.";
+            if (!empty($whatsapp) && !preg_match("/^\+\d{1,3}\d{10}$/", $whatsapp))
+                $errors[] = "WhatsApp number must include country code and 10 digits.";
+            if (empty($gender))
+                $errors[] = "Gender is required.";
+            if (empty($payment))
+                $errors[] = "Payment is required.";
+            if (empty($dob))
+                $errors[] = "DOB is required.";
+            if (empty($tour_package))
+                $errors[] = "Tour package is required.";
+            if (!$terms)
+                $errors[] = "You must agree to the terms and conditions.";
+
+            $refered_by = '';
+            if (!empty($reference_number)) {
+                $stmt = $conn->prepare("SELECT name FROM tour_bookings WHERE reference_number = ? AND tour_package = ?");
+                $stmt->bind_param("ss", $reference_number, $tour_package);
+                $stmt->execute();
+                $stmt->bind_result($refered_by);
+                $stmt->fetch();
+                $stmt->close();
+                if (empty($refered_by))
+                    $errors[] = "Invalid reference number.";
+            }
+
+
+
             if (empty($errors)) {
-				
-                storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
-					
+
+                storeBooking($conn, $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob, $tour_package, $reference_number, $payment, $remark, $photo_path, $terms);
+
                 $headers = "From: noreply@johntravels.com";
                 $confirmation_subject = "Booking Received";
                 $confirmation_body = "Dear $name,\n\nThank you for booking with us.\n\nTour Package: $tour_package\nBooking Payment: $payment\n\nRegards,\nJohn Travels LK";
@@ -85,12 +96,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 } else {
                     $customer_msg = "Booking successful, but failed to send confirmation email.";
                 }
-				$headers = "From: $email";
-                $admin_email = "info.johntravels@gmail.com"; 
+                $headers = "From: $email";
+                $admin_email = "info.johntravels@gmail.com";
                 $admin_subject = "New Tour Booking Notification";
                 $admin_body = "A new booking has been made with the following details:\n\nName: $name\nAddress: $address\nNIC: $nic\nEmail: $email\nPhone: $mobile\nWhatsapp: $whatsapp\nGender: $gender\nDOB: $dob\nTour Package: $tour_package\nPayment: $payment\nReference_Number: $reference_number\nremark: $remark\nPhoto_path: $photo_path\n\nRegards,\nJohn Travels Booking System";
 
-                if (!mail($admin_email, $admin_subject, $admin_body,$headers)) {
+                if (!mail($admin_email, $admin_subject, $admin_body, $headers)) {
                     $customer_msg .= " However, we could not notify the admin.";
                 }
 
@@ -103,12 +114,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-function storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms) {
-	
-     
-	$stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, phone, whatsapp, email, gender, dob,tour_package, reference_number, payment, remark, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?, ?)");
-   
-	$stmt->bind_param("sssssssdssssss", $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
+function storeBooking($conn, $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob, $tour_package, $reference_number, $payment, $remark, $photo_path, $terms)
+{
+
+
+    $stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, phone, whatsapp, email, gender, dob,tour_package, reference_number, payment, remark, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?, ?)");
+
+    $stmt->bind_param("sssssssdssssss", $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob, $tour_package, $reference_number, $payment, $remark, $photo_path, $terms);
     $stmt->execute();
     $stmt->close();
     $conn->close();
@@ -116,30 +128,29 @@ function storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $
 ?>
 
 <script>
-function showPopup(title, message) {
-    document.getElementById('popup-title').innerText = title;
-    document.getElementById('popup-message').innerHTML = message;
-    document.getElementById('popup').style.display = 'flex';
-}
+    function showPopup(title, message) {
+        document.getElementById('popup-title').innerText = title;
+        document.getElementById('popup-message').innerHTML = message;
+        document.getElementById('popup').style.display = 'flex';
+    }
 
-function closePopup() {
-    document.getElementById('popup').style.display = 'none';
-}
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
 </script>
 
 
-<?php include('header/booking_header.php');?>
+<?php include('header/booking_header.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour Booking</title>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-	
-	 
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 
         body {
@@ -175,7 +186,7 @@ function closePopup() {
 
         h2 {
             text-align: center;
-             color:  #00b4d8;
+            color: #00b4d8;
             margin-bottom: 20px;
             font-size: 24px;
         }
@@ -183,7 +194,8 @@ function closePopup() {
         .form-group {
             margin-bottom: 15px;
         }
-		.required::after {
+
+        .required::after {
             content: " *";
             color: red;
         }
@@ -194,8 +206,8 @@ function closePopup() {
             margin-bottom: 5px;
             color: #333;
         }
-		
-		.required::after {
+
+        .required::after {
             content: " *";
             color: red;
         }
@@ -220,50 +232,50 @@ function closePopup() {
             resize: none;
         }
 
-        
-		
-	.radio-group {
-    display: flex;
-    align-items: center;
-    gap:20px; 
-}
+
+
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
 
 
-.radio-group form-label {
-    position: relative;
-    padding-left: 25px; 
-    cursor: pointer;
-}
+        .radio-group form-label {
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+        }
 
-.radio-group form-label::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 2px;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #007BFF; 
-    border-radius: 50%;
-    background: white;
-    box-sizing: border-box;
-}
+        .radio-group form-label::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #007BFF;
+            border-radius: 50%;
+            background: white;
+            box-sizing: border-box;
+        }
 
-.radio-group input[type="radio"]:checked +form-label::before {
-    background: #007BFF;
-    border: 2px solid #007BFF;
-}
+        .radio-group input[type="radio"]:checked+form-label::before {
+            background: #007BFF;
+            border: 2px solid #007BFF;
+        }
 
-.radio-group input[type="radio"]:checked +form-label::after {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 6px;
-    width: 10px;
-    height: 10px;
-    background: white;
-    border-radius: 50%;
-}
+        .radio-group input[type="radio"]:checked+form-label::after {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+        }
 
         .submit-btn,
         .reset-btn {
@@ -288,12 +300,12 @@ function closePopup() {
         }
 
         .reset-btn {
-            background-color:#708090; 
+            background-color: #708090;
             color: #fff;
         }
 
         .reset-btn:hover {
-            background-color:#696969; 
+            background-color: #696969;
         }
 
         input::placeholder,
@@ -383,45 +395,47 @@ function closePopup() {
             }
         }
     </style>
-   </head>
+</head>
+
 <body>
 
-<div class="space">
- </div>
+    <div class="space">
+    </div>
 
-<div class="popup" id="popup">
-    <div class="popup-message">
-        <h4 id="popup-title"></h4>
-        <p id="popup-message"></p>
-        <button onclick="closePopup()">Ok</button>
-    </div>
-</div>
+    <div class="popup" id="popup">
+        <div class="popup-message">
+            <h4 id="popup-title"></h4>
+            <p id="popup-message"></p>
+            <button onclick="closePopup()">Ok</button>
+
+        </div>
+    </div>
     <div class="container">
         <img src="images/logo.png" alt="Johntravels" class="logo">
         <h2 class="text-center">Book Your Tour</h2>
-		     <?php if (!empty($errors)): ?>
-                <div class="error">
-                    <ul>
-                        <?php foreach ($errors as $error): ?>
-                            <li><?php echo $error; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
-   
-                    <form action=" " method="POST" enctype="multipart/form-data">
+        <?php if (!empty($errors)): ?>
+            <div class="error">
+                <ul>
+                    <?php foreach ($errors as $error): ?>
+                        <li><?php echo $error; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+
+        <form action=" " method="POST" enctype="multipart/form-data">
             <input type="hidden" name="form_type" value="booking">
             <div class="form-group">
                 <label for="tour_package">Your Tour Package</label>
-                <input type="text" name="tour_package" id="tour_package" class="form-control" 
-                       value="<?php echo $selectedPackage . '-' . $selectedLocation; ?>" readonly>
+                <input type="text" name="tour_package" id="tour_package" class="form-control"
+                    value="<?php echo $selectedPackage . '-' . $selectedLocation; ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="name" class="required">Name with Initials</label>
                 <input type="text" name="name" id="name" required>
             </div>
-           
-		    <div class="form-group">
+
+            <div class="form-group">
                 <label class="required">Address</label>
                 <input type="text" name="address" required>
             </div>
@@ -442,25 +456,28 @@ function closePopup() {
                 <input type="tel" name="whatsapp">
             </div>
             <div class="form-group">
-			 <div class="radio-group">
-                <label class="required">Gender</label>
-                <input type="radio" name="gender" value="Male" required> <div class="form-label">Male</div>
-                <input type="radio" name="gender" value="Female" required> <div class="form-label">Female</div>
-            </div></div>
+                <div class="radio-group">
+                    <label class="required">Gender</label>
+                    <input type="radio" name="gender" value="Male" required>
+                    <div class="form-label">Male</div>
+                    <input type="radio" name="gender" value="Female" required>
+                    <div class="form-label">Female</div>
+                </div>
+            </div>
             <div class="form-group">
                 <label class="required">Date of Birth</label>
                 <input type="date" name="dob" required>
             </div>
-          <div class="form-group">
-    <label class="required" for="payment">Payment Option</label>
-    <select name="payment" id="payment" required>
-        <option value="" disabled selected>Please select</option>
-		
-        <option value="Advance">Advance</option>
-        <option value="Half Payment">Half Payment</option>
-        <option value="Full Payment">Full Payment</option>
-    </select>
-</div>
+            <div class="form-group">
+                <label class="required" for="payment">Payment Option</label>
+                <select name="payment" id="payment" required>
+                    <option value="" disabled selected>Please select</option>
+
+                    <option value="Advance">Advance</option>
+                    <option value="Half Payment">Half Payment</option>
+                    <option value="Full Payment">Full Payment</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label>Reference Number</label>
                 <input type="text" name="reference_number" placeholder="Referred by:">
@@ -473,25 +490,27 @@ function closePopup() {
                 <label class="required">Upload ID Photo</label>
                 <input type="file" name="photo" id="photo" required>
             </div>
-		   
+
             <div class="form-group">
-			
-               <input type="checkbox" name="terms" id="terms" <?php echo isset($terms) && $terms ? 'checked' : ''; ?> required> I agree to the <a href="#">terms and conditions</a>
+
+                <input type="checkbox" name="terms" id="terms" <?php echo isset($terms) && $terms ? 'checked' : ''; ?>
+                    required> I agree to the <a href="#">terms and conditions</a>
             </div>
-			 <div class="form-group">
-            <button type="submit" class="submit-btn">Book Now</button>
-			</div>
-			 <div class="form-group">
-            <button type="reset" class="reset-btn btn-secondary">Clear</button>
-			</div>
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Book Now</button>
+            </div>
+            <div class="form-group">
+                <button type="reset" class="reset-btn btn-secondary">Clear</button>
+            </div>
         </form>
     </div>
-	
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	
-	
-	 <?php include('footer/footer.php'); ?>
+
+
+    <?php include('footer/footer.php'); ?>
 </body>
+
 </html>
