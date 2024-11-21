@@ -471,7 +471,7 @@ function closePopup() {
             </div>
             <div class="form-group">
                 <label class="required">Upload ID Photo</label>
-                <input type="file" name="photo" accept="image/*" capture="camera" required>
+                <input type="file" name="photo" id="photo" required>
             </div>
 		   
             <div class="form-group">
