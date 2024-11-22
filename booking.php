@@ -400,7 +400,7 @@ function closePopup() {
     </div>
 </div>
     <div class="container">
-        <img src="images/Logo.png" alt="Johntravels" class="logo">
+        <img src="images/logo.png" alt="Johntravels" class="logo">
         <h2 class="text-center">Book Your Tour</h2>
 		     <?php if (!empty($errors)): ?>
                 <div class="error">
@@ -417,7 +417,7 @@ function closePopup() {
             <div class="form-group">
                 <label for="tour_package">Your Tour Package</label>
                 <input type="text" name="tour_package" id="tour_package" class="form-control" 
-                       value="<?php echo $selectedPackage . '-' . $selectedLocation; ?>" readonly>
+                       value="<?php echo $selectedPackage ; ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="name" class="required">Name with Initials</label>

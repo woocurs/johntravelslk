@@ -142,16 +142,18 @@ foreach ($packages as $p) {
             color: white;
             padding: 50px 0;
             text-align: center;
-            font-size: 30px; 
+            font-size: 30px;
         }
 
         .package-header h1 {
             font-size: 2.5em;
             margin: 0;
         }
-        .row{
+
+        .row {
             margin-top: -50px;
         }
+
         .package-image {
             padding: 20px;
             border-radius: 10px;
@@ -159,10 +161,10 @@ foreach ($packages as $p) {
             margin-top: 20px;
             margin-left: 100px;
             overflow: hidden;
-            width: auto; 
-            max-width: 100%; 
-            min-height:300px;
-            max-height:600px;
+            width: auto;
+            max-width: 100%;
+            min-height: 300px;
+            max-height: 600px;
             box-sizing: border-box;
         }
 
@@ -172,7 +174,8 @@ foreach ($packages as $p) {
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
-            overflow: hidden;  
+            overflow: hidden;
+
         }
 
         .package-details h3 {
@@ -214,7 +217,7 @@ foreach ($packages as $p) {
             font-size: 16px;
             border-radius: 5px;
             text-decoration: none;
-            transition: background-color 0.3s,transform 0.3s ease;
+            transition: background-color 0.3s, transform 0.3s ease;
         }
 
         .btn-back1:hover {
@@ -223,32 +226,86 @@ foreach ($packages as $p) {
             color: white;
             transform: scale(1.1);
         }
+
+        @media (max-width: 992px) {
+            .package-header h1 {
+                font-size: 2em;
+            }
+
+            .package-image {
+                width: 100%;
+                height: auto;
+                margin-left: 10px;
+                display: block;
+
+            }
+
+            .package-details {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .btn-back {
+                font-size: 12px;
+                padding: 8x 20px;
+            }
+
+            .btn-back1 {
+                font-size: 12px;
+                padding: 8px 20px;
+                margin-left: 20px;
+            }
+        }
+
         @media (max-width: 768px) {
-        .package-header h1 {
-            font-size: 2em;
+
+            .package-header h1 {
+                font-size: 2em;
+            }
+
+            .package-details {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .btn-back {
+                font-size: 12px;
+                padding: 8x 20px;
+            }
+
+            .btn-back1 {
+                font-size: 12px;
+                padding: 8px 20px;
+                margin-left: 20px;
+            }
+
+            .package-image {
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+                display: block;
+
+            }
         }
 
-        .package-details {
-            padding: 15px;
-        }
+        @media (max-width: 576px) {
+            .package-header h1 {
+                font-size: 1.8em;
+            }
 
-        .btn-back{
-            font-size: 11px;
-            padding: 8px 20px;
-        }
-        .btn-back1 {
-            font-size: 11px;
-            padding: 8px 20px;
-            margin-left:20px;
-        }
-        .package-image {
-            width: 100%;
-            height: auto; 
-            margin: 0 auto; 
-            display: block; 
-        }
-    }
+            .package-details {
+                padding: 15px;
+                font-size: 12px;
+            }
 
+            .package-image {
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+            }
+
+        }
+    
     </style>
 </head>
 <body>
@@ -285,7 +342,7 @@ foreach ($packages as $p) {
                     </ul>
 
                     <a href="tourpackages.php" class="btn-back">Back to Packages</a>
-                    <a href="booking.php" class="btn-back1">Book Now</a>
+                    <a href="booking.php?title=<?php echo $package['title']; ?>&image=<?php echo $image; ?>" class="btn-back1">Book Now</a>
                 </div>
             </div>
         </div>

@@ -397,7 +397,7 @@ function closePopup() {
     </div>
 </div>
     <div class="container">
-        <img src="images/Logo.png" alt="Johntravels" class="logo">
+        <img src="images/logo.png" alt="Johntravels" class="logo">
         <h2 class="text-center">Book Your Tour</h2>
 		     <?php if (!empty($errors)): ?>
                 <div class="error">
