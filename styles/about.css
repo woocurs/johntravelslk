@@ -54,6 +54,22 @@
     align-content: center;
 }
 
+.responsive-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.responsive-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 
 .row {
     justify-content: space-between;
@@ -70,10 +86,11 @@
     background-repeat: no-repeat;
     margin-top: auto;
     background-size: cover;
-    height: 80vh;
+    height: 110vh;
 }
 
 .callback-counter-wrap {
+
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
@@ -219,12 +236,28 @@
         margin-bottom: 10px;
     }
 
-    .counter-no {
+    .counter-content {
         font-size: 18px;
     }
 
+    .about-client-icon img {
+        width: 80%; 
+        margin: 0 auto; 
+        display: block;
+    }
+    .callback-counter-wrap {
+        flex-direction: column; 
+        gap: 15px; 
+    }
+
+    .counter-item {
+        flex: 1 1 100%; 
+        min-width: unset; 
+    }
+
+    .counter-no,
     .counter-content {
-        font-size: 18px;
+        font-size: 18px; 
     }
 }
 
@@ -318,7 +351,7 @@
 
    
     .fullwidth-callback {
-        height: 60vh; 
+        height: 110vh; 
     }
 
  
@@ -328,7 +361,7 @@
     }
 
     .counter-item {
-        min-width: 100%;
+        min-width: 60%;
         margin-bottom: 10px; 
     }
 
@@ -336,7 +369,22 @@
         font-size: 18px; 
     }
 
-    .counter-content {
-        font-size: 18px; 
+    .about-client-icon img {
+        width: 100%; 
     }
+
+    .callback-counter-wrap {
+        gap: 10px; 
+    }
+
+    .counter-item {
+        padding: 10px; 
+        width: min-content;
+    }
+
+    .counter-no,
+    .counter-content {
+        font-size: 16px; 
+    }
+
 }

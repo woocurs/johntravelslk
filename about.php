@@ -72,7 +72,7 @@
                 </div>
             </div>
         </div>
-        <div class="video-container"> 
+        <div class="responsive-container"> 
             <center>
             <iframe width="840px" height="400px" src="https://www.youtube.com/embed/LZHedtWPzbs?si=z6o-Ku1WZMJqlwKM" 
                 title="YouTube video player" frameborder="0" 
@@ -130,7 +130,7 @@
                 </div>
             </div>
         </div>
-        <div class="fullwidth-callback" style="background-image: url(images/img26.jpg);">
+        <div class="fullwidth-callback" style="background-image: url(images/counterbg.jpg);">
             <div class="container">
                 <div class="section-heading section-heading-white text-center">
                 <div class="row">
