@@ -107,6 +107,14 @@
     .popup-message {
         max-width: 90%;
     }
+
+    
+    .vacancy-content {
+        padding: 5px;         
+        margin: 15px;         
+        border-radius: 5px;   
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -162,10 +170,11 @@
     }
 
     .vacancy-content {
-        padding: 5px; 
-        margin: 10px; 
-    
+        padding: 3px;         
+        margin: 10px;         
+        border-radius: 3px;   
     }
+
 
     .apply-now-btn {
         font-size: 12px; 
