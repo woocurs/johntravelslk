@@ -39,10 +39,11 @@
 }
 .vacancy-content{
     box-sizing: border-box;
-    border: 1px solid aliceblue;
+    border: 1px solid black;
     padding: 10px;
     margin: 25px;
-    box-shadow: inset 0px 4px 8px;
+    border-radius: 10px;
+    
 }
 .vacancy-content h5{
     color: red;
@@ -106,6 +107,14 @@
     .popup-message {
         max-width: 90%;
     }
+
+    
+    .vacancy-content {
+        padding: 5px;         
+        margin: 15px;         
+        border-radius: 5px;   
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -161,10 +170,11 @@
     }
 
     .vacancy-content {
-        padding: 5px; 
-        margin: 10px; 
-        box-shadow: inset 0px 2px 4px;
+        padding: 3px;         
+        margin: 10px;         
+        border-radius: 3px;   
     }
+
 
     .apply-now-btn {
         font-size: 12px; 
