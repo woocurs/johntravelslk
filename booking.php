@@ -51,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (empty($name)) $errors[] = "Name is required.";
         if (!preg_match("/^[0-9]{9}[vV]$|^[0-9]{12}$/", $nic)) $errors[] = "NIC must be valid (9 digits + 'V' or 12 digits).";
         if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid email is required.";
-        if (empty($mobile) || !preg_match("/^\+\d{1,3}\d{10}$/", $mobile)) $errors[] = "Mobile number must include country code and 10 digits.";
-        if (!empty($whatsapp) && !preg_match("/^\+\d{1,3}\d{10}$/", $whatsapp)) $errors[] = "WhatsApp number must include country code and 10 digits.";
+		 if (empty($mobile) || !preg_match("/^\+\d{1,3}\d{10}$/", $mobile)) $errors[] = "Phone number must include the country code (e.g., +94771234567).";
+        if (!empty($whatsapp) && !preg_match("/^\+\d{1,3}\d{10}$/", $whatsapp)) $errors[] = "WhatsApp number must include country code (e.g., +94771234567).";
         if (empty($gender)) $errors[] = "Gender is required.";
 		 if (empty($payment)) $errors[] = "Payment is required.";
         if (empty($dob)) $errors[] = "DOB is required.";
@@ -75,25 +75,250 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (empty($errors)) {
 				
                 storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
-					
-                $headers = "From: noreply@johntravels.com";
-                $confirmation_subject = "Booking Received";
-                $confirmation_body = "Dear $name,\n\nThank you for booking with us.\n\nTour Package: $tour_package\nBooking Payment: $payment\n\nRegards,\nJohn Travels LK";
+				
+$boundary = md5(time());
+$headers = "From: info.johntravelslk@gmail.com\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: multipart/related; boundary=\"$boundary\"\r\n";
+
+
+ 
+$confirmation_subject ="Booking Received";
+
+$confirmation_body = "
+--$boundary
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>New Booking Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+        }
+        .email-header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+        .email-body {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .email-body p {
+            margin: 10px 0;
+        }
+        .email-body .bold {
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class='email-container'>
+        <div class='email-header'>
+            <img src='cid:logo' alt='John Travels LK'>
+            <h2>Booking Successfully Received</h2>
+        </div>
+        <div class='email-body'>
+		<p><span class='bold'>Dear $name,</span>\n\nThank you for booking with us.</p>
+            <p><span class='bold'>Name:</span> $name</p>
+            <p><span class='bold'>Address:</span> $address</p>
+            <p><span class='bold'>NIC:</span> $nic</p>
+            <p><span class='bold'>Email:</span> $email</p>
+            <p><span class='bold'>Phone:</span> $mobile</p>
+            <p><span class='bold'>Whatsapp:</span> $whatsapp</p>
+            <p><span class='bold'>Gender:</span> $gender</p>
+            <p><span class='bold'>DOB:</span> $dob</p>
+            <p><span class='bold'>Tour Package:</span> $tour_package</p>
+            <p><span class='bold'>Payment:</span> $payment</p>
+            <p><span class='bold'>Reference Number:</span> $reference_number</p>
+            <p><span class='bold'>Remark:</span> $remark</p>
+            
+        </div>
+        <div class='footer'>
+            <p>Regards, <br> John Travels LK</p>
+        </div>
+    </div>
+</body>
+</html>
+
+--$boundary
+Content-Type: image/png; name='Johntravelslk_logo.png'
+Content-Transfer-Encoding: base64
+Content-ID: <logo>
+
+";
+
+
+$image_path = "images/John_Travels_LK_Banner_R.png";  
+$image_data = base64_encode(file_get_contents($image_path)); 
+$confirmation_body .= $image_data . "\r\n";
+
+
+$confirmation_body .= "--$boundary--";
+
+
+
+				
+               
 
                 if (mail($email, $confirmation_subject, $confirmation_body, $headers)) {
                     $customer_msg = "Booking successfully received! Once confirmed, a confirmation will be sent to your email. Thank you!.";
                 } else {
                     $customer_msg = "Booking successful, but failed to send confirmation email.";
                 }
-				$headers = "From: $email";
-                $admin_email = "info.johntravels@gmail.com"; 
-                $admin_subject = "New Tour Booking Notification";
-                $admin_body = "A new booking has been made with the following details:\n\nName: $name\nAddress: $address\nNIC: $nic\nEmail: $email\nPhone: $mobile\nWhatsapp: $whatsapp\nGender: $gender\nDOB: $dob\nTour Package: $tour_package\nPayment: $payment\nReference_Number: $reference_number\nremark: $remark\nPhoto_path: $photo_path\n\nRegards,\nJohn Travels Booking System";
+	
 
-                if (!mail($admin_email, $admin_subject, $admin_body,$headers)) {
-                    $customer_msg .= " However, we could not notify the admin.";
-                }
+$boundary = md5(time());
+$headers = "From: $email\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: multipart/related; boundary=\"$boundary\"\r\n";
 
+
+$admin_email = "info.johntravels@gmail.com"; 
+$admin_subject = "New Tour Booking Notification";
+
+$admin_body = "
+--$boundary
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>New Booking Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            text-align: center;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+        }
+        .email-header img {
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+        .email-body {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .email-body p {
+            margin: 10px 0;
+        }
+        .email-body .bold {
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class='email-container'>
+        <div class='email-header'>
+            <img src='cid:logo' alt='John Travels LK'>
+            <h2>New Booking Notification</h2>
+        </div>
+        <div class='email-body'>
+            <p><span class='bold'>Name:</span> $name</p>
+            <p><span class='bold'>Address:</span> $address</p>
+            <p><span class='bold'>NIC:</span> $nic</p>
+            <p><span class='bold'>Email:</span> $email</p>
+            <p><span class='bold'>Phone:</span> $mobile</p>
+            <p><span class='bold'>Whatsapp:</span> $whatsapp</p>
+            <p><span class='bold'>Gender:</span> $gender</p>
+            <p><span class='bold'>DOB:</span> $dob</p>
+            <p><span class='bold'>Tour Package:</span> $tour_package</p>
+            <p><span class='bold'>Payment:</span> $payment</p>
+            <p><span class='bold'>Reference Number:</span> $reference_number</p>
+            <p><span class='bold'>Remark:</span> $remark</p>
+            <p><span class='bold'>Photo Path:</span> $photo_path</p>
+        </div>
+        <div class='footer'>
+            <p>Regards, <br> John Travels Booking System</p>
+        </div>
+    </div>
+</body>
+</html>
+
+--$boundary
+Content-Type: image/png; name='Johntravelslk_logo.png'
+Content-Transfer-Encoding: base64
+Content-ID: <logo>
+
+";
+
+
+$image_path = "images/John_Travels_LK_Banner_R.png"; 
+$image_data = base64_encode(file_get_contents($image_path)); 
+$admin_body .= $image_data . "\r\n";
+
+
+$admin_body .= "--$boundary--";
+
+
+if (mail($admin_email, $admin_subject, $admin_body, $headers)) {
+    $customer_msg .= " Successfully notify the Johntravelslk admin.";
+} else {
+    $customer_msg .= " However, we could not notify the admin.";
+}
+
+
+
+				
                 echo "<script>window.onload = function() { showPopup('Success', '$customer_msg'); }</script>";
             } else {
                 $error_msg = implode("<br>", $errors);
@@ -417,63 +642,77 @@ function closePopup() {
             <div class="form-group">
                 <label for="tour_package">Your Tour Package</label>
                 <input type="text" name="tour_package" id="tour_package" class="form-control" 
-                       value="<?php echo $selectedPackage . '-' . $selectedLocation; ?>" readonly>
+                       value="<?php echo $selectedPackage  ?>" readonly>
             </div>
-            <div class="form-group">
-                <label for="name" class="required">Name with Initials</label>
-                <input type="text" name="name" id="name" required>
+          <div class="form-group">
+                <label for="name">Name with Initials</label>
+                     <input type="text" name="name" id="name" required value="<?php echo isset($name) ? $name : ''; ?>" placeholder="T.John">
+
             </div>
            
 		    <div class="form-group">
-                <label class="required">Address</label>
-                <input type="text" name="address" required>
+                <label>Address</label>
+                      <input type="text" name="address" id="address" required value="<?php echo isset($address) ? $address : ''; ?>" placeholder="No.377, Veppankulam,Vavuniya,Srilanka.">
+
             </div>
             <div class="form-group">
-                <label class="required">NIC Number</label>
-                <input type="text" name="nic" required>
+                <label>NIC Number</label>
+               <input type="text" name="nic" id="nic" required value="<?php echo isset($nic) ? $nic : ''; ?>" placeholder="199843000123 or 981234567V ">
+
             </div>
             <div class="form-group">
-                <label class="required">Email</label>
-                <input type="email" name="email" required>
+                <label>Email</label>
+                <input type="email" name="email" id="email" required value="<?php echo isset($email) ? $email : ''; ?>" placeholder="info.johntravels@gmail.com">
+
             </div>
             <div class="form-group">
-                <label class="required">Mobile Number</label>
-                <input type="tel" name="mobile" required>
+                <label>Mobile Number</label>
+                <input type="text" name="mobile" id="mobile" required value="<?php echo isset($mobile) ? $mobile : ''; ?>" placeholder="+9471234567">
+
             </div>
             <div class="form-group">
                 <label>WhatsApp Number</label>
-                <input type="tel" name="whatsapp">
+                   <input type="text" name="whatsapp" id="whatsapp" value="<?php echo isset($whatsapp) ? $whatsapp : ''; ?>" placeholder="+9471234567">
+
             </div>
             <div class="form-group">
 			 <div class="radio-group">
-                <label class="required">Gender</label>
-                <input type="radio" name="gender" value="Male" required> <div class="form-label">Male</div>
-                <input type="radio" name="gender" value="Female" required> <div class="form-label">Female</div>
-            </div></div>
+                <label>Gender</label>
+                   <input type="radio" name="gender" id="male" value="Male" <?php echo (isset($gender) && $gender == 'Male') ? 'checked' : ''; ?>>
+					<label for="male">Male</label>
+
+               <input type="radio" name="gender" id="female" value="Female" <?php echo (isset($gender) && $gender == 'Female') ? 'checked' : ''; ?>>
+			   <label for="female">Female</label>
+                </div>
+            </div>
+			
             <div class="form-group">
-                <label class="required">Date of Birth</label>
-                <input type="date" name="dob" required>
+                <label>Date of Birth</label>
+                <input type="date" name="dob" id="dob" required value="<?php echo isset($dob) ? $dob : ''; ?>" >
+
             </div>
           <div class="form-group">
-    <label class="required" for="payment">Payment Option</label>
+    <label for="payment">Payment Option</label>
     <select name="payment" id="payment" required>
         <option value="" disabled selected>Please select</option>
 		
-        <option value="Advance">Advance</option>
-        <option value="Half Payment">Half Payment</option>
-        <option value="Full Payment">Full Payment</option>
+        <option value="Advance"<?php echo (isset($payment) && $payment == 'Advance') ? 'selected' : ''; ?>>Advance</option>
+        <option value="Half Payment"<?php echo (isset($payment) && $payment == 'Half Payment') ? 'selected' : ''; ?>>Half Payment</option>
+        <option value="Full Payment"<?php echo (isset($payment) && $payment == 'Full Payment') ? 'selected' : ''; ?>>Full Payment</option>
     </select>
 </div>
             <div class="form-group">
                 <label>Reference Number</label>
-                <input type="text" name="reference_number" placeholder="Referred by:">
+                  <input type="text" name="reference_number" id="reference_number" value="<?php echo isset($reference_number) ? $reference_number : ''; ?>" placeholder="Referred_by: (if available) ">
+
             </div>
             <div class="form-group">
                 <label>Remark</label>
-                <textarea name="remark" placeholder="Special needs or requests"></textarea>
+                 <textarea name="remark" id="remark"  placeholder="Any Special Needs or Requests (optional)"><?php echo isset($remark) ? $remark : ''; ?></textarea>
+
             </div>
             <div class="form-group">
-                <label class="required">Upload ID Photo</label>
+                <label>Upload ID Photo</label>
                 <input type="file" name="photo" id="photo"  required>
             </div>
 		   

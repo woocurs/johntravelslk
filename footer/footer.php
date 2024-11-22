@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $err[] = "Name is required.";
             }
             if (empty($phone) || !preg_match("/^\+\d{1,3}\d{10}$/", $phone)) {
-                $err[] = "Phone number must include the country code and 10 digits  (e.g., +94771234567 or 94771234567).";
+                $err[] = "Phone number must include the country code   (e.g., +94771234567 or 94771234567).";
             }
             if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $err[] = "Valid email address is required.";
@@ -78,7 +78,7 @@ footer {
     background-color: #333;
     color: #fff;
     margin-top : 0;
-    padding: 40px 20px;
+    padding: 2px 0px;
     text-align: center;
     font-family: Arial, sans-serif;
 }
@@ -155,6 +155,7 @@ footer a:hover {
         flex: 1 1 100%;
     }
 }
+
 
 
 .bottom-footer {
@@ -247,7 +248,7 @@ footer a:hover {
         <p>John Travels - Trips by Woocurs. Make lifelong memories.</p>
         <div class="logo-container">
             <img src="images/logo1.png" alt="Woocurs" width="100px" height="100px">
-            <img src="images/logo.png" alt="John Group">
+            <img src="images/Logo.png" alt="John Group">
         </div>
     </div>
 
@@ -281,7 +282,7 @@ footer a:hover {
     </div>
 
     <div class="footer-bottom-section">
-        <img src="images/logo.png" alt="John Travels Logo" >
+        <img src="images/Logo.png" alt="John Travels Logo" >
         <span style="font-size: 1.2em; color: #f1f1f1; vertical-align: middle; margin-left: 10px;">John Travels LK</span>
     </div>
 
