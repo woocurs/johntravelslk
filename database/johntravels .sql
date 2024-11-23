@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2024 at 07:14 AM
+-- Generation Time: Nov 23, 2024 at 09:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -53,9 +53,15 @@ CREATE TABLE `contact_us` (
   `name` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `message` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `reply` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact_us`
+--
+
 
 -- --------------------------------------------------------
 
@@ -67,11 +73,17 @@ CREATE TABLE `job_applications` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `message` text DEFAULT NULL,
+  `message` text NOT NULL,
   `position` varchar(255) NOT NULL,
   `cv_file` varchar(255) NOT NULL,
   `date_submitted` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `job_applications`
+--
+
+
 
 -- --------------------------------------------------------
 
@@ -91,13 +103,19 @@ CREATE TABLE `tour_bookings` (
   `dob` date NOT NULL,
   `tour_package` varchar(100) NOT NULL,
   `reference_number` varchar(255) NOT NULL,
+  `seat_number` varchar(255) NOT NULL,
   `payment` enum('Advance','Half Payment','Full Payment','') NOT NULL,
-  `remark` text DEFAULT NULL,
+  `remark` text NOT NULL,
   `photo_path` varchar(255) NOT NULL,
   `terms_accepted` tinyint(1) NOT NULL,
   `submission_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` enum('pending','confirmed','rejected','') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tour_bookings`
+--
+
 
 -- --------------------------------------------------------
 
@@ -162,19 +180,19 @@ ALTER TABLE `admin_details`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `job_applications`
 --
 ALTER TABLE `job_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tour_bookings`
 --
 ALTER TABLE `tour_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT for table `tour_packages`
