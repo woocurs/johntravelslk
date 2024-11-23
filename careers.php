@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($form_type === 'apply') {
     
     $name = $_POST['name'];
+    $address = $_POST['address'];
     $email = $_POST['email'];
    // $message = $_POST['message'];
     $position = $_POST['position'];
@@ -58,9 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
    
-    $query = "INSERT INTO job_applications (name, email,  position, cv_file) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO job_applications (name, address, email, position, cv_file) VALUES (?, ?, ?, ?, ?)";
     if ($stmt = $conn->prepare($query)) {
-        $stmt->bind_param("ssss", $name, $email,  $position, $filePath);
+        $stmt->bind_param("sssss", $name, $address, $email,  $position, $filePath);
 
         if ($stmt->execute()) {
 
@@ -121,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career</title>
-    <link rel="stylesheet" href="styles/career.css">
+    <link rel="stylesheet" href="career.css">
     <link rel="stylesheet" href="styles/css/bootstrap.min.css">
 
     <style>
@@ -294,34 +295,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="row">
                 <div class="vacancy-container col-lg-8">
-            
                     <div class="row">
-                        <div class="vacancy-content">
-                            <h5>Part Time</h5>
-                            <h3>Travel Agent</h3>
-                            <p>It sounds like you're looking for information related to a travel agent offering local bus services or coordinating bus travel.</p>
-                            <button class="apply-now-btn" data-position="Travel Agent">Apply Now</button>
-
-                            
-            
+                        <div class="col-lg-6">
+                            <div class="vacancy-content">
+                                <h5>Part Time</h5>
+                                <h3>Travel Agent</h3>
+                                <p>It sounds like you're looking for information related to a travel agent offering local bus services or coordinating bus travel.</p>
+                                <button class="apply-now-btn" data-position="Travel Agent">Apply Now</button>
+                            </div>
                         </div>
+                        <div class="col-lg-6">
+                            <div class="vacancy-content">
+                                <h5>Part Time</h5>
+                                <h3>Tour Guide</h3>
+                                <p>Provide a brief description of the bus tour, highlighting the major attractions and experiences.Offering explanations about landmarks and destinations.</p>
+                                <button class="apply-now-btn" data-position="Tour Guide">Apply Now</button> 
+                            </div>
+                        </div>                        
                     </div>
                     <div class="row">
-                        <div class="vacancy-content">
-                            <h5>Part Time</h5>
-                            <h3>Travel Guide</h3>
-                            <p>Provide a brief description of the bus tour, highlighting the major attractions and experiences.</p>
-                            <button class="apply-now-btn" data-position="Travel Guide">Apply Now</button> 
-                            
+                        <div class="col-lg-6">
+                            <div class="vacancy-content">
+                                <h5>Part Time</h5>
+                                <h3>Trip Supervisor</h3>
+                                <p>Ensuring that the tour adheres to the planned schedule and that all stops, attractions, and points of interest are included.</p>
+                                <button class="apply-now-btn" data-position="Trip Supervisor">Apply Now</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="vacancy-content">
-                            <h5>Part Time</h5>
-                            <h3>Travel Supervisor</h3>
-                            <p>Ensuring that the tour adheres to the planned schedule and that all stops, attractions, and points of interest are included.</p>
-                            <button class="apply-now-btn" data-position="Travel Supervisor">Apply Now</button>
-                            
+                        <div class="col-lg-6">
+                            <div class="vacancy-content">
+                                <h5>Part Time</h5>
+                                <h3>Photo Grapher/Cheer Boys</h3>
+                                <p>Photographer cheering boys capture the moment, boys-smiles are the secret to timeless shots!</p>
+                                <button class="apply-now-btn" data-position="Photo Grapher/Cheer Boys">Apply Now</button>
+                            </div>
                         </div>
                     </div>
                 </div>

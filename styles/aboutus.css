@@ -1,4 +1,7 @@
 
+*{
+    font-family: "Raleway", sans-serif;
+}
 .inner-banner-container {
     height: 80vh;
     background-size: cover;
@@ -8,15 +11,14 @@
 .heading {
     padding-top: 100px;
     font-size: 60px;
-    color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    font-family: "Raleway", sans-serif;
     font-weight: bold;
 }
 
 .inner-banner-container img {
     width: 100%;
     padding-top: 180px;
-    border-radius: 0px;
     height: 60vh;
     padding-bottom: 20px;
 
@@ -25,20 +27,20 @@
 
 .dash-style {
     color: red;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: "Raleway", sans-serif;
     font-weight: bold;
 }
 
 .section-heading {
     padding: 50px;
     color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: "Raleway", sans-serif;
     font-weight: bold;
 }
 
 .head-1{
     color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: "Raleway", sans-serif;
     font-weight: bold;
 }
 
@@ -54,19 +56,11 @@
     align-content: center;
 }
 
-.responsive-video {
+.responsive-container iframe {
     position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-}
-
-.responsive-video iframe {
-    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 75%;
     border: 0;
 }
 
@@ -76,9 +70,14 @@
     padding-bottom: 20px;
 }
 
+.about-client:hover{
+    transform: scale(1.05);
+
+}
+
 .about-client-icon img{
-    width: 100%;
-    
+    width: 80%;
+    mix-blend-mode: darken;
     
 }
 
@@ -86,19 +85,19 @@
     background-repeat: no-repeat;
     margin-top: auto;
     background-size: cover;
-    height: 110vh;
+    height: 70vh;
 }
 
 .callback-counter-wrap {
 
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
     gap: 30px;
 }
 
 .counter-head{
     color: rgb(16, 16, 74);
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: "Raleway", sans-serif;
     font-weight: bold; 
 }
 
@@ -109,6 +108,15 @@
     border-radius: 10px;
     background-color: #FE6161;
     box-shadow: rgb(16, 16, 74);
+    
+}
+
+.counter-item:hover{
+    transform: scale(1.05);
+}
+
+.counter-icon img{
+    width: 100px;
 }
 
 
@@ -177,6 +185,7 @@
 
     .about-service-icon {
         width: 100px;
+        align-content: center;
     }
 
     .bg-video {
@@ -319,7 +328,7 @@
     }
 
     .inner-banner-container img {
-        padding-top: 240px;
+        padding-top: 180px;
     }
 
    
@@ -334,13 +343,8 @@
 
    
     .about-service {
-        text-align: center;
+        align-content: center;
         
-    }
-
-    
-    .bg-video {
-        height: 35vh; 
     }
 
    
@@ -351,19 +355,10 @@
 
    
     .fullwidth-callback {
-        height: 110vh; 
+        height: 70vh; 
     }
 
- 
-    .callback-counter-wrap {
-        gap: 10px; 
-        flex-direction: column;
-    }
 
-    .counter-item {
-        min-width: 60%;
-        margin-bottom: 10px; 
-    }
 
     .counter-no {
         font-size: 18px; 
@@ -374,6 +369,7 @@
     }
 
     .callback-counter-wrap {
+        grid-template-columns: repeat(2,2fr);
         gap: 10px; 
     }
 
