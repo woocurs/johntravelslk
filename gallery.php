@@ -3,12 +3,34 @@
 $images = [
     ["src" => "images/destination_2.jpg", "alt" => "Lotus Tower", "caption" => "Lotus Tower"],
     ["src" => "images/destination_1.jpg", "alt" => "Queen's Hotel", "caption" => "Queen's Hotel"],
-    ["src" => "images/destination_3.jpg", "alt" => "Dondra Lighthouse", "caption" => "Dondra Lighthouse"],
+    ["src" => "images/destination_3.jpg", "alt" => "Galle Lighthouse", "caption" => "Galle Lighthouse"],
     ["src" => "images/destination_4.jpg", "alt" => "Tea Estate", "caption" => "Tea Estate"],
     ["src" => "images/destination_5.jpg", "alt" => "Nine Arch Bridge", "caption" => "Nine Arch Bridge"],
     ["src" => "images/destination_6.jpg", "alt" => "World Trade Center", "caption" => "World Trade Center"],
 	["src" => "images/destination_7.jpg", "alt" => "Modern Pedestrian Bridge", "caption" => "Modern Pedestrian Bridge"],
-	["src" => "images/destination_8.jpg", "alt" => "Temple of the Tooth", "caption" => "Temple of the Tooth"]
+	["src" => "images/destination_8.jpg", "alt" => "Temple of the Tooth", "caption" => "Temple of the Tooth"],
+	["src" => "images/tour1.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour2.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour3.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour4.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour5.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour6.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour7.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour8.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour9.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour10.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour11.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour12.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour13.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour14.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour15.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour16.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour17.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour18.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour19.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour20.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour21.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour22.jpg", "alt" => " ", "caption" => " "]
 ];
 ?>
 <?php include("header/header.php"); ?>
@@ -23,7 +45,7 @@ $images = [
 	<link rel="stylesheet" href="styles/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             line-height: 1.6;
             background: #f7f7f7;
             margin: 0;
@@ -41,9 +63,11 @@ $images = [
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.8rem;
+            font-size: 3.5rem;
             font-weight: bold;
 			text-align:center;
+			font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+			
         }
 		  .header::before {
             content: "";
@@ -57,6 +81,7 @@ $images = [
             linear-gradient(to right, rgba(0, 0, 0, 3.9), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 3.9) 100%), 
             url('images/img26.jpg') no-repeat center center / cover;
             z-index:2;
+			text-align:center;
         }
 		
 		   .header::after {
@@ -70,9 +95,18 @@ $images = [
             background-size: contain;
             opacity: 1;
             z-index: 2;
+			text-align:center;
 			
         }
-		 
+		 .header  h1{
+            position: relative;
+            z-index: 3; 
+			margin-bottom:100px;
+			font-size: 3.5em;
+          font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+			text-align:center;
+			font-weight:bold;
+        }
 
 
        
@@ -169,11 +203,34 @@ $images = [
     border-radius: 5px;
     cursor: pointer;
 }
+
+    .nav-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5em;
+            color: white;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
     </style>
 </head>
 <body>
 
 <header>
+
     Our Travel Gallery
 </header>
 <section class="gallery">
@@ -193,6 +250,13 @@ $images = [
     <div id="img<?php echo $key; ?>" class="fullscreen-viewer">
         <a href="#" class="close-viewer">×</a>
         <img src="<?php echo $image['src']; ?>" alt="<?php echo $image['alt']; ?>">
+		<?php if ($key > 0): ?>
+            <a href="#img<?php echo $key - 1; ?>" class="nav-icon prev">‹</a>
+        <?php endif; ?>
+        <?php if ($key < count($images) - 1): ?>
+            <a href="#img<?php echo $key + 1; ?>" class="nav-icon next">›</a>
+        <?php endif; ?>
+
     </div>
 <?php endforeach; ?>
 

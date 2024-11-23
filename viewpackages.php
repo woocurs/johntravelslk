@@ -285,7 +285,8 @@ foreach ($packages as $p) {
                     </ul>
 
                     <a href="tourpackages.php" class="btn-back">Back to Packages</a>
-                    <a href="booking.php" class="btn-back1">Book Now</a>
+                     <a href="booking.php?title=<?php echo $package['title']; ?>&image=<?php echo $image; ?>" class="btn-back1">Book Now</a>
+
                 </div>
             </div>
         </div>
