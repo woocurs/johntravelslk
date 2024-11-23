@@ -73,7 +73,7 @@ CREATE TABLE `job_applications` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `message` text NOT NULL,
+  `message` text DEFAULT NULL,
   `position` varchar(255) NOT NULL,
   `cv_file` varchar(255) NOT NULL,
   `date_submitted` timestamp NOT NULL DEFAULT current_timestamp()
@@ -105,7 +105,7 @@ CREATE TABLE `tour_bookings` (
   `reference_number` varchar(255) NOT NULL,
   `seat_number` varchar(255) NOT NULL,
   `payment` enum('Advance','Half Payment','Full Payment','') NOT NULL,
-  `remark` text NOT NULL,
+  `remark` text DEFAULT NULL,
   `photo_path` varchar(255) NOT NULL,
   `terms_accepted` tinyint(1) NOT NULL,
   `submission_date` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -179,26 +179,6 @@ ALTER TABLE `admin_details`
 --
 -- AUTO_INCREMENT for table `contact_us`
 --
-ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
-
---
--- AUTO_INCREMENT for table `job_applications`
---
-ALTER TABLE `job_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `tour_bookings`
---
-ALTER TABLE `tour_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
-
---
--- AUTO_INCREMENT for table `tour_packages`
---
-ALTER TABLE `tour_packages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
