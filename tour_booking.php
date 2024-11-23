@@ -27,6 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $terms = isset($_POST['terms']) ? 1 : 0;
 		
 		
+		    $reference_number = strtoupper(substr(md5(time() . $mobile), 0, 10));
+
+		
             
             $photo = $_FILES['photo'];
             $upload_dir = 'uploads/photos/';
@@ -50,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             if (empty($name)) $errors[] = "Name is required.";
         if (!preg_match("/^[0-9]{9}[vV]$|^[0-9]{12}$/", $nic)) $errors[] = "NIC must be valid (9 digits + 'V' or 12 digits).";
-        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid email is required.";
+        if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid email is required.";
 		 if (empty($mobile) || !preg_match("/^\+\d{1,3}\d{10}$/", $mobile)) $errors[] = "Phone number must include the country code (e.g., +94771234567).";
         if (!empty($whatsapp) && !preg_match("/^\+\d{1,3}\d{10}$/", $whatsapp)) $errors[] = "WhatsApp number must include country code (e.g., +94771234567).";
         if (empty($gender)) $errors[] = "Gender is required.";
@@ -59,22 +62,80 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (empty($tour_package)) $errors[] = "Tour package is required.";
         if (!$terms) $errors[] = "You must agree to the terms and conditions.";
      
-        $refered_by = '';
-        if (!empty($reference_number)) {
-            $stmt = $conn->prepare("SELECT name FROM tour_bookings WHERE reference_number = ? AND tour_package = ?");
-            $stmt->bind_param("ss", $reference_number, $tour_package);
-            $stmt->execute();
-            $stmt->bind_result($refered_by);
-            $stmt->fetch();
-            $stmt->close();
-            if (empty($refered_by)) $errors[] = "Invalid reference number.";
-        }
+       
 		
 		
 		
             if (empty($errors)) {
 				
                 storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
+				  
+				       $sms_message =  "Dear $name, your booking for $tour_package tour package has been successfully received.\n"
+							 ."Booking Details:\n"
+                             . "NIC: $nic\n"
+                             . "Mobile: $mobile\n"
+                             . "Reference No: $reference_number\n"
+                             . "Payment: $payment\n"
+                             . "Thank you for choosing John Travels LK!";
+                $sms_status = sendSMS($sms_message,$conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark);
+
+ if (!empty($email)) {
+
+ $email_status = sendEmail($conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark,$photo_path, $terms);
+ $admin_status = adminEmail($conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark,$photo_path, $terms);
+                }
+				   
+              $customer_msg = "Booking successfully received! Once confirmed, a confirmation will be sent to your email or mobile number. Thank you!.";
+                $customer_msg .= $sms_status ? "Check your mobile number! " : "failed to send confirmation Sms.";
+                $customer_msg .= !empty($email) && $email_status ? "Check Your Email." : " failed to send confirmation email.";
+				$customer_msg .= !empty($admin_email) && $admin_status ? "Successfully notify the Johntravelslk admin." : " However, we could not notify the admin.";
+
+                echo "<script>window.onload = function() { showPopup('Success', '$customer_msg'); }</script>";
+            } else {
+                $error_msg = implode("<br>", $errors);
+                echo "<script>window.onload = function() { showPopup('Error', '$error_msg'); }</script>";
+			}
+
+
+        }
+    }
+}
+
+function storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms) {
+	
+     
+	$stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, phone, whatsapp, email, gender, dob,tour_package, reference_number, payment, remark, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?, ?)");
+   
+	$stmt->bind_param("sssssssdssssss", $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
+}
+function sendSMS($sms_message,$conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark) {
+	 $mobile = preg_replace("/[^0-9]/", "",$mobile);
+        if (substr($mobile, 0, 1) == '0') {
+            $phone = '94' . substr($mobile, 1);
+        }
+    $url = "https://app.notify.lk/api/v1/send";
+    $postData = [
+        'user_id' => "28355",
+        'api_key' => "api_key",
+        'sender_id' => "NotifyDEMO",
+        'to' => $mobile,
+        'message' => $sms_message,
+    ];
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    $response = json_decode($response, true);
+    return isset($response['status']) && $response['status'] == "success";
+}
+function sendEmail($conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark,$photo_path, $terms) {
+    
 				
 $boundary = md5(time());
 $headers = "From: info.johntravelslk@gmail.com\r\n";
@@ -192,13 +253,13 @@ $confirmation_body .= "--$boundary--";
 				
                
 
-                if (mail($email, $confirmation_subject, $confirmation_body, $headers)) {
-                    $customer_msg = "Booking successfully received! Once confirmed, a confirmation will be sent to your email. Thank you!.";
-                } else {
-                    $customer_msg = "Booking successful, but failed to send confirmation email.";
-                }
-	
-
+                 if(mail($email, $confirmation_subject, $confirmation_body, $headers)){
+					 return true;
+                    
+                } 
+				return false;
+	}
+function adminEmail($conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark,$photo_path, $terms) {
 $boundary = md5(time());
 $headers = "From: $email\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
@@ -310,34 +371,14 @@ $admin_body .= $image_data . "\r\n";
 $admin_body .= "--$boundary--";
 
 
-if (mail($admin_email, $admin_subject, $admin_body, $headers)) {
-    $customer_msg .= " Successfully notify the Johntravelslk admin.";
-} else {
-    $customer_msg .= " However, we could not notify the admin.";
-}
-
-
-
-				
-                echo "<script>window.onload = function() { showPopup('Success', '$customer_msg'); }</script>";
-            } else {
-                $error_msg = implode("<br>", $errors);
-                echo "<script>window.onload = function() { showPopup('Error', '$error_msg'); }</script>";
+if( mail($admin_email, $admin_subject, $admin_body, $headers)){
+   return true;
             }
-        }
-    }
+    return false; 
 }
 
-function storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms) {
-	
-     
-	$stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, phone, whatsapp, email, gender, dob,tour_package, reference_number, payment, remark, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?, ?)");
-   
-	$stmt->bind_param("sssssssdssssss", $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
-    $stmt->execute();
-    $stmt->close();
-    $conn->close();
-}
+
+
 ?>
 
 <script>
@@ -659,12 +700,12 @@ function closePopup() {
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" id="email" required value="<?php echo isset($email) ? $email : ''; ?>" placeholder="info.johntravels@gmail.com">
+                <input type="email" name="email" id="email"  value="<?php echo isset($email) ? $email : ''; ?>" placeholder="info.johntravels@gmail.com">
 
             </div>
             <div class="form-group">
                 <label>Mobile Number</label>
-                <input type="text" name="mobile" id="mobile" required value="<?php echo isset($mobile) ? $mobile : ''; ?>" placeholder="+9471234567">
+                <input type="text" name="mobile" id="mobile" required value="<?php echo isset($mobile) ? $mobile : ''; ?>" placeholder="Enter your mobile number Correctly(e.g, +9471234567)">
 
             </div>
             <div class="form-group">
