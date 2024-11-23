@@ -119,8 +119,8 @@ function sendSMS($sms_message,$conn,$email, $name, $address, $nic, $mobile, $wha
     $url = "https://app.notify.lk/api/v1/send";
     $postData = [
         'user_id' => "28355",
-        'api_key' => "api_key",
-        'sender_id' => "NotifyDEMO",
+        'api_key' => "jpWXAHATeXbXA4jAP1i3",
+        'sender_id' => "JohnTravels",
         'to' => $mobile,
         'message' => $sms_message,
     ];
