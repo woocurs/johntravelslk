@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career</title>
-    <link rel="stylesheet" href="styles/career.css">
+    <link rel="stylesheet" href="career.css">
     <link rel="stylesheet" href="styles/css/bootstrap.min.css">
 
     <style>
@@ -326,7 +326,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="vacancy-content">
                                 <h5>Part Time</h5>
                                 <h3>Photo Grapher/Cheer Boys</h3>
-                                <p>Photographer cheering boys capture the moment, boys—smiles are the secret to timeless shots!</p>
+                                <p>Photographer cheering boys capture the moment, boys-smiles are the secret to timeless shots!</p>
                                 <button class="apply-now-btn" data-position="Photo Grapher/Cheer Boys">Apply Now</button>
                             </div>
                         </div>
