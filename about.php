@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
     <link rel="stylesheet" href="styles/about.css">
-    <link rel="stylesheet" href="styles/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
                             <h5 class="dash-style">OUR TOUR GALLERY</h5>
                             <div class="head-1">
                                 <h2>HELLO WOOCURS!</h2>
-                                <h2>OUR TRAVEL HAS BEENPRESENT BEST IN THE MARKET</h2>
+                                <h2>OUR TRAVEL HAS BEEN PRESENT BEST IN THE MARKET</h2>
                             </div>
                         </div>
                         <div class="col-lg-6"> </div> 
@@ -95,35 +95,37 @@
                     <div class="col ">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <img src="images/logo7.png">
+                                <a href="#">
+                                    <img src="images/5.png">
+                                </a>   
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <img src="images/logo8.png">
+                                <img src="images/4.png">
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <img src="images/logo9.png">
+                                <img src="images/6.png">
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <img src="images/logo10.png">
+                                <img src="images/7.png">
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <img src="images/logo11.png">
+                                <img src="images/2.png">
                             </div>
                         </div>
                     </div>
