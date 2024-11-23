@@ -305,7 +305,6 @@ foreach ($packages as $p) {
             }
 
         }
-    
     </style>
 </head>
 <body>
