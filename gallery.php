@@ -1,37 +1,54 @@
 <?php
 
 $images = [
-    ["src" => "images/destination_2.jpg", "alt" => "Lotus Tower", "caption" => "Lotus Tower"],
-    ["src" => "images/destination_1.jpg", "alt" => "Queen's Hotel", "caption" => "Queen's Hotel"],
-    ["src" => "images/destination_3.jpg", "alt" => "Galle Lighthouse", "caption" => "Galle Lighthouse"],
-    ["src" => "images/destination_4.jpg", "alt" => "Tea Estate", "caption" => "Tea Estate"],
-    ["src" => "images/destination_5.jpg", "alt" => "Nine Arch Bridge", "caption" => "Nine Arch Bridge"],
-    ["src" => "images/destination_6.jpg", "alt" => "World Trade Center", "caption" => "World Trade Center"],
-	["src" => "images/destination_7.jpg", "alt" => "Modern Pedestrian Bridge", "caption" => "Modern Pedestrian Bridge"],
-	["src" => "images/destination_8.jpg", "alt" => "Temple of the Tooth", "caption" => "Temple of the Tooth"],
+	["src" => "images/tour39.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour1.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour2.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour3.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour4.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour3.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour2.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour7.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour5.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour6.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour7.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour8.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour28.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour29.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour18.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour27.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour21.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour20.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour22.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour26.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour16.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour15.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour17.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour25.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour19.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour23.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour24.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour30.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour35.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour31.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour32.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour33.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour34.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour9.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour10.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour11.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour12.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour13.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/tour14.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour15.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour16.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour17.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour18.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour19.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour20.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour21.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour22.jpg", "alt" => " ", "caption" => " "]
+    ["src" => "images/destination_2.jpg", "alt" => "", "caption" => " "],
+    ["src" => "images/destination_1.jpg", "alt" => "", "caption" => " "],
+    ["src" => "images/destination_3.jpg", "alt" => "", "caption" => " "],
+    ["src" => "images/destination_4.jpg", "alt" => "", "caption" => " "],
+    ["src" => "images/destination_5.jpg", "alt" => " ", "caption" => " "],
+    ["src" => "images/destination_6.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/destination_7.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/destination_8.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour8.jpg", "alt" => " ", "caption" => " "],
+	["src" => "images/tour38.jpg", "alt" => " ", "caption" => " "]
+		
 ];
+
 ?>
 <?php include("header/header.php"); ?>
 <!DOCTYPE html>
@@ -231,11 +248,11 @@ $images = [
 
 <header>
 
-    Our Travel Gallery
+  Our Travel Gallery
 </header>
 <section class="gallery">
 
-    <p>Explore some of the beautiful destinations we've taken our customers to.</p>
+    <p>Explore some of the beautiful destinations we've taken our clients to.</p>
     <div class="gallery-grid">
         <?php foreach ($images as $key => $image): ?>
             <a href="#img<?php echo $key; ?>" class="gallery-item">
