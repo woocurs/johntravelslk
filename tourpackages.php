@@ -218,7 +218,7 @@
             transform: scale(1.05);
         }
 
-        /* Popup styles */
+
         .popup {
             display: none;
             position: fixed;
@@ -403,7 +403,7 @@
             ["location" => "NUWARA ELIYA", "title" => "Tea Estate", "image" => "destination_4.jpg", "size" => "large"],
             ["location" => "Badulla", "title" => "Nine Arch Bridge", "image" => "destination_5.jpg", "size" => "small"],
             ["location" => "Matale", "title" => "Sembuwatta Lake", "image" => "sembuwattaLake.png", "size" => "small"],
-            ["location" => "Trincomalee", "title" => "Trincomalee Beach", "image" => "trincomaleebeach.png", "size" => "small"],
+            ["location" => "Trincomalee", "title" => "Pigeonis Land", "image" => "pigeonisland.png", "size" => "small"],
             ["location" => "Anuradhapura", "title" => "Sigiriya", "image" => "sigiriya.png", "size" => "small"]
         ];
 
