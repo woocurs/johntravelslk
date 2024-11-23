@@ -40,7 +40,7 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
                 <a href="https://www.facebook.com/johntravelslk" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.youtube.com/@johntravelslk" target="_blank"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.instagram.com/john_travels_lk/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://api.whatsapp.com/message/JHT7ZVJLWFUUP1?autoload=1&app_absent=0" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                   <a href="https://wa.me/message/JHT7ZVJLWFUUP1" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
                 <li class="nav-item"><a class="nav-link" href="gallery.php">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="careers.php">Careers</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
-				<li class="nav-item"><a class="nav-link" href="Testimonials.php">Testimonials</a></li>
+				<li class="nav-item"><a class="nav-link" href="testimonials.php">Testimonials</a></li>
                 <li class="nav-item"><a class="nav-link" href="./admin/admin_login.php">Admin Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link btn btn-login" href="tour.php">Tour</a></li>
             </ul>

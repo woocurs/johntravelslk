@@ -121,7 +121,7 @@
 
 <section class="testimonials">
     <div class="container">
-        <h1>What Our Customers Say</h1>
+        <h1>What Our Clients Say</h1>
         <div class="testimonial-list">
             <div class="testimonial">
                 <img src="images/customer1.png" alt="Sarah W">

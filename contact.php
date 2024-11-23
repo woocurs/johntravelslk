@@ -3,14 +3,16 @@
 
  include ('database/db.php');
 
-$adminEmail = "info.johntravels@gmail.com"; 
-$subject = "New Contact Us Message";
+
 
 $name = $mail = $phone =$message = "";
 $successMessage = $errorMessage = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	if (isset($_POST['form_type'])) {
+        $form_type = $_POST['form_type'];
+        if ($form_type === 'contact_us') {
     $name = htmlspecialchars($_POST['name']);
     $mail = htmlspecialchars($_POST['mail']);
 	 $phone = htmlspecialchars($_POST['phone']);
@@ -25,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssss", $name, $mail, $phone,$message);
 
             if ($stmt->execute()) {
+				$adminEmail = "info.johntravels@gmail.com"; 
+				$subject = "New Contact Us Message";
 				$emailBody = "You have received a new message from the Contact Us form:\n\n";
 				$emailBody .= "Name: $name\n";
 				$emailBody .= "Email: $mail\n";
@@ -47,11 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 		
 		} else {
-            $errorMessage = "phone number must include country code and 10 digits.";
+            $errorMessage = "phone number must include country code (e.g, +94712345678).";
         }
     } else {
         $errorMessage = "All fields are required.";
     }
+}
+	}
 }
 
 $conn->close();
@@ -69,10 +75,11 @@ include "header/header.php"; ?>
 	<link rel="stylesheet" href="styles/css/bootstrap.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+           font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             margin: 0;
             padding: 0;
             background-color: #f8f9fa;
+			
         }
 		    .contacttitle {
             margin-top: 0;
@@ -83,9 +90,10 @@ include "header/header.php"; ?>
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.8em;
+            font-size: 2.5em;
             font-weight: bold;
             background-color: #f3f3f3;
+			font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
         
 	
@@ -105,7 +113,7 @@ include "header/header.php"; ?>
 		   .contacttitle::after {
             content: "";
             position: absolute;
-            bottom: -60px;
+            bottom: -70px;
             left: 0;
             right: 0;
             height: 50%; 
@@ -117,7 +125,9 @@ include "header/header.php"; ?>
 		   .contacttitle h1 {
             position: relative;
             z-index: 3; 
-            font-family: 'poppins', sans-serif;
+			margin-bottom:100px;
+			font-size: 2.5em;
+          font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 			text-align:center;
         }
 		
@@ -333,6 +343,7 @@ button:hover {
     <div class="form-section">
         <h2>Contact Us to Get More Info</h2>
         <form method="POST" action="contact.php">
+		  <input type="hidden" name="form_type" value="contact_us">
             <label for="name">Your Name</label>
             <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
 
@@ -374,7 +385,7 @@ button:hover {
             <a href="https://www.facebook.com/johntravelslk"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.youtube.com/@johntravelslk"><i class="fab fa-youtube"></i></a>
                 <a href="https://www.instagram.com/john_travels_lk/"><i class="fab fa-instagram"></i></a>
-                <a href="https://api.whatsapp.com/message/JHT7ZVJLWFUUP1?autoload=1&app_absent=0"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/message/JHT7ZVJLWFUUP1"><i class="fab fa-whatsapp"></i></a>
            
         </div>
     </div>
@@ -390,9 +401,3 @@ button:hover {
 </body>
 </html>
 
-
-     
-
-              
-
-               
