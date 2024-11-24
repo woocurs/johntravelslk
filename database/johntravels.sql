@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2024 at 09:20 AM
+-- Generation Time: Nov 24, 2024 at 11:46 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,11 +58,6 @@ CREATE TABLE `contact_us` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `contact_us`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -78,12 +73,6 @@ CREATE TABLE `job_applications` (
   `cv_file` varchar(255) NOT NULL,
   `date_submitted` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `job_applications`
---
-
-
 
 -- --------------------------------------------------------
 
@@ -109,13 +98,11 @@ CREATE TABLE `tour_bookings` (
   `photo_path` varchar(255) NOT NULL,
   `terms_accepted` tinyint(1) NOT NULL,
   `submission_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` enum('pending','confirmed','rejected','') NOT NULL
+  `status` enum('pending','confirmed','rejected','') NOT NULL,
+  `payment_details` varchar(12) NOT NULL,
+  `email_sent` tinyint(1) DEFAULT 0,
+  `sms_sent` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tour_bookings`
---
-
 
 -- --------------------------------------------------------
 
@@ -179,6 +166,14 @@ ALTER TABLE `admin_details`
 --
 -- AUTO_INCREMENT for table `contact_us`
 --
+ALTER TABLE `contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tour_bookings`
+--
+ALTER TABLE `tour_bookings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
