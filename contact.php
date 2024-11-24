@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$emailBody .= "Phone: $phone\n";
 				$emailBody .= "Message:\n$message\n\n";
 				$emailBody .= "This email was sent from the Contact Us form on John Travels LK.";
-				if (mail($adminEmail, $subject, $emailBody, "From: $mail")) {
+				if (mail($adminEmail, $subject, $emailBody, "From: johntravelslk@contact")) {
 
                 $successMessage = "Thank you! Your message has been successfully sent.";
                 $name = $mail = $message = ""; 

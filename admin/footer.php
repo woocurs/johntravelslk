@@ -254,7 +254,7 @@ $conn->close();
             <p>John Travels - Trips by Woocurs. Make lifelong memories.</p>
             <div class="logo-container">
                 <img src="../images/logo1.png" alt="Woocurs" width="100px" height="100px">
-                <img src="../images/logo.png" alt="John Group">
+                <img src="../images/Logo.png" alt="John Group">
             </div>
         </div>
 
@@ -290,7 +290,7 @@ $conn->close();
             </div>
 
             <div class="footer-bottom-section">
-                <img src="../images/logo.png" alt="John Travels Logo">
+                <img src="../images/Logo.png" alt="John Travels Logo">
                 <span style="font-size: 1.2em; color: #f1f1f1; vertical-align: middle; margin-left: 10px;">John Travels
                     LK</span>
             </div>
