@@ -398,8 +398,8 @@
         <?php
         $images = [
             ["location" => "KANDY", "title" => "Queen's Hotel", "image" => "destination_1.jpg", "size" => "large"],
-            ["location" => "Colombo", "title" => "Lotus Tower", "image" => "destination_2.jpg", "size" => "large"],
-            ["location" => "Batticaloa", "title" => "Batticaloa Lighthouse", "image" => "batticaloalighthouse.png", "size" => "large"],
+            ["location" => "Galle", "title" => "Galle Light House", "image" => "destination_3.jpg", "size" => "large"],
+            ["location" => "Batticaloa", "title" => "Pasikudah Beach", "image" => "pasikudahbeach.png", "size" => "large"],
             ["location" => "NUWARA ELIYA", "title" => "Tea Estate", "image" => "destination_4.jpg", "size" => "large"],
             ["location" => "Badulla", "title" => "Nine Arch Bridge", "image" => "destination_5.jpg", "size" => "small"],
             ["location" => "Matale", "title" => "Sembuwatta Lake", "image" => "sembuwattaLake.png", "size" => "small"],
