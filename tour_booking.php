@@ -54,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (empty($name)) $errors[] = "Name is required.";
         if (!preg_match("/^[0-9]{9}[vV]$|^[0-9]{12}$/", $nic)) $errors[] = "NIC must be valid (9 digits + 'V' or 12 digits).";
         if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid email is required.";
-		 if (empty($mobile) || !preg_match("/^\+\d{1,3}\d{10}$/", $mobile)) $errors[] = "Phone number must include the country code (e.g., +94771234567).";
-        if (!empty($whatsapp) && !preg_match("/^\+\d{1,3}\d{10}$/", $whatsapp)) $errors[] = "WhatsApp number must include country code (e.g., +94771234567).";
+		if (empty($mobile) || !preg_match("/^(\+?\d{1,3})?\d{10}$/", $mobile)) $errors[] = "Mobile number must be valid, with or without a country code.( e.g, 0712345678 or +94712345678).";
+        if (!empty($whatsapp) && !preg_match("/^(\+?\d{1,3})?\d{10}$/", $whatsapp)) $errors[] = "WhatsApp number must be valid, with or without a country code.( e.g, 0712345678 or +94712345678).";
         if (empty($gender)) $errors[] = "Gender is required.";
 		 if (empty($payment)) $errors[] = "Payment is required.";
         if (empty($dob)) $errors[] = "DOB is required.";
@@ -70,27 +70,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				
                 storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
 				  
-				       $sms_message =  "Dear $name, your booking for $tour_package tour package has been successfully received.\n"
+				       $sms_message =  "Dear $name, your booking for $tour_package has been successfully received.\n"
 							 ."Booking Details:\n"
                              . "NIC: $nic\n"
                              . "Mobile: $mobile\n"
                              . "Reference No: $reference_number\n"
                              . "Payment: $payment\n"
-                             . "Thank you for choosing John Travels LK!";
+                             . "Thank you for choosing John Travels LK! \n"
+							 . "Visit us: https://www.facebook.com/JohnTravelsLK  Contact us: +94 76 245 0858 \n";
+							
                 $sms_status = sendSMS($sms_message,$conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark);
+				
 
- if (!empty($email)) {
-
- $email_status = sendEmail($conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark,$photo_path, $terms);
- $admin_status = adminEmail($conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark,$photo_path, $terms);
-                }
 				   
-              $customer_msg = "Booking successfully received! Once confirmed, a confirmation will be sent to your email or mobile number. Thank you!.";
-                $customer_msg .= $sms_status ? "Check your mobile number! " : "failed to send confirmation Sms.";
-                $customer_msg .= !empty($email) && $email_status ? "Check Your Email." : " failed to send confirmation email.";
-				$customer_msg .= !empty($admin_email) && $admin_status ? "Successfully notify the Johntravelslk admin." : " However, we could not notify the admin.";
+               $customer_msg = "Booking received! Confirmation will be sent to your email or mobile once approved!";
+                $customer_msg .= $sms_status ? "Check your mobile for booking details Thank you!" : "failed to send confirmation Sms."; 
 
-                echo "<script>window.onload = function() { showPopup('Success', '$customer_msg'); }</script>";
+               echo "<script>window.onload = function() { showPopup('Success', '$customer_msg');setTimeout(function() { window.location.href = 'index.php';     }, 3000);  };</script>";
             } else {
                 $error_msg = implode("<br>", $errors);
                 echo "<script>window.onload = function() { showPopup('Error', '$error_msg'); }</script>";
@@ -111,11 +107,21 @@ function storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $
     $stmt->close();
     $conn->close();
 }
-function sendSMS($sms_message,$conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark) {
-	 $mobile = preg_replace("/[^0-9]/", "",$mobile);
-        if (substr($mobile, 0, 1) == '0') {
-            $phone = '94' . substr($mobile, 1);
-        }
+function sendSMS($sms_message, $conn, $email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark) {
+   
+    $mobile = preg_replace("/[^0-9]/", "", $mobile);
+
+   
+    if (substr($mobile, 0, 1) == '0') {
+        $mobile = '94' . substr($mobile, 1);
+    }
+
+   
+    if (strlen($mobile) != 11) {
+       
+        return false;
+    }
+
     $url = "https://app.notify.lk/api/v1/send";
     $postData = [
         'user_id' => "28355",
@@ -124,6 +130,7 @@ function sendSMS($sms_message,$conn,$email, $name, $address, $nic, $mobile, $wha
         'to' => $mobile,
         'message' => $sms_message,
     ];
+
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, 1);
@@ -131,252 +138,156 @@ function sendSMS($sms_message,$conn,$email, $name, $address, $nic, $mobile, $wha
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($ch);
     curl_close($ch);
+
     $response = json_decode($response, true);
     return isset($response['status']) && $response['status'] == "success";
 }
-function sendEmail($conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark,$photo_path, $terms) {
-    
-				
-$boundary = md5(time());
-$headers = "From: info.johntravelslk@gmail.com\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: multipart/related; boundary=\"$boundary\"\r\n";
 
 
- 
-$confirmation_subject ="Booking Received";
+?><?php
+include "database/db.php";
 
-$confirmation_body = "
---$boundary
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+	
+$selectedLocation = isset($_GET['location']) ? $_GET['location'] : '';
+$selectedPackage = isset($_GET['title']) ? $_GET['title'] : '';
+$selectedImage = isset($_GET['image']) ? $_GET['image'] : '';
+ $size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : 'large'; 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['form_type'])) {
+        $form_type = $_POST['form_type'];
+        if ($form_type === 'booking') {
+            $errors = [];  
+			
+          $name = htmlspecialchars($_POST['name']);
+        $address = htmlspecialchars($_POST['address']);
+        $nic = htmlspecialchars($_POST['nic']);
+        $email = htmlspecialchars($_POST['email']);
+        $mobile = htmlspecialchars($_POST['mobile']);
+        $whatsapp = htmlspecialchars($_POST['whatsapp']);
+        $gender = htmlspecialchars($_POST['gender']);
+        $dob = $_POST['dob'];
+        $payment = htmlspecialchars($_POST['payment']);
+        $reference_number = htmlspecialchars($_POST['reference_number']);
+        $remark = htmlspecialchars($_POST['remark']);
+        $tour_package = htmlspecialchars($_POST['tour_package']);
+        $terms = isset($_POST['terms']) ? 1 : 0;
+		
+		
+		    $reference_number = strtoupper(substr(md5(time() . $mobile), 0, 10));
 
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>New Booking Notification</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .email-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .email-header {
-            text-align: center;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            border-radius: 8px 8px 0 0;
-        }
-        .email-header img {
-            max-width: 150px;
-            margin-bottom: 10px;
-        }
-        .email-body {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .email-body p {
-            margin: 10px 0;
-        }
-        .email-body .bold {
-            font-weight: bold;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            color: #777;
-            border-top: 1px solid #e0e0e0;
-        }
-    </style>
-</head>
-<body>
-    <div class='email-container'>
-        <div class='email-header'>
-            <img src='cid:logo' alt='John Travels LK'>
-            <h2>Booking Successfully Received</h2>
-        </div>
-        <div class='email-body'>
-		<p><span class='bold'>Dear $name,</span>\n\nThank you for booking with us.</p>
-            <p><span class='bold'>Name:</span> $name</p>
-            <p><span class='bold'>Address:</span> $address</p>
-            <p><span class='bold'>NIC:</span> $nic</p>
-            <p><span class='bold'>Email:</span> $email</p>
-            <p><span class='bold'>Phone:</span> $mobile</p>
-            <p><span class='bold'>Whatsapp:</span> $whatsapp</p>
-            <p><span class='bold'>Gender:</span> $gender</p>
-            <p><span class='bold'>DOB:</span> $dob</p>
-            <p><span class='bold'>Tour Package:</span> $tour_package</p>
-            <p><span class='bold'>Payment:</span> $payment</p>
-            <p><span class='bold'>Reference Number:</span> $reference_number</p>
-            <p><span class='bold'>Remark:</span> $remark</p>
+		
             
-        </div>
-        <div class='footer'>
-            <p>Regards, <br> John Travels LK</p>
-        </div>
-    </div>
-</body>
-</html>
-
---$boundary
-Content-Type: image/png; name='Johntravelslk_logo.png'
-Content-Transfer-Encoding: base64
-Content-ID: <logo>
-
-";
-
-
-$image_path = "images/John_Travels_LK_Banner_R.png";  
-$image_data = base64_encode(file_get_contents($image_path)); 
-$confirmation_body .= $image_data . "\r\n";
-
-
-$confirmation_body .= "--$boundary--";
-
-
-
-				
-               
-
-                 if(mail($email, $confirmation_subject, $confirmation_body, $headers)){
-					 return true;
-                    
-                } 
-				return false;
-	}
-function adminEmail($conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark,$photo_path, $terms) {
-$boundary = md5(time());
-$headers = "From: $email\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: multipart/related; boundary=\"$boundary\"\r\n";
-
-
-$admin_email = "info.johntravels@gmail.com"; 
-$admin_subject = "New Tour Booking Notification";
-
-$admin_body = "
---$boundary
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>New Booking Notification</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .email-container {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .email-header {
-            text-align: center;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            border-radius: 8px 8px 0 0;
-        }
-        .email-header img {
-            max-width: 150px;
-            margin-bottom: 10px;
-        }
-        .email-body {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .email-body p {
-            margin: 10px 0;
-        }
-        .email-body .bold {
-            font-weight: bold;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            color: #777;
-            border-top: 1px solid #e0e0e0;
-        }
-    </style>
-</head>
-<body>
-    <div class='email-container'>
-        <div class='email-header'>
-            <img src='cid:logo' alt='John Travels LK'>
-            <h2>New Booking Notification</h2>
-        </div>
-        <div class='email-body'>
-            <p><span class='bold'>Name:</span> $name</p>
-            <p><span class='bold'>Address:</span> $address</p>
-            <p><span class='bold'>NIC:</span> $nic</p>
-            <p><span class='bold'>Email:</span> $email</p>
-            <p><span class='bold'>Phone:</span> $mobile</p>
-            <p><span class='bold'>Whatsapp:</span> $whatsapp</p>
-            <p><span class='bold'>Gender:</span> $gender</p>
-            <p><span class='bold'>DOB:</span> $dob</p>
-            <p><span class='bold'>Tour Package:</span> $tour_package</p>
-            <p><span class='bold'>Payment:</span> $payment</p>
-            <p><span class='bold'>Reference Number:</span> $reference_number</p>
-            <p><span class='bold'>Remark:</span> $remark</p>
-            <p><span class='bold'>Photo Path:</span> $photo_path</p>
-        </div>
-        <div class='footer'>
-            <p>Regards, <br> John Travels Booking System</p>
-        </div>
-    </div>
-</body>
-</html>
-
---$boundary
-Content-Type: image/png; name='Johntravelslk_logo.png'
-Content-Transfer-Encoding: base64
-Content-ID: <logo>
-
-";
-
-
-$image_path = "images/John_Travels_LK_Banner_R.png"; 
-$image_data = base64_encode(file_get_contents($image_path)); 
-$admin_body .= $image_data . "\r\n";
-
-
-$admin_body .= "--$boundary--";
-
-
-if( mail($admin_email, $admin_subject, $admin_body, $headers)){
-   return true;
+            $photo = $_FILES['photo'];
+            $upload_dir = 'uploads/photos/';
+            $photo_path = '';
+            if ($photo['error'] === 0) {
+                $file_extension = pathinfo($photo['name'], PATHINFO_EXTENSION);
+                $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+                if (in_array(strtolower($file_extension), $allowed_extensions) && $photo['size'] < 5000000) {
+                    $photo_path = $upload_dir . basename($photo['name']);
+                    if (!file_exists($upload_dir)) {
+                        mkdir($upload_dir, 0777, true); 
+                    }
+                    move_uploaded_file($photo['tmp_name'], $photo_path);
+                } else {
+                    $errors[] = "Invalid file type or size. Only JPG, JPEG, PNG, and GIF under 5MB are allowed.";
+                }
+            } else {
+                $errors[] = "File upload error.";
             }
-    return false; 
+			
+            
+            if (empty($name)) $errors[] = "Name is required.";
+        if (!preg_match("/^[0-9]{9}[vV]$|^[0-9]{12}$/", $nic)) $errors[] = "NIC must be valid (9 digits + 'V' or 12 digits).";
+        if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Valid email is required.";
+		if (empty($mobile) || !preg_match("/^(\+?\d{1,3})?\d{10}$/", $mobile)) $errors[] = "Mobile number must be valid, with or without a country code.( e.g, 0712345678 or +94712345678).";
+        if (!empty($whatsapp) && !preg_match("/^(\+?\d{1,3})?\d{10}$/", $whatsapp)) $errors[] = "WhatsApp number must be valid, with or without a country code.( e.g, 0712345678 or +94712345678).";
+        if (empty($gender)) $errors[] = "Gender is required.";
+		 if (empty($payment)) $errors[] = "Payment is required.";
+        if (empty($dob)) $errors[] = "DOB is required.";
+        if (empty($tour_package)) $errors[] = "Tour package is required.";
+        if (!$terms) $errors[] = "You must agree to the terms and conditions.";
+     
+       
+		
+		
+		
+            if (empty($errors)) {
+				
+                storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
+				  
+				       $sms_message =  "Dear $name, your booking for $tour_package has been successfully received.\n"
+							 ."Booking Details:\n"
+                             . "NIC: $nic\n"
+                             . "Mobile: $mobile\n"
+                             . "Reference No: $reference_number\n"
+                             . "Payment: $payment\n"
+                             . "Thank you for choosing John Travels LK! \n"
+							 . "Visit us: https://www.facebook.com/JohnTravelsLK  Contact us: +94 76 245 0858 \n";
+							
+                $sms_status = sendSMS($sms_message,$conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark);
+				
+
+				   
+               $customer_msg = "Booking received! Confirmation will be sent to your email or mobile once approved!";
+                $customer_msg .= $sms_status ? "Check your mobile for booking details Thank you!" : "failed to send confirmation Sms."; 
+
+               echo "<script>window.onload = function() { showPopup('Success', '$customer_msg');setTimeout(function() { window.location.href = 'index.php';     }, 3000);  };</script>";
+            } else {
+                $error_msg = implode("<br>", $errors);
+                echo "<script>window.onload = function() { showPopup('Error', '$error_msg'); }</script>";
+			}
+
+
+        }
+    }
 }
 
+function storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms) {
+	
+     
+	$stmt = $conn->prepare("INSERT INTO tour_bookings (name, address, nic, phone, whatsapp, email, gender, dob,tour_package, reference_number, payment, remark, photo_path, terms_accepted) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?, ?)");
+   
+	$stmt->bind_param("sssssssdssssss", $name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
+    $stmt->execute();
+    $stmt->close();
+    $conn->close();
+}
+function sendSMS($sms_message, $conn, $email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark) {
+   
+    $mobile = preg_replace("/[^0-9]/", "", $mobile);
+
+   
+    if (substr($mobile, 0, 1) == '0') {
+        $mobile = '94' . substr($mobile, 1);
+    }
+
+   
+    if (strlen($mobile) != 11) {
+       
+        return false;
+    }
+
+    $url = "https://app.notify.lk/api/v1/send";
+    $postData = [
+        'user_id' => "28355",
+        'api_key' => "jpWXAHATeXbXA4jAP1i3",
+        'sender_id' => "JohnTravels",
+        'to' => $mobile,
+        'message' => $sms_message,
+    ];
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    $response = json_decode($response, true);
+    return isset($response['status']) && $response['status'] == "success";
+}
 
 
 ?>
@@ -750,7 +661,7 @@ function closePopup() {
 
             </div>
             <div class="form-group">
-                <label>Upload ID Photo</label>
+                <label>Upload ID Photo (NIC/Passport/Licence)</label>
                 <input type="file" name="photo" id="photo" required onchange="previewImage(event)"><br>
     <img id="photo-preview" src="" alt="Image Preview" style="display: none; max-width:500px;">
 
