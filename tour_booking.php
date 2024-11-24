@@ -680,7 +680,7 @@ function closePopup() {
             <div class="form-group">
                 <label for="tour_package">Your Tour Package</label>
                 <input type="text" name="tour_package" id="tour_package" class="form-control" 
-                       value="<?php echo $selectedPackage . '-' . $selectedLocation; ?>" readonly>
+                       value="<?php echo $selectedLocation; ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="name">Name with Initials</label>
