@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($seatValidationResult->num_rows > 0) {
             echo "<script>alert('Error: Seat number $seatNumber is already assigned for this tour package.'); window.location.href = 'admin_dashboard.php';</script>";
-            exit; // Stop execution to prevent database update
+            exit; 
         }
 
         $stmt = $conn->prepare("UPDATE tour_bookings SET status = 'confirmed', seat_number = ?, payment_details = ? WHERE id = ?");
@@ -73,6 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "<script>alert('Error confirming booking.'); window.location.href = 'admin_dashboard.php';</script>";
         }
+		header("location: admin_dashboard");
+		exit;
     } elseif (isset($_POST['action']) && $_POST['action'] === 'reject_booking') {
         $stmt = $conn->prepare("UPDATE tour_bookings SET status = 'rejected' WHERE id = ?");
         $stmt->bind_param("i", $id);
