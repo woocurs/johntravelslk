@@ -136,7 +136,7 @@ $conn->close();
             <input type="email" name="email" placeholder="E-Mail" class="input-field" required>
             <input type="password" name="password" placeholder="Password" class="input-field" required>
             <button type="submit" class="login-btn">Login</button>
-            <a href="#" class="forgot-password">Forgot Password?</a>
+            <a href="../index.php" class="Home">Home</a>
         </form>
         <?php if ($errorMessage): ?>
             <div class="error-message"><?php echo htmlspecialchars($errorMessage); ?></div>
