@@ -134,7 +134,7 @@ $result = $conn->query($sql);
     <h2>Rejected Bookings</h2>
 
     
-        <a href="admin_dashboard.php" class="action-btn" style="background-color:#ffc107;; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Back to Dashboard</a>
+        <a href="admin_dashboard.php" class="action-btn" style="background-color:#ff6b6b; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Back to Dashboard</a>
     
     <table>
         <tr>

@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($seatValidationResult->num_rows > 0) {
             echo "<script>alert('Error: Seat number $seatNumber is already assigned for this tour package.'); window.location.href = 'admin_dashboard.php';</script>";
-            exit; 
+            exit; // Stop execution to prevent database update
         }
 
         $stmt = $conn->prepare("UPDATE tour_bookings SET status = 'confirmed', seat_number = ?, payment_details = ? WHERE id = ?");
@@ -73,8 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "<script>alert('Error confirming booking.'); window.location.href = 'admin_dashboard.php';</script>";
         }
-		header("location: admin_dashboard");
-		exit;
+        header("Location: admin_dashboard.php");
+        exit;
+
+
     } elseif (isset($_POST['action']) && $_POST['action'] === 'reject_booking') {
         $stmt = $conn->prepare("UPDATE tour_bookings SET status = 'rejected' WHERE id = ?");
         $stmt->bind_param("i", $id);
@@ -83,11 +85,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "<script>alert('Error rejecting booking.'); window.location.href = 'admin_dashboard.php';</script>";
         }
+    
     }
 }
 
 function sendConfirmationEmail($id, $seatNumber, $paymentDetails, $conn) {
-    $stmt = $conn->prepare("SELECT email, name, reference_number FROM tour_bookings WHERE id = ?");
+    $stmt = $conn->prepare("SELECT email, name, reference_number, tour_package FROM tour_bookings WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -96,15 +99,16 @@ function sendConfirmationEmail($id, $seatNumber, $paymentDetails, $conn) {
         $email = $row['email'];
         $customerName = $row['name'];
         $referenceNumber = $row['reference_number'];
+        $tourPackage = $row['tour_package'];
         $subject = "Booking Confirmation - John Travels";
-        $message = "Dear $customerName,\n\nYour booking is confirmed.\nReference: $referenceNumber\nSeat Number: $seatNumber\nPayment Details: $paymentDetails\n\nThank you for choosing John Travels!";
-        return mail($email, $subject, $message, "From: noreply@johntravels.com");
+        $message = "Dear $customerName,\n\nYour booking is confirmed.\nTour Package: $tourPackage\nReference: $referenceNumber\nSeat Number: $seatNumber\nPayment Details: $paymentDetails\nThank you for choosing John Travels!.\n\n Visit us: https://www.facebook.com/JohnTravelsLK \n Contact us: +94 76 245 0858 ";
+        return mail($email, $subject, $message, "From: johntravelslk@.com");
     }
     return false;
 }
 
 function sendSMS($id, $seatNumber, $paymentDetails, $conn) {
-    $stmt = $conn->prepare("SELECT phone, name, reference_number FROM tour_bookings WHERE id = ?");
+    $stmt = $conn->prepare("SELECT phone, name, reference_number, tour_package FROM tour_bookings WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -114,7 +118,7 @@ function sendSMS($id, $seatNumber, $paymentDetails, $conn) {
         if (substr($phone, 0, 1) == '0') {
             $phone = '94' . substr($phone, 1);
         }
-        $message = "Dear {$row['name']}, your booking is confirmed. Reference_No: {$row['reference_number']}, Seat Number: $seatNumber, Payment Details: $paymentDetails. Thank you for choosing John Travels!";
+        $message = "Dear {$row['name']}, your booking is confirmed.\nYour Package is {$row['tour_package']}\n Reference_No: {$row['reference_number']}\n Seat Number: $seatNumber\n Payment Details: $paymentDetails\nThank you for choosing John Travels!.\n\n Visit us: https://www.facebook.com/JohnTravelsLK \n Contact us: +94 76 245 0858 ";
         $data = [
             'user_id' => "28355",
             'api_key' => "jpWXAHATeXbXA4jAP1i3",
@@ -381,8 +385,9 @@ button:hover {
         </form>
     </div>
 
-  
+    <a href="notifications.php" class="action-btn btn-notification" style="background-color: #ffc107; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Inquiries</a>
     <a href="rejected_bookings.php" class="action-btn btn-reject" style="background-color:#ffc107;; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">View Rejected Bookings</a>
+    <a href="job_application.php" class="action-btn btn-notification" style="background-color: #ffc107; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Job Application</a>
     <a href="admin_logout.php" class="action-btn btn-logout">Logout</a>
 
     <table>
