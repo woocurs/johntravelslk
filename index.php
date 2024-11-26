@@ -290,7 +290,7 @@
         <div class="slide active">
             <div class="overlay">
                 <div class="left-content">
-                    <h1>Explore the Pearl of Indian Ocean</h1>
+                    <h1>Explore the Pearl of Indian Ocean with John Woocur</h1>
                     <p>Experience the adventures of Mirabilis: eat, sleep, hike, climb, fly, jump, swim, snorkel, surf,
                         and dive.</p>
                     <a href="tourpackages.php" class="button">Explore More</a>
