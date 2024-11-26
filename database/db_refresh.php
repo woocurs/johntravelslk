@@ -19,6 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm'])) {
 
         // Select the database
         $conn->select_db($database);
+		
+		// Retrieve and drop all tables in the database
+        $tables = [];
+        $result = $conn->query("SHOW TABLES");
+        while ($row = $result->fetch_array()) {
+            $tables[] = $row[0];
+        }
+
+        foreach ($tables as $table) {
+            $conn->query("DROP TABLE `$table`");
+            echo "Dropped table '$table'.<br>";
+        }
+
+        echo "All tables cleared from the database '$database'.<br>";
 
         // Load and execute the SQL file
         if (file_exists($sqlFilePath)) {
