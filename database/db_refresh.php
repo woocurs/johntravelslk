@@ -38,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm'])) {
         if (file_exists($sqlFilePath)) {
             $sqlCommands = file_get_contents($sqlFilePath);
             if ($conn->multi_query($sqlCommands)) {
-                echo "Database populated successfully from the SQL file.<br>";
+				echo "Database populated successfully from the SQL file.<br>";
+                echo "<a href='index.php'>Go to Index Page</a><br>";
             } else {
                 echo "Error executing SQL file: " . $conn->error . "<br>";
             }
