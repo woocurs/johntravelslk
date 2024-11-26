@@ -67,14 +67,13 @@ CREATE TABLE `contact_us` (
 CREATE TABLE `job_applications` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `message` text DEFAULT NULL,
   `position` varchar(255) NOT NULL,
   `cv_file` varchar(255) NOT NULL,
   `date_submitted` timestamp NOT NULL DEFAULT current_timestamp(),
   `mobile` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 -- --------------------------------------------------------
 
 --

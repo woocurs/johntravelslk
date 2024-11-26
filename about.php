@@ -98,7 +98,7 @@
                     <div class="col ">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <a href="#">
+                                <a href="https://www.woocursacdemy.tech/">
                                     <img src="images/5.png">
                                 </a>
                             </div>
@@ -107,28 +107,36 @@
                     <div class="col">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <img src="images/4.png">
+                                <a href="https://www.johntravels.online/">
+                                    <img src="images/4.png">
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <img src="images/6.png">
+                                <a href="https://archerstek.online/">
+                                    <img src="images/6.png">
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <img src="images/7.png">
+                                <a href="https://woocurs.com/">
+                                    <img src="images/7.png">
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="about-client">
                             <div class="about-client-icon">
-                                <img src="images/2.png">
+                                <a href="https://www.johnwoocur.com/">
+                                    <img src="images/2.png">
+                                </a>
                             </div>
                         </div>
                     </div>
