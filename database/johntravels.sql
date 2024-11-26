@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2024 at 02:43 PM
+-- Generation Time: Nov 26, 2024 at 03:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -67,13 +67,14 @@ CREATE TABLE `contact_us` (
 CREATE TABLE `job_applications` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   `position` varchar(255) NOT NULL,
   `cv_file` varchar(255) NOT NULL,
   `date_submitted` timestamp NOT NULL DEFAULT current_timestamp(),
   `mobile` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -99,7 +100,7 @@ CREATE TABLE `tour_bookings` (
   `terms_accepted` tinyint(1) NOT NULL,
   `submission_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` enum('pending','confirmed','rejected','') NOT NULL,
-  `payment_details` varchar(12) NOT NULL
+  `payment_details` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
