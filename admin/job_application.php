@@ -1,5 +1,3 @@
-
-
 <?php 
 
 session_start();
@@ -13,7 +11,7 @@ if (!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] === null) {
 require '../database/db.php'; 
 
 
-$sql = "SELECT id, name, phone, email, message FROM contact_us";
+$sql = "SELECT * FROM job_applications";
 $result = $conn->query($sql);
 ?>
 <?php include('header.php');?>
@@ -124,35 +122,39 @@ tr:nth-child(odd) {
 </head>
 <body>
 <div class="container">
-    <h2>Contact Notifications</h2>
-    <p>List of all notifications from the contact us form.</p>
-
-    <a href="admin_dashboard.php" class="action-btn" style="background-color:#ff6b6b; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Back to Dashboard</a>
-    
+    <h2>Job Application Details</h2>
+    <p>List of all job application details from the job applications form.</p>
+    <a href="admin_dashboard.php" class="action-btn btn-back" style="background-color: #ff6b6b; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Back to Dashboard</a>
     <table>
     <table>
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Phone</th>
             <th>Email</th>
+            <th>Phone</th>
             <th>Message</th>
+            <th>Position</th>
+            <th>CV Files</th>
+            <th>Submitted Date</th>
 			
 			
         </tr>
         <?php if ($result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
-                <td><?= htmlspecialchars($row['id'], ENT_QUOTES, 'UTF-8') ?></td>
-                <td><?= htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8') ?></td>
-                <td><?= htmlspecialchars($row['phone'], ENT_QUOTES, 'UTF-8') ?></td>
-                <td><?= htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8') ?></td>
-                <td><?= htmlspecialchars($row['message'], ENT_QUOTES, 'UTF-8') ?></td>
+                    <td><?=  htmlspecialchars ($row['id'], ENT_QUOTES, 'UTF-8')?></td>
+                    <td><?= htmlspecialchars ($row['name'], ENT_QUOTES, 'UTF-8') ?></td>
+                    <td><?= htmlspecialchars ($row['email'], ENT_QUOTES, 'UTF-8') ?></td>
+                    <td><?= htmlspecialchars ($row['mobile'], ENT_QUOTES, 'UTF-8') ?></td>
+                    <td><?= htmlspecialchars ($row['message'], ENT_QUOTES, 'UTF-8') ?></td>
+                    <td><?= htmlspecialchars ($row['position'], ENT_QUOTES, 'UTF-8') ?></td>
+                    <td><?= htmlspecialchars ($row['cv_file'], ENT_QUOTES, 'UTF-8') ?></td>
+                    <td><?= htmlspecialchars ($row['date_submitted'], ENT_QUOTES, 'UTF-8') ?></td>
 					 
                 </tr>
             <?php endwhile; ?>
         <?php else: ?>
-            <tr><td colspan="5">No notifications found.</td></tr>
+            <tr><td colspan="8">No Applications Found.</td></tr>
         <?php endif; ?>
     </table>
 </div>
@@ -162,4 +164,3 @@ include "footer.php";
 ?>
 </body>
 </html>
-

@@ -1,6 +1,7 @@
 <?php include 'header/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,18 +45,18 @@
             left: 0;
             right: 0;
             height: 50%;
-            background: url('images/banner-pattern.png') no-repeat center top; 
+            background: url('images/banner-pattern.png') no-repeat center top;
             background-size: contain;
-            opacity: 1; 
+            opacity: 1;
             z-index: 2;
         }
 
         .tourpackagestitle h1 {
             position: relative;
-            z-index: 3; 
-            font-family: 'Playfair Display', Georgia, serif; 
-            font-size: 2.3em; 
-            margin-top: -50px; 
+            z-index: 3;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.3em;
+            margin-top: -50px;
         }
 
         .image-grid {
@@ -63,7 +64,7 @@
             background-color: #FAFAFA;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 10px;
-            padding: 50px 150px;
+            padding: 50px 145px;
         }
 
         .card {
@@ -118,29 +119,33 @@
         }
 
         a {
-            text-decoration: none; 
+            text-decoration: none;
         }
 
-       
-        a:hover, a:focus {
-            text-decoration: none !important; 
+
+        a:hover,
+        a:focus {
+            text-decoration: none !important;
         }
 
-       
-        a.location, a.title {
-            text-decoration: none; 
-            border-bottom: 2px solid transparent; 
+
+        a.location,
+        a.title {
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
         }
 
-        a.location:hover, a.title:hover,
-        a.location:focus, a.title:focus {
+        a.location:hover,
+        a.title:hover,
+        a.location:focus,
+        a.title:focus {
             border-bottom: 2px solid #009688;
         }
 
         .button {
             background-color: #009688;
             color: white;
-            border: none !important; 
+            border: none !important;
             outline: none !important;
             padding: 5px 10px;
             border-radius: 5px;
@@ -157,7 +162,7 @@
         .buttonbook {
             background-color: #009688;
             color: white;
-            border: none !important; 
+            border: none !important;
             outline: none !important;
             padding: 5px 10px;
             border-radius: 5px;
@@ -165,13 +170,13 @@
             font-size: 12px;
             display: inline-block;
             margin-top: 10px;
-            margin-left: 7px;
+            margin-left: 5px;
         }
 
         .buttonbook:hover {
             background-color: #00796b;
-            color: #fff; 
-            border: none; 
+            color: #fff;
+            border: none;
             transform: scale(1.05);
         }
 
@@ -212,7 +217,8 @@
             background-color: #00796b;
             transform: scale(1.05);
         }
-        /* Popup styles */
+
+
         .popup {
             display: none;
             position: fixed;
@@ -233,9 +239,9 @@
         }
 
         .popup img {
-            width: auto !important; 
-            max-width: 100% !important; 
-            height: 550px !important; 
+            width: auto !important;
+            max-width: 100% !important;
+            height: 550px !important;
         }
 
         .popup-content {
@@ -247,10 +253,11 @@
             max-width: 100%;
             border-radius: 5px;
         }
+
         .close {
             cursor: pointer;
         }
-        
+
 
         .download-btn {
             position: absolute;
@@ -277,7 +284,7 @@
 
         .download-btn:hover {
             background-color: #00796b;
-            border: none !important; 
+            border: none !important;
             outline: none !important;
             transform: scale(1.05);
         }
@@ -295,55 +302,60 @@
             align-items: center;
             z-index: 9;
         }
-        .overlay, .popup {
+
+        .overlay,
+        .popup {
             transition: none !important;
         }
-                .details .icon {
-            position: absolute; 
-            right: 10px; 
-            top: 10px; 
-            font-size: 18px; 
-            color: white; 
-            cursor: pointer; 
-            z-index: 4; 
+
+        .details .icon {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            z-index: 4;
             transition: transform 0.2s ease, color 0.3s ease;
         }
 
         .details .icon:hover {
-            transform: scale(1.2); 
-            color: #009688; 
+            transform: scale(1.2);
+            color: #009688;
         }
-        
 
-      
-       @media (max-width: 768px) {
+
+
+        @media (max-width: 768px) {
             .tourpackagestitle {
                 font-size: 2em;
                 min-height: 40vh;
             }
+
             .tourpackagestitle::after {
-                height: 40%; 
-                bottom: -50px; 
+                height: 40%;
+                bottom: -50px;
             }
 
             .image-grid {
-                padding: 40px; 
+                padding: 40px;
                 gap: 5px;
             }
 
             .image {
-                height: 300px; 
+                height: 300px;
                 width: 100%;
             }
 
             .image.small {
-                height: 150px; 
+                height: 150px;
                 margin-right: 20px;
             }
 
-            .button, .buttonbook {
-                font-size: 10px; 
-                padding: 3px 8px; 
+            .button,
+            .buttonbook {
+                font-size: 10px;
+                padding: 3px 8px;
             }
         }
 
@@ -355,8 +367,8 @@
             }
 
             .tourpackagestitle::after {
-                height: 20%; 
-                bottom: -30px; 
+                height: 20%;
+                bottom: -30px;
             }
 
             .image-grid {
@@ -372,37 +384,42 @@
             .image.small {
                 height: 190px;
             }
-        } 
-        
+        }
     </style>
 </head>
+
 <body>
-    
+
     <div class="tourpackagestitle">
         <h1>Tour Packages</h1>
     </div>
-    
+
     <div class="image-grid">
         <?php
         $images = [
             ["location" => "KANDY", "title" => "Queen's Hotel", "image" => "destination_1.jpg", "size" => "large"],
-            ["location" => "Colombo", "title" => "Lotus Tower", "image" => "destination_2.jpg", "size" => "large"],
-            ["location" => "Batticaloa", "title" => "Pasikudah Beach", "image" => "destination_3.jpg", "size" => "large"],
+            ["location" => "Galle", "title" => "Galle Light House", "image" => "destination_3.jpg", "size" => "large"],
+            ["location" => "Batticaloa", "title" => "Pasikudah Beach", "image" => "pasikudahbeach.png", "size" => "large"],
             ["location" => "NUWARA ELIYA", "title" => "Tea Estate", "image" => "destination_4.jpg", "size" => "large"],
             ["location" => "Badulla", "title" => "Nine Arch Bridge", "image" => "destination_5.jpg", "size" => "small"],
-            ["location" => "Matale", "title" => "Riverston", "image" => "destination_6.jpg", "size" => "small"],
-            ["location" => "Trincomalee", "title" => "Kinniya Bridge", "image" => "destination_7.jpg", "size" => "small"],
-            ["location" => "Anuradhapura", "title" => "Sigiriya", "image" => "destination_8.jpg", "size" => "small"]
+            ["location" => "Matale", "title" => "Sembuwatta Lake", "image" => "sembuwattaLake.png", "size" => "small"],
+            ["location" => "Trincomalee", "title" => "Pigeonis Land", "image" => "pigeonisland.png", "size" => "small"],
+            ["location" => "Anuradhapura", "title" => "Sigiriya", "image" => "sigiriya.png", "size" => "small"]
         ];
 
         $popupImages = [
-            "Kandy.png", "Galle_Matara_Colombo.png", "batticaloa.png", 
-            "NuwaraEliya.png",  "Badulla.png", "Matale.png",
-            "Trincomalee.png", "Anuradhapura_Dambulla_Sigiriya.png"
+            "Kandy.png",
+            "Galle_Matara_Colombo.png",
+            "batticaloa.png",
+            "NuwaraEliya.png",
+            "Badulla.png",
+            "Matale.png",
+            "Trincomalee.png",
+            "Anuradhapura_Dambulla_Sigiriya.png"
         ];
-        
+
         $counter = 0;
-            
+
         foreach ($images as $img) {
             echo '<div class="card">';
             echo '<a href="viewpackages.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
@@ -413,63 +430,64 @@
             echo '<button class="button">Get More</button>';
             echo '<a href="tour_booking.php?location=' . urlencode($img["location"]) . '&title=' . urlencode($img["title"]) . '&image=' . urlencode($img["image"]) . '">';
             echo '<button class="buttonbook">Book Now</button></a>';
-            echo '<i class="fas fa-expand icon" onclick="event.stopPropagation(); openPopup(\'images/' . $popupImages[$counter] . '\')"></i>';
+            echo '<button class="buttonbook" onclick="event.stopPropagation(); openPopup(\'images/' . $popupImages[$counter] . '\')">Brochure</button>';
             echo '</div></a></div>';
             $counter++;
-        }        
+        }
         ?>
     </div>
-    
+
     <div class="overlay" onclick="closePopup()"></div>
 
     <div class="popup">
-    <span class="close" onclick="closePopup()">×</span>
-    <div class="popup-content">
-        <img id="popup-img" src="" alt="Image">
-        <button class="download-btn" onclick="downloadImage()">
-            <i class="fas fa-download"></i> Download
-        </button>
+        <span class="close" onclick="closePopup()">×</span>
+        <div class="popup-content">
+            <img id="popup-img" src="" alt="Image">
+            <button class="download-btn" onclick="downloadImage()">
+                <i class="fas fa-download"></i> Download
+            </button>
+        </div>
     </div>
-</div>
 
 
-<script>
-    
-    document.querySelector('.overlay').style.display = 'none';
-    document.querySelector('.popup').style.display = 'none';
+    <script>
 
-    
-    function openPopup(imageSrc) {
-        document.querySelector('.overlay').style.display = 'block';
-        document.querySelector('.popup').style.display = 'block';
-        document.getElementById('popup-img').src = imageSrc;
-    }
-
-    
-    function closePopup() {
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.popup').style.display = 'none';
-    }
 
-    
-    function downloadImage() {
-        const imageSrc = document.getElementById('popup-img').src; 
-        const link = document.createElement('a'); 
-        link.href = imageSrc;
-        link.download = imageSrc.split('/').pop(); 
-        link.click(); 
-    }
 
-    
-    window.addEventListener('load', function() {
-        
-        setTimeout(function() {
+        function openPopup(imageSrc) {
+            document.querySelector('.overlay').style.display = 'block';
+            document.querySelector('.popup').style.display = 'block';
+            document.getElementById('popup-img').src = imageSrc;
+        }
+
+
+        function closePopup() {
             document.querySelector('.overlay').style.display = 'none';
             document.querySelector('.popup').style.display = 'none';
-        }, 200); 
-    });
-</script>
+        }
+
+
+        function downloadImage() {
+            const imageSrc = document.getElementById('popup-img').src;
+            const link = document.createElement('a');
+            link.href = imageSrc;
+            link.download = imageSrc.split('/').pop();
+            link.click();
+        }
+
+
+        window.addEventListener('load', function () {
+
+            setTimeout(function () {
+                document.querySelector('.overlay').style.display = 'none';
+                document.querySelector('.popup').style.display = 'none';
+            }, 200);
+        });
+    </script>
 
     <?php include 'footer/footer.php'; ?>
 </body>
+
 </html>
