@@ -69,7 +69,16 @@ body {
     text-align: center;
     color: #cccccc;
 }
+h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
 
+.container p{
+    text-align: center;
+    color: #fff;
+}
 
 table {
     width: 100%;
@@ -124,7 +133,7 @@ tr:nth-child(odd) {
 <div class="container">
     <h2>Job Application Details</h2>
     <p>List of all job application details from the job applications form.</p>
-    <a href="admin_dashboard.php" class="action-btn btn-back" style="background-color: #ff6b6b; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Back to Dashboard</a>
+    <a href="admin_dashboard.php" class="action-btn btn-back" style="background-color: #ff6b6b; float: right; text-align: right; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Back to Dashboard</a>
     <table>
     <table>
         <tr>
@@ -132,7 +141,7 @@ tr:nth-child(odd) {
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Message</th>
+            <th>Address</th>
             <th>Position</th>
             <th>CV Files</th>
             <th>Submitted Date</th>
@@ -146,7 +155,7 @@ tr:nth-child(odd) {
                     <td><?= htmlspecialchars ($row['name'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td><?= htmlspecialchars ($row['email'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td><?= htmlspecialchars ($row['mobile'], ENT_QUOTES, 'UTF-8') ?></td>
-                    <td><?= htmlspecialchars ($row['message'], ENT_QUOTES, 'UTF-8') ?></td>
+                    <td><?= htmlspecialchars ($row['address'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td><?= htmlspecialchars ($row['position'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td><?= htmlspecialchars ($row['cv_file'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td><?= htmlspecialchars ($row['date_submitted'], ENT_QUOTES, 'UTF-8') ?></td>

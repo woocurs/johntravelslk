@@ -86,6 +86,16 @@ th, td {
     border: 1px solid #ddd;
 }
 
+h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+.container p{
+    text-align: center;
+    color: #fff;
+}
 th {
     background-color: #333333;
 }
@@ -127,7 +137,7 @@ tr:nth-child(odd) {
     <h2>Contact Notifications</h2>
     <p>List of all notifications from the contact us form.</p>
 
-    <a href="admin_dashboard.php" class="action-btn" style="background-color:#ff6b6b; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Back to Dashboard</a>
+    <a href="admin_dashboard.php" class="action-btn" style="background-color:#ff6b6b;  float: right; text-align: right;color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Back to Dashboard</a>
     
     <table>
     <table>
