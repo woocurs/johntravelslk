@@ -4,7 +4,7 @@ $host = "localhost"; // Hostinger usually uses localhost for MySQL
 $username = "u845324049_lkwoocurjohn"; // Replace with your MySQL username
 $password = "MyTravels12#"; // Replace with your MySQL password
 $database = "u845324049_lktravelsjohn"; // Replace with the desired database name
-$sqlFilePath = "db.sql"; // Path to your SQL file
+$sqlFilePath = "johntravels.sql"; // Path to your SQL file
 
 // Check if the confirmation form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm'])) {
