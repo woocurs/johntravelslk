@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2024 at 07:14 AM
+-- Generation Time: Nov 25, 2024 at 02:43 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,8 @@ CREATE TABLE `contact_us` (
   `name` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `message` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `reply` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -66,13 +67,13 @@ CREATE TABLE `contact_us` (
 CREATE TABLE `job_applications` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `message` text DEFAULT NULL,
   `position` varchar(255) NOT NULL,
   `cv_file` varchar(255) NOT NULL,
-  `date_submitted` timestamp NOT NULL DEFAULT current_timestamp()
+  `date_submitted` timestamp NOT NULL DEFAULT current_timestamp(),
+  `mobile` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 -- --------------------------------------------------------
 
 --
@@ -91,12 +92,14 @@ CREATE TABLE `tour_bookings` (
   `dob` date NOT NULL,
   `tour_package` varchar(100) NOT NULL,
   `reference_number` varchar(255) NOT NULL,
+  `seat_number` varchar(255) NOT NULL,
   `payment` enum('Advance','Half Payment','Full Payment','') NOT NULL,
   `remark` text DEFAULT NULL,
   `photo_path` varchar(255) NOT NULL,
   `terms_accepted` tinyint(1) NOT NULL,
   `submission_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` enum('pending','confirmed','rejected','') NOT NULL
+  `status` enum('pending','confirmed','rejected','') NOT NULL,
+  `payment_details` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -162,25 +165,25 @@ ALTER TABLE `admin_details`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `job_applications`
 --
 ALTER TABLE `job_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tour_bookings`
 --
 ALTER TABLE `tour_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tour_packages`
 --
 ALTER TABLE `tour_packages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $name = $_POST['name'];
     $address = $_POST['address'];
+    $mobile = $_POST['mobile'];
     $email = $_POST['email'];
    // $message = $_POST['message'];
     $position = $_POST['position'];
@@ -29,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         
         if (!in_array($fileType, $allowedFileTypes)) {
-            echo "Invalid file type. Only PDF, DOC, and DOCX are allowed.";
+            echo "<script>alert('Invalid file type. Only PDF, DOC, and DOCX are allowed.');</script>";
             exit();
         }
 
        
         if ($fileSize > $maxFileSize) {
-            echo "File size exceeds the limit of 5MB.";
+            echo "<script>alert('File size exceeds the limit of 5MB');</script>";
             exit();
         }
 
@@ -50,50 +51,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
        
         if (!move_uploaded_file($fileTmpName, $filePath)) {
-            echo "Error uploading file.";
+            echo "<script>alert('Error uploading file');</script>";
             exit();
         }
     } else {
-        echo "No file uploaded or there was an error with the file upload.";
+        echo "<script>alert('No file uploaded or there was an error with the file upload');</script>";
         exit();
     }
 
    
-    $query = "INSERT INTO job_applications (name, address, email, position, cv_file) VALUES (?, ?, ?, ?, ?)";
+    $query = "INSERT INTO job_applications (name, address, mobile, email, position, cv_file) VALUES (?, ?, ?, ?, ?, ?)";
     if ($stmt = $conn->prepare($query)) {
-        $stmt->bind_param("sssss", $name, $address, $email,  $position, $filePath);
+        $stmt->bind_param("ssssss", $name, $address, $mobile, $email,  $position, $filePath);
 
         if ($stmt->execute()) {
 
     
-    $adminEmail = "info.johntravels@gmail.com";   
-    $subject = "New Job Application - $position";
-    $message = "
-        <html>
-        <head>
-            <title>New Job Application</title>
-        </head>
-        <body>
-            <h2>New Job Application Received</h2>
-            <p><strong>Name:</strong> $name</p>
-            <p><strong>Email:</strong> $email</p>
-            <p><strong>Position Applied:</strong> $position</p>
-            <p><strong>CV:</strong> <a href='" . $_SERVER['HTTP_HOST'] . "/$filePath'>Download CV</a></p>
-        </body>
-        </html>
-    ";
-
-   
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: noreply@example.com" . "\r\n"; 
-
-    
-    if (mail($adminEmail, $subject, $message, $headers)) {
-        echo "<script>alert('Application submitted successfully and email sent to the admin!');</script>";
-    } else {
-        echo "<script>alert('Application submitted successfully, but the email could not be sent.');</script>";
-    }
+ 
+    echo "<script>alert('Application submitted successfully');</script>";
 } else {
     echo "<script>alert('Error submitting the application. Please try again later'); window.location.href = 'careers.php';</script>";
 }
@@ -122,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career</title>
-    <link rel="stylesheet" href="career.css">
+    <link rel="stylesheet" href="styles/careers.css">
     <link rel="stylesheet" href="styles/css/bootstrap.min.css">
 
     <style>
@@ -340,7 +315,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
             </div>
-            <div class="about-service-wrap">
+            <!--<div class="about-service-wrap">
                 <div class="section-heading">
                     <div class="row no-gutters align-items-end">
                         <div class="col-lg-6">
@@ -390,7 +365,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 
@@ -411,6 +386,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="form-element">
         <label for="address">Address</label>
         <input type="text" id="address" name="address" required>
+    </div>
+    <div class="form-element">
+        <label for="mobile">Mobile No</label>
+        <input type="tel" id="mobile" name="mobile" maxlength="10" pattern="[0-9]{10}" placeholder="Please enter the 10 digit" required>
     </div>
     <div class="form-element">
         <label for="email">Email</label>
