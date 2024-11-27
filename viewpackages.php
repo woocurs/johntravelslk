@@ -15,7 +15,7 @@ $packages = [
         'image' => 'kandy.jpg' 
     ], 
     [ 
-        'title' => 'Colombo', 
+        'title' => 'Galle', 
         'days' => 2, 
         'places' => [ 
             'Galle Dutch Fort', 'Galle Light House', 'Maritime Museum', 'National Museum Clock Tower Galle', 'Lotus Tower' 

@@ -27,7 +27,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $terms = isset($_POST['terms']) ? 1 : 0;
 		
 		
-		    $reference_number = strtoupper(substr(md5(time() . $mobile), 0, 10));
+		if (empty($reference_number)) {
+    
+		$reference_number = strtoupper(substr(md5(time() . $mobile), 0, 10));
+		} else {
+   
+		$stmt = $conn->prepare("SELECT name FROM tour_bookings WHERE reference_number = ? AND tour_package = ?");
+		$stmt->bind_param("ss", $reference_number, $tour_package);
+		$stmt->execute();
+		$result = $stmt->get_result();
+    
+		if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+       
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const refField = document.querySelector('input[name=\"reference_number\"]');
+                
+                
+                if (refField) {
+                    refField.value = '" . htmlspecialchars($row['name']) . "';
+                }
+                
+            });
+        </script>";
+    } else {
+       
+        $errors[] = "Invalid reference number. Please enter a valid one.";
+    }
+    $stmt->close();
+}
+
 
 		
             
@@ -86,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                $customer_msg = "Booking received! Confirmation will be sent to your email or mobile once approved!";
                 $customer_msg .= $sms_status ? "Check your mobile for booking details Thank you!" : "failed to send confirmation Sms."; 
 
-               echo "<script>window.onload = function() { showPopup('Success', '$customer_msg');setTimeout(function() { window.location.href = 'index.php';     }, 3000);  };</script>";
+               echo "<script>window.onload = function() { showPopup('Success', '$customer_msg'); };</script>";
             } else {
                 $error_msg = implode("<br>", $errors);
                 echo "<script>window.onload = function() { showPopup('Error', '$error_msg'); }</script>";
@@ -155,6 +186,7 @@ function showPopup(title, message) {
 
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
+window.location.href='tourpackages.php';
 }
 </script>
 
