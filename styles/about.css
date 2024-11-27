@@ -45,7 +45,7 @@
   font-weight: 800;
   font-size: 45px;
   font-family: "Poppins", sans-serif;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -56,7 +56,7 @@
   gap: 20px;
   padding: 15px;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: -10px;
   max-width: 100%;
 }
 
@@ -65,7 +65,7 @@
   height: 100px;
   display: block;
   background-color: #0099cc;
-  padding: 15px;
+  padding: 5px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -91,7 +91,7 @@
   left: 0;
   width: 75%;
   border: 0;
-  margin-bottom: 20px;
+  margin-bottom: -10px;
 }
 
 .row {
@@ -103,7 +103,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   gap: 15px;
 }
 .about-client:hover {
@@ -228,6 +228,7 @@
   .about-service-icon {
     width: 100px;
     align-content: center;
+    bottom: -20px;
   }
   .about-client-icon {
     width: 80px;
@@ -291,6 +292,10 @@
   .col-lg-6 h2 {
     font-size: 20px;
   }
+  .about-service {
+    margin-top: 5px;
+    margin-bottom: -5px;
+  }
   .about-service-icon {
     width: 100px;
   }
@@ -308,6 +313,12 @@
   }
   .callback-counter-wrap {
     gap: 10px;
+  }
+  .responsive-container iframe {
+    margin-top: -30px;
+  }
+  .client-section {
+    margin-top: -30px;
   }
   .dash-styl {
     margin-top: -40px;
@@ -363,7 +374,10 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
   }
-
+  .about-service {
+    margin-top: -5px;
+    margin-bottom: -5px;
+  }
   .container3 {
     padding: 30px 20px;
     margin-top: -100px;
