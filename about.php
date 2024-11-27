@@ -8,6 +8,10 @@
     <title>About Us</title>
     <link rel="stylesheet" href="styles/about.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Playfair+Display:wght@400;700;900&family=Raleway:wght@400;700;900&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body>
@@ -17,7 +21,9 @@
             <div class="container">
                 <h1 class="heading text-center">About Us</h1>
             </div>
-            <img src="images/banner-pattern.png">
+            <div>
+                <img class="banner-pattern" src="images/banner-pattern.png">
+            </div>
         </div>
     </section>
     <section class="about-page-section">
@@ -28,8 +34,8 @@
                         <div class="col-lg-6">
                             <h5 class="dash-style">OUR TOUR GALLERY</h5>
                             <div class="head-1">
-                                <h2>HELLO WOOCURS!</h2>
-                                <h2>OUR TRAVEL HAS BEEN PRESENT BEST IN THE MARKET</h2>
+                                <h2>HELLO WOOCURS!
+                                    OUR TRAVEL HAS BEEN PRESENT BEST IN THE MARKET</h2>
                             </div>
                         </div>
                         <div class="col-lg-6"> </div>
@@ -89,12 +95,12 @@
                     <div class="col-lg-8 offset-lg-2">
                         <div class="section-heading text-center">
                             <h5 class="dash-style">OUR ASSOCIATES</h5>
-                            <h2>JOHN GROUP OF COMPANIES</h2>
+                            <h2 class="responsive-heading">JOHN GROUP OF COMPANIES</h2>
                             <P>COLLABORATE WITH US TO MAKE OUR FOOT PRINTS EVERY WHERE.</P>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row1">
                     <div class="col ">
                         <div class="about-client">
                             <div class="about-client-icon">
@@ -144,76 +150,78 @@
             </div>
         </div>
         <div class="fullwidth-callback" style="background-image: url(images/counterbg.jpg);">
-            <div class="container">
-                <div class="section-heading section-heading-white text-center">
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2">
-                            <h5 class="dash-style">CALLBACK FOR MORE</h5>
-                            <div class="counter-head">
-                                <h2>GO TRAVEL.DISCOVER. REMEMBER US!!</h2>
+            <div class="container3">
+                <div class="container">
+                    <div class="section-heading section-heading-white text-center">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <h5 class="dash-style">CALLBACK FOR MORE</h5>
+                                <div class="counter-head">
+                                    <h2>GO TRAVEL.DISCOVER. REMEMBER US!!</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="callback-counter-wrap">
-                    <div class="counter-item">
-                        <div class="counter-item-inner">
-                            <div class="counter-icon">
-                                <img src="images/icon1.png" alt="">
-                            </div>
-                            <div class="counter-content">
-                                <span class="counter-no">
-                                    <span class="counter">500</span>+
-                                </span>
-                                <span class="counter-text">
-                                    Satisfied Clients
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="counter-item">
-                        <div class="counter-item-inner">
-                            <div class="counter-icon">
-                                <img src="images/icon2.png" alt="">
-                            </div>
-                            <div class="counter-content">
-                                <span class="counter-no">
-                                    <span class="counter">2</span>+
-                                </span>
-                                <span class="counter-text">
-                                    Awards Achieve
-                                </span>
+                    <div class="callback-counter-wrap">
+                        <div class="counter-item">
+                            <div class="counter-item-inner">
+                                <div class="counter-icon">
+                                    <img src="images/icon1.png" alt="">
+                                </div>
+                                <div class="counter-content">
+                                    <span class="counter-no">
+                                        <span class="counter">500</span>+
+                                    </span>
+                                    <span class="counter-text">
+                                        Satisfied Clients
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="counter-item">
-                        <div class="counter-item-inner">
-                            <div class="counter-icon">
-                                <img src="images/icon3.png" alt="">
-                            </div>
-                            <div class="counter-content">
-                                <span class="counter-no">
-                                    <span class="counter">1000</span>+
-                                </span>
-                                <span class="counter-text">
-                                    Active Members
-                                </span>
+                        <div class="counter-item">
+                            <div class="counter-item-inner">
+                                <div class="counter-icon">
+                                    <img src="images/icon2.png" alt="">
+                                </div>
+                                <div class="counter-content">
+                                    <span class="counter-no">
+                                        <span class="counter">2</span>+
+                                    </span>
+                                    <span class="counter-text">
+                                        Awards Achieve
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="counter-item">
-                        <div class="counter-item-inner">
-                            <div class="counter-icon">
-                                <img src="images/icon4.png" alt="">
+                        <div class="counter-item">
+                            <div class="counter-item-inner">
+                                <div class="counter-icon">
+                                    <img src="images/icon3.png" alt="">
+                                </div>
+                                <div class="counter-content">
+                                    <span class="counter-no">
+                                        <span class="counter">1000</span>+
+                                    </span>
+                                    <span class="counter-text">
+                                        Active Members
+                                    </span>
+                                </div>
                             </div>
-                            <div class="counter-content">
-                                <span class="counter-no">
-                                    <span class="counter">30</span>+
-                                </span>
-                                <span class="counter-text">
-                                    Tour Destination
-                                </span>
+                        </div>
+                        <div class="counter-item">
+                            <div class="counter-item-inner">
+                                <div class="counter-icon">
+                                    <img src="images/icon4.png" alt="">
+                                </div>
+                                <div class="counter-content">
+                                    <span class="counter-no">
+                                        <span class="counter">30</span>+
+                                    </span>
+                                    <span class="counter-text">
+                                        Tour Destination
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -221,7 +229,8 @@
             </div>
         </div>
     </section>
-    <?php include 'footer/footer.php'; ?>
+
 </body>
 
 </html>
+<?php include 'footer/footer.php'; ?>
