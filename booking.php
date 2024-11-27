@@ -549,47 +549,45 @@ window.location.href='tourpackages.php';
                  <textarea name="remark" id="remark"  placeholder="Any Special Needs or Requests (optional)"><?php echo isset($remark) ? $remark : ''; ?></textarea>
 
             </div>
-            <div class="form-group">
-                <label for="photo">
-    <?php if (!empty($dob)) {
- 
-        $birthDate = new DateTime($dob);
-        $today = new DateTime();
-        $age = $today->diff($birthDate)->y;
+  <div class="form-group">
+                <label>Upload ID Photo (NIC/Passport/Licence),</label>
+				 <label>for individuals under 18: upload normal photo</label>
+                <input type="file" name="photo" id="photo" required onchange="previewImage(event)"><br>
+    <img id="photo-preview" src="" alt="Image Preview" style="display: none; max-width:500px;">
 
-        
-        if ($age < 18) {
-            echo "Upload Normal Photo:";
-        } else {
-            echo "Upload ID Photo (NIC/Passport/Licence):";
-        }
-    } else {
-        echo "Upload Photo:";
-    } ?>
-</label>
-
-                <input type="file" name="photo" id="photo"  required>
             </div>
 		   
             <div class="form-group">
 			
-               <input type="checkbox" name="terms" id="terms" <?php echo isset($terms) && $terms ? 'checked' : ''; ?> required> I agree to the <a href="#">terms and conditions</a>
+               <input type="checkbox" name="terms" id="terms" <?php echo isset($terms) && $terms ? 'checked' : ''; ?> required> I agree to the <a href="terms.php">terms and conditions</a>
             </div>
 			 <div class="form-group">
             <button type="submit" class="submit-btn">Book Now</button>
 			</div>
 			 <div class="form-group">
-            <button type="reset" class="reset-btn btn-secondary">Clear</button>
+            <button type="reset" class="reset-btn btn-secondary" onclick="clearPreview()">Clear</button>
 			</div>
         </form>
     </div>
+<script>
+    
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            const preview = document.getElementById('photo-preview');
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]); 
+    }
 
-
-     
-
-
-
-   
+    
+    function clearPreview() {
+        const preview = document.getElementById('photo-preview');
+        preview.style.display = 'none'; 
+        preview.src = ''; 
+    }
+</script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
