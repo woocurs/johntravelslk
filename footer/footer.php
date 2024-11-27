@@ -17,8 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($name)) {
                 $err[] = "Name is required.";
             }
-            if (empty($phone) || !preg_match("/^\+\d{1,3}\d{10}$/", $phone)) {
-                $err[] = "Phone number must include the country code   (e.g., +94771234567 or 94771234567).";
+			 
+            if (empty($phone) || !preg_match("/^(\+?\d{1,3})?\d{10}$/", $phone)) {
+                $err[] = "Mobile number must be valid, with or without a country code.( e.g, 0712345678 or +94712345678).";  
             }
             if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $err[] = "Valid email address is required.";
@@ -78,7 +79,7 @@ footer {
     background-color: #333;
     color: #fff;
     margin-top : 0;
-    padding: 2px 0px;
+    padding: 4px 2px;
     text-align: center;
     font-family: Arial, sans-serif;
 }

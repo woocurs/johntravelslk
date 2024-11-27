@@ -505,12 +505,12 @@ window.location.href='tourpackages.php';
             </div>
             <div class="form-group">
                 <label>Mobile Number</label>
-                <input type="text" name="mobile" id="mobile" required value="<?php echo isset($mobile) ? $mobile : ''; ?>" placeholder="Enter your mobile number Correctly (e.g, +9471234567)">
+                <input type="text" name="mobile" id="mobile" required value="<?php echo isset($mobile) ? $mobile : ''; ?>" placeholder="0712345678 or +94712345678">
 
             </div>
             <div class="form-group">
                 <label>WhatsApp Number</label>
-                   <input type="text" name="whatsapp" id="whatsapp" value="<?php echo isset($whatsapp) ? $whatsapp : ''; ?>" placeholder="+9471234567">
+                   <input type="text" name="whatsapp" id="whatsapp" value="<?php echo isset($whatsapp) ? $whatsapp : ''; ?>" placeholder="0712345678 or +94712345678">
 
             </div>
             <div class="form-group">
@@ -550,7 +550,24 @@ window.location.href='tourpackages.php';
 
             </div>
             <div class="form-group">
-                <label>Upload ID Photo (NIC/Passport/Licence)</label>
+                <label for="photo">
+    <?php if (!empty($dob)) {
+ 
+        $birthDate = new DateTime($dob);
+        $today = new DateTime();
+        $age = $today->diff($birthDate)->y;
+
+        
+        if ($age < 18) {
+            echo "Upload Normal Photo:";
+        } else {
+            echo "Upload ID Photo (NIC/Passport/Licence):";
+        }
+    } else {
+        echo "Upload Photo:";
+    } ?>
+</label>
+
                 <input type="file" name="photo" id="photo"  required>
             </div>
 		   
