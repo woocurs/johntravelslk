@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				
                 storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
 				  
-				       $sms_message =  "Dear $name, your booking for $tour_package has been successfully received.\n"
+				       $sms_message =  "Dear $name, your booking for $tour_package tour package has been successfully received.\n"
 							 ."Booking Details:\n"
                              . "NIC: $nic\n"
                              . "Mobile: $mobile\n"
@@ -502,12 +502,12 @@ window.location.href='tourpackages.php';
             </div>
             <div class="form-group">
                 <label>Mobile Number</label>
-                <input type="text" name="mobile" id="mobile" required value="<?php echo isset($mobile) ? $mobile : ''; ?>" placeholder="Enter your mobile number Correctly(e.g, +9471234567)">
+                <input type="text" name="mobile" id="mobile" required value="<?php echo isset($mobile) ? $mobile : ''; ?>" placeholder="(e.g, +9471234567 or 0712345678)">
 
             </div>
             <div class="form-group">
                 <label>WhatsApp Number</label>
-                   <input type="text" name="whatsapp" id="whatsapp" value="<?php echo isset($whatsapp) ? $whatsapp : ''; ?>" placeholder="+9471234567">
+                   <input type="text" name="whatsapp" id="whatsapp" value="<?php echo isset($whatsapp) ? $whatsapp : ''; ?>" placeholder="(e.g, +9471234567 or 0712345678)">
 
             </div>
             <div class="form-group">
@@ -547,7 +547,8 @@ window.location.href='tourpackages.php';
 
             </div>
             <div class="form-group">
-                <label>Upload ID Photo (NIC/Passport/Licence)</label>
+                <label>Upload ID Photo (NIC/Passport/Licence),</label>
+				 <label>for individuals under 18: upload normal photo</label>
                 <input type="file" name="photo" id="photo" required onchange="previewImage(event)"><br>
     <img id="photo-preview" src="" alt="Image Preview" style="display: none; max-width:500px;">
 

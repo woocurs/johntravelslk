@@ -1,4 +1,3 @@
-
 <?php
 
  include ('database/db.php');
@@ -20,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
  
     if (!empty($name) &&  !empty($phone) && !empty($mail) && !empty($message)) {
-		if (preg_match("/^\+\d{1,3}\d{10}$/", $phone)) {
+		if (preg_match("/^(\+?\d{1,3})?\d{10}$/", $phone)) {
         if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
           
             $stmt = $conn->prepare("INSERT INTO contact_us (name, email,phone, message) VALUES (?, ?,?, ?)");
@@ -51,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 		
 		} else {
-            $errorMessage = "phone number must include country code (e.g, +94712345678).";
+            $errorMessage = "phone number must be valid, with or without a country code. (e.g, +94712345678 or 0712345678).";
         }
     } else {
         $errorMessage = "All fields are required.";
@@ -345,13 +344,13 @@ button:hover {
         <form method="POST" action="contact.php">
 		  <input type="hidden" name="form_type" value="contact_us">
             <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
+            <input type="text" id="name" name="name" value="<?php echo $name; ?>" placeholder="Name with initials" required>
 
             <label for="email">Your Email</label>
-            <input type="email" id="mail" name="mail" value="<?php echo $mail; ?>" required>
+            <input type="email" id="mail" name="mail" value="<?php echo $mail; ?>" placeholder="Your Email" required>
 			
 			<label for="email">Your Phone Number</label>
-            <input type="tel" id="phone" name="phone" value="<?php echo $phone; ?>" required>
+            <input type="tel" id="phone" name="phone" value="<?php echo $phone; ?>" placeholder="0712345678 or +94712345678" required>
 
             <label for="message">Your Message</label>
             <textarea id="message" name="message" rows="4" required><?php echo $message; ?></textarea>

@@ -44,8 +44,8 @@ $images = [
     ["src" => "images/destination_6.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/destination_7.jpg", "alt" => " ", "caption" => " "],
 	["src" => "images/destination_8.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour8.jpg", "alt" => " ", "caption" => " "],
-	["src" => "images/tour38.jpg", "alt" => " ", "caption" => " "]
+	["src" => "images/pasikudahbeach.png", "alt" => " ", "caption" => " "],
+	["src" => "images/tour8.jpg", "alt" => " ", "caption" => " "]
 		
 ];
 
