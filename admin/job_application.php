@@ -2,7 +2,7 @@
 
 session_start();
 
-// Check if admin is logged in
+
 if (!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] === null) {
     header("Location: admin_login.php");
     exit;
@@ -157,8 +157,14 @@ tr:nth-child(odd) {
                     <td><?= htmlspecialchars ($row['mobile'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td><?= htmlspecialchars ($row['address'], ENT_QUOTES, 'UTF-8') ?></td>
                     <td><?= htmlspecialchars ($row['position'], ENT_QUOTES, 'UTF-8') ?></td>
-                    <td><?= htmlspecialchars ($row['cv_file'], ENT_QUOTES, 'UTF-8') ?></td>
-                    <td><?= htmlspecialchars ($row['date_submitted'], ENT_QUOTES, 'UTF-8') ?></td>
+                    <td>
+                        <?php if (!empty($row['cv_file'])): ?>
+                            <a href="../<?= htmlspecialchars($row['cv_file']) ?>" target="_blank">View CV</a>
+                        <?php else: ?>
+                            No CV uploaded
+                        <?php endif; ?>
+                    </td>
+                    <td><?= htmlspecialchars ($row['date_submitted']) ?></td>
 					 
                 </tr>
             <?php endwhile; ?>
