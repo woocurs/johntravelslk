@@ -51,7 +51,7 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="images/John_Travels_LK_Banner.png" alt="Logo" class="img-fluid d-none d-md-block"
+                <img src="images/John_Travels_LK_Banner_R.png" alt="Logo" class="img-fluid d-none d-md-block"
                     style="height: 30px; width: auto;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
