@@ -88,7 +88,7 @@
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <div class="section-heading text-center">
-                            <h5 class="dash-style">OUR ASSOCAITES</h5>
+                            <h5 class="dash-style">OUR ASSOCIATES</h5>
                             <h2>JOHN GROUP OF COMPANIES</h2>
                             <P>COLLABORATE WITH US TO MAKE OUR FOOT PRINTS EVERY WHERE.</P>
                         </div>
@@ -212,7 +212,7 @@
                                     <span class="counter">30</span>+
                                 </span>
                                 <span class="counter-text">
-                                    Tour Destnation
+                                    Tour Destination
                                 </span>
                             </div>
                         </div>
