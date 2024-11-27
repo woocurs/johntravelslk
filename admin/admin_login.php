@@ -136,6 +136,8 @@ $conn->close();
             <input type="email" name="email" placeholder="E-Mail" class="input-field" required>
             <input type="password" name="password" placeholder="Password" class="input-field" required>
             <button type="submit" class="login-btn">Login</button>
+            <br>
+            <br>
             <a href="../index.php" class="Home">Home</a>
         </form>
         <?php if ($errorMessage): ?>

@@ -1,25 +1,25 @@
 <?php
 session_start();
 
-// Check if the user is logged in as admin
+
 if (!isset($_SESSION['admin_id']) || $_SESSION['admin_id'] === null) {
-    // Redirect to login page if the user is not logged in
+    
     header("Location: admin_login.php");
     exit;
 }
 
-require '../database/db.php'; // Include the database connection
+require '../database/db.php'; 
 
-// Fetch all unique tour packages for the filter dropdown
+
 $tourPackagesQuery = "SELECT DISTINCT tour_package FROM tour_bookings";
 $tourPackagesResult = $conn->query($tourPackagesQuery);
 
-// Handle filtering by tour package
+
 $filter = "";
-$sql = "SELECT * FROM tour_bookings WHERE status != 'rejected'"; // Exclude rejected bookings
+$sql = "SELECT * FROM tour_bookings WHERE status != 'rejected' ORDER BY id DESC";
 if (isset($_GET['tour_package']) && !empty($_GET['tour_package'])) {
     $filter = $_GET['tour_package'];
-    $stmt = $conn->prepare("SELECT * FROM tour_bookings WHERE status != 'rejected' AND tour_package = ?");
+    $stmt = $conn->prepare("SELECT * FROM tour_bookings WHERE status != 'rejected' AND tour_package = ? ORDER BY id DESC");
     $stmt->bind_param("s", $filter);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -27,15 +27,15 @@ if (isset($_GET['tour_package']) && !empty($_GET['tour_package'])) {
     $result = $conn->query($sql);
 }
 
-// Handle POST actions
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = (int)$_POST['id']; // Cast to integer for safety
+    $id = (int)$_POST['id']; 
 
     if (isset($_POST['action']) && $_POST['action'] === 'confirm_booking') {
         $seatNumber = htmlspecialchars($_POST['seat_number']);
         $paymentDetails = htmlspecialchars($_POST['payment_details']);
 
-        // Validation for unique seat number in the same tour package
+       
         $stmt = $conn->prepare("
             SELECT id FROM tour_bookings 
             WHERE seat_number = ? 
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($seatValidationResult->num_rows > 0) {
             echo "<script>alert('Error: Seat number $seatNumber is already assigned for this tour package.'); window.location.href = 'admin_dashboard.php';</script>";
-            exit; // Stop execution to prevent database update
+            exit; 
         }
 
         $stmt = $conn->prepare("UPDATE tour_bookings SET status = 'confirmed', seat_number = ?, payment_details = ? WHERE id = ?");
@@ -398,6 +398,7 @@ button:hover {
             <th>Phone</th>
             <th>Tour Package</th>
             <th>Reference Number</th>
+            <th>Photos</th>
             <th>Status</th>
             <th>seat Number</th>
             <th>Payment </th>
@@ -411,6 +412,12 @@ button:hover {
                 <td><?= $row['phone'] ?></td>
                 <td><?= $row['tour_package'] ?></td>
                 <td><?= $row['reference_number'] ?></td>
+                <td><?php if (!empty($row['photo_path'])): ?>
+                            <a href="../<?= $row['photo_path'] ?>" target="_blank">View Photo</a>
+                        <?php else: ?>
+                            No photo uploaded
+                        <?php endif; ?>
+                </td>
                 <td><?= $row['status'] ?></td>
                 <td><?= $row['seat_number'] ?: 'Not Assigned' ?></td>
                 <td><?= $row['payment_details'] ?: 'Not Assigned' ?></td>
