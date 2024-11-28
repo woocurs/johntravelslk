@@ -10,7 +10,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['form_type'])) {
         $form_type = $_POST['form_type'];
         if ($form_type === 'booking') {
-            $errors = [];  
+            $errors = []; 
+
+
+		$recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR'; 
+		if (isset($_POST['g-recaptcha-response'])) {
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
+
+   
+    $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = [
+        'secret' => $recaptchaSecret,
+        'response' => $recaptchaResponse,
+        'remoteip' => $_SERVER['REMOTE_ADDR']
+    ];
+
+    $options = [
+        'http' => [
+            'method' => 'POST',
+            'header' => 'Content-Type: application/x-www-form-urlencoded',
+            'content' => http_build_query($data)
+        ]
+    ];
+    $context = stream_context_create($options);
+    $verify = file_get_contents($verifyURL, false, $context);
+    $captchaSuccess = json_decode($verify);
+
+    if (!$captchaSuccess->success) {
+      
+       $errors[]= "CAPTCHA verification failed. Please try again.";
+	} 
+    } else {
+      
+         $errors[]= "Please complete CAPTCHA ";
+    }
+			
+
+			
 			
           $name = htmlspecialchars($_POST['name']);
         $address = htmlspecialchars($_POST['address']);
@@ -113,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $sms_status = sendSMS($sms_message,$conn,$email, $name, $address, $nic, $mobile, $whatsapp, $gender, $dob, $tour_package, $reference_number, $payment, $remark);
 				
 
-				   
+				  
                $customer_msg = "Booking received! Confirmation will be sent to your email or mobile once approved!";
                 $customer_msg .= $sms_status ? "Check your mobile for booking details Thank you!" : "failed to send confirmation Sms."; 
 
@@ -561,6 +597,12 @@ window.location.href='tourpackages.php';
 			
                <input type="checkbox" name="terms" id="terms" <?php echo isset($terms) && $terms ? 'checked' : ''; ?> required> I agree to the <a href="terms.php">terms and conditions</a>
             </div>
+			
+			 <div class="form-group">
+			 <div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>
+			</div>
+			
+			
 			 <div class="form-group">
             <button type="submit" class="submit-btn">Book Now</button>
 			</div>
@@ -591,7 +633,7 @@ window.location.href='tourpackages.php';
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	
+	 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 	
 	 <?php include('footer/footer.php'); ?>
 </body>

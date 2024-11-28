@@ -13,7 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors = [];  
 			
 			
-	$recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR'; 
+
+		$recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR'; 
+		if (isset($_POST['g-recaptcha-response'])) {
     $recaptchaResponse = $_POST['g-recaptcha-response'];
 
    
@@ -35,13 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $verify = file_get_contents($verifyURL, false, $context);
     $captchaSuccess = json_decode($verify);
 
-    if ($captchaSuccess->success) {
+    if (!$captchaSuccess->success) {
       
-         $errors[]= "CAPTCHA verified successfully!";
-        
+       $errors[]= "CAPTCHA verification failed. Please try again.";
+	} 
     } else {
       
-         $errors[]= "CAPTCHA verification failed. Please try again.";
+         $errors[]= "Please complete CAPTCHA ";
     }
 			
 			
