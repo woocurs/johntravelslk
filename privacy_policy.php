@@ -77,7 +77,7 @@
 
         .terms-container h3 {
             font-size: 1.2em;
-            margin-top: 15px;
+            margin-top: 20px;
             color: #3C8DFF;
         }
 
@@ -85,10 +85,11 @@
             padding: 10px 15px;
             margin: 10px 0;
             color: #888;
+            margin-bottom: -10px;
         }
 
         .terms-container ul {
-            margin: 10px 0;
+            margin: 10px 30px;
             padding-left: 20px;
         }
 
@@ -185,56 +186,55 @@
 
         <div class="terms-container">
             <h3>1. Introduction</h3>
-            <p>This policy outlines how John Travels collects, uses, and protects your personal data in compliance with
-                applicable privacy laws.</p>
+            <p>This Privacy Policy explains how John Travels collects, uses, and protects your personal data.</p>
 
             <h3>2. Data Collection</h3>
-            <p>We may collect:</p>
+            <p>We collect the following:</p>
             <ul>
-                <li>Personal information (name, contact details, identification)</li>
-                <li>Payment details for bookings</li>
-                <li>Preferences and feedback</li>
+                <li>Personal Information: Name, contact details, identification documents.</li>
+                <li>Payment Information: Necessary details to process bookings.</li>
+                <li>Preferences: Information provided about trip requirements.</li>
             </ul>
 
             <h3>3. Use of Data</h3>
-            <p>Your data is used to:</p>
+            <p>Data is used for:</p>
             <ul>
-                <li>Process bookings and payments</li>
-                <li>Customize trip experiences</li>
-                <li>Send updates, promotions, and notifications</li>
+                <li>Processing bookings and payments.</li>
+                <li>Customizing and improving customer experience.</li>
+                <li>Sending promotional updates (with consent).</li>
             </ul>
 
-            <h3>4. Data Sharing</h3>
-            <p>We do not share your data with third parties except:</p>
-            <ul>
-                <li>Service providers essential to trip operations (e.g., accommodations, transport)</li>
-                <li>Payment processing platforms</li>
-            </ul>
+            <h3>4. Sharing of Data</h3>
+            <p>Data is shared only with trusted partners required to deliver services (e.g., accommodations, activity
+                providers, payment processing platforms).</p>
 
             <h3>5. Security Measures</h3>
-            <p>All transactions are secured using SSL encryption. Access to personal data is restricted to authorized
-                personnel only.</p>
-
-            <h3>6. Cookies and Tracking</h3>
-            <p>We use cookies to improve website functionality and user experience. You can manage cookie preferences in
-                your browser settings.</p>
-
-            <h3>7. Your Rights</h3>
-            <p>You have the right to:</p>
             <ul>
-                <li>Access, correct, or delete your personal data</li>
-                <li>Withdraw consent for marketing communications</li>
-                <li>File complaints with relevant authorities regarding data misuse</li>
+                <li>SSL encryption is used for all online transactions.</li>
+                <li>Data access is limited to authorized personnel.</li>
             </ul>
 
-            <h3>8. Changes to the Policy</h3>
-            <p>John Travels may update this Privacy Policy to reflect new practices. Changes will be posted on our
-                website, and the revised date will be indicated.</p>
+            <h3>6. Cookies and Analytics</h3>
+            <ul>
+                <li>Cookies are used to track website performance and enhance user experience.</li>
+                <li>You can disable cookies in your browser settings.</li>
+            </ul>
+
+            <h3>7. Your Rights</h3>
+            <ul>
+                <li>You can request access to your personal data, correction of inaccuracies, or deletion of data.</li>
+                <li>Withdraw consent for marketing communications at any time.</li>
+            </ul>
+
+            <h3>8. Changes to Policy</h3>
+            <p>John Travels reserves the right to update this policy at any time. Changes will be posted on our website.
+            </p>
 
             <h3>9. Contact Us</h3>
-            <p>For queries about this policy, contact us at <a href="mailto:info@johntravels.lk">info@johntravels.lk</a>
-            </p>
+            <p>For questions or concerns about your data, email us at <a
+                    href="mailto:info@johntravels.lk">info@johntravels.lk</a>.</p>
         </div>
+
 
         <?php include 'footer/footer.php'; ?>
     </div>
