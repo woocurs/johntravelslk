@@ -222,7 +222,8 @@ function showPopup(title, message) {
 
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
-window.location.href='tourpackages.php';
+if(title==='Success'){
+	window.location.href='tourpackages.php';}
 }
 </script>
 <?php include('header/booking_header.php');?>
