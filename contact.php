@@ -1,117 +1,99 @@
 <?php
+include ('database/db.php');
 
- include ('database/db.php');
-
-
-
-$name = $mail = $phone =$message = "";
+$fname = $mail = $mobile = $message = "";
 $successMessage = $errorMessage = "";
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	if (isset($_POST['form_type'])) {
+    if (isset($_POST['form_type'])) {
         $form_type = $_POST['form_type'];
         if ($form_type === 'contact_us') {
-			
-		
+            $recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR';
+            if (isset($_POST['g-recaptcha-response'])) {
+                $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-		$recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR'; 
-		if (isset($_POST['g-recaptcha-response'])) {
-    $recaptchaResponse = $_POST['g-recaptcha-response'];
+                $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
+                $data = [
+                    'secret' => $recaptchaSecret,
+                    'response' => $recaptchaResponse,
+                    'remoteip' => $_SERVER['REMOTE_ADDR']
+                ];
 
-   
-    $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
-    $data = [
-        'secret' => $recaptchaSecret,
-        'response' => $recaptchaResponse,
-        'remoteip' => $_SERVER['REMOTE_ADDR']
-    ];
+                $options = [
+                    'http' => [
+                        'method' => 'POST',
+                        'header' => 'Content-Type: application/x-www-form-urlencoded',
+                        'content' => http_build_query($data)
+                    ]
+                ];
+                $context = stream_context_create($options);
+                $verify = file_get_contents($verifyURL, false, $context);
+                $captchaSuccess = json_decode($verify);
 
-    $options = [
-        'http' => [
-            'method' => 'POST',
-            'header' => 'Content-Type: application/x-www-form-urlencoded',
-            'content' => http_build_query($data)
-        ]
-    ];
-    $context = stream_context_create($options);
-    $verify = file_get_contents($verifyURL, false, $context);
-    $captchaSuccess = json_decode($verify);
-
-    if (!$captchaSuccess->success) {
-      
-       $errorMessage= "CAPTCHA verification failed. Please try again.";
-	} 
-    } else {
-      
-         $errorMessage= "Please complete CAPTCHA ";
-    }
-			
-	
-			
-			
-			
-    $name = htmlspecialchars($_POST['name']);
-    $mail = htmlspecialchars($_POST['mail']);
-	 $phone = htmlspecialchars($_POST['phone']);
-    $message = htmlspecialchars($_POST['message']);
-
- 
-    if (!empty($name) &&  !empty($phone) && !empty($mail) && !empty($message)) {
-		if (preg_match("/^(\+?\d{1,3})?\d{10}$/", $phone)) {
-        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-          
-            $stmt = $conn->prepare("INSERT INTO contact_us (name, email,phone, message) VALUES (?, ?,?, ?)");
-            $stmt->bind_param("ssss", $name, $mail, $phone,$message);
-
-            if ($stmt->execute()) {
-				$adminEmail = "info.johntravels@gmail.com"; 
-				$subject = "New Contact Us Message";
-				$emailBody = "You have received a new message from the Contact Us form:\n\n";
-				$emailBody .= "Name: $name\n";
-				$emailBody .= "Email: $mail\n";
-				$emailBody .= "Phone: $phone\n";
-				$emailBody .= "Message:\n$message\n\n";
-				$emailBody .= "This email was sent from the Contact Us form on John Travels LK.";
-				if (mail($adminEmail, $subject, $emailBody, "From: johntravelslk@contact")) {
-
-                $successMessage = "Thank you! Your message has been successfully sent.";
-                $name = $mail = $message = ""; 
-				
+                if (!$captchaSuccess->success) {
+                    $errorMessage = "CAPTCHA verification failed. Please try again.";
+                }
             } else {
-                $errorMessage = "Sorry, your message could not be sent. Please try again later.";
-			}
+                $errorMessage = "Please complete CAPTCHA.";
             }
 
-            $stmt->close();
-        } else {
-            $errorMessage = "Invalid email address.";
+            $fname = htmlspecialchars($_POST['fname']);
+            $mail = htmlspecialchars($_POST['mail']);
+            $mobile = htmlspecialchars($_POST['mobile']);
+            $message = htmlspecialchars($_POST['message']);
+
+            if (!empty($fname) && !empty($mobile) && !empty($mail) && !empty($message)) {
+                if (preg_match("/^(\+?\d{1,3})?\d{10}$/", $mobile)) {
+                    if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+
+                        $stmt = $conn->prepare("INSERT INTO contact_us (name, email, phone, message) VALUES (?, ?, ?, ?)");
+                        $stmt->bind_param("ssss", $fname, $mail, $mobile, $message);
+
+                        if ($stmt->execute()) {
+                            $adminEmail = "info.johntravels@gmail.com";
+                            $subject = "New Contact Us Message";
+                            $emailBody = "You have received a new message from the Contact Us form:\n\n";
+                            $emailBody .= "Name: $fname\n";
+                            $emailBody .= "Email: $mail\n";
+                            $emailBody .= "Phone: $mobile\n";
+                            $emailBody .= "Message:\n$message\n\n";
+                            $emailBody .= "This email was sent from the Contact Us form on John Travels LK.";
+                            if (mail($adminEmail, $subject, $emailBody, "From: johntravelslk@contact")) {
+
+                                $successMessage = "Thank you! Your message has been successfully sent.";
+                                $name = $mail = $message = ""; 
+                            } else {
+                                $errorMessage = "Sorry, your message could not be sent. Please try again later.";
+                            }
+                        }
+                        $stmt->close();
+                    } else {
+                        $errorMessage = "Invalid email address.";
+                    }
+                } else {
+                    $errorMessage = "Phone number must be valid, with or without a country code. (e.g, +94712345678 or 0712345678).";
+                }
+            } else {
+                $errorMessage = "All fields are required.";
+            }
         }
-		
-		} else {
-            $errorMessage = "phone number must be valid, with or without a country code. (e.g, +94712345678 or 0712345678).";
-        }
-    } else {
-        $errorMessage = "All fields are required.";
     }
-}
-	}
 }
 
 $conn->close();
 ?>
-<?php
-include "header/header.php"; ?>
+
+<?php include "header/header.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - John Travels LK</title>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="styles/css/bootstrap.min.css">
-    <style>
+    <link rel="stylesheet" href="styles/css/bootstrap.min.css">
+ <style>
         body {
            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             margin: 0;
@@ -365,46 +347,40 @@ button:hover {
         margin-left:20px;
     }
 }
-
-
-
     </style>
 </head>
 <body>
- <div class="contacttitle">
-     <h1> Contact Us  </h1>
+    <div class="contacttitle">
+        <h1>Contact Us</h1>
     </div>
-<div class="container">
-    <?php if ($successMessage): ?>
-        <div class="message success"><?php echo $successMessage; ?></div>
-    <?php elseif ($errorMessage): ?>
-        <div class="message error"><?php echo $errorMessage; ?></div>
-    <?php endif; ?>
-<div class="contact-container">
+    <div class="container">
+        <?php if ($successMessage): ?>
+            <div class="message success"><?php echo $successMessage; ?></div>
+        <?php elseif ($errorMessage): ?>
+            <div class="message error"><?php echo $errorMessage; ?></div>
+        <?php endif; ?>
+
+       <div class="contact-container">
     <div class="form-section">
         <h2>Contact Us to Get More Info</h2>
-        <form method="POST" action="contact.php">
+        <form id="contactUsForm" method="POST" action="contact.php">
 		  <input type="hidden" name="form_type" value="contact_us">
             <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" value="<?php echo $name; ?>" placeholder="Name with initials" required>
+            <input type="text" id="fname" name="fname" value="<?php echo $fname; ?>" placeholder="Name with initials" required>
 
             <label for="email">Your Email</label>
             <input type="email" id="mail" name="mail" value="<?php echo $mail; ?>" placeholder="Your Email" required>
 			
 			<label for="phone">Your Phone Number</label>
-            <input type="tel" id="phone" name="phone" value="<?php echo $phone; ?>" placeholder="0712345678 or +94712345678" required>
+            <input type="tel" id="mobile" name="mobile" value="<?php echo $mobile; ?>" placeholder="0712345678 or +94712345678" required>
 
             <label for="message">Your Message</label>
             <textarea id="message" name="message" rows="4" required><?php echo $message; ?></textarea>
 
-			 
-			 <div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>
-			
-
-            <button type="submit">Submit Message</button>
-        </form>
+                    <div id="contactUsCaptcha" class="g-recaptcha"  data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1" data-callback="contactrecaptchaCallback"></div>
+					 <button type="submit"  disabled id="contact_submit_button">Submit Message</button>
+   </form>
     </div>
-
     <div class="details-section">
         <h2>Need Help? Contact Us!</h2>
  <div class="contact-info1">
@@ -419,10 +395,12 @@ button:hover {
               <span>
                     <a href="mailto:info.johntravels@gmail.com"><i class="fas fa-envelope"></i> info.johntravels@gmail.com</a></span>
         </p>
-        <p>
+       
+		</div>
+		 <div class="contact-info1">
+		  <p>
             <strong>Phone Number:</strong><br>
-                      <span><a href="tel:+94 76 245 0858" ><i class="fas fa-phone-alt"></i> 
-       +94 76 245 0858 </a></span>
+                      <span><a href="tel:+94 76 245 0858" ><i class="fas fa-phone-alt"></i> +94 76 245 0858 </a></span>
         </p>
 		</div>
         <div class="social-media">
@@ -441,8 +419,53 @@ button:hover {
         src="https://maps.google.com/maps?q=woocurs,vavuniya+srilanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
         allowfullscreen="" loading="lazy"></iframe>
 </div>
- <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-	<?php include "footer/footer.php" ?>
+    <script>
+       
+        function contactrecaptchaCallback(response) {
+            if (response) {
+                document.getElementById("contact_submit_button").disabled = false;
+            } else {
+                document.getElementById("contact_submit_button").disabled = true;
+            }
+        }
+
+      
+        $("#contactUsForm").submit(function(e) {
+            e.preventDefault();
+
+          
+            $("#contact_submit_button").attr("disabled", true);
+
+     
+            $.ajax({
+                type: "POST",
+                url: "contact.php",
+                data: $(this).serialize(),
+                success: function(response) {
+                   
+                    if (response.success) {
+                        alert("Thank you! Your message has been sent.");
+                        $("#contactUsForm")[0].reset();
+                    } else {
+                        alert("Error: " + response.errorMessage);
+                    }
+                 
+                    $("#contact_submit_button").attr("disabled", false);
+                }
+            });
+        });
+    </script>
+<?php include "footer/contact_footer.php"; ?>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
 </body>
 </html>
-
