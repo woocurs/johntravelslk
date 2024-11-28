@@ -482,6 +482,8 @@ function closePopup() {
                 width: 90%;
             }
         }
+		
+
     </style>
    </head>
 <body>

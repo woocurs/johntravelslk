@@ -104,7 +104,7 @@ $conn->close();
             background-color: #fff;
             padding: 30px;
             width: 325px;
-            height: 250px;
+           height: auto;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
@@ -163,6 +163,20 @@ $conn->close();
             color: red;
             margin-top: 10px;
         }
+		
+	.recaptcha-container {
+		margin-left:15px;
+        width:100%;
+        text-align: center; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .g-recaptcha {
+        transform: scale(0.9); 
+        transform-origin: 0 0; 
+    }
     </style>
 </head>
 <body>
@@ -173,7 +187,9 @@ $conn->close();
         <form action="admin_login.php" method="POST">
             <input type="email" name="email" placeholder="E-Mail" class="input-field" required>
             <input type="password" name="password" placeholder="Password" class="input-field" required>
+			 <div class="recaptcha-container">
 			 <div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>
+			</div>
             <button type="submit" class="login-btn">Login</button>
             <br>
             <br>
