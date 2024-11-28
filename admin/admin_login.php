@@ -2,65 +2,56 @@
 session_start();
 require '../database/db.php'; 
 
-
 $errorMessage = '';
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	
-	
-		$recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR'; 
-		if (isset($_POST['g-recaptcha-response'])) {
-    $recaptchaResponse = $_POST['g-recaptcha-response'];
+    $recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR'; 
+    if (isset($_POST['g-recaptcha-response'])) {
+        $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-   
-    $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
-    $data = [
-        'secret' => $recaptchaSecret,
-        'response' => $recaptchaResponse,
-        'remoteip' => $_SERVER['REMOTE_ADDR']
-    ];
+        // Verify CAPTCHA
+        $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = [
+            'secret' => $recaptchaSecret,
+            'response' => $recaptchaResponse,
+            'remoteip' => $_SERVER['REMOTE_ADDR']
+        ];
 
-    $options = [
-        'http' => [
-            'method' => 'POST',
-            'header' => 'Content-Type: application/x-www-form-urlencoded',
-            'content' => http_build_query($data)
-        ]
-    ];
-    $context = stream_context_create($options);
-    $verify = file_get_contents($verifyURL, false, $context);
-    $captchaSuccess = json_decode($verify);
+        $options = [
+            'http' => [
+                'method' => 'POST',
+                'header' => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => http_build_query($data)
+            ]
+        ];
+        $context = stream_context_create($options);
+        $verify = file_get_contents($verifyURL, false, $context);
+        $captchaSuccess = json_decode($verify);
 
-    if (!$captchaSuccess->success) {
-      
-       $errorMessage= "CAPTCHA verification failed. Please try again.";
-	} 
+        if (!$captchaSuccess->success) {
+            $errorMessage = "CAPTCHA verification failed. Please try again.";
+        } 
     } else {
-      
-         $errorMessage= "Please complete CAPTCHA ";
+        $errorMessage = "Please complete CAPTCHA.";
     }
-	
-	
-	
-	
-	
+
+    // Get login credentials
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-   
+    // Prepare SQL query to fetch stored hash password
     $stmt = $conn->prepare("SELECT id, password FROM admin_details WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
-    
+    // If email exists in the database
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $store_password);
+        $stmt->bind_result($id, $storedHashPassword);
         $stmt->fetch();
 
-        
-        if ($password== $store_password) {
+        // Verify password against hashed password
+        if (password_verify($password, $storedHashPassword)) {
             $_SESSION['admin_id'] = $id;
             header("Location: admin_dashboard.php"); 
             exit();
