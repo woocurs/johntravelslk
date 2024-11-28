@@ -596,7 +596,7 @@ if(window.popupTitle === 'Success'){
 		   
             <div class="form-group">
 			
-               <input type="checkbox" name="terms" id="terms" <?php echo isset($terms) && $terms ? 'checked' : ''; ?> required> I agree to the <a href="terms.php">terms and conditions</a>
+               <input type="checkbox" name="terms" id="terms" <?php echo isset($terms) && $terms ? 'checked' : ''; ?> required> I agree to the <a href="terms_and_conditions.php">terms and conditions</a>
             </div>
 			 <div class="form-group">
 			 <div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>

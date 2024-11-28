@@ -13,8 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $form_type = $_POST['form_type'];
         if ($form_type === 'contact_us') {
 			
-		
-
 		$recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR'; 
 		if (isset($_POST['g-recaptcha-response'])) {
     $recaptchaResponse = $_POST['g-recaptcha-response'];
@@ -45,9 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
       
          $errorMessage= "Please complete CAPTCHA ";
-    }
-			
-	
+    }	
 			
 			
 			
@@ -73,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$emailBody .= "Phone: $phone\n";
 				$emailBody .= "Message:\n$message\n\n";
 				$emailBody .= "This email was sent from the Contact Us form on John Travels LK.";
-				if (mail($adminEmail, $subject, $emailBody, "From: johntravelslk@contact")) {
+				if (mail($adminEmail, $subject, $emailBody, "From: johntravelslk@contactus")) {
 
                 $successMessage = "Thank you! Your message has been successfully sent.";
                 $name = $mail = $message = ""; 
@@ -365,9 +361,6 @@ button:hover {
         margin-left:20px;
     }
 }
-
-
-
     </style>
 </head>
 <body>
@@ -396,11 +389,7 @@ button:hover {
 
             <label for="message">Your Message</label>
             <textarea id="message" name="message" rows="4" required><?php echo $message; ?></textarea>
-
-			 
 			 <div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>
-			
-
             <button type="submit">Submit Message</button>
         </form>
     </div>
@@ -419,6 +408,8 @@ button:hover {
               <span>
                     <a href="mailto:info.johntravels@gmail.com"><i class="fas fa-envelope"></i> info.johntravels@gmail.com</a></span>
         </p>
+		</div>
+		<div class="contact-info1">
         <p>
             <strong>Phone Number:</strong><br>
                       <span><a href="tel:+94 76 245 0858" ><i class="fas fa-phone-alt"></i> 
@@ -441,8 +432,9 @@ button:hover {
         src="https://maps.google.com/maps?q=woocurs,vavuniya+srilanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
         allowfullscreen="" loading="lazy"></iframe>
 </div>
- <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 	<?php include "footer/footer.php" ?>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
 

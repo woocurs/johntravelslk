@@ -334,9 +334,9 @@ footer a:hover {
 
 <div class="footer-bottom">
     <div class="footer-bottom-section">
-        <a href="#">Privacy Policy</a> | 
-        <a href="#">Terms & Conditions</a> | 
-        <a href="#">FAQ</a>
+        <a href="privacy_policy.php">Privacy Policy</a> | 
+        <a href="terms_and_conditions.php">Terms & Conditions</a> | 
+        <a href="faq.php">FAQ</a>
     </div>
 
     <div class="footer-bottom-section">
