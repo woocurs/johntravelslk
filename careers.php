@@ -273,7 +273,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
 }
 
+	.recaptcha-container {
+		margin-left:20px;
+        width:100%;
+        text-align: center; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    .g-recaptcha {
+        transform: scale(0.9); 
+        transform-origin: 0 0; 
+    }
 
 
     </style>
@@ -436,9 +448,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 	
 	  <div class="form-element">
+	  <div class="recaptcha-container">
 	<div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>
 	</div>
-	
+	</div>
     <div class="button">
         <input type="submit" id="submit" value="Submit">
     </div>

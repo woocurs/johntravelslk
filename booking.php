@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				
                 storeBooking($conn,$name, $address, $nic, $mobile, $whatsapp, $email, $gender, $dob,$tour_package,$reference_number, $payment, $remark, $photo_path, $terms);
 				  
-				       $sms_message =  "Dear $name, your booking for $tour_package has been successfully received.\n"
+				       $sms_message =  "Dear $name, your booking for $tour_package tour package has been successfully received.\n"
 							 ."Booking Details:\n"
                              . "NIC: $nic\n"
                              . "Mobile: $mobile\n"
@@ -482,6 +482,9 @@ if(title==='Success'){
                 width: 90%;
             }
         }
+	
+	
+	
 	
 
     </style>

@@ -260,6 +260,21 @@ footer a:hover {
             color: #721c24;
             background-color: #f8d7da;
         }
+	.recaptcha-container {
+		margin-left:25px;
+        width:100%;
+        text-align: center; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .g-recaptcha {
+        transform: scale(0.9); 
+        transform-origin: 0 0; 
+    }
+
+
 
     </style>
 </head>
@@ -307,8 +322,10 @@ footer a:hover {
             <input type="tel" name="phone" placeholder="Phone Number" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="msg" rows="4" placeholder="Your Message" required></textarea>
-			 
+			
+			<div class="recaptcha-container">
 			 <div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>
+			</div>
 			
             <button type="submit">Send</button>
         </form>
