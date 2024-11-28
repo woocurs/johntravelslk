@@ -7,6 +7,44 @@ $errorMessage = '';
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	
+	
+		$recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR'; 
+		if (isset($_POST['g-recaptcha-response'])) {
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
+
+   
+    $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = [
+        'secret' => $recaptchaSecret,
+        'response' => $recaptchaResponse,
+        'remoteip' => $_SERVER['REMOTE_ADDR']
+    ];
+
+    $options = [
+        'http' => [
+            'method' => 'POST',
+            'header' => 'Content-Type: application/x-www-form-urlencoded',
+            'content' => http_build_query($data)
+        ]
+    ];
+    $context = stream_context_create($options);
+    $verify = file_get_contents($verifyURL, false, $context);
+    $captchaSuccess = json_decode($verify);
+
+    if (!$captchaSuccess->success) {
+      
+       $errorMessage= "CAPTCHA verification failed. Please try again.";
+	} 
+    } else {
+      
+         $errorMessage= "Please complete CAPTCHA ";
+    }
+	
+	
+	
+	
+	
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -135,6 +173,7 @@ $conn->close();
         <form action="admin_login.php" method="POST">
             <input type="email" name="email" placeholder="E-Mail" class="input-field" required>
             <input type="password" name="password" placeholder="Password" class="input-field" required>
+			 <div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>
             <button type="submit" class="login-btn">Login</button>
             <br>
             <br>
@@ -144,6 +183,6 @@ $conn->close();
             <div class="error-message"><?php echo htmlspecialchars($errorMessage); ?></div>
         <?php endif; ?>
     </div>
-
+ <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

@@ -9,6 +9,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $form_type = $_POST['form_type'];
 
         if ($form_type === 'contact') {
+			
+		$recaptchaSecret = '6Lds54sqAAAAAA_wlRH612F1JzGOnMby5W-G0ZtR'; 
+		if (isset($_POST['g-recaptcha-response'])) {
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
+
+   
+    $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
+    $data = [
+        'secret' => $recaptchaSecret,
+        'response' => $recaptchaResponse,
+        'remoteip' => $_SERVER['REMOTE_ADDR']
+    ];
+
+    $options = [
+        'http' => [
+            'method' => 'POST',
+            'header' => 'Content-Type: application/x-www-form-urlencoded',
+            'content' => http_build_query($data)
+        ]
+    ];
+    $context = stream_context_create($options);
+    $verify = file_get_contents($verifyURL, false, $context);
+    $captchaSuccess = json_decode($verify);
+
+    if (!$captchaSuccess->success) {
+      
+       $err[]= "CAPTCHA verification failed. Please try again.";
+	} 
+    } else {
+      
+         $err[]= "Please complete CAPTCHA ";
+    }
+			
+			
+			
+			
+			
+			
             $name = htmlspecialchars(trim($_POST['name']));
             $phone = htmlspecialchars(trim($_POST['phone']));
             $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
@@ -269,6 +307,9 @@ footer a:hover {
             <input type="tel" name="phone" placeholder="Phone Number" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="msg" rows="4" placeholder="Your Message" required></textarea>
+			 
+			 <div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>
+			
             <button type="submit">Send</button>
         </form>
     </div>
@@ -299,5 +340,6 @@ footer a:hover {
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
