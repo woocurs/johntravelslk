@@ -391,7 +391,7 @@ button:hover {
             <label for="email">Your Email</label>
             <input type="email" id="mail" name="mail" value="<?php echo $mail; ?>" placeholder="Your Email" required>
 			
-			<label for="email">Your Phone Number</label>
+			<label for="phone">Your Phone Number</label>
             <input type="tel" id="phone" name="phone" value="<?php echo $phone; ?>" placeholder="0712345678 or +94712345678" required>
 
             <label for="message">Your Message</label>

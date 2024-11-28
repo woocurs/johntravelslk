@@ -218,11 +218,12 @@ function showPopup(title, message) {
     document.getElementById('popup-title').innerText = title;
     document.getElementById('popup-message').innerHTML = message;
     document.getElementById('popup').style.display = 'flex';
+	window.popupTitle=title;
 }
 
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
-	if(title==='Success'){
+if(window.popupTitle === 'Success'){
 	window.location.href='tourpackages.php';}
 }
 </script>
