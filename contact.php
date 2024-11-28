@@ -432,9 +432,8 @@ button:hover {
         src="https://maps.google.com/maps?q=woocurs,vavuniya+srilanka&t=&z=13&ie=UTF8&iwloc=&output=embed"
         allowfullscreen="" loading="lazy"></iframe>
 </div>
-
-	<?php include "footer/footer.php" ?>
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<?php include "footer/footer.php" ?>
 </body>
 </html>
 
