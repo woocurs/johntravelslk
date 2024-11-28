@@ -272,7 +272,7 @@ $conn->close();
 
     <div class="footer-section contact-form">
         <h3>Contact Us</h3>
-        <form action="footer.php" method="POST">
+        <form action="contact_footer.php" method="POST">
             <input type="hidden" name="form_type" value="contact">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="text" name="phone" placeholder="Your Phone" required>
