@@ -433,7 +433,7 @@ button:hover {
         allowfullscreen="" loading="lazy"></iframe>
 </div>
 	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-	<?php include "footer/footer.php" ?>
+	<?php include "footer/footer.php"; ?>
 </body>
 </html>
 
