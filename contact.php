@@ -390,7 +390,7 @@ button:hover {
             <label for="message">Your Message</label>
             <textarea id="message" name="message" rows="4" required><?php echo $message; ?></textarea>
 			 <div class="g-recaptcha" data-sitekey="6Lds54sqAAAAALV-98g_sKaXQQX9llA4o-UbgKV1"></div>
-            <button type="submit">Submit Message</button>
+            <input type="submit" value="Submit Message">
         </form>
     </div>
 
