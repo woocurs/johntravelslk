@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm'])) {
             $sqlCommands = file_get_contents($sqlFilePath);
             if ($conn->multi_query($sqlCommands)) {
 				echo "Database populated successfully from the SQL file.<br>";
-                echo "<a href='index.php'>Go to Index Page</a><br>";
+                echo "<a href='../sindex.php'>Go to Index Page</a><br>";
             } else {
                 echo "Error executing SQL file: " . $conn->error . "<br>";
             }
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm'])) {
         <h2>Confirm Database Overwrite</h2>
         <p>Are you sure you want to overwrite the database '$database'? This action will drop the existing database and recreate it with data from the SQL file.</p>
         <button type="submit" name="confirm">Yes, Proceed</button>
-        <button type="button" onclick="window.location.href='index.php';">Cancel</button>
+        <button type="button" onclick="window.location.href='../index.php';">Cancel</button>
     </form>
 HTML;
 }
