@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2024 at 03:14 PM
+-- Generation Time: Nov 28, 2024 at 04:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin_details` (
 --
 
 INSERT INTO `admin_details` (`id`, `name`, `email`, `password`, `phone`) VALUES
-(1, 'admin', 'info.johntravels@gmail.com', '12345678', '+94 76 245 0858');
+(4, '', 'info.johntravels@gmail.com', '$2y$10$duYnZIoeNwpiXkGUtuoFjeRaf/2Rs5rh5AJ2kx0rhXnCLFNltgifm', '');
 
 -- --------------------------------------------------------
 
@@ -100,7 +100,8 @@ CREATE TABLE `tour_bookings` (
   `terms_accepted` tinyint(1) NOT NULL,
   `submission_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` enum('pending','confirmed','rejected','') NOT NULL,
-  `payment_details` varchar(255) NOT NULL
+  `payment_details` varchar(255) NOT NULL,
+  `refer_count` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -160,25 +161,25 @@ ALTER TABLE `tour_packages`
 -- AUTO_INCREMENT for table `admin_details`
 --
 ALTER TABLE `admin_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `job_applications`
 --
 ALTER TABLE `job_applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tour_bookings`
 --
 ALTER TABLE `tour_bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tour_packages`
