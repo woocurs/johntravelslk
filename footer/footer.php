@@ -42,10 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $body .= "Email: $email\n\n";
                     $body .= "Message:\n$msg\n";
 
-                    $headers = "From: $email\r\n";
-                    $headers .= "Reply-To: $email\r\n";
+                   
 
-                    if (mail($to, $subject, $body, $headers)) {
+                    if (mail($to, $subject, $body, "From: johntravelslk@contact")) {
                         $success_message = "Thank you, your message has been sent.";
                     } else {
                         $err[] = "There was an error sending your message. Please try again.";
