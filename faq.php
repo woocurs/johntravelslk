@@ -82,7 +82,7 @@
         .faq-item h3 {
             font-size: 1.2em;
             margin: 0 0 8px 0;
-            color: #555555;
+            color: #3C8DFF;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -93,17 +93,24 @@
             margin-right: 10px;
         }
 
-        .faq-item p {
+        .faq-item p,
+        .faq-item ul {
             margin: 0;
             font-size: 1em;
             line-height: 1.5;
             display: none;
             padding-left: 30px;
             transition: all 0.3s ease;
-            color: #2A74D4;
+            color: #666;
         }
 
-        .faq-item.active p {
+        .faq-item ul {
+            list-style-type: disc;
+            margin-top: 10px;
+        }
+
+        .faq-item.active p,
+        .faq-item.active ul {
             display: block;
         }
 
@@ -196,75 +203,126 @@
         <div class="faq-section">
             <div class="faq-item">
                 <h3><i class="fas fa-chevron-right"></i> What types of trips does John Travels offer?</h3>
-                <p>We provide two main types of tours:<br>
-                    Generic Trips: Pre-scheduled trips to specific destinations in Sri Lanka, typically lasting 1-3
-                    days. These trips are open to individuals and groups and include set itineraries.<br>
-                    Tailor-Made Trips: Customized trips designed based on clients' preferences, including destinations,
-                    duration, and activities.
-
-                </p>
+                <ul>
+                    <li><strong>Generic Trips:</strong> These are pre-planned trips lasting 1-3 days, focused on a
+                        single
+                        destination in Sri Lanka. These trips are open to individuals, families, and groups. We manage
+                        all
+                        arrangements, from transportation to activities.</li>
+                    <li><strong>Tailor-Made Trips:</strong> Customizable trips created to match your unique preferences,
+                        including destination, duration, and activities. These are ideal for private groups or specific
+                        needs.</li>
+                </ul>
             </div>
 
             <div class="faq-item">
-                <h3><i class="fas fa-chevron-right"></i> Are your tours only local?</h3>
-                <p>Yes, all our tours focus on exploring the beauty and culture of Sri Lanka, offering both adventure
-                    and relaxation opportunities.</p>
-            </div>
-
-            <div class="faq-item">
-                <h3><i class="fas fa-chevron-right"></i> What activities are included in the trips?</h3>
-                <p>Depending on the package, activities may include:<br>
-                    Adventure sports<br>
-                    Camping<br>
-                    Grills & BBQs<br>
-                    Snorkeling and diving<br>
-                    Boat riding<br>
-                    Group get-togethers<br>
-                    Nature treks and cultural explorations</p>
-
-            </div>
-
-            <div class="faq-item">
-                <h3><i class="fas fa-chevron-right"></i> What is included in the trip cost?</h3>
-                <p>Costs typically cover :<br>Transportation (to and from the destination)<br>Accommodation<br>Meals
-                    and refreshments<br> Activity fees (e.g., equipment rental, guide services)<br>Necessary permits.
-                </p>
+                <h3><i class="fas fa-chevron-right"></i> What activities can I expect on these trips?</h3>
+                <p>Activities vary by package but may include:</p>
+                <ul>
+                    <li><strong>Adventure Sports:</strong> Such as zip-lining, trekking, or cycling.</li>
+                    <li><strong>Water Activities:</strong> Snorkeling, diving, boat rides, or fishing.</li>
+                    <li><strong>Camping:</strong> Overnight stays in scenic locations with all camping gear provided.
+                    </li>
+                    <li><strong>Grills & BBQs:</strong> Delicious outdoor meals in a relaxing environment.</li>
+                    <li><strong>Cultural and Nature Tours:</strong> Visits to heritage sites, national parks, or
+                        eco-friendly activities.</li>
+                </ul>
             </div>
 
             <div class="faq-item">
                 <h3><i class="fas fa-chevron-right"></i> How do I book a trip?</h3>
-                <p>Visit our website at johntravels.lk to view available packages. Use the booking form to confirm your
-                    trip and complete payment online.
-                </p>
+                <p>Browse our website at <a href="mailto:info@johntravels.lk">info@johntravels.lk</a>. to explore
+                    available packages. Use the booking
+                    form to secure your trip and make payments online or via specified methods.</p>
             </div>
 
             <div class="faq-item">
-                <h3><i class="fas fa-chevron-right"></i> Can I modify or cancel my booking?</h3>
-                <p>Yes, you may request modifications or cancellations. Policies regarding refunds and changes vary by
-                    trip type. Refer to our Terms and Conditions for full details.</p>
+                <h3><i class="fas fa-chevron-right"></i> Are there any age or fitness restrictions?</h3>
+                <p>While many trips are family-friendly, certain activities (e.g., snorkeling or adventure sports) may
+                    have age, health, or fitness restrictions. These will be mentioned in the package details.</p>
             </div>
 
             <div class="faq-item">
-                <h3><i class="fas fa-chevron-right"></i> Are the trips safe?</h3>
-                <p>Safety is our highest priority. We ensure:<br>
-                    Certified equipment for activities<br>
-                    Experienced and licensed guides<br>
-                    Adherence to government safety protocols and regulations<br>
-
-                </p>
+                <h3><i class="fas fa-chevron-right"></i> What is included in the trip package?</h3>
+                <p>Depending on the package, inclusions typically cover:</p>
+                <ul>
+                    <li>Round-trip transportation.</li>
+                    <li>Accommodation (hotels, lodges, or campsites).</li>
+                    <li>Meals and refreshments.</li>
+                    <li>Activity fees and permits.</li>
+                    <li>Professional guides and support staff.</li>
+                </ul>
             </div>
 
             <div class="faq-item">
-                <h3><i class="fas fa-chevron-right"></i> Can I request special accommodations?</h3>
-                <p>Yes, please inform us during booking about dietary restrictions, medical needs, or other special
-                    requirements.</p>
+                <h3><i class="fas fa-chevron-right"></i> Can I cancel or reschedule a booking?</h3>
+                <p>Yes, you may cancel or request a reschedule, subject to our cancellation policies outlined in the
+                    Terms and Conditions.</p>
             </div>
 
             <div class="faq-item">
-                <h3><i class="fas fa-chevron-right"></i> What happens in case of bad weather or unforeseen
-                    circumstances?</h3>
-                <p>In such cases, we may adjust itineraries or reschedule trips. Clients will be informed promptly, and
-                    alternative arrangements will be offered.</p>
+                <h3><i class="fas fa-chevron-right"></i> What happens in case of an emergency?</h3>
+                <p>Our team is trained to handle emergencies. We provide first aid kits, emergency contact numbers, and
+                    evacuation plans for all activities.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3><i class="fas fa-chevron-right"></i> What safety measures are in place?</h3>
+                <ul>
+                    <li>Certified and tested equipment is used for all activities.</li>
+                    <li>Trained professionals supervise high-risk activities like diving or adventure sports.</li>
+                    <li>Insurance coverage options may be available for participants.</li>
+
+                </ul>
+            </div>
+
+            <div class="faq-item">
+                <h3><i class="fas fa-chevron-right"></i> Can I request special arrangements?</h3>
+                <p>Yes, we can accommodate dietary needs, medical concerns, or other special requests. Please inform us
+                    during booking.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3><i class="fas fa-chevron-right"></i> What if the weather disrupts the trip?</h3>
+                <p>In cases of extreme weather or unforeseen circumstances, we will either reschedule the trip or
+                    provide alternative arrangements.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3><i class="fas fa-chevron-right"></i> What are the behavioral guidelines for trips?</h3>
+                <p>For the safety and comfort of all participants, <strong>alcohol consumption, drug use, or disruptive
+                        behavior
+                        is strictly prohibited</strong> during trips. Violators may be removed from the trip without
+                    refund.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3><i class="fas fa-chevron-right"></i> How are safety and security maintained during trips? </h3>
+                <p>Our team enforces strict safety guidelines, including the prohibition of alcohol or drug use. Guides
+                    and staff are trained to handle emergencies and maintain a secure environment.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-chevron-right"></i> What happens if a participant violates the rules?</h3>
+                <p>Violations of our code of conduct (e.g., drug use, harassment, or property damage) will result in
+                    immediate removal from the trip, and any additional costs will be the responsibility of the
+                    violator.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3><i class="fas fa-chevron-right"></i> What safety precautions are in place?</h3>
+                <p>While we prioritize safety by providing certified equipment, experienced guides, and adhering to
+                    government safety regulations, all activities are <strong>undertaken at the participant’s own
+                        risk.</strong>
+                    Participants are responsible for assessing their own fitness and readiness for any activity.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3><i class="fas fa-chevron-right"></i> What happens in case of injury or loss during the trip?</h3>
+                <p>John Travels will assist with immediate support (e.g., first aid or arranging transport to medical
+                    facilities). However, participants are required to sign a waiver acknowledging that they participate
+                    in all activities at their <strong>own risk, </strong>and the company is not liable for injuries,
+                    loss, or damage
+                    caused by unforeseen events or personal negligence.</p>
             </div>
         </div>
 
