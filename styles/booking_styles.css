@@ -16,6 +16,9 @@ body, html {
     color: #fff;
     padding: 5px 20px;
     font-size: 14px;
+    margin-top:0px;
+	margin-bottom:0px;
+	width:100%;
   }
   
   .contact-info1 {
@@ -26,7 +29,7 @@ body, html {
   
   .top-bar .contact-info1 span {
     margin-right: 15px;
-    margin-bottom: 5px;
+   
   }
   
 
@@ -46,6 +49,9 @@ body, html {
     color: #fff;
     transition: background-color 0.3s;
     padding: 0 15px;
+    margin-top:0px;
+	  margin-bottom:0px;
+	  width:100%;
   }
   
   .navbar .navbar-brand {
