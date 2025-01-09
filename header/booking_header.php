@@ -1,7 +1,7 @@
 <?php
 
 $contact_number = "+94 76 245 0858";
-$mail = "info.johntravels@gmail.com";
+$mail = "info.woocurstours@gmail.com";
 $location = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
 ?>
 
@@ -11,8 +11,8 @@ $location = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="380x380" href="images/Logo.png">
-    <title>John Travels LK</title>
+    <link rel="icon" type="image/png" sizes="380x380" href="images/Woocurstours logo.png">
+    <title>Woocurs ToursLK</title>
     <link rel="stylesheet" href="styles/booking_styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -42,9 +42,10 @@ $location = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
                             <?php echo $location; ?></a></span>
                 </div>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/johntravelslk" target="_blank"><i
+                    <a href="https://www.facebook.com/share/1A1CyUw2Gb/?mibextid=LQQJ4d" target="_blank"><i
                             class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/@johntravelslk" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://youtube.com/@woocurstours?si=xlMadvyRQDjTOVBT" target="_blank"><i
+                            class="fab fa-youtube"></i></a>
                     <a href="https://www.instagram.com/john_travels_lk/" target="_blank"><i
                             class="fab fa-instagram"></i></a>
                     <a href="https://wa.me/94762450858?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20tour%20packages%20and%20services%20at%20John%20Travels%20LK.%20Please%20provide%20more%20details.%20Thank%20you%21"
@@ -58,11 +59,11 @@ $location = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="images/John_Travels_LK_Banner_R.png" alt="Logo" class="img-fluid d-none d-md-block"
+                <img src="images/Woocurstours logo.png" alt="Logo" class="img-fluid d-none d-md-block"
                     style="height: 30px; width: auto;">
             </a>
-            
-			 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            <span class="ms-2"><strong>Woocurs Tours</strong></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
                     <i class="fas fa-bars" style="color: #fff;"></i>

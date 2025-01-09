@@ -1,7 +1,7 @@
 <?php
 
 $contact_number = "+94 76 245 0858";
-$email = "info.johntravels@gmail.com";
+$email = "info.woocurstours@gmail.com";
 $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
 ?>
 
@@ -11,8 +11,8 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="380x380" href="images/Logo.png">
-    <title>John Travels LK</title>
+    <link rel="icon" type="image/png" sizes="380x380" href="images/Woocurstours logo.png">
+    <title>Woocurs Tours LK</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -52,9 +52,10 @@ $address = "#377 B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka";
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="images/John_Travels_LK_Banner_R.png" alt="Logo" class="img-fluid d-none d-md-block"
+                <img src="images/Woocurstours logo.png" alt="Logo" class="img-fluid d-none d-md-block"
                     style="height: 30px; width: auto;">
             </a>
+            <span class="ms-2"><strong>Woocurs Tours</strong></span>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
