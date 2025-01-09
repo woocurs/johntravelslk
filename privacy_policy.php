@@ -186,7 +186,7 @@
 
         <div class="terms-container">
             <h3>1. Introduction</h3>
-            <p>This Privacy Policy explains how John Travels collects, uses, and protects your personal data.</p>
+            <p>This Privacy Policy explains how Woocurs Tours collects, uses, and protects your personal data.</p>
 
             <h3>2. Data Collection</h3>
             <p>We collect the following:</p>
@@ -227,7 +227,8 @@
             </ul>
 
             <h3>8. Changes to Policy</h3>
-            <p>John Travels reserves the right to update this policy at any time. Changes will be posted on our website.
+            <p>Woocurs Tours reserves the right to update this policy at any time. Changes will be posted on our
+                website.
             </p>
 
             <h3>9. Contact Us</h3>

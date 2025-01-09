@@ -193,7 +193,7 @@
         <div class="terms-container">
             <h3>1. Agreement Overview</h3>
             <p>By booking a trip or using our website, you agree to comply with the Terms and Conditions outlined below.
-                These terms apply to all services provided by John Travels and may be amended without prior notice.</p>
+                These terms apply to all services provided by Woocurs Tours and may be amended without prior notice.</p>
 
             <h3>2. Bookings and Payments</h3>
             <ul>
@@ -250,7 +250,7 @@
                     <ul>
                         <li> We ensure activities are conducted with proper equipment
                             and certified professionals.</li>
-                        <li>While we take all necessary precautions, John Travels is not liable for
+                        <li>While we take all necessary precautions, Woocurs Tours is not liable for
                             injuries, accidents, or loss of belongings due to negligence or unforeseen events.</li>
                     </ul>
                 </li>
@@ -307,7 +307,7 @@
 
             <h3>10. Assumption of Risk</h3>
             <ul>
-                <li>Participation in trips and activities offered by John Travels is entirely at the
+                <li>Participation in trips and activities offered by Woocurs Tours is entirely at the
                     participant's own
                     risk.</li>
                 <li>Adventure activities, including but not limited to snorkeling, diving, trekking, or camping,
@@ -319,7 +319,7 @@
 
             <h3>11. Liability Waiver</h3>
             <ul>
-                <li>By booking a trip, participants agree to waive any claims against John Travels for:
+                <li>By booking a trip, participants agree to waive any claims against Woocurs Tours for:
                     <ul>
                         <li>Injuries, accidents, or health issues that occur during the trip.</li>
                         <li>Loss or damage of personal belongings.</li>
@@ -345,7 +345,7 @@
 
             <h3>13. Release of Liability</h3>
             <ul>
-                <li>John Travels is not liable for:
+                <li>Woocurs Tours is not liable for:
                     <ul>
                         <li>Risks associated with participant negligence, failure to follow instructions, or
                             health
@@ -370,11 +370,10 @@
 
             <h3>16. Intellectual Property</h3>
             <p>All content on our website, including logos, images, and text, is the intellectual property of
-                John
-                Travels. Reproduction without permission is prohibited.</p>
+                Woocurs Tours. Reproduction without permission is prohibited.</p>
 
             <h3>17. Amendments to Terms</h3>
-            <p>John Travels reserves the right to amend these Terms and Conditions at any time. Updated versions
+            <p>Woocurs Tours reserves the right to amend these Terms and Conditions at any time. Updated versions
                 will be
                 published on our website.</p>
         </div>
