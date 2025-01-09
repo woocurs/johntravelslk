@@ -299,10 +299,10 @@ $conn->close();
 
         <div class="footer-section">
             <h3>About Us</h3>
-            <p>Woocurs Tours - Trips by Woocurs. Make lifelong memories.</p>
+            <p>John Travels - Trips by Woocurs. Make lifelong memories.</p>
             <div class="logo-container">
                 <img src="images/logo1.png" alt="Woocurs" width="100px" height="100px">
-                <img src="images/Woocurs Tours.png" alt="John Group">
+                <img src="images/Logo.png" alt="John Group">
             </div>
         </div>
 
@@ -312,8 +312,7 @@ $conn->close();
             <p><a href="https://maps.app.goo.gl/VKB6ddL1LxTJPPKaA" target="_blank"><i class="fa fa-map-marker"></i> 377
                     B 1/1, Mannar Road, Veppankulam, Vavuniya, Sri Lanka</a></p>
             <p><a href="tel:+94 76 245 0858"><i class="fa fa-phone"></i>+94 76 245 0858</a></p>
-            <p><a href="mailto:info.woocurstours@gmail.com"><i class="fa fa-envelope"></i>
-                    info.woocurstours@gmail.com</a>
+            <p><a href="mailto:info.johntravels@gmail.com"><i class="fa fa-envelope"></i> info.johntravels@gmail.com</a>
             </p>
         </div>
 
@@ -344,14 +343,14 @@ $conn->close();
             </div>
 
             <div class="footer-bottom-section">
-                <img src="images/Woocurs Tours.png" alt="John Travels Logo">
-                <span style="font-size: 1.2em; color: #f1f1f1; vertical-align: middle; margin-left: 10px;">Woocurs
-                    Tours</span>
+                <img src="images/Logo.png" alt="John Travels Logo">
+                <span style="font-size: 1.2em; color: #f1f1f1; vertical-align: middle; margin-left: 10px;">John Travels
+                    LK</span>
             </div>
 
             <div class="footer-bottom-section">
                 <span>
-                    <p>&copy; 2024 Woocurs Tours. All rights reserved.
+                    <p>&copy; 2024 John Travels LK. All rights reserved.
                     <p>
                 </span>
             </div>
