@@ -202,7 +202,7 @@
 
         <div class="faq-section">
             <div class="faq-item">
-                <h3><i class="fas fa-chevron-right"></i> What types of trips does John Travels offer?</h3>
+                <h3><i class="fas fa-chevron-right"></i> What types of trips does Woocurs Tours offer?</h3>
                 <ul>
                     <li><strong>Generic Trips:</strong> These are pre-planned trips lasting 1-3 days, focused on a
                         single
@@ -318,7 +318,7 @@
 
             <div class="faq-item">
                 <h3><i class="fas fa-chevron-right"></i> What happens in case of injury or loss during the trip?</h3>
-                <p>John Travels will assist with immediate support (e.g., first aid or arranging transport to medical
+                <p>Woocurs Tours will assist with immediate support (e.g., first aid or arranging transport to medical
                     facilities). However, participants are required to sign a waiver acknowledging that they participate
                     in all activities at their <strong>own risk, </strong>and the company is not liable for injuries,
                     loss, or damage
